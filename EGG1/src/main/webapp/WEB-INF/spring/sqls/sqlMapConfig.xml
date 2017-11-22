@@ -8,6 +8,7 @@
   </typeAliases>
   
   <mappers>
+  	<mapper resource="/sqls/LoginMapper.xml"/>
   </mappers>
   
   </configuration>

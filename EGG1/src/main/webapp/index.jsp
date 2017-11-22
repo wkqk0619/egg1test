@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>초기화면Ver.1</title>
-<link rel="stylesheet" type="text/css" href="css/page.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/page.css"> -->
 </head>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -27,7 +27,6 @@
 	
 	<!-- 초기화면 -->
 	<div id="indexmain">
-		<h1>소개영상</h1>
 		<header id="indexHeader">
 			<button onclick="showintro()">소개영상</button>
 			<button onclick="showloginForm()">로그인</button>
@@ -52,14 +51,12 @@
 			<button onclick="repassword()">비밀번호 찾기</button>
 			</div>
 			<div id="regForm">
-				<form action="controller.do" method="post">
-					<input type="text" name="command" value="reg" hidden="hidden"/>
-					<span>회원가입</span><br/>
-					<input type="text" name="email" placeholder="이메일"/><button>인증코드보내기</button><br/>
-					<input type="text" name="accKey"/><button>인증확인</button>
-					<input type="text" name="pwd" placeholder="비밀번호"/>
-					<input type="submit" value="회원가입"/>
-				</form>
+				<span>회원가입</span><br/>
+				<input type="hidden" id="rNum">
+				<input type="text" id="regemail" name="email" placeholder="이메일"/><button onclick="check()" id="keyBtn">인증코드보내기</button><br/>
+				<input type="text" id="accKey" name="accKey"/><button id="keyChk" onclick="keyChk()">인증확인</button>
+				<input type="text" id="pwd" placeholder="비밀번호"/>
+				<button id="registBtn" onclick="regist()" disabled="disabled">회원가입</button>
 			</div>
 	</div><!-- 초기화면 div 의 끝 -->
 	
@@ -70,6 +67,7 @@
 		</div>
 	</div>
 	
+	<%-- 
 	<!-- 로그인시 화면 div -->
 	<c:choose>
 		<c:when test="${empty ldto}"></c:when>
@@ -98,6 +96,8 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
+	 --%>
+	 
 </div>
 <footer></footer>
 </body>
