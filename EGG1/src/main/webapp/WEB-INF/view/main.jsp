@@ -15,6 +15,9 @@
 	role = ${ldto.role}<br>
 	enabled = ${ldto.enabled}<br>
 	nickname = ${ldto.nickname}<br>
-	icon = ${ldto.icon}
+	icon = ${ldto.icon}<br>
+	<button onclick="#">아이디어</button><br>
+	<button onclick="#">지원사업</button>
+	
 </body>
 </html>
