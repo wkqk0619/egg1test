@@ -14,7 +14,7 @@ public class MailSend
 {
 	/**
 	 * 메일을 보내는 메소드 : 보내는 사람이라던가 설정들은 메소드안의 내용을 수정해야함 
-	 * (보낼이메일, 제목, 내용)
+	 * (받는사람 이메일, 제목, 내용)
 	 */
 	public void mailSend(String email, String title, String content)
 	{
