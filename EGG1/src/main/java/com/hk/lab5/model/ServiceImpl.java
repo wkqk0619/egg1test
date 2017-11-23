@@ -1,10 +1,12 @@
 package com.hk.lab5.model;
 
+import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.mail.MailSend;
 
 @Service
@@ -78,6 +80,12 @@ public class ServiceImpl implements IService {
 	public boolean regist(String email, String pw) 
 	{
 		return dao.regist(email,pw);
+	}
+
+	@Override
+	public AccountDto login(Map<String, String> map) 
+	{
+		return dao.login(map);
 	}
 
 }

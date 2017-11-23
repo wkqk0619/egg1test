@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.lab5.dtos.AccountDto;
+
 @Repository
 public class DaoImpl implements IDao {
 
@@ -39,6 +41,12 @@ public class DaoImpl implements IDao {
 	public String findpw(String email) 
 	{		
 		return sqlSession.selectOne(LOGINNAMESPACE+"findpw",email);
+	}
+
+	@Override
+	public AccountDto login(Map<String, String> map) 
+	{
+		return sqlSession.selectOne(LOGINNAMESPACE+"login",map);
 	}
 	
 }

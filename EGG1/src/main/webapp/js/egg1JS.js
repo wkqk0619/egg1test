@@ -98,6 +98,34 @@ $(function(){
 		);
 	}
 	
+	function getlogin() 
+	{
+		var email = $("#loginemail").val();
+		var pw = $("#loginpwd").val();
+		
+		$.ajax
+		(
+			{
+				type : "POST",
+				url : "./Login.do",
+				data : "email="+email+"&pw="+pw, 
+				async : true,
+				success : function(msg)
+				{
+					if(msg=="S")
+					{
+						location.href="./Main.do";
+					}
+					else
+					{
+						alert("아이디와 비밀번호가 일치하지 않습니다.");
+					}
+				}
+				
+			}
+		);
+	}
+	
 	function findCheck() 
 	{
 		var email = $("#findemail").val()
@@ -159,6 +187,9 @@ $(function(){
 			alert("인증 번호를 확인해주세요");
 		}
 	}
+	
+	
+	
 	
 	/*
 	function showidearMain(){

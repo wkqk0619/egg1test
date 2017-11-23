@@ -1,11 +1,17 @@
 package com.hk.lab5;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.model.IService;
 
 @Controller
@@ -67,6 +73,34 @@ public class LoginController
 	public String sendpw(String email)
 	{
 		return iservice.emailSend(email, "F");
+	}
+	
+	@RequestMapping(value="/Login.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String login(String email,String pw, HttpSession session)
+	{
+		Map<String, String>map = new HashMap<String,String>();
+		map.put("email", email);
+		map.put("pw", pw);
+		
+		AccountDto ldto = iservice.login(map);
+		
+		if(ldto==null)
+		{
+			return "F";
+		}
+		else
+		{
+			session.setAttribute("ldto", ldto);
+			return "S";
+		}
+		
+	}
+	
+	@RequestMapping(value="/Main.do", method=RequestMethod.GET)
+	public String usermain()
+	{
+		return "main";
 	}
 	
 }

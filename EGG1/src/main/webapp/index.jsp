@@ -39,16 +39,14 @@
 				<!-- 유튜브 영상 사용할때 소스 -->
 			</div>
 			<div id="loginForm">
-				<form action="controller.do" method="post">
-					<input type="text" value="login" name="command" hidden="hidden"/>
-					<span>로그인</span>
-					<br/>
-					<input type="text" name="email" placeholder="이메일"/>
-					<br/>
-					<input type="text" name="pwd" placeholder="비밀번호"/>
-					<input type="submit" value="전송"/>
-				</form>
-			<button onclick="repassword()">비밀번호 찾기</button>
+				<input type="text" value="login" name="command" hidden="hidden"/>
+				<span>로그인</span>
+				<br/>
+				<input type="text" id="loginemail" name="email" placeholder="이메일"/>
+				<br/>
+				<input type="text" id="loginpwd" name="pwd" placeholder="비밀번호"/>
+				<button onclick="getlogin()">로그인</button>
+				<button onclick="repassword()">비밀번호 찾기</button>
 			</div>
 			<div id="regForm">
 				<span>회원가입</span><br/>

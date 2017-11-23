@@ -9,12 +9,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM  ACCOUNT WHERE ID = #{email}
 	</select>
 	
-	<insert id="regist" parameterType="Map">
+	<insert id="regist" parameterType="java.util.HashMap">
 		INSERT INTO ACCOUNT(ID,PASSWORD,REGDATE,ROLE,ENABLED) VALUES(#{email}, #{pw}, SYSDATE, 'U', 'Y')
 	</insert>
 	
 	<select id="findpw" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT PASSWORD FROM ACCOUNT WHERE ID = #{email}
+	</select>
+	
+	<select id="login" parameterType="java.util.HashMap" resultType="AccountDto">
+		SELECT ID,PASSWORD,TO_CHAR(REGDATE,'YYYYMMDD'),ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ID = #{email} AND PASSWORD = #{pw}
 	</select>
 	
 </mapper>
