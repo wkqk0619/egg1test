@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="regist" parameterType="Map">
-		INSERT INTO ACCOUNT(ID,PASSWORD,REGDATE,ROLE,ENABLED) VALUES('#{email}','#{pw}',SYSDATE,'U','Y')
+		INSERT INTO ACCOUNT(ID,PASSWORD,REGDATE,ROLE,ENABLED) VALUES(#{email}, #{pw}, SYSDATE, 'U', 'Y')
 	</insert>
 	
 </mapper>
