@@ -34,5 +34,11 @@ public class DaoImpl implements IDao {
 		
 		return count>0?true:false;
 	}
+
+	@Override
+	public String findpw(String email) 
+	{		
+		return sqlSession.selectOne(LOGINNAMESPACE+"findpw",email);
+	}
 	
 }

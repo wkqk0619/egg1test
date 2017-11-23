@@ -6,4 +6,6 @@ public interface IDao {
 
 	boolean regist(String email, String pw);
 
+	String findpw(String email);
+
 }

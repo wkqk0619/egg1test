@@ -13,4 +13,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO ACCOUNT(ID,PASSWORD,REGDATE,ROLE,ENABLED) VALUES(#{email}, #{pw}, SYSDATE, 'U', 'Y')
 	</insert>
 	
+	<select id="findpw" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT PASSWORD FROM ACCOUNT WHERE ID = #{email}
+	</select>
+	
 </mapper>

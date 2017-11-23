@@ -1,6 +1,3 @@
-/**
- * 
- */
 $(function(){
 		$("#continer").children("#intro").siblings().hide();
 		$("#theme").change(function() {
@@ -24,11 +21,15 @@ $(function(){
 		$("#regForm").show();
 	}
 	
-	function repassword(){
+	function repassword()
+	{
+		$("#repassword").show();
+		/*
 		$("#repassword").dialog({
 		dialogClass: "no-close",
 		modal: true
 		});
+		*/
 	}
 	
 	function check() 
@@ -95,6 +96,68 @@ $(function(){
 				
 			}
 		);
+	}
+	
+	function findCheck() 
+	{
+		var email = $("#findemail").val()
+		
+		$.ajax
+		(
+			{
+				type : "POST",
+				url : "./FindCheck.do",
+				data : "email="+email, 
+				async : true,
+				success : function(msg)
+				{
+					if(msg=="O")
+					{
+						alert("존재하지 않는 계정입니다.");
+					}
+					else
+					{
+						$("#findrNum").val(msg);
+						$("#findemail").attr("readonly","true");
+						$("#findKeyBtn").attr("disabled","true");
+					}
+				}
+				
+			}
+		);
+	}
+	
+	function findkeyChk() 
+	{
+		if($("#findKey").val()==$("#findrNum").val())
+		{
+			var email = $("#findemail").val()
+			
+			$.ajax
+			(
+				{
+					type : "POST",
+					url : "./Sendpw.do",
+					data : "email="+email, 
+					async : true,
+					success : function(msg)
+					{
+						if(msg=="S")
+						{
+							$("#repassword").hide();
+							$("#findrNum").val("");
+							$("#findemail").val("");
+							$("#findKey").val("");
+						}
+					}
+					
+				}
+			);
+		}
+		else
+		{
+			alert("인증 번호를 확인해주세요");
+		}
 	}
 	
 	/*

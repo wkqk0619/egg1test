@@ -23,18 +23,55 @@ public class ServiceImpl implements IService {
 	}
 
 	@Override
-	public String emailSend(String email) 
+	public String emailSend(String email,String command) 
 	{
-		Random random = new Random();
-		String content = Long.toHexString(Math.abs(random.nextLong()));	// 이게 바로 난수
+		if(command.equals("R"))
+		{
+			Random random = new Random();
+			String content = Long.toHexString(Math.abs(random.nextLong()));	// 이게 바로 난수
+			
+			String title = "이지지원에 관심을 주셔서 감사합니다.";
+			
+			MailSend ms = new MailSend();
+			
+			ms.mailSend(email, title, content);
+			
+			return content;
+		}
+		else if(command.equals("P"))
+		{
+			Random random = new Random();
+			String content = Long.toHexString(Math.abs(random.nextLong()));	// 이게 바로 난수
+			
+			String title = "비밀번호 찾기 인증번호";
+			
+			MailSend ms = new MailSend();
+			
+			ms.mailSend(email, title, content);
+			
+			return content;
+		}
+		else if(command.equals("F"))
+		{
+			try 
+			{
+				MailSend ms = new MailSend();
+				String title = "이지지원 계정비밀번호";
+				
+				String content = dao.findpw(email);
+						
+				ms.mailSend(email, title, content);
+				
+				return "S";
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+				return "F";
+			}
+		}
 		
-		String title = "이지지원에 관심을 주셔서 감사합니다.";
-		
-		MailSend ms = new MailSend();
-		
-		ms.mailSend(email, title, content);
-		
-		return content;
+		return "";
 	}
 
 	@Override

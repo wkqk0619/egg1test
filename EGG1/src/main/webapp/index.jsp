@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>초기화면Ver.1</title>
-<!-- <link rel="stylesheet" type="text/css" href="css/page.css"> -->
+<link rel="stylesheet" type="text/css" href="css/page.css">
 </head>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -62,10 +62,12 @@
 	
 	
 	<div id="repassword" hidden="hidden">
-			<input type="text" name="email" placeholder="이메일"/><button>인증번호전송</button><br/>
-			<input type="text" name="AccKey" placeholder="인증키"/><button>인증키확인</button>
-		</div>
+		<input type="hidden" id="findrNum">
+		<input type="text" id="findemail" name="email" placeholder="이메일"/><button id="findKeyBtn" onclick="findCheck()">인증번호전송</button><br/>
+		<input type="text" id="findKey" name="findKey" placeholder="인증키"/><button onclick="findkeyChk()">인증키확인</button>
 	</div>
+	
+</div>
 	
 	<%-- 
 	<!-- 로그인시 화면 div -->
