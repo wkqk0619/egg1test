@@ -3,7 +3,7 @@
 
   <display-name>Spring_init1</display-name>
   <welcome-file-list>
-  	<welcome-file>index.jsp</welcome-file>
+  	<welcome-file>wellcome.jsp</welcome-file>
   </welcome-file-list>
   
   <!-- model을 사용하기 위한 설정 파일 위치 -->
