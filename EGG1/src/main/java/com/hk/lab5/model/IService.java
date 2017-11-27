@@ -16,8 +16,8 @@ public interface IService {
 
 
 	public List<QuestionDto> selectQuestion();
-	public int InsertQuestion(String qname);
-	public List<QuestionDto> searchInfo(String qname);
+	public int InsertQuestion(String question);
+	public List<QuestionDto> searchInfo(String question);
 	public int deleteQuestion(int qseq);
 	public List<NotionDto> selectNotion();
 	public NotionDto ajaxNotionDetail(String nseq);

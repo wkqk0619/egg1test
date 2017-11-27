@@ -114,16 +114,16 @@ public class ServiceImpl implements IService {
 	
 	//질문추가하기
 	@Override
-	public int InsertQuestion(String qname) {
+	public int InsertQuestion(String question) {
 		// TODO Auto-generated method stub
-		return dao.InsertQuestion(qname);
+		return dao.InsertQuestion(question);
 	}
 
 
 	@Override
-	public List<QuestionDto> searchInfo(String qname) {
+	public List<QuestionDto> searchInfo(String question) {
 		// TODO Auto-generated method stub
-		return dao.searchInfo(qname);
+		return dao.searchInfo(question);
 	}
 
 

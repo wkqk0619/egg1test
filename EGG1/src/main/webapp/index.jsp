@@ -10,7 +10,7 @@
 <title>초기화면Ver.1</title>
 <link rel="stylesheet" type="text/css" href="css/page.css">
 </head>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="js/egg1JS.js"></script>
 <body>

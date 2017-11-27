@@ -16,10 +16,13 @@ import com.hk.lab5.dtos.QuestionDto;
 public class DaoImpl implements IDao {
 
 	private final String LOGINNAMESPACE = "com.hk.lab5.login.";
+	private final String QUESTIONNAMESPACE = "com.hk.lab5.question.";
+	private final String NOTIONNAMESPACE = "com.hk.lab5.notion.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
+	// 계정관련
 	@Override
 	public int emailChk(String email) 
 	{
@@ -52,70 +55,69 @@ public class DaoImpl implements IDao {
 		return sqlSession.selectOne(LOGINNAMESPACE+"login",map);
 	}
 
-
-	
-
+	// 질문관련
 	@Override
-	public List<QuestionDto> selectQuestion() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(LOGINNAMESPACE+"selectQuestion");
+	public List<QuestionDto> selectQuestion() 
+	{
+		return sqlSession.selectList(QUESTIONNAMESPACE+"selectQuestion");
 	}
 
 
 	@Override
-	public int InsertQuestion(String qname) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert(LOGINNAMESPACE+"insertQuestion", qname);
+	public int InsertQuestion(String question) 
+	{
+		return sqlSession.insert(QUESTIONNAMESPACE+"insertQuestion", question);
 	}
 
 
 	@Override
-	public List<QuestionDto> searchInfo(String qname) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(LOGINNAMESPACE+"searchInfo", qname);
+	public List<QuestionDto> searchInfo(String question) 
+	{
+		return sqlSession.selectList(QUESTIONNAMESPACE+"searchInfo", question);
 	}
 
 
 	@Override
-	public int deleteQuestion(int qseq) {
-		// TODO Auto-generated method stub
-		return sqlSession.delete(LOGINNAMESPACE+"deleteQuestion", qseq);
+	public int deleteQuestion(int qseq) 
+	{
+		return sqlSession.delete(QUESTIONNAMESPACE+"deleteQuestion", qseq);
+	}
+
+
+	// 공지관련
+	@Override
+	public List<NotionDto> selectNotion() 
+	{
+		return sqlSession.selectList(NOTIONNAMESPACE+"selectNotion");
 	}
 
 
 	@Override
-	public List<NotionDto> selectNotion() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(LOGINNAMESPACE+"selectNotion");
-	}
-
-
-	@Override
-	public NotionDto ajaxNotionDetail(String nseq) {
-		// TODO Auto-generated method stub
-		List<NotionDto> list = sqlSession.selectList(LOGINNAMESPACE+"ajaxNotionDetail",nseq);
+	public NotionDto ajaxNotionDetail(String nseq) 
+	{
+		List<NotionDto> list = sqlSession.selectList(NOTIONNAMESPACE+"ajaxNotionDetail",nseq);
 		return list.get(0);
 	}
 
 
 	@Override
-	public int delNot(int nseq) {
-		// TODO Auto-generated method stub
-		return sqlSession.delete(LOGINNAMESPACE+"delNot",nseq);
+	public int delNot(int nseq) 
+	{
+		return sqlSession.delete(NOTIONNAMESPACE+"delNot",nseq);
 	}
 
 
 	@Override
-	public int insertNot(NotionDto dto) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert(LOGINNAMESPACE+"insertNot",dto);
+	public int insertNot(NotionDto dto) 
+	{
+		return sqlSession.insert(NOTIONNAMESPACE+"insertNot",dto);
 	}
 
 
 	@Override
-	public int updateNot(NotionDto dto) {
-		// TODO Auto-generated method stub
-		return sqlSession.update(LOGINNAMESPACE+"updateNot",dto);
+	public int updateNot(NotionDto dto) 
+	{
+		return sqlSession.update(NOTIONNAMESPACE+"updateNot",dto);
 	}
 	
 }

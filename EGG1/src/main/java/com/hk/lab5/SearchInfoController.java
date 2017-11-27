@@ -19,8 +19,8 @@ public class SearchInfoController {
 	private IService iservice;
 	
 	@RequestMapping(value="/searchInfo.do",method=RequestMethod.GET)
-	public String serchInfo(Model model,String qname) {
-		List<QuestionDto> selists = iservice.searchInfo(qname);
+	public String serchInfo(Model model,String question) {
+		List<QuestionDto> selists = iservice.searchInfo(question);
 		System.out.println(selists);
 		model.addAttribute("searInfo", selists);
 		return "Question";
