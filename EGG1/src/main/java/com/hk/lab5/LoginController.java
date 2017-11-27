@@ -77,10 +77,10 @@ public class LoginController
 	
 	@RequestMapping(value="/Login.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String login(String email,String pw, HttpSession session)
+	public String login(String id,String pw, HttpSession session)
 	{
 		Map<String, String>map = new HashMap<String,String>();
-		map.put("email", email);
+		map.put("id", id);
 		map.put("pw", pw);
 		
 		AccountDto ldto = iservice.login(map);
@@ -101,6 +101,12 @@ public class LoginController
 	public String usermain()
 	{
 		return "main";
+	}
+	
+	@RequestMapping(value="/AdminMain.do", method=RequestMethod.GET)
+	public String adminmain()
+	{
+		return "adminmain";
 	}
 	
 }

@@ -108,7 +108,7 @@ $(function(){
 			{
 				type : "POST",
 				url : "./Login.do",
-				data : "email="+email+"&pw="+pw, 
+				data : "id="+email+"&pw="+pw, 
 				async : true,
 				success : function(msg)
 				{
