@@ -1,4 +1,4 @@
-package com.hk.lab5.model;
+﻿package com.hk.lab5.model;
 
 import java.util.Map;
 import java.util.Random;
@@ -86,6 +86,75 @@ public class ServiceImpl implements IService {
 	public AccountDto login(Map<String, String> map) 
 	{
 		return dao.login(map);
+	}
+
+
+
+
+
+	//질문가져오기
+	@Override
+	public List<QuestionDto> selectQuestion() {
+		// TODO Auto-generated method stub
+		return dao.selectQuestion();
+	}
+
+	
+	
+	//질문추가하기
+	@Override
+	public int InsertQuestion(String qname) {
+		// TODO Auto-generated method stub
+		return dao.InsertQuestion(qname);
+	}
+
+
+	@Override
+	public List<QuestionDto> searchInfo(String qname) {
+		// TODO Auto-generated method stub
+		return dao.searchInfo(qname);
+	}
+
+
+	@Override
+	public int deleteQuestion(int qseq) {
+		// TODO Auto-generated method stub
+		return dao.deleteQuestion(qseq);
+	}
+
+
+	@Override
+	public List<NotionDto> selectNotion() {
+		// TODO Auto-generated method stub
+		return dao.selectNotion();
+	}
+
+
+	@Override
+	public NotionDto ajaxNotionDetail(String nseq) {
+		// TODO Auto-generated method stub
+		return dao.ajaxNotionDetail(nseq);
+	}
+
+
+	@Override
+	public int delNot(int nseq) {
+		// TODO Auto-generated method stub
+		return dao.delNot(nseq);
+	}
+
+
+	@Override
+	public int insertNot(NotionDto dto) {
+		// TODO Auto-generated method stub
+		return dao.insertNot(dto);
+	}
+
+
+	@Override
+	public int updateNot(NotionDto dto) {
+		// TODO Auto-generated method stub
+		return dao.updateNot(dto);
 	}
 
 }

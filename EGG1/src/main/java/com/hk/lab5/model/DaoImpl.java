@@ -48,5 +48,71 @@ public class DaoImpl implements IDao {
 	{
 		return sqlSession.selectOne(LOGINNAMESPACE+"login",map);
 	}
+
+
+	
+
+	@Override
+	public List<QuestionDto> selectQuestion() {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList(NAMESPACE+"selectQuestion");
+	}
+
+
+	@Override
+	public int InsertQuestion(String qname) {
+		// TODO Auto-generated method stub
+		return sqlsession.insert(NAMESPACE+"insertQuestion", qname);
+	}
+
+
+	@Override
+	public List<QuestionDto> searchInfo(String qname) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList(NAMESPACE+"searchInfo", qname);
+	}
+
+
+	@Override
+	public int deleteQuestion(int qseq) {
+		// TODO Auto-generated method stub
+		return sqlsession.delete(NAMESPACE+"deleteQuestion", qseq);
+	}
+
+
+	@Override
+	public List<NotionDto> selectNotion() {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList(NAMESPACE+"selectNotion");
+	}
+
+
+	@Override
+	public NotionDto ajaxNotionDetail(String nseq) {
+		// TODO Auto-generated method stub
+		List<NotionDto> list = sqlsession.selectList(NAMESPACE+"ajaxNotionDetail",nseq);
+		return list.get(0);
+	}
+
+
+	@Override
+	public int delNot(int nseq) {
+		// TODO Auto-generated method stub
+		return sqlsession.delete(NAMESPACE+"delNot",nseq);
+	}
+
+
+	@Override
+	public int insertNot(NotionDto dto) {
+		// TODO Auto-generated method stub
+		return sqlsession.insert(NAMESPACE+"insertNot",dto);
+	}
+
+
+	@Override
+	public int updateNot(NotionDto dto) {
+		// TODO Auto-generated method stub
+		return sqlsession.update(NAMESPACE+"updateNot",dto);
+	}
 	
 }

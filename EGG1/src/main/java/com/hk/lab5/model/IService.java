@@ -11,4 +11,15 @@ public interface IService {
 	boolean regist(String email, String pw);
 	AccountDto login(Map<String, String> map);
 
+
+	public List<QuestionDto> selectQuestion();
+	public int InsertQuestion(String qname);
+	public List<QuestionDto> searchInfo(String qname);
+	public int deleteQuestion(int qseq);
+	public List<NotionDto> selectNotion();
+	public NotionDto ajaxNotionDetail(String nseq);
+	public int delNot(int nseq);
+	public int insertNot(NotionDto dto);
+	public int updateNot(NotionDto dto);
+
 }
