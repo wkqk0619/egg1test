@@ -1,6 +1,7 @@
 package com.hk.lab5.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.NotionDto;
+import com.hk.lab5.dtos.QuestionDto;
 
 @Repository
 public class DaoImpl implements IDao {
@@ -55,42 +58,42 @@ public class DaoImpl implements IDao {
 	@Override
 	public List<QuestionDto> selectQuestion() {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList(NAMESPACE+"selectQuestion");
+		return sqlSession.selectList(LOGINNAMESPACE+"selectQuestion");
 	}
 
 
 	@Override
 	public int InsertQuestion(String qname) {
 		// TODO Auto-generated method stub
-		return sqlsession.insert(NAMESPACE+"insertQuestion", qname);
+		return sqlSession.insert(LOGINNAMESPACE+"insertQuestion", qname);
 	}
 
 
 	@Override
 	public List<QuestionDto> searchInfo(String qname) {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList(NAMESPACE+"searchInfo", qname);
+		return sqlSession.selectList(LOGINNAMESPACE+"searchInfo", qname);
 	}
 
 
 	@Override
 	public int deleteQuestion(int qseq) {
 		// TODO Auto-generated method stub
-		return sqlsession.delete(NAMESPACE+"deleteQuestion", qseq);
+		return sqlSession.delete(LOGINNAMESPACE+"deleteQuestion", qseq);
 	}
 
 
 	@Override
 	public List<NotionDto> selectNotion() {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList(NAMESPACE+"selectNotion");
+		return sqlSession.selectList(LOGINNAMESPACE+"selectNotion");
 	}
 
 
 	@Override
 	public NotionDto ajaxNotionDetail(String nseq) {
 		// TODO Auto-generated method stub
-		List<NotionDto> list = sqlsession.selectList(NAMESPACE+"ajaxNotionDetail",nseq);
+		List<NotionDto> list = sqlSession.selectList(LOGINNAMESPACE+"ajaxNotionDetail",nseq);
 		return list.get(0);
 	}
 
@@ -98,21 +101,21 @@ public class DaoImpl implements IDao {
 	@Override
 	public int delNot(int nseq) {
 		// TODO Auto-generated method stub
-		return sqlsession.delete(NAMESPACE+"delNot",nseq);
+		return sqlSession.delete(LOGINNAMESPACE+"delNot",nseq);
 	}
 
 
 	@Override
 	public int insertNot(NotionDto dto) {
 		// TODO Auto-generated method stub
-		return sqlsession.insert(NAMESPACE+"insertNot",dto);
+		return sqlSession.insert(LOGINNAMESPACE+"insertNot",dto);
 	}
 
 
 	@Override
 	public int updateNot(NotionDto dto) {
 		// TODO Auto-generated method stub
-		return sqlsession.update(NAMESPACE+"updateNot",dto);
+		return sqlSession.update(LOGINNAMESPACE+"updateNot",dto);
 	}
 	
 }

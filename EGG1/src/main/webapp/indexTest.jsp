@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="./selectAllBoard.do">전체글 보기</a>
 <a href="./selectQuestion.do">전체 질문  보기</a>
 <a href="./selectNotion.do">공지사항</a>
 <a href="./fileTest.do">업로드 테스트</a>

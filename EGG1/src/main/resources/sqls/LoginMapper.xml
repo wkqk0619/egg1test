@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 
 	<select id="selectQuestion" resultType="QuestionBoard">
-  		SELECT QSEQ, QNAME FROM QUESTION ORDER BY 1
+  		SELECT QSEQ, QUESTION FROM QUESTION ORDER BY 1
   	</select>
   
   	<insert id="insertQuestion" parameterType="java.lang.String">
@@ -35,8 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	</insert>
   
   	<select id="searchInfo" resultType="QuestionBoard" parameterType="java.lang.String">
-  		SELECT QSEQ, QNAME FROM QUESTION
-  		WHERE QNAME LIKE  '%'||#{qname}||'%'
+  		SELECT QSEQ, QUESTION FROM QUESTION
+  		WHERE QUESTION LIKE  '%'||#{qname}||'%'
   	 	ORDER BY 1
   	</select>
   

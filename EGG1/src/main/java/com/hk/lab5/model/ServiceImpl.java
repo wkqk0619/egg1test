@@ -1,5 +1,6 @@
 ﻿package com.hk.lab5.model;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.NotionDto;
+import com.hk.lab5.dtos.QuestionDto;
 import com.hk.lab5.mail.MailSend;
 
 @Service

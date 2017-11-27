@@ -1,8 +1,11 @@
 package com.hk.lab5.model;
 
+import java.util.List;
 import java.util.Map;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.NotionDto;
+import com.hk.lab5.dtos.QuestionDto;
 
 public interface IService {
 
