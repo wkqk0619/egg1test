@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	°ü¸®ÀÚ·Î±×ÀÎ<br>
-	¼¼¼Ç°ª Å×½ºÆ®<br>
+	ê´€ë¦¬ìë¡œê·¸ì¸<br>
+	ì„¸ì…˜ê°’ í…ŒìŠ¤íŠ¸<br>
 	id = ${ldto.id}<br>
 	password = ${ldto.password}<br>
 	regdate = ${ldto.regdate}<br>
@@ -17,9 +17,9 @@
 	nickname = ${ldto.nickname}<br>
 	icon = ${ldto.icon}<br>
 	
-	<button>È¸¿ø °ü¸®</button>
-	<button>Áú¹® °ü¸®</button>
-	<button>°ø°í °ü¸®</button>
-	<button>¹®ÀÇ³»¿ë °ü¸®</button>
+	<button>íšŒì› ê´€ë¦¬</button>
+	<button>ì§ˆë¬¸ ê´€ë¦¬</button>
+	<button>ê³µê³  ê´€ë¦¬</button>
+	<button>ë¬¸ì˜ë‚´ìš© ê´€ë¦¬</button>
 </body>
 </html>

@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>¸ŞÀÎÆäÀÌÁö</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ë©”ì¸í˜ì´ì§€</title>
 </head>
 <body>
-	À¯Àú·Î±×ÀÎ<br>
-	¼¼¼Ç°ª Å×½ºÆ®<br>
+	ìœ ì €ë¡œê·¸ì¸<br>
+	ì„¸ì…˜ê°’ í…ŒìŠ¤íŠ¸<br>
 	id = ${ldto.id}<br>
 	password = ${ldto.password}<br>
 	regdate = ${ldto.regdate}<br>
@@ -16,8 +16,8 @@
 	enabled = ${ldto.enabled}<br>
 	nickname = ${ldto.nickname}<br>
 	icon = ${ldto.icon}<br>
-	<button onclick="#">¾ÆÀÌµğ¾î</button><br>
-	<button onclick="#">Áö¿ø»ç¾÷</button>
+	<button onclick="#">ì•„ì´ë””ì–´</button><br>
+	<button onclick="#">ì§€ì›ì‚¬ì—…</button>
 	
 </body>
 </html>

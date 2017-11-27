@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	function togShow(){
 		$("#insertQuestionForm").toggle();
@@ -14,7 +14,7 @@
 	
 	function serchInfo(){
 		var val=$("#serchInfo").val();
-		location.href="./searchInfo.do?qname="+val;
+		location.href="./searchInfo.do?question="+val;
 	}
 	function hid(){
 		$("#proWind").hide();
@@ -45,7 +45,7 @@
 		<c:forEach items="${lists }" var="dto">
 			<div>
 				<span class="delseq">${dto.qseq}</span>
-				<span class="delQu">${dto.qname}</span>
+				<span class="delQu">${dto.question}</span>
 			</div>
 		</c:forEach>
 	</c:otherwise>
@@ -57,14 +57,14 @@
 		<c:forEach items="${searInfo }" var="dto">
 			<div>
 				<span class="delseq">${dto.qseq}</span>
-				<span class="delQu">${dto.qname }</span>
+				<span class="delQu">${dto.question}</span>
 			</div>
 		</c:forEach>
 	</c:otherwise>
 </c:choose>
 <div id="insertQuestionForm" hidden="hidden">
 	<form action="./insertQuestion.do" method="post">
-		<input type="text" name="qname"/>
+		<input type="text" name="question"/>
 		<input type="submit" value="확인"/>
 	</form>
 </div>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hk.lab5.question">
+	
+	<select id="selectQuestion" resultType="QuestionDto">
+  		SELECT QSEQ, QUESTION FROM QUESTION ORDER BY 1
+  	</select>
+  
+  	<insert id="insertQuestion" parameterType="java.lang.String">
+  		INSERT INTO QUESTION VALUES(QUESTION_SEQ.NEXTVAL, #{qname})
+  	</insert>
+  
+  	<select id="searchInfo" resultType="QuestionDto" parameterType="java.lang.String">
+  		SELECT QSEQ, QUESTION FROM QUESTION
+  		WHERE QUESTION LIKE  '%'||#{qname}||'%'
+  	 	ORDER BY 1
+  	</select>
+  
+  	<delete id="deleteQuestion" parameterType="int">
+  		DELETE FROM QUESTION WHERE QSEQ=#{qseq}
+  	</delete>
+	
+</mapper>

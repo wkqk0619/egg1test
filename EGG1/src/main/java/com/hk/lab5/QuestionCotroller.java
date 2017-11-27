@@ -19,8 +19,8 @@ public class QuestionCotroller {
 	private IService iservice;
 	
 	@RequestMapping(value="/insertQuestion.do",method=RequestMethod.POST)
-	public String InsertQuestion(String qname) {
-		int bool = iservice.InsertQuestion(qname);
+	public String InsertQuestion(String question) {
+		int bool = iservice.InsertQuestion(question);
 		if(bool==0) {
 			System.out.println("false");
 		}else {

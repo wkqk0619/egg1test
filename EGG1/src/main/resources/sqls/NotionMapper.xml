@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hk.lab5.notion">
+	
+	<select id="selectNotion" resultType="NotionDto">
+  		SELECT NSEQ, TITLE, CONTENT, ID, REGDATE
+  		FROM NOTION
+  		ORDER BY 1
+  	</select>
+  
+   	<select id="ajaxNotionDetail" resultType="NotionDto" parameterType="java.lang.String">
+   		SELECT NSEQ, TITLE, CONTENT, ID, REGDATE
+   		FROM NOTION
+   		WHERE NSEQ=#{nseq}
+   	</select>
+   
+   	<delete id="delNot" parameterType="java.lang.Integer">
+   		DELETE FROM NOTION WHERE NSEQ = #{nseq}
+   	</delete>
+   
+   	<insert id="insertNot" parameterType="NotionDto">
+   		INSERT INTO NOTION VALUES(NOTION_SEQ.NEXTVAL, #{title}, #{content}, #{id}, SYSDATE)
+   	</insert>
+   
+   	<update id="updateNot" parameterType="NotionDto">
+   		UPDATE NOTION SET TITLE=#{title}, CONTENT=#{content} WHERE NSEQ=#{nseq}
+   	</update>
+	
+</mapper>
