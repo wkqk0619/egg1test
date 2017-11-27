@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="login" parameterType="java.util.HashMap" resultType="AccountDto">
-		SELECT ID,PASSWORD,TO_CHAR(REGDATE,'YYYYMMDD'),ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ID = #{email} AND PASSWORD = #{pw}
+		SELECT ID,PASSWORD,TO_CHAR(REGDATE,'YYYYMMDD'),ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ID = #{id} AND PASSWORD = #{pw}
 	</select>
 	
 </mapper>
