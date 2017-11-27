@@ -20,5 +20,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login" parameterType="java.util.HashMap" resultType="AccountDto">
 		SELECT ID,PASSWORD,TO_CHAR(REGDATE,'YYYYMMDD'),ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ID = #{id} AND PASSWORD = #{pw}
 	</select>
+
+
+
+
+	
+
+	<select id="selectQuestion" resultType="QuestionBoard">
+  		SELECT QSEQ, QUESTION FROM QUESTION ORDER BY 1
+  	</select>
+  
+  	<insert id="insertQuestion" parameterType="java.lang.String">
+  		INSERT INTO QUESTION VALUES(QUESTION_SEQ.NEXTVAL, #{qname})
+  	</insert>
+  
+  	<select id="searchInfo" resultType="QuestionBoard" parameterType="java.lang.String">
+  		SELECT QSEQ, QUESTION FROM QUESTION
+  		WHERE QUESTION LIKE  '%'||#{qname}||'%'
+  	 	ORDER BY 1
+  	</select>
+  
+  	<delete id="deleteQuestion" parameterType="int">
+  		DELETE FROM QUESTION WHERE QSEQ=#{qseq}
+  	</delete>
+  
+  	<select id="selectNotion" resultType="NotionDtoBoard">
+  		SELECT NSEQ, TITLE, CONTENT, ID, REGDATE
+  		FROM NOTION
+  		ORDER BY 1
+  	</select>
+  
+   	<select id="ajaxNotionDetail" resultType="NotionDtoBoard" parameterType="java.lang.String">
+   		SELECT NSEQ, TITLE, CONTENT, ID, REGDATE
+   		FROM NOTION
+   		WHERE NSEQ=#{nseq}
+   	</select>
+   
+   	<delete id="delNot" parameterType="java.lang.Integer">
+   		DELETE FROM NOTION WHERE NSEQ = #{nseq}
+   	</delete>
+   
+   	<insert id="insertNot" parameterType="NotionDtoBoard">
+   		INSERT INTO NOTION VALUES(NOTION_SEQ.NEXTVAL, #{title}, #{content}, #{id}, SYSDATE)
+   	</insert>
+   
+   	<update id="updateNot" parameterType="NotionDtoBoard">
+   		UPDATE NOTION SET TITLE=#{title}, CONTENT=#{content} WHERE NSEQ=#{nseq}
+   	</update>
 	
 </mapper>
