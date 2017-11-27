@@ -48,7 +48,6 @@
 				<span class="delQu">${dto.qname}</span>
 			</div>
 		</c:forEach>
-		<button onclick="togShow()">질문추가</button>
 	</c:otherwise>
 </c:choose>
 <c:choose>
@@ -77,5 +76,6 @@
 	</form>
 	<button onclick="hid()">취소</button>
 </div>
+<button onclick="togShow()">질문추가</button>
 </body>
 </html>
