@@ -1,3 +1,5 @@
+<%@page import="com.hk.lab5.dtos.AccountDto"%>
+<%@page import="oracle.net.aso.s"%>
 <%@page import="com.hk.lab5.dtos.NotionDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>공지사항 테스트</title>
+<title>공지사항</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 
@@ -62,6 +64,14 @@ function hideUpNot(){
 }
 </script>
 </head>
+<%
+	AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		
+	if(ldto==null)
+	{
+		response.sendRedirect("./index.jsp");
+	}
+%>
 <body>
 <div>
 	<c:choose>
@@ -84,15 +94,22 @@ function hideUpNot(){
 			</table>
 		</c:otherwise>
 	</c:choose>
-	<button onclick="shownewNot()">공지 추가하기</button>
-	<div id="newNot" hidden="hidden">
-		<form action="./insertNot.do" method="post">
-			<input type="text" name="title"/>
-			<input type="text" name="id"/>
-			<textarea rows="10" cols="20" name="content"></textarea>
-			<input type="submit" value="공지추가"/>
-		</form><button onclick="hideNot()">취소</button>
-	</div>
+	
+	<c:choose>
+		<c:when test="${ldto.role ne 'U'.charAt(0)}">
+			<button onclick="shownewNot()">공지 추가하기</button>
+			<div id="newNot" hidden="hidden">
+				<form action="./insertNot.do" method="post">
+					<input type="text" name="title"/>
+					<input type="text" name="id"/>
+					<textarea rows="10" cols="20" name="content"></textarea>
+					<input type="submit" value="공지추가"/>
+				</form>
+				<button onclick="hideNot()">취소</button>
+			</div>
+		</c:when>
+	</c:choose>
+	
 </div>
 
 <div id="detailNot" hidden="hidden">
@@ -101,8 +118,12 @@ function hideUpNot(){
 		<input type="text" class="notid" name="id" readonly="readonly"/>
 		<textarea class="upinf notcontent" rows="10" cols="20" readonly="readonly"></textarea>
 		<input type="text" class="notregdate" name="regdate" readonly="readonly"/>
-		<button onclick="upNotForm()">수정할까??</button>
-		<button onclick="delNot()">삭제</button>
+		<c:choose>
+			<c:when test="${ldto.role ne 'U'.charAt(0)}">
+				<button onclick="upNotForm()">수정할까??</button>
+				<button onclick="delNot()">삭제</button>
+			</c:when>
+		</c:choose>
 </div>
 <div id="UpNot" hidden="hidden">
 	<form action="./updateNot.do" method="post">

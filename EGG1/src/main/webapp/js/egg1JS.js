@@ -114,7 +114,7 @@ $(function(){
 				{
 					if(msg=="S")
 					{
-						location.href="./Main.do";
+						location.href="./LoginMain.do";
 					}
 					else
 					{

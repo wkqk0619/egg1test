@@ -23,20 +23,27 @@ public class LoginController
 	@RequestMapping(value="/Main.do", method=RequestMethod.GET)
 	public String usermain()
 	{
+		return "index";
+	}
+	@RequestMapping(value="/AdminMain.do", method=RequestMethod.GET)
+	public String adminmain()
+	{
+		return "adminindex";
+	}
+	
+	@RequestMapping(value="/LoginMain.do", method=RequestMethod.GET)
+	public String userLoginMain()
+	{
 		return "main";
 	}
 	
-	@RequestMapping(value="/AdminMain.do", method=RequestMethod.GET)
-	public String adminmain()
+	@RequestMapping(value="/AdminLoginMain.do", method=RequestMethod.GET)
+	public String AdminLoginMain()
 	{
 		return "adminmain";
 	}
 	
-	@RequestMapping(value="/main.do", method=RequestMethod.GET)
-	public String main()
-	{
-		return "index";
-	}
+	
 	
 	// 가입할때 이메일에 인증메일 보냄
 	@RequestMapping(value="/EmailCheck.do", method=RequestMethod.POST)

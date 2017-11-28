@@ -16,6 +16,7 @@
 	enabled = ${ldto.enabled}<br>
 	nickname = ${ldto.nickname}<br>
 	icon = ${ldto.icon}<br>
+	<button onclick="location.href='./selectNotion.do'">공지</button>
 	<button onclick="#">아이디어</button><br>
 	<button onclick="#">지원사업</button>
 	

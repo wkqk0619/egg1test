@@ -15,7 +15,7 @@ import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.model.IService;
 
 @Controller
-public class NotionDtoBoardController {
+public class NotionController {
 
 	
 	@Autowired

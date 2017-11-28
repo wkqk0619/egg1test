@@ -8,7 +8,7 @@
 <script type="text/javascript">
 	onload = function() 
 	{
-		location.href="./main.do";
+		location.href="./Main.do";
 	}
 </script>
 </head>

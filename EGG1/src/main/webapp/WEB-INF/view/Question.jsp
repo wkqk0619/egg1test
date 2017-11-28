@@ -29,7 +29,7 @@
 		$(".delQu").click(function() {
 			$("input[name=qseq]").val($(this).siblings(".delseq").text());
 			$("#proWind").toggle();
-			alert($("input[name=qseq]").val());
+// 			alert($("input[name=qseq]").val());
 		});
 	});
 </script>

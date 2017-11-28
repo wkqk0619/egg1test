@@ -22,7 +22,7 @@
 				{
 					if(msg=="S")
 					{
-						location.href="./AdminMain.do";
+						location.href="./AdminLoginMain.do";
 					}
 					else
 					{
