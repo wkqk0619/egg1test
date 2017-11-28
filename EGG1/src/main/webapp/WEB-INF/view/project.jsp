@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>프로젝트 테스트</title>
 </head>
-<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	function ShowNewProj(){
 		$("#NewProj").toggle();
@@ -33,17 +33,17 @@
 
 	function outTable(node){
 		var pseq = node.dto.pseq;
-		var id=node.dto.id;
+// 		var id=node.dto.id;
 		var name=node.dto.name;
 		var typeclass=node.dto.typeclass;
 		var info=node.dto.info;
-		var delflag = node.dto.delflag;
+// 		var delflag = node.dto.delflag;
 		$(".prpseq").val(pseq);
-		$(".prid").val(id);
+// 		$(".prid").val(id);
 		$(".prname").val(name);
 		$(".prtypeclass").val(typeclass);
 		$(".prinfo").val(info);
-		$(".prdelflag").val(delflag);
+// 		$(".prdelflag").val(delflag);
 		$("#detailProj").toggle();
 	}
 	
@@ -60,7 +60,12 @@
 	</c:when>
 	<c:otherwise>
 		<c:forEach items="${prlist}" var="dto">
-			<c:choose>
+			<div onclick="ajaxProjDetail('${dto.pseq}')">
+				번호 : <span>${dto.pseq}</span><br/>
+				프로젝트 이름 : <span>${dto.name}</span><br/>
+			</div>
+			<hr/>
+			<%-- <c:choose>
 				<c:when test="${dto.delflag eq 'Y'}">
 				삭제된 프로젝트입니다.
 				</c:when>
@@ -71,14 +76,14 @@
 				</div>
 				<hr/>
 				</c:otherwise>
-			</c:choose>
+			</c:choose> --%>
 		</c:forEach>
 	</c:otherwise>
 </c:choose>
 <button onclick="ShowNewProj()">프로젝트 추가하자</button>
 <div id="NewProj" hidden="hidden">
 	<form action="./insertProject.do" method="post">
-		계정 : <input type="text" name="id"/><br/>
+		<input type="hidden" name="id" value="${ldto.id}"/><br/>
 		프로젝트 이름 : <input type="text" name="name"/><br/>
 		분류 : <input type="text" name="typeclass"/><br/>
 		프로젝트 설명 : <input type="text" name="info"/><br/>
@@ -88,11 +93,11 @@
 <div id="detailProj" hidden="hidden">
 	<form action="./updateProject.do" method="post">
 	번호 : <input type="text" class="prpseq" name="pseq" readonly="readonly"/>
-	계정 : <input type="text" class="prid" name="id" readonly="readonly"/><br/>
+<!-- 	계정 : <input type="text" class="prid" name="id" readonly="readonly"/><br/> -->
 	프로젝트 이름 : <input type="text" class="prname" name="name"/><br/>
 	분류 : <input type="text" class="prtypeclass" name="typeclass"/><br/>
 	프로젝트 설명 : <input type="text" class="prinfo" name="info"/><br/>
-	삭제여부 : <input type="text" class="prdelflag" name="delflag" readonly="readonly"/>
+<!-- 	삭제여부 : <input type="text" class="prdelflag" name="delflag" readonly="readonly"/> -->
 	<input type="submit" value="수정하기"/>
 	</form>
 	<button onclick="delProj()">삭제</button>

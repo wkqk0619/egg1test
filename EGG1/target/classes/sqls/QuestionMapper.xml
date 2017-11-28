@@ -22,5 +22,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<delete id="deleteQuestion" parameterType="int">
   		DELETE FROM QUESTION WHERE QSEQ=#{qseq}
   	</delete>
-	
 </mapper>

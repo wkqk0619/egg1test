@@ -8,13 +8,14 @@
   	<typeAlias type="com.hk.lab5.dtos.AccountDto" alias="AccountDto"/>
 	<typeAlias type="com.hk.lab5.dtos.QuestionDto" alias="QuestionDto"/>
   	<typeAlias type="com.hk.lab5.dtos.NotionDto" alias="NotionDto"/>
-	<typeAlias type="com.hk.lab5.dtos.ProjectDto" alias="ProjectDtoBoard"/>
+	<typeAlias type="com.hk.lab5.dtos.ProjectDto" alias="ProjectDto"/>
   </typeAliases>
   
   <mappers>
   	<mapper resource="/sqls/LoginMapper.xml"/>
   	<mapper resource="/sqls/QuestionMapper.xml"/>
   	<mapper resource="/sqls/NotionMapper.xml"/>
+  	<mapper resource="/sqls/ProjectMapper.xml"/>
   </mappers>
   
   </configuration>

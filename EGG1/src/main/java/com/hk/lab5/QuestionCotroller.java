@@ -32,7 +32,7 @@ public class QuestionCotroller {
 	public String selectQuestion(Model model,String name) {
 		List<QuestionDto> lists = iservice.selectQuestion();
 		model.addAttribute("lists",lists);
-		return "Question";
+		return "question";
 	}
 	
 	@RequestMapping(value="/deleteQuestion.do",method=RequestMethod.POST)

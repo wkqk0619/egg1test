@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.NotionDto;
+import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QuestionDto;
 
 public interface IService {

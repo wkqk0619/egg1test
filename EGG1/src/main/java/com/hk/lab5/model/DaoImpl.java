@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.NotionDto;
+import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QuestionDto;
 
 @Repository
@@ -18,6 +19,7 @@ public class DaoImpl implements IDao {
 	private final String LOGINNAMESPACE = "com.hk.lab5.login.";
 	private final String QUESTIONNAMESPACE = "com.hk.lab5.question.";
 	private final String NOTIONNAMESPACE = "com.hk.lab5.notion.";
+	private final String PROJECTNAMESPACE = "com.hk.lab5.project.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -124,21 +126,21 @@ public class DaoImpl implements IDao {
 	@Override
 	public List<ProjectDto> selectProject() {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList(NAMESPACE+"selectProject");
+		return sqlSession.selectList(PROJECTNAMESPACE+"selectProject");
 	}
 
 
 	@Override
 	public int insertProject(ProjectDto dto) {
 		// TODO Auto-generated method stub
-		return sqlsession.insert(NAMESPACE+"insertProject",dto);
+		return sqlSession.insert(PROJECTNAMESPACE+"insertProject",dto);
 	}
 
 
 	@Override
 	public ProjectDto ajaxProjDetail(String pseq) {
 		// TODO Auto-generated method stub
-		List<ProjectDto> list = sqlsession.selectList(NAMESPACE+"ajaxProjDetail",pseq);
+		List<ProjectDto> list = sqlSession.selectList(PROJECTNAMESPACE+"ajaxProjDetail",pseq);
 		return list.get(0);
 	}
 
@@ -146,14 +148,14 @@ public class DaoImpl implements IDao {
 	@Override
 	public int updateProject(ProjectDto dto) {
 		// TODO Auto-generated method stub
-		return sqlsession.update(NAMESPACE+"updateProject",dto);
+		return sqlSession.update(PROJECTNAMESPACE+"updateProject",dto);
 	}
 
 
 	@Override
 	public int deleteProject(String pseq) {
 		// TODO Auto-generated method stub
-		return sqlsession.update(NAMESPACE+"deleteProject",pseq);
+		return sqlSession.update(PROJECTNAMESPACE+"deleteProject",pseq);
 	}
 
 

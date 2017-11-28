@@ -15,7 +15,7 @@ import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.model.IService;
 
 @Controller
-public class ProjectDtoBoardController {
+public class ProjectController {
 	
 	
 	@Autowired
@@ -27,7 +27,7 @@ public class ProjectDtoBoardController {
 		List<ProjectDto> list = iservice.selectProject();
 		System.out.println(list);
 		model.addAttribute("prlist", list);
-		return "projectTest";
+		return "project";
 	}
 	
 	
