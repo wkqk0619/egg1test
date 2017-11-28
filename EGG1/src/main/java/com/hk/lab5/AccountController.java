@@ -1,21 +1,25 @@
 package com.hk.lab5;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.model.IService;
 
 @Controller
-public class LoginController 
+public class AccountController 
 {
 	@Autowired
 	private IService iservice;
@@ -122,5 +126,35 @@ public class LoginController
 		
 	}
 	
+	@RequestMapping(value="/userList.do", method=RequestMethod.GET)
+	public String login(Model model)
+	{
+		List<AccountDto> list = iservice.userList();
+		model.addAttribute("list", list);
+		
+		return "userList";
+	}
 	
+	@RequestMapping(value="/ajaxUserDetail.do", method=RequestMethod.POST)
+	@ResponseBody
+	public AccountDto ajaxUserDetail(String id)
+	{
+		AccountDto dto = iservice.ajaxUserDetail(id);
+		return dto;
+	}
+	
+	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
+	public String updateUser(AccountDto dto)
+	{
+		boolean isS = iservice.updateUser(dto);
+		if(isS) 
+		{
+			return "redirect:/userList.do";
+		}
+		else 
+		{
+			return "error";
+		}
+		
+	}
 }

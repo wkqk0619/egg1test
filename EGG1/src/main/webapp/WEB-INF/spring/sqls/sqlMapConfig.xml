@@ -12,7 +12,7 @@
   </typeAliases>
   
   <mappers>
-  	<mapper resource="/sqls/LoginMapper.xml"/>
+  	<mapper resource="/sqls/AccountMapper.xml"/>
   	<mapper resource="/sqls/QuestionMapper.xml"/>
   	<mapper resource="/sqls/NotionMapper.xml"/>
   	<mapper resource="/sqls/ProjectMapper.xml"/>

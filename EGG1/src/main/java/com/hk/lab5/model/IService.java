@@ -30,5 +30,8 @@ public interface IService {
 	public ProjectDto ajaxProjDetail(String pseq);
 	public int updateProject(ProjectDto dto);
 	public int deleteProject(String pseq);
+	public List<AccountDto> userList();
+	public AccountDto ajaxUserDetail(String id);
+	public boolean updateUser(AccountDto dto);
 
 }

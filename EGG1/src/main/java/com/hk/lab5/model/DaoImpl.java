@@ -16,7 +16,7 @@ import com.hk.lab5.dtos.QuestionDto;
 @Repository
 public class DaoImpl implements IDao {
 
-	private final String LOGINNAMESPACE = "com.hk.lab5.login.";
+	private final String ACCOUNTNAMESPACE = "com.hk.lab5.account.";
 	private final String QUESTIONNAMESPACE = "com.hk.lab5.question.";
 	private final String NOTIONNAMESPACE = "com.hk.lab5.notion.";
 	private final String PROJECTNAMESPACE = "com.hk.lab5.project.";
@@ -28,7 +28,7 @@ public class DaoImpl implements IDao {
 	@Override
 	public int emailChk(String email) 
 	{
-		return sqlSession.selectOne(LOGINNAMESPACE+"idchk", email);
+		return sqlSession.selectOne(ACCOUNTNAMESPACE+"idchk", email);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class DaoImpl implements IDao {
 		
 		int count = 0;
 		
-		count = sqlSession.insert(LOGINNAMESPACE+"regist",map);
+		count = sqlSession.insert(ACCOUNTNAMESPACE+"regist",map);
 		
 		return count>0?true:false;
 	}
@@ -48,13 +48,13 @@ public class DaoImpl implements IDao {
 	@Override
 	public String findpw(String email) 
 	{		
-		return sqlSession.selectOne(LOGINNAMESPACE+"findpw",email);
+		return sqlSession.selectOne(ACCOUNTNAMESPACE+"findpw",email);
 	}
 
 	@Override
 	public AccountDto login(Map<String, String> map) 
 	{
-		return sqlSession.selectOne(LOGINNAMESPACE+"login",map);
+		return sqlSession.selectOne(ACCOUNTNAMESPACE+"login",map);
 	}
 
 	// 질문관련
@@ -156,6 +156,24 @@ public class DaoImpl implements IDao {
 	public int deleteProject(String pseq) {
 		// TODO Auto-generated method stub
 		return sqlSession.update(PROJECTNAMESPACE+"deleteProject",pseq);
+	}
+
+	@Override
+	public List<AccountDto> userList() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(ACCOUNTNAMESPACE+"userList");
+	}
+
+	@Override
+	public AccountDto ajaxUserDetail(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(ACCOUNTNAMESPACE+"ajaxUserDetail", id);
+	}
+
+	@Override
+	public boolean updateUser(AccountDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(ACCOUNTNAMESPACE+"updateUser",dto)>0?true:false;
 	}
 
 

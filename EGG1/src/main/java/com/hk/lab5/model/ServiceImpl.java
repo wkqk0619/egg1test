@@ -112,7 +112,6 @@ public class ServiceImpl implements IService {
 	}
 
 	
-	
 	//질문추가하기
 	@Override
 	public int InsertQuestion(String question) {
@@ -204,6 +203,24 @@ public class ServiceImpl implements IService {
 	public int deleteProject(String pseq) {
 		// TODO Auto-generated method stub
 		return dao.deleteProject(pseq);
+	}
+
+	@Override
+	public List<AccountDto> userList() {
+		// TODO Auto-generated method stub
+		return dao.userList();
+	}
+
+	@Override
+	public AccountDto ajaxUserDetail(String id) {
+		// TODO Auto-generated method stub
+		return dao.ajaxUserDetail(id);
+	}
+
+	@Override
+	public boolean updateUser(AccountDto dto) {
+		// TODO Auto-generated method stub
+		return dao.updateUser(dto);
 	}
 
 }
