@@ -22,5 +22,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<delete id="deleteQuestion" parameterType="int">
   		DELETE FROM QUESTION WHERE QSEQ=#{qseq}
   	</delete>
+
+
+
+
+  	<select id="selectProject" resultType="ProjectDtoBoard">
+  		SELECT PSEQ, ID, NAME, TYPECLASS, INFO, DELFLAG 
+  		FROM PROJECT
+  		ORDER BY 1
+  	</select>
+  	
+  	<insert id="insertProject" parameterType="ProjectDtoBoard">
+  		INSERT INTO PROJECT VALUES(PROJECT_SEQ.NEXTVAL,#{id},#{name},#{typeclass},#{info},'N')
+  	</insert>
+  	
+  	<select id="ajaxProjDetail" parameterType="java.lang.String" resultType="ProjectDtoBoard">
+  		SELECT PSEQ, ID, NAME, TYPECLASS, INFO, DELFLAG 
+  		FROM PROJECT
+  		WHERE PSEQ = #{pseq}
+  	</select>
+  	
+  	<update id="updateProject" parameterType="ProjectDtoBoard">
+  		UPDATE PROJECT SET NAME=#{name}, TYPECLASS=#{typeclass}, INFO=#{info} WHERE PSEQ=#{pseq}
+  	</update>
+  	
+  	<update id="deleteProject" parameterType="java.lang.String">
+  		UPDATE PROJECT SET DELFLAG='Y' WHERE PSEQ=#{pseq}
+  	</update>
 	
 </mapper>

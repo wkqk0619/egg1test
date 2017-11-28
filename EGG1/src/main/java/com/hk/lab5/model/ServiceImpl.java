@@ -168,6 +168,43 @@ public class ServiceImpl implements IService {
 		return dao.updateNot(dto);
 	}
 
+
+
+
+	@Override
+	public List<ProjectDto> selectProject() {
+		// TODO Auto-generated method stub
+		return dao.selectProject();
+	}
+
+
+	@Override
+	public int insertProject(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return dao.insertProject(dto);
+	}
+
+
+	@Override
+	public ProjectDto ajaxProjDetail(String pseq) {
+		// TODO Auto-generated method stub
+		return dao.ajaxProjDetail(pseq);
+	}
+
+
+	@Override
+	public int updateProject(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return dao.updateProject(dto);
+	}
+
+
+	@Override
+	public int deleteProject(String pseq) {
+		// TODO Auto-generated method stub
+		return dao.deleteProject(pseq);
+	}
+
 }
 
 

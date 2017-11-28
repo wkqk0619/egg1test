@@ -26,5 +26,10 @@ public interface IDao {
 	public int delNot(int nseq);
 	public int insertNot(NotionDto dto);
 	public int updateNot(NotionDto dto);
+	public List<ProjectDto> selectProject();
+	public int insertProject(ProjectDto dto);
+	public ProjectDto ajaxProjDetail(String pseq);
+	public int updateProject(ProjectDto dto);
+	public int deleteProject(String pseq);
 
 }

@@ -8,6 +8,7 @@
   	<typeAlias type="com.hk.lab5.dtos.AccountDto" alias="AccountDto"/>
 	<typeAlias type="com.hk.lab5.dtos.QuestionDto" alias="QuestionDto"/>
   	<typeAlias type="com.hk.lab5.dtos.NotionDto" alias="NotionDto"/>
+	<typeAlias type="com.hk.lab5.dtos.ProjectDto" alias="ProjectDtoBoard"/>
   </typeAliases>
   
   <mappers>

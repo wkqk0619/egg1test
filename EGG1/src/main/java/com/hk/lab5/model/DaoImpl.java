@@ -1,4 +1,4 @@
-package com.hk.lab5.model;
+﻿package com.hk.lab5.model;
 
 import java.util.HashMap;
 import java.util.List;
@@ -119,5 +119,56 @@ public class DaoImpl implements IDao {
 	{
 		return sqlSession.update(NOTIONNAMESPACE+"updateNot",dto);
 	}
+
+
+	@Override
+	public List<ProjectDto> selectProject() {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList(NAMESPACE+"selectProject");
+	}
+
+
+	@Override
+	public int insertProject(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return sqlsession.insert(NAMESPACE+"insertProject",dto);
+	}
+
+
+	@Override
+	public ProjectDto ajaxProjDetail(String pseq) {
+		// TODO Auto-generated method stub
+		List<ProjectDto> list = sqlsession.selectList(NAMESPACE+"ajaxProjDetail",pseq);
+		return list.get(0);
+	}
+
+
+	@Override
+	public int updateProject(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return sqlsession.update(NAMESPACE+"updateProject",dto);
+	}
+
+
+	@Override
+	public int deleteProject(String pseq) {
+		// TODO Auto-generated method stub
+		return sqlsession.update(NAMESPACE+"deleteProject",pseq);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 }
