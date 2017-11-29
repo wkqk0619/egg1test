@@ -9,6 +9,7 @@
 	<typeAlias type="com.hk.lab5.dtos.QuestionDto" alias="QuestionDto"/>
   	<typeAlias type="com.hk.lab5.dtos.NotionDto" alias="NotionDto"/>
 	<typeAlias type="com.hk.lab5.dtos.ProjectDto" alias="ProjectDto"/>
+	<typeAlias type="com.hk.lab5.dtos.QnaDto" alias="QnaDto"/>	
   </typeAliases>
   
   <mappers>
@@ -16,6 +17,7 @@
   	<mapper resource="/sqls/QuestionMapper.xml"/>
   	<mapper resource="/sqls/NotionMapper.xml"/>
   	<mapper resource="/sqls/ProjectMapper.xml"/>
+  	<mapper resource="/sqls/QnaMapper.xml"/>
   </mappers>
   
   </configuration>

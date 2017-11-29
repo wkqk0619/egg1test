@@ -18,6 +18,7 @@
 	icon = ${ldto.icon}<br>
 	<button onclick="location.href='./selectNotion.do'">공지</button>
 	<button onclick="location.href='./selectProject.do'">프로젝트</button><br>
+	<button onclick="location.href='./qnaList.do'">문의게시판</button>
 	<button onclick="#">지원사업</button>
 	
 </body>

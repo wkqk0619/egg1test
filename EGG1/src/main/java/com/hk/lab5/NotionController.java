@@ -21,16 +21,16 @@ public class NotionController {
 	@Autowired
 	private IService iservice;
 	
-	@RequestMapping(value="selectNotion.do", method=RequestMethod.GET)
+	@RequestMapping(value="/selectNotion.do", method=RequestMethod.GET)
 	public String selectNotion(Model model) {
 		List<NotionDto> list = iservice.selectNotion();
 		model.addAttribute("notList",list);
-		return "notionList";
+		return "notionBoard";
 	}
 	
 	
 	
-	@RequestMapping(value="ajaxNotionDetail.do",method=RequestMethod.POST)
+	@RequestMapping(value="/ajaxNotionDetail.do",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, NotionDto> ajaxNotionDetail(String nseq){
 		NotionDto dto = iservice.ajaxNotionDetail(nseq);
@@ -39,7 +39,7 @@ public class NotionController {
 		return map;
 	}
 	
-	@RequestMapping(value="delNot.do", method=RequestMethod.GET)
+	@RequestMapping(value="/delNot.do", method=RequestMethod.GET)
 	public String delNot(int nseq) {
 		int bool = iservice.delNot(nseq);
 		if(bool==0) {
@@ -50,7 +50,7 @@ public class NotionController {
 		return "redirect:/selectNotion.do";
 	}
 	
-	@RequestMapping(value="insertNot.do",method=RequestMethod.POST)
+	@RequestMapping(value="/insertNot.do",method=RequestMethod.POST)
 	public String insertNot(NotionDto dto) {
 		int bool = iservice.insertNot(dto);
 		if(bool==0) {
@@ -61,7 +61,7 @@ public class NotionController {
 		return "redirect:/selectNotion.do";
 	}
 	
-	@RequestMapping(value="updateNot.do",method=RequestMethod.POST)
+	@RequestMapping(value="/updateNot.do",method=RequestMethod.POST)
 	public String updateNot(NotionDto dto) {
 		System.out.println(dto);
 		int bool = iservice.updateNot(dto);

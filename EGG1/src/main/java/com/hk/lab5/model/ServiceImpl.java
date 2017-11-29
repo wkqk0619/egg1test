@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
+import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestionDto;
 import com.hk.lab5.mail.MailSend;
 
@@ -172,9 +173,9 @@ public class ServiceImpl implements IService {
 
 
 	@Override
-	public List<ProjectDto> selectProject() {
+	public List<ProjectDto> selectProject(String id) {
 		// TODO Auto-generated method stub
-		return dao.selectProject();
+		return dao.selectProject(id);
 	}
 
 
@@ -221,6 +222,48 @@ public class ServiceImpl implements IService {
 	public boolean updateUser(AccountDto dto) {
 		// TODO Auto-generated method stub
 		return dao.updateUser(dto);
+	}
+
+	@Override
+	public List<QnaDto> qnaList(AccountDto ldto) 
+	{
+		if(ldto.getRole()=='U')
+		{
+			return dao.qnaList(ldto.getId());
+		}
+		else
+		{
+			return dao.qnaList();
+		}
+	}
+
+	@Override
+	public boolean insertQna(QnaDto dto) 
+	{
+		return dao.insertQna(dto);
+	}
+
+	@Override
+	public QnaDto ajaxQnaDetail(String aseq) 
+	{
+		return dao.ajaxQnaDetail(aseq);
+	}
+
+	@Override
+	public boolean deleteQna(String aseq) 
+	{
+		return dao.deleteQna(aseq);
+	}
+
+	@Override
+	public boolean updateQna(QnaDto dto) 
+	{
+		return dao.updateQna(dto);
+	}
+
+	@Override
+	public boolean insertReplyQna(QnaDto dto) {
+		return dao.insertReplyQna(dto);
 	}
 
 }

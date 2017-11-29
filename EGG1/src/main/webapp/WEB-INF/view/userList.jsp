@@ -31,6 +31,16 @@ function outTable(node){
 	$(".role").val(node.role);
 	$(".enabled").val(node.enabled);
 	$(".nickname").val(node.nickname)
+	
+	if(node.enabled=="Y")
+	{
+		$("#y").attr("selected",true);
+	}
+	else
+	{
+		$("#n").attr("selected",true);
+	}
+	
 	$("#detailUser").toggle();
 }
 
@@ -98,19 +108,18 @@ function hideUserUpdate(){
 			<input type="text" class="password" name="password" readonly="readonly"/>
 			<input type="text" class="regdate" name="regdate" readonly="readonly"/>
 			<input type="text" class="role" name="role" readonly="readonly"/>
-			<%-- 
 			<select name="enabled">
-				<option value="Y" <%=dto.getEnabled().equals("Y")?"selected":""%>>활성</option>
-				<option value="N" <%=dto.getEnabled().equals("N")?"selected":""%>>비활성</option>
+				<option value="Y" id="y">활성</option>
+				<option value="N" id="n">비활성</option>
 			</select>
-			 --%>
-			<input type="text" class="enabled" name="enabled"/>
+<!-- 			<input type="text" class="enabled" name="enabled"/> -->
 			
 			<input type="text" class="nickname" name="nickname" readonly="readonly">
 			<input type="submit" value="수정"/>
 		</form>
 		<button onclick="hideUserUpdate()">취소</button>
 	</div>
+	<button onclick="location.href='./AdminLoginMain.do'">메인으로</button>
 	
 </body>
 </html>

@@ -5,9 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.hk.lab5.project">
 
-	<select id="selectProject" resultType="ProjectDto">
+	<select id="selectProject" resultType="ProjectDto" parameterType="java.lang.String">
   		SELECT PSEQ, ID, NAME, TYPECLASS, INFO, DELFLAG 
-  		FROM PROJECT WHERE DELFLAG = 'N'
+  		FROM PROJECT WHERE DELFLAG = 'N' AND ID = #{id}
   		ORDER BY 1
   	</select>
   	

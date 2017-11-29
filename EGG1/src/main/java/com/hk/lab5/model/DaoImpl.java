@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
+import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestionDto;
 
 @Repository
@@ -20,6 +21,7 @@ public class DaoImpl implements IDao {
 	private final String QUESTIONNAMESPACE = "com.hk.lab5.question.";
 	private final String NOTIONNAMESPACE = "com.hk.lab5.notion.";
 	private final String PROJECTNAMESPACE = "com.hk.lab5.project.";
+	private final String QNANAMESPACE = "com.hk.lab5.qna.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -124,9 +126,9 @@ public class DaoImpl implements IDao {
 
 
 	@Override
-	public List<ProjectDto> selectProject() {
+	public List<ProjectDto> selectProject(String id) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(PROJECTNAMESPACE+"selectProject");
+		return sqlSession.selectList(PROJECTNAMESPACE+"selectProject",id);
 	}
 
 
@@ -174,6 +176,48 @@ public class DaoImpl implements IDao {
 	public boolean updateUser(AccountDto dto) {
 		// TODO Auto-generated method stub
 		return sqlSession.update(ACCOUNTNAMESPACE+"updateUser",dto)>0?true:false;
+	}
+
+	@Override
+	public List<QnaDto> qnaList() 
+	{
+		return sqlSession.selectList(QNANAMESPACE+"qnaListAll");
+	}
+
+	@Override
+	public List<QnaDto> qnaList(String id) 
+	{
+		return sqlSession.selectList(QNANAMESPACE+"qnaList",id);
+	}
+
+	@Override
+	public boolean insertQna(QnaDto dto) 
+	{
+		return sqlSession.insert(QNANAMESPACE+"insertQna",dto)>0?true:false;
+	}
+
+	@Override
+	public QnaDto ajaxQnaDetail(String aseq) 
+	{
+		return sqlSession.selectOne(QNANAMESPACE+"ajaxQnaDetail",aseq);
+	}
+
+	@Override
+	public boolean deleteQna(String aseq) 
+	{
+		return sqlSession.delete(QNANAMESPACE+"deleteQna",aseq)>0?true:false;
+	}
+
+	@Override
+	public boolean updateQna(QnaDto dto) 
+	{
+		return sqlSession.update(QNANAMESPACE+"updateQna", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean insertReplyQna(QnaDto dto) 
+	{
+		return sqlSession.insert(QNANAMESPACE+"insertReplyQna", dto)>0?true:false;
 	}
 
 

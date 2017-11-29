@@ -18,15 +18,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="login" parameterType="java.util.HashMap" resultType="AccountDto">
-		SELECT ID,PASSWORD,TO_CHAR(REGDATE,'YYYYMMDD') AS REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ID = #{id} AND PASSWORD = #{pw}
+		SELECT ID,PASSWORD,REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ID = #{id} AND PASSWORD = #{pw}
 	</select>
 	
 	<select id="userList" resultType="AccountDto">
-		SELECT ID,PASSWORD,TO_CHAR(REGDATE,'YYYYMMDD') AS REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ROLE = 'U'
+		SELECT ID,PASSWORD,REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ROLE = 'U'
 	</select>
 	
 	<select id="ajaxUserDetail" resultType="AccountDto" parameterType="java.lang.String">
-		SELECT ID,PASSWORD,TO_CHAR(REGDATE,'YYYYMMDD') AS REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE id = #{id}
+		SELECT ID,PASSWORD,REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE id = #{id}
 	</select>
 
 	<update id="updateUser" parameterType="AccountDto">

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.model.IService;
 
@@ -23,11 +26,12 @@ public class ProjectController {
 	
 	
 	@RequestMapping(value="/selectProject.do",method=RequestMethod.GET)
-	public String selectProject(Model model){
-		List<ProjectDto> list = iservice.selectProject();
+	public String selectProject(Model model,HttpSession session){
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		List<ProjectDto> list = iservice.selectProject(ldto.getId());
 		System.out.println(list);
 		model.addAttribute("prlist", list);
-		return "project";
+		return "projectBoard";
 	}
 	
 	
