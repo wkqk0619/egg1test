@@ -55,9 +55,24 @@ public class QnaController
 	
 	@RequestMapping(value="/ajaxQnaDetail.do",method=RequestMethod.POST)
 	@ResponseBody
-	public QnaDto ajaxQnaDetail(String aseq)
+	public Map<String,Object> ajaxQnaDetail(String aseq,HttpSession session)
 	{
-		return iservice.ajaxQnaDetail(aseq);
+		Map<String,Object> map = new HashMap<String,Object>();
+		QnaDto dto = iservice.ajaxQnaDetail(aseq);
+		map.put("dto", dto);
+		
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		
+		if(dto.getId().equals(ldto.getId()))
+		{
+			map.put("isS", true);
+		}
+		else
+		{
+			map.put("isS", false);
+		}
+		
+		return map;
 	}
 	
 	@RequestMapping(value="/deleteQna.do",method=RequestMethod.GET)

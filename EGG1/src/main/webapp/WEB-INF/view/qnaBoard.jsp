@@ -38,11 +38,25 @@
 
 	function outTable(node)
 	{
-		var aseq = node.aseq;
-		var title = node.title;
-		var content = node.content;
-		var regdate = node.regdate;
+		var aseq = node.dto.aseq;
+		var id = node.dto.id;
+		var title = node.dto.title;
+		var content = node.dto.content;
+		var regdate = node.dto.regdate;
+		
+		var isS = node.isS;
+		
+		if(isS)
+		{
+			$(".my").show();
+		}
+		else
+		{
+			$(".my").hide();
+		}
+		
 		$(".aseq").val(aseq);
+		$(".qnaid").val(id);
 		$(".qnatitle").val(title);
 		$(".qnacontent").val(content);
 		$(".qnaregdate").val(regdate);
@@ -123,7 +137,6 @@
 									<td>${dto.id}</td>
 								</c:when>
 							</c:choose>
-							
 							<td>${dto.regdate}</td>
 						</tr>
 				</c:forEach>
@@ -152,6 +165,7 @@
 	
 	<div id="qnaDetail" hidden="hidden">
 		<input type="hidden" class="aseq" id="aseq" name="aseq">
+		<input class="qnaid" type="text" name="id" id="id" readonly="readonly"/>
 		<input class="qnatitle" type="text" name="title" readonly="readonly"/>
 		<textarea class="qnacontent" name="content" rows="10" cols="20" readonly="readonly"></textarea>
 		<input type="text" class=qnaregdate name="regdate" readonly="readonly"/>
@@ -160,8 +174,8 @@
 				<button onclick="insertReplyQna()">답글</button>
 			</c:when>
 		</c:choose>
-		<button onclick="updateQna()">수정</button>
-		<button onclick="deleteQna()">삭제</button>
+		<button class="my" onclick="updateQna()">수정</button>
+		<button class="my" onclick="deleteQna()">삭제</button>
 	</div>
 	
 	<div id="insertReplyQna" hidden="hidden">
