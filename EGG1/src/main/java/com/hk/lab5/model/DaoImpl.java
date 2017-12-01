@@ -13,6 +13,7 @@ import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestionDto;
+import com.hk.lab5.dtos.SupportDto;
 
 @Repository
 public class DaoImpl implements IDao {
@@ -22,6 +23,7 @@ public class DaoImpl implements IDao {
 	private final String NOTIONNAMESPACE = "com.hk.lab5.notion.";
 	private final String PROJECTNAMESPACE = "com.hk.lab5.project.";
 	private final String QNANAMESPACE = "com.hk.lab5.qna.";
+	private final String SUPPORTNAMESPACE = "com.hk.lab5.support.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -218,6 +220,18 @@ public class DaoImpl implements IDao {
 	public boolean insertReplyQna(QnaDto dto) 
 	{
 		return sqlSession.insert(QNANAMESPACE+"insertReplyQna", dto)>0?true:false;
+	}
+
+	@Override
+	public List<SupportDto> supportList() 
+	{
+		return sqlSession.selectList(SUPPORTNAMESPACE+"selectList");
+	}
+
+	@Override
+	public List<QuestionDto> supportQus(String sseq) 
+	{
+		return sqlSession.selectList(SUPPORTNAMESPACE+"supportQus", sseq);
 	}
 
 

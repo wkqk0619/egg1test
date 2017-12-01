@@ -1,5 +1,5 @@
 $(function(){
-		$("#continer").children("#intro").siblings().hide();
+		//$("#continer").children("#intro").siblings().hide();
 		$("#theme").change(function() {
 			$("body").css({"background-color":$("#theme").val()});
 		});

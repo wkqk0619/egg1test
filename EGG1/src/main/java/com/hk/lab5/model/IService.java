@@ -8,6 +8,7 @@ import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestionDto;
+import com.hk.lab5.dtos.SupportDto;
 
 public interface IService {
 
@@ -40,5 +41,7 @@ public interface IService {
 	public boolean deleteQna(String aseq);
 	public boolean updateQna(QnaDto dto);
 	public boolean insertReplyQna(QnaDto dto);
+	public List<SupportDto> supportList();
+	public List<QuestionDto> supportQus(String sseq);
 
 }

@@ -13,6 +13,7 @@ import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestionDto;
+import com.hk.lab5.dtos.SupportDto;
 import com.hk.lab5.mail.MailSend;
 
 @Service
@@ -264,6 +265,18 @@ public class ServiceImpl implements IService {
 	@Override
 	public boolean insertReplyQna(QnaDto dto) {
 		return dao.insertReplyQna(dto);
+	}
+
+	@Override
+	public List<SupportDto> supportList() 
+	{
+		return dao.supportList();
+	}
+
+	@Override
+	public List<QuestionDto> supportQus(String sseq) 
+	{
+		return dao.supportQus(sseq);
 	}
 
 }
