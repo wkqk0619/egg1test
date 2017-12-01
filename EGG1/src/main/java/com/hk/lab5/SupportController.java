@@ -35,9 +35,19 @@ public class SupportController
 		
 		model.addAttribute("qList", qList);
 		model.addAttribute("list", list);
+		model.addAttribute("sseq", sseq);
 		
 		return "supportQus";
 	}
+	
+	@RequestMapping(value="/ChangeSupportQ.do", method=RequestMethod.POST)
+	public String ChangeSupportQ(Model model,String sseq,String[] chk)
+	{
+		iservice.ChangeSupportQ(sseq,chk);
+		
+		return "redirect:/supportList.do";
+	}
+	
 	
 
 }

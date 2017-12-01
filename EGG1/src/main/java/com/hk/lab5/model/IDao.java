@@ -46,5 +46,7 @@ public interface IDao {
 	public boolean insertReplyQna(QnaDto dto);
 	public List<SupportDto> supportList();
 	public List<QuestionDto> supportQus(String sseq);
+	public void clearSupportQ(String sseq);
+	public void insertSupportQ(String[] chk,String sseq);
 
 }

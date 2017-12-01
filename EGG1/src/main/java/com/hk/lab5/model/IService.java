@@ -43,5 +43,6 @@ public interface IService {
 	public boolean insertReplyQna(QnaDto dto);
 	public List<SupportDto> supportList();
 	public List<QuestionDto> supportQus(String sseq);
+	public void ChangeSupportQ(String sseq, String[] chk);
 
 }

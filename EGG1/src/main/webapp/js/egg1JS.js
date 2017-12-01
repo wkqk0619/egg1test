@@ -6,7 +6,7 @@ $(function(){
 	});
 	
 	function showintro(){
-		$("#intro").siblings().hide();
+//		$("#intro").siblings().hide();
 		$("#intro").show();
 		$("#repassword").hide();
 	}

@@ -13,7 +13,7 @@
 </head>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- <script type="text/javascript" src="js/egg1JS.js"></script> -->
+<script type="text/javascript" src="js/egg1JS.js"></script>
 <script type="text/javascript">
 	$( function() {
     	$( "#tabs" ).tabs();

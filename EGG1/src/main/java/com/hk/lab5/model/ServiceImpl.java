@@ -279,6 +279,19 @@ public class ServiceImpl implements IService {
 		return dao.supportQus(sseq);
 	}
 
+	@Transactional
+	@Override
+	public void ChangeSupportQ(String sseq, String[] chk) 
+	{	
+		dao.clearSupportQ(sseq);
+		
+		if(chk!=null)
+		{
+			dao.insertSupportQ(chk,sseq);
+		}
+		
+	}
+
 }
 
 

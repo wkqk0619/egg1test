@@ -1,5 +1,6 @@
 ﻿package com.hk.lab5.model;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -233,6 +234,25 @@ public class DaoImpl implements IDao {
 	{
 		return sqlSession.selectList(SUPPORTNAMESPACE+"supportQus", sseq);
 	}
+
+	@Override
+	public void clearSupportQ(String sseq) 
+	{
+		sqlSession.delete(SUPPORTNAMESPACE+"clearSupportQ", sseq);
+	}
+
+	@Override
+	public void insertSupportQ(String[] chk,String sseq) 
+	{
+		List<String> chkList = Arrays.asList(chk);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("chk", chkList);
+		map.put("sseq", sseq);
+		
+		sqlSession.insert(SUPPORTNAMESPACE+"insertSupportQ", map);
+	}
+
 
 
 
