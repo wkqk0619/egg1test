@@ -25,5 +25,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</foreach>
 		SELECT 1 FROM DUAL
 	</insert>
+	
+	<select id="chkMySupport" resultType="java.lang.Integer" parameterType="java.util.Map">
+		SELECT COUNT(*) FROM MYSUPPORT WHERE ID = #{id} AND SSEQ = #{sseq}
+	</select>
+	
+	<insert id="addMySupport" parameterType="java.util.Map">
+		INSERT INTO MYSUPPORT(ID,SSEQ) VALUES(#{id}, #{sseq})
+	</insert>
+
+	<select id="mySupportList" resultType="SupportDto" parameterType="java.lang.String">
+		SELECT SSEQ, TITLE, TYPE, AREA, BIZTITLE, URL, REGDATE, STARTDATE, ENDDATE, SGROUP, TARGET, TARGETAGE, TARGETCAREER 
+		FROM SUPPORT WHERE SSEQ IN (SELECT SSEQ FROM MYSUPPORT WHERE ID = #{id})
+	</select>
 
 </mapper>

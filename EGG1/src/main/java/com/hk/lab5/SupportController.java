@@ -1,13 +1,20 @@
 package com.hk.lab5;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.QuestionDto;
 import com.hk.lab5.dtos.SupportDto;
 import com.hk.lab5.model.IService;
@@ -47,7 +54,46 @@ public class SupportController
 		
 		return "redirect:/supportList.do";
 	}
-	
-	
 
+	@RequestMapping(value="/addMySupport.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String addMySupport(HttpSession session ,String sseq)
+	{		
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("sseq", sseq);
+		map.put("id", ldto.getId());
+		
+		if(iservice.chkMySupport(map))
+		{
+			return "O";
+		}
+		
+		boolean isS = false;
+		isS = iservice.addMySupport(map);
+		
+		if(isS)
+		{
+			return "T";
+		}
+		else
+		{
+			return "F";
+		}
+		
+	}
+	
+	@RequestMapping(value="mySupportList.do", method=RequestMethod.GET)
+	public String mySupportList(Model model,HttpSession session)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		List<SupportDto> list = iservice.mySupportList(ldto.getId());
+		model.addAttribute("list", list);
+		
+		return "mySupport";
+	}
+	
+	
+	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
@@ -44,5 +45,8 @@ public interface IService {
 	public List<SupportDto> supportList();
 	public List<QuestionDto> supportQus(String sseq);
 	public void ChangeSupportQ(String sseq, String[] chk);
+	public boolean addMySupport(Map<String, String> map);
+	public boolean chkMySupport(Map<String, String> map);
+	public List<SupportDto> mySupportList(String id);
 
 }

@@ -34,7 +34,7 @@
 		</header>
 		<div id="continer">
 			<div id="intro">
-				<iframe id="player" width="850" height="500" src="//www.youtube.com/embed/kaMWDfbPjp0">
+				<iframe id="player" width="850" height="500" src="//www.youtube.com/embed/yBLdQ1a4-JI">
 				</iframe>
 				<!-- 유튜브 영상 사용할때 소스 -->
 			</div>

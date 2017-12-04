@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
@@ -290,6 +291,24 @@ public class ServiceImpl implements IService {
 			dao.insertSupportQ(chk,sseq);
 		}
 		
+	}
+
+	@Override
+	public boolean addMySupport(Map<String, String> map) 
+	{
+		return dao.addMySupport(map);
+	}
+
+	@Override
+	public boolean chkMySupport(Map<String, String> map) 
+	{
+		return dao.chkMySupport(map);
+	}
+
+	@Override
+	public List<SupportDto> mySupportList(String id) 
+	{
+		return dao.mySupportList(id);
 	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
@@ -252,6 +253,26 @@ public class DaoImpl implements IDao {
 		
 		sqlSession.insert(SUPPORTNAMESPACE+"insertSupportQ", map);
 	}
+
+	@Override
+	public boolean chkMySupport(Map<String, String> map) 
+	{
+		int count = sqlSession.selectOne(SUPPORTNAMESPACE+"chkMySupport",map);
+		return count>0?true:false;
+	}
+	
+	@Override
+	public boolean addMySupport(Map<String, String> map) 
+	{
+		return sqlSession.insert(SUPPORTNAMESPACE+"addMySupport", map)>0?true:false;
+	}
+
+	@Override
+	public List<SupportDto> mySupportList(String id) 
+	{
+		return sqlSession.selectList(SUPPORTNAMESPACE+"mySupportList", id);
+	}
+
 
 
 
