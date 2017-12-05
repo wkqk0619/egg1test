@@ -119,7 +119,7 @@ function hideUserUpdate(){
 		</form>
 		<button onclick="hideUserUpdate()">취소</button>
 	</div>
-	<button onclick="location.href='./AdminLoginMain.do'">메인으로</button>
+	<button onclick="location.href='./LoginMain.do'">메인으로</button>
 	
 </body>
 </html>

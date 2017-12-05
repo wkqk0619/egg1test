@@ -113,6 +113,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<button onclick="location.href='./LoginMain.do'">메인으로</button>
 	<textarea id="alertpr" hidden="hidden" rows="500" cols="400" readonly="readonly"></textarea>
 </body>
 </html>

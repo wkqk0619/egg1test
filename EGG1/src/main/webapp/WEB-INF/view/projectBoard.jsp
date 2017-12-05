@@ -102,5 +102,6 @@
 	</form>
 	<button onclick="delProj()">삭제</button>
 </div>
+	<button onclick="location.href='./LoginMain.do'">메인으로</button>
 </body>
 </html>

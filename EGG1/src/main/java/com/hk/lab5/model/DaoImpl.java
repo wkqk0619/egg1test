@@ -273,6 +273,24 @@ public class DaoImpl implements IDao {
 		return sqlSession.selectList(SUPPORTNAMESPACE+"mySupportList", id);
 	}
 
+	@Override
+	public boolean delMySupport(Map<String, String> map) 
+	{
+		return sqlSession.delete(SUPPORTNAMESPACE+"delMySupport", map)>0?true:false;
+	}
+
+	@Override
+	public boolean upNickName(AccountDto dto) 
+	{
+		return sqlSession.update(ACCOUNTNAMESPACE+"upNickName", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean upPassword(AccountDto dto) 
+	{
+		return sqlSession.update(ACCOUNTNAMESPACE+"upPassword", dto)>0?true:false;
+	}
+
 
 
 

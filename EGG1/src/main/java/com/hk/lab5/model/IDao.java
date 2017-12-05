@@ -52,5 +52,8 @@ public interface IDao {
 	public boolean addMySupport(Map<String, String> map);
 	public boolean chkMySupport(Map<String, String> map);
 	public List<SupportDto> mySupportList(String id);
+	public boolean delMySupport(Map<String, String> map);
+	public boolean upNickName(AccountDto dto);
+	public boolean upPassword(AccountDto dto);
 
 }

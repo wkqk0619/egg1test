@@ -1,6 +1,5 @@
 package com.hk.lab5;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.lab5.dtos.AccountDto;
-import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.model.IService;
 
 @Controller
@@ -36,17 +34,34 @@ public class AccountController
 	}
 	
 	@RequestMapping(value="/LoginMain.do", method=RequestMethod.GET)
-	public String userLoginMain()
+	public String userLoginMain(HttpSession session, Model model)
 	{
-		return "main";
+		
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		
+		if(ldto == null)
+		{
+			model.addAttribute("msg", "세션이 만료되었습니다.");
+			return "index";
+		}		
+		else if(ldto.getRole() == 'U')
+		{
+			return "main";
+		}
+		else
+		{
+			return "adminmain";
+		}
 	}
 	
+	/*
+	 * 위의 메인과 통합
 	@RequestMapping(value="/AdminLoginMain.do", method=RequestMethod.GET)
 	public String AdminLoginMain()
 	{
 		return "adminmain";
 	}
-	
+	*/
 	
 	
 	// 가입할때 이메일에 인증메일 보냄
@@ -126,6 +141,22 @@ public class AccountController
 		
 	}
 	
+	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
+	public String login(HttpSession session)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		if(ldto.getRole()=='U')
+		{
+			session.invalidate();
+			return "redirect:/Main.do";
+		}
+		else
+		{
+			session.invalidate();
+			return "redirect:/AdminMain.do";
+		}
+	}
+	
 	@RequestMapping(value="/userList.do", method=RequestMethod.GET)
 	public String login(Model model)
 	{
@@ -157,4 +188,62 @@ public class AccountController
 		}
 		
 	}
+	
+	@RequestMapping(value="/myPage.do", method=RequestMethod.GET)
+	public String myPage()
+	{
+		return "myPage";
+	}
+	
+	@RequestMapping(value="/upNickName.do", method=RequestMethod.POST)
+	public String upNickName(HttpSession session, AccountDto dto)
+	{
+		boolean isS = iservice.upNickName(dto);
+		if(isS) 
+		{
+			// (구)세션데이터
+			AccountDto oldto = (AccountDto)session.getAttribute("ldto");
+			
+			Map<String, String>map = new HashMap<String,String>();
+			map.put("id", oldto.getId());
+			map.put("pw", oldto.getPassword());
+			
+			AccountDto ldto = iservice.login(map);
+			session.setAttribute("ldto", ldto);
+			
+			return "myPage";
+		}
+		else 
+		{
+			return "error";
+		}
+		
+	}
+	
+	@RequestMapping(value="/upPassword.do", method=RequestMethod.POST)
+	public String upPassword(HttpSession session, AccountDto dto)
+	{
+		boolean isS = iservice.upPassword(dto);
+		if(isS) 
+		{
+			// (구)세션데이터
+			AccountDto oldto = (AccountDto)session.getAttribute("ldto");
+			
+			Map<String, String>map = new HashMap<String,String>();
+			map.put("id", oldto.getId());
+			map.put("pw", dto.getPassword());
+			
+			AccountDto ldto = iservice.login(map);
+			session.setAttribute("ldto", ldto);
+			
+			return "myPage";
+		}
+		else 
+		{
+			return "error";
+		}
+		
+	}
+	
+	
 }

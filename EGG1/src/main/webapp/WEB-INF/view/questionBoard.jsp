@@ -78,6 +78,6 @@
 	<button onclick="hid()">취소</button>
 </div>
 <button onclick="togShow()">질문추가</button>
-<button onclick="location.href='./AdminLoginMain.do'">메인으로</button>
+<button onclick="location.href='./LoginMain.do'">메인으로</button>
 </body>
 </html>

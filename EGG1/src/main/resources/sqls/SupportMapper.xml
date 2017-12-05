@@ -39,4 +39,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM SUPPORT WHERE SSEQ IN (SELECT SSEQ FROM MYSUPPORT WHERE ID = #{id})
 	</select>
 
+	<delete id="delMySupport" parameterType="java.util.Map">
+		DELETE FROM MYSUPPORT WHERE ID = #{id} AND SSEQ = #{sseq}
+	</delete>
+
 </mapper>

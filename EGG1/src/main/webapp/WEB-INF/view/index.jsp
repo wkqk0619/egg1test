@@ -1,3 +1,4 @@
+<%@page import="com.hk.lab5.dtos.AccountDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8");%>
@@ -13,6 +14,21 @@
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="js/egg1JS.js"></script>
+<script type="text/javascript">
+$
+(
+	function() 
+	{
+		<%
+			String msg = (String)request.getAttribute("msg");
+		%>
+		if(<%=msg%>!=null)
+		{
+			alert(<%=msg%>);
+		}
+	}	
+);
+</script>
 <body>
 <!-- 전체를 감싼 div -->
 <div id="Master">

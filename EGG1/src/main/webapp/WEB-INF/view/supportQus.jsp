@@ -38,5 +38,6 @@
 		</c:forEach>
 		<input type="submit" value="변경">
 	</form>
+	<button onclick="location.href='./supportList.do'">목록</button>
 </body>
 </html>

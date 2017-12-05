@@ -80,8 +80,7 @@ public class SupportController
 		else
 		{
 			return "F";
-		}
-		
+		}	
 	}
 	
 	@RequestMapping(value="mySupportList.do", method=RequestMethod.GET)
@@ -94,6 +93,23 @@ public class SupportController
 		return "mySupport";
 	}
 	
-	
+	@RequestMapping(value="/delMySupport.do", method=RequestMethod.GET)
+	public String delMySupport(HttpSession session ,String sseq)
+	{		
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("sseq", sseq);
+		map.put("id", ldto.getId());
+		
+		if(iservice.delMySupport(map))
+		{
+			return "redirect:/mySupportList.do";
+		}
+		else
+		{
+			return "error";
+		}		
+	}
 	
 }

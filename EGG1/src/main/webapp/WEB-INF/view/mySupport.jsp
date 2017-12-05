@@ -24,6 +24,7 @@
 			<th>대상</th>
 			<th>대상연령</th>
 			<th>대상업력</th>
+			<th>삭제</th>
 		</tr>
 		
 		<c:forEach items="${list}" var="dto">
@@ -41,8 +42,10 @@
 				<td>${dto.target}</td>
 				<td>${dto.targetage}</td>
 				<td>${dto.targetcareer}</td>
+				<td><button onclick="location.href='./delMySupport.do?sseq=+${dto.sseq}'">삭제</button></td>
 			</tr>
 		</c:forEach>
 	</table>
+	<button onclick="location.href='./LoginMain.do'">메인으로</button>
 </body>
 </html>

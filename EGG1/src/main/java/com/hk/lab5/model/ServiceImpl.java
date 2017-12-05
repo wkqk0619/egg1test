@@ -311,6 +311,24 @@ public class ServiceImpl implements IService {
 		return dao.mySupportList(id);
 	}
 
+	@Override
+	public boolean delMySupport(Map<String, String> map) 
+	{
+		return dao.delMySupport(map);
+	}
+
+	@Override
+	public boolean upNickName(AccountDto dto) 
+	{
+		return dao.upNickName(dto);
+	}
+
+	@Override
+	public boolean upPassword(AccountDto dto) 
+	{
+		return dao.upPassword(dto);
+	}
+
 }
 
 

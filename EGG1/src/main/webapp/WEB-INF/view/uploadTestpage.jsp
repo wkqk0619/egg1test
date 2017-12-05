@@ -15,5 +15,6 @@
 	<input type="text" name="id"/>
 	<input type="text" name="pseq">
 </form>
+<button onclick="location.href='./LoginMain.do'">메인으로</button>
 </body>
 </html>

@@ -112,14 +112,7 @@ function hideUpNot(){
 	</c:choose>
 </div>
 
-<c:choose>
-		<c:when test="${ldto.role ne 'U'.charAt(0)}">
-			<button onclick="location.href='./AdminLoginMain.do'">메인으로</button>
-		</c:when>
-		<c:otherwise>
-			<button onclick="location.href='./LoginMain.do'">메인으로</button>
-		</c:otherwise>
-</c:choose>
+<button onclick="location.href='./LoginMain.do'">메인으로</button>
 
 
 <div id="detailNot" hidden="hidden">
