@@ -168,11 +168,13 @@
 		<input class="qnatitle" type="text" name="title" readonly="readonly"/>
 		<textarea class="qnacontent" name="content" rows="10" cols="20" readonly="readonly"></textarea>
 		<input type="text" class=qnaregdate name="regdate" readonly="readonly"/>
+		<%-- 
 		<c:choose>
 			<c:when test="${ldto.role ne 'U'.charAt(0)}">
 				<button onclick="insertReplyQna()">답글</button>
 			</c:when>
 		</c:choose>
+		 --%>
 		<button class="my" onclick="updateQna()">수정</button>
 		<button class="my" onclick="deleteQna()">삭제</button>
 		<button class="other" onclick="insertReplyQna()">답글</button>
