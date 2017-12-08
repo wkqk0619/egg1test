@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.AnswerDto;
 import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
@@ -51,5 +52,8 @@ public interface IService {
 	public boolean delMySupport(Map<String, String> map);
 	public boolean upNickName(AccountDto dto);
 	public boolean upPassword(AccountDto dto);
+	public List<SupportDto> searchSupport(Map<String,String> map);
+	public List<AnswerDto> selectAnswer(String pseq);
+	public void writeAnswer(List<AnswerDto> list);
 
 }

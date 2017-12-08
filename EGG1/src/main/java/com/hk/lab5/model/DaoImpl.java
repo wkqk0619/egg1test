@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.AnswerDto;
 import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
@@ -289,6 +290,29 @@ public class DaoImpl implements IDao {
 	public boolean upPassword(AccountDto dto) 
 	{
 		return sqlSession.update(ACCOUNTNAMESPACE+"upPassword", dto)>0?true:false;
+	}
+
+	@Override
+	public List<SupportDto> searchSupport(Map<String,String> map) {
+		return sqlSession.selectList(SUPPORTNAMESPACE+"searchSupport",map);
+	}
+
+	@Override
+	public List<AnswerDto> selectAnswer(String pseq) 
+	{
+		return sqlSession.selectList(PROJECTNAMESPACE+"selectAnswer", pseq);
+	}
+
+	@Override
+	public void writeAnswer(List<AnswerDto> list) 
+	{
+		sqlSession.insert(PROJECTNAMESPACE+"writeAnswer",list);
+	}
+
+	@Override
+	public void clearAnswer(List<AnswerDto> list) 
+	{
+		sqlSession.delete(PROJECTNAMESPACE+"clearAnswer",list);
 	}
 
 

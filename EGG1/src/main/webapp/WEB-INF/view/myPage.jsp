@@ -48,6 +48,7 @@
 			<input type="submit" value="변경"> <input type="button" onclick="hideNick()" value="취소">
 		</form>
 	</div>
+	<button onclick="location.href='./LoginMain.do'">메인으로</button>
 <%-- 	아이콘 : ${ldto.icon} --%>
 </body>
 </html>

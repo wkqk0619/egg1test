@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.AnswerDto;
 import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
@@ -280,8 +281,8 @@ public class ServiceImpl implements IService {
 		return dao.supportQus(sseq);
 	}
 
-	@Transactional
 	@Override
+	@Transactional
 	public void ChangeSupportQ(String sseq, String[] chk) 
 	{	
 		dao.clearSupportQ(sseq);
@@ -327,6 +328,26 @@ public class ServiceImpl implements IService {
 	public boolean upPassword(AccountDto dto) 
 	{
 		return dao.upPassword(dto);
+	}
+
+	@Override
+	public List<SupportDto> searchSupport(Map<String,String> map) 
+	{
+		return dao.searchSupport(map);
+	}
+
+	@Override
+	public List<AnswerDto> selectAnswer(String pseq) 
+	{
+		return dao.selectAnswer(pseq);
+	}
+
+	@Override
+	@Transactional
+	public void writeAnswer(List<AnswerDto> list) 
+	{
+		dao.clearAnswer(list);
+		dao.writeAnswer(list);
 	}
 
 }

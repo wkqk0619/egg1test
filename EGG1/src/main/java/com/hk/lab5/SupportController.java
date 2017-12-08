@@ -112,4 +112,20 @@ public class SupportController
 		}		
 	}
 	
+	// 주의: 기타에 대한 사항은 아직 처리하지 않았음
+	@RequestMapping(value="/searchSupport.do", method=RequestMethod.POST)
+	public String searchSupport(Model model,String type, String target, String area)
+	{
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("type", type);
+		map.put("target", target);
+		map.put("area", area);
+		
+		List<SupportDto> list = iservice.searchSupport(map);
+		model.addAttribute("list", list);
+		
+		return "supportBoard";
+	}
+	
+	
 }

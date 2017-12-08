@@ -23,6 +23,6 @@ public class SearchInfoController {
 		List<QuestionDto> selists = iservice.searchInfo(question);
 		System.out.println(selists);
 		model.addAttribute("searInfo", selists);
-		return "Question";
+		return "questionBoard";
 	}
 }

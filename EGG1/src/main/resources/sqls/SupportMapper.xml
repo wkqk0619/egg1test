@@ -42,5 +42,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delMySupport" parameterType="java.util.Map">
 		DELETE FROM MYSUPPORT WHERE ID = #{id} AND SSEQ = #{sseq}
 	</delete>
+	
+	<select id="searchSupport" parameterType="java.util.Map" resultType="SupportDto">
+		SELECT SSEQ, TITLE, TYPE, AREA, BIZTITLE, URL, REGDATE, STARTDATE, ENDDATE, SGROUP, TARGET, TARGETAGE, TARGETCAREER FROM SUPPORT
+		WHERE TYPE = #{type} AND ( TARGET LIKE '%${target}%' OR TARGET = '전체' ) AND ( AREA = #{area} OR AREA = '전국' )
+	</select>
 
 </mapper>
