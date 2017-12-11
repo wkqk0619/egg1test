@@ -19,13 +19,17 @@ $(function(){
 </script>
 </head>
 <body>
-<form action="./pdfTest.do" method="post" id="pdte">
-	<c:forEach begin="0" end="${fn:length(question)-1}" step="1" varStatus="status">
-		<span>${question[status.index]} : </span><input type="text" value="${answer[status.index]}"><br>
-	</c:forEach>
-	<input type="submit" value="pdf다운로드"/>
-	<textarea rows="100" cols="100" id="pdarea" name="pdfarea" hidden="hidden"></textarea>
-</form>
-
+	<div id="testPDF">
+		<div style="font-family: MalgunGothic;">
+		<input type="text" name="fName" required="required" placeholder="PDF 파일 이름">
+			<form action="./pdfTest.do" method="post" id="pdte">
+			<c:forEach begin="0" end="${fn:length(question)-1}" step="1" varStatus="status">
+				<span>${question[status.index]} : </span><input type="text" value="${answer[status.index]}"><br>
+			</c:forEach>
+			<input type="submit" value="pdf다운로드"/>
+			<textarea rows="100" cols="100" id="pdarea" name="pdfarea" hidden="hidden"></textarea>
+		</form>
+		</div>
+	</div>
 </body>
 </html>
