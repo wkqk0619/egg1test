@@ -32,5 +32,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateUser" parameterType="AccountDto">
 		UPDATE ACCOUNT SET ENABLED = #{enabled} WHERE ID = #{id}
 	</update>
+	
+	<update id="upNickName" parameterType="AccountDto">
+		UPDATE ACCOUNT SET NICKNAME = #{nickname} WHERE ID = #{id}
+	</update>
+	
+	<update id="upPassword" parameterType="AccountDto">
+		UPDATE ACCOUNT SET PASSWORD = #{password} WHERE ID = #{id}
+	</update>
 
 </mapper>

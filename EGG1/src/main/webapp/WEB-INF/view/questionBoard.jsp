@@ -73,11 +73,13 @@
 	삭제하시겠습니까??<br/>
 	<form action="./deleteQuestion.do" method="post">
 		<input name="qseq" type="text"/>
+		<!-- 생각해보니 삭제는 질문이 여러군데 FK로 물려있는녀석이라 삭제하면 곤란한일이 한가득이다.
 		<input type="submit" value="삭제"/>
+		 -->
 	</form>
 	<button onclick="hid()">취소</button>
 </div>
 <button onclick="togShow()">질문추가</button>
-<button onclick="location.href='./AdminLoginMain.do'">메인으로</button>
+<button onclick="location.href='./LoginMain.do'">메인으로</button>
 </body>
 </html>

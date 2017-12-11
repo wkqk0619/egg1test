@@ -11,6 +11,7 @@
 	<typeAlias type="com.hk.lab5.dtos.ProjectDto" alias="ProjectDto"/>
 	<typeAlias type="com.hk.lab5.dtos.QnaDto" alias="QnaDto"/>	
 	<typeAlias type="com.hk.lab5.dtos.SupportDto" alias="SupportDto"/>
+	<typeAlias type="com.hk.lab5.dtos.AnswerDto" alias="AnswerDto"/>
   </typeAliases>
   
   <mappers>

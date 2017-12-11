@@ -1,5 +1,6 @@
 ﻿package com.hk.lab5.model;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
@@ -233,6 +236,86 @@ public class DaoImpl implements IDao {
 	{
 		return sqlSession.selectList(SUPPORTNAMESPACE+"supportQus", sseq);
 	}
+
+	@Override
+	public void clearSupportQ(String sseq) 
+	{
+		sqlSession.delete(SUPPORTNAMESPACE+"clearSupportQ", sseq);
+	}
+
+	@Override
+	public void insertSupportQ(String[] chk,String sseq) 
+	{
+		List<String> chkList = Arrays.asList(chk);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("chk", chkList);
+		map.put("sseq", sseq);
+		
+		sqlSession.insert(SUPPORTNAMESPACE+"insertSupportQ", map);
+	}
+
+	@Override
+	public boolean chkMySupport(Map<String, String> map) 
+	{
+		int count = sqlSession.selectOne(SUPPORTNAMESPACE+"chkMySupport",map);
+		return count>0?true:false;
+	}
+	
+	@Override
+	public boolean addMySupport(Map<String, String> map) 
+	{
+		return sqlSession.insert(SUPPORTNAMESPACE+"addMySupport", map)>0?true:false;
+	}
+
+	@Override
+	public List<SupportDto> mySupportList(String id) 
+	{
+		return sqlSession.selectList(SUPPORTNAMESPACE+"mySupportList", id);
+	}
+
+	@Override
+	public boolean delMySupport(Map<String, String> map) 
+	{
+		return sqlSession.delete(SUPPORTNAMESPACE+"delMySupport", map)>0?true:false;
+	}
+
+	@Override
+	public boolean upNickName(AccountDto dto) 
+	{
+		return sqlSession.update(ACCOUNTNAMESPACE+"upNickName", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean upPassword(AccountDto dto) 
+	{
+		return sqlSession.update(ACCOUNTNAMESPACE+"upPassword", dto)>0?true:false;
+	}
+
+	@Override
+	public List<SupportDto> searchSupport(Map<String,String> map) {
+		return sqlSession.selectList(SUPPORTNAMESPACE+"searchSupport",map);
+	}
+
+	@Override
+	public List<AnswerDto> selectAnswer(String pseq) 
+	{
+		return sqlSession.selectList(PROJECTNAMESPACE+"selectAnswer", pseq);
+	}
+
+	@Override
+	public void writeAnswer(List<AnswerDto> list) 
+	{
+		sqlSession.insert(PROJECTNAMESPACE+"writeAnswer",list);
+	}
+
+	@Override
+	public void clearAnswer(List<AnswerDto> list) 
+	{
+		sqlSession.delete(PROJECTNAMESPACE+"clearAnswer",list);
+	}
+
+
 
 
 

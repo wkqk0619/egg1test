@@ -9,10 +9,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT SSEQ, TITLE, TYPE, AREA, BIZTITLE, URL, REGDATE, STARTDATE, ENDDATE, SGROUP, TARGET, TARGETAGE, TARGETCAREER FROM SUPPORT
 	</select>
 	
-<!-- 잘못된 칼럼이나 테이블명이 있음 -->
 	<select id="supportQus" parameterType="java.lang.String" resultType="QuestionDto">
 		SELECT QSEQ, QUESTION FROM QUESTION
-		WHERE SSEQ IN (SELECT QSEQ FROM SUPPORTQ WHERE SSEQ = #{sseq})
+		WHERE QSEQ IN (SELECT QSEQ FROM SUPPORTQ WHERE SSEQ = #{sseq})
+	</select>
+	
+	<delete id="clearSupportQ" parameterType="java.lang.String">
+		DELETE FROM SUPPORTQ WHERE SSEQ = #{sseq}
+	</delete>
+	
+	<insert id="insertSupportQ" parameterType="java.util.Map">
+		INSERT ALL
+		<foreach collection="chk" item="list" index="index">
+		 INTO SUPPORTQ(SSEQ, QSEQ) VALUES ( #{sseq}, #{list,jdbcType=VARCHAR} )
+		</foreach>
+		SELECT 1 FROM DUAL
+	</insert>
+	
+	<select id="chkMySupport" resultType="java.lang.Integer" parameterType="java.util.Map">
+		SELECT COUNT(*) FROM MYSUPPORT WHERE ID = #{id} AND SSEQ = #{sseq}
+	</select>
+	
+	<insert id="addMySupport" parameterType="java.util.Map">
+		INSERT INTO MYSUPPORT(ID,SSEQ) VALUES(#{id}, #{sseq})
+	</insert>
+
+	<select id="mySupportList" resultType="SupportDto" parameterType="java.lang.String">
+		SELECT SSEQ, TITLE, TYPE, AREA, BIZTITLE, URL, REGDATE, STARTDATE, ENDDATE, SGROUP, TARGET, TARGETAGE, TARGETCAREER 
+		FROM SUPPORT WHERE SSEQ IN (SELECT SSEQ FROM MYSUPPORT WHERE ID = #{id})
+	</select>
+
+	<delete id="delMySupport" parameterType="java.util.Map">
+		DELETE FROM MYSUPPORT WHERE ID = #{id} AND SSEQ = #{sseq}
+	</delete>
+	
+	<select id="searchSupport" parameterType="java.util.Map" resultType="SupportDto">
+		SELECT SSEQ, TITLE, TYPE, AREA, BIZTITLE, URL, REGDATE, STARTDATE, ENDDATE, SGROUP, TARGET, TARGETAGE, TARGETCAREER FROM SUPPORT
+		WHERE TYPE = #{type} AND ( TARGET LIKE '%${target}%' OR TARGET = '전체' ) AND ( AREA = #{area} OR AREA = '전국' )
 	</select>
 
 </mapper>

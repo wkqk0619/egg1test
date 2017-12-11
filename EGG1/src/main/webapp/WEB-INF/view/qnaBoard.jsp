@@ -49,10 +49,12 @@
 		if(isS)
 		{
 			$(".my").show();
+			$(".other").hide();
 		}
 		else
 		{
 			$(".my").hide();
+			$(".other").show();
 		}
 		
 		$(".aseq").val(aseq);
@@ -144,14 +146,11 @@
 		</c:choose>
 		</table>
 	<c:choose>
-		<c:when test="${ldto.role ne 'U'.charAt(0)}">
-			<button onclick="location.href='./AdminLoginMain.do'">메인으로</button>
-		</c:when>
-		<c:otherwise>
+		<c:when test="${ldto.role eq 'U'.charAt(0)}">
 			<button onclick="insertQnaForm()">문의작성</button>
-			<button onclick="location.href='./LoginMain.do'">메인으로</button>
-		</c:otherwise>
+		</c:when>
 	</c:choose>
+	<button onclick="location.href='./LoginMain.do'">메인으로</button>
 	
 	<div id="insertQnaForm" hidden="hidden">
 		<form action="./insertQna.do" method="post">
@@ -169,13 +168,16 @@
 		<input class="qnatitle" type="text" name="title" readonly="readonly"/>
 		<textarea class="qnacontent" name="content" rows="10" cols="20" readonly="readonly"></textarea>
 		<input type="text" class=qnaregdate name="regdate" readonly="readonly"/>
+		<%-- 
 		<c:choose>
 			<c:when test="${ldto.role ne 'U'.charAt(0)}">
 				<button onclick="insertReplyQna()">답글</button>
 			</c:when>
 		</c:choose>
+		 --%>
 		<button class="my" onclick="updateQna()">수정</button>
 		<button class="my" onclick="deleteQna()">삭제</button>
+		<button class="other" onclick="insertReplyQna()">답글</button>
 	</div>
 	
 	<div id="insertReplyQna" hidden="hidden">

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
@@ -277,6 +279,75 @@ public class ServiceImpl implements IService {
 	public List<QuestionDto> supportQus(String sseq) 
 	{
 		return dao.supportQus(sseq);
+	}
+
+	@Override
+	@Transactional
+	public void ChangeSupportQ(String sseq, String[] chk) 
+	{	
+		dao.clearSupportQ(sseq);
+		
+		if(chk!=null)
+		{
+			dao.insertSupportQ(chk,sseq);
+		}
+		
+	}
+
+	@Override
+	public boolean addMySupport(Map<String, String> map) 
+	{
+		return dao.addMySupport(map);
+	}
+
+	@Override
+	public boolean chkMySupport(Map<String, String> map) 
+	{
+		return dao.chkMySupport(map);
+	}
+
+	@Override
+	public List<SupportDto> mySupportList(String id) 
+	{
+		return dao.mySupportList(id);
+	}
+
+	@Override
+	public boolean delMySupport(Map<String, String> map) 
+	{
+		return dao.delMySupport(map);
+	}
+
+	@Override
+	public boolean upNickName(AccountDto dto) 
+	{
+		return dao.upNickName(dto);
+	}
+
+	@Override
+	public boolean upPassword(AccountDto dto) 
+	{
+		return dao.upPassword(dto);
+	}
+
+	@Override
+	public List<SupportDto> searchSupport(Map<String,String> map) 
+	{
+		return dao.searchSupport(map);
+	}
+
+	@Override
+	public List<AnswerDto> selectAnswer(String pseq) 
+	{
+		return dao.selectAnswer(pseq);
+	}
+
+	@Override
+	@Transactional
+	public void writeAnswer(List<AnswerDto> list) 
+	{
+		dao.clearAnswer(list);
+		dao.writeAnswer(list);
 	}
 
 }

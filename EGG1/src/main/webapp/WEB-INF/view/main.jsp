@@ -20,6 +20,8 @@
 	<button onclick="location.href='./selectProject.do'">프로젝트</button><br>
 	<button onclick="location.href='./qnaList.do'">문의게시판</button>
 	<button onclick="location.href='./supportList.do'">지원사업</button>
-	
+	<button onclick="location.href='./mySupportList.do'">마이지원</button>
+	<button onclick="location.href='./myPage.do'">마이페이지</button>
+	<button onclick="location.href='./logout.do'">로그아웃</button>
 </body>
 </html>
