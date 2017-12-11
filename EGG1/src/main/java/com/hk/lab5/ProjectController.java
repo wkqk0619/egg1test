@@ -122,7 +122,8 @@ public class ProjectController {
 		model.addAttribute("answer", answer);
 		model.addAttribute("question", question);		
 		
-		return "result";
+		//return "result2";
+		return "JSPDF";
 	}
 	
 

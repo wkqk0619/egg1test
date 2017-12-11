@@ -25,7 +25,8 @@ public class AccountController
 	@RequestMapping(value="/Main.do", method=RequestMethod.GET)
 	public String usermain()
 	{
-		return "index";
+		return "ajaxindex";
+//		return "index";
 	}
 	@RequestMapping(value="/AdminMain.do", method=RequestMethod.GET)
 	public String adminmain()
@@ -42,11 +43,13 @@ public class AccountController
 		if(ldto == null)
 		{
 			model.addAttribute("msg", "세션이 만료되었습니다.");
-			return "index";
+			return "ajaxindex";
+//			return "index";
 		}		
 		else if(ldto.getRole() == 'U')
 		{
-			return "main";
+			return "ajaxindex";
+//			return "main";
 		}
 		else
 		{
@@ -141,7 +144,7 @@ public class AccountController
 		
 	}
 	
-	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
+	@RequestMapping(value="/EggLogout.do", method=RequestMethod.GET)
 	public String login(HttpSession session)
 	{
 		AccountDto ldto = (AccountDto)session.getAttribute("ldto");

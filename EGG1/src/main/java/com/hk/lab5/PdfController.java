@@ -69,6 +69,7 @@ public class PdfController {
 		response.setContentType("/pdf"); 
 		String fileName = null;
 		try {
+			System.out.println(fName);
 			fileName = URLEncoder.encode(fName, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
@@ -85,7 +86,7 @@ public class PdfController {
 		CSSResolver cssResolver = new StyleAttrCSSResolver();
 		CssFile cssFile = null;
 		try {
-			cssFile = helper.getCSS(new FileInputStream("C:\\PRJOCT\\NewMaven\\src\\main\\webapp\\css\\pdftest.css"));
+			cssFile = helper.getCSS(new FileInputStream("D:\\egg1test\\EGG1\\src\\main\\webapp\\css\\pdftest.css"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -94,7 +95,7 @@ public class PdfController {
 		     
 		// HTML, 폰트 설정
 		XMLWorkerFontProvider fontProvider = new XMLWorkerFontProvider(XMLWorkerFontProvider.DONTLOOKFORFONTS);
-		fontProvider.register("C:\\PRJOCT\\NewMaven\\src\\main\\webapp\\font\\malgun.ttf", "MalgunGothic"); // MalgunGothic은 alias,
+		fontProvider.register("D:\\egg1test\\EGG1\\src\\main\\webapp\\font\\malgun.ttf", "MalgunGothic"); // MalgunGothic은 alias,
 		CssAppliers cssAppliers = new CssAppliersImpl(fontProvider);
 		 
 		HtmlPipelineContext htmlContext = new HtmlPipelineContext(cssAppliers);
@@ -125,10 +126,8 @@ public class PdfController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 
 		document.close();
 		writer.close();
-
 	}
 }
 

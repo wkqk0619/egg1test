@@ -9,7 +9,7 @@
 <title>화면을 pdf 로 배포하기</title>
 <link rel="stylesheet" type="text/css" href="css/pdftest.css">
 <!-- <script type="text/javascript" src="js/jquery-3.2.1.js"></script> -->
-<script type="text/javascript" src="js/jquery-3.2.1min.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#pdte").submit(function() {
@@ -21,11 +21,13 @@ $(function(){
 <body>
 	<div id="testPDF">
 		<div style="font-family: MalgunGothic;">
-		<input type="text" name="fName" required="required" placeholder="PDF 파일 이름">
 			<form action="./pdfTest.do" method="post" id="pdte">
-			<c:forEach begin="0" end="${fn:length(question)-1}" step="1" varStatus="status">
-				<span>${question[status.index]} : </span><input type="text" value="${answer[status.index]}"><br>
-			</c:forEach>
+			<input type="text" name="fName"/>
+			<br/>
+<%-- 			<c:forEach begin="0" end="${fn:length(question)-1}" step="1" varStatus="status"> --%>
+<%-- 				<span>${question[status.index]} : </span><input type="text" value="${answer[status.index]}"/><br> --%>
+<%-- 			</c:forEach> --%>
+				<span>asdfsdfsd</span>
 			<input type="submit" value="pdf다운로드"/>
 			<textarea rows="100" cols="100" id="pdarea" name="pdfarea" hidden="hidden"></textarea>
 		</form>

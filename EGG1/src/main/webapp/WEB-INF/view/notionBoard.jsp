@@ -112,8 +112,11 @@ function hideUpNot(){
 	</c:choose>
 </div>
 
-<button onclick="location.href='./LoginMain.do'">메인으로</button>
-
+<c:choose>
+		<c:when test="${ldto.role ne 'U'.charAt(0)}">
+			<button onclick="location.href='./LoginMain.do'">메인으로</button>
+		</c:when>
+</c:choose>
 
 <div id="detailNot" hidden="hidden">
 		<input type="text" class="notseq" name="nseq" readonly="readonly"/>

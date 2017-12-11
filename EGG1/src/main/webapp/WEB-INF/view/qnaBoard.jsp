@@ -149,8 +149,10 @@
 		<c:when test="${ldto.role eq 'U'.charAt(0)}">
 			<button onclick="insertQnaForm()">문의작성</button>
 		</c:when>
+		<c:otherwise>
+			<button onclick="location.href='./LoginMain.do'">메인으로</button>		
+		</c:otherwise>
 	</c:choose>
-	<button onclick="location.href='./LoginMain.do'">메인으로</button>
 	
 	<div id="insertQnaForm" hidden="hidden">
 		<form action="./insertQna.do" method="post">

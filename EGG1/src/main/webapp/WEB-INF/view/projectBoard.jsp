@@ -102,6 +102,10 @@
 	</form>
 	<button onclick="delProj()">삭제</button>
 </div>
-	<button onclick="location.href='./LoginMain.do'">메인으로</button>
+<c:choose>
+		<c:when test="${ldto.role ne 'U'.charAt(0)}">
+			<button onclick="location.href='./LoginMain.do'">메인으로</button>
+		</c:when>
+</c:choose>
 </body>
 </html>

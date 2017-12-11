@@ -113,7 +113,11 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<button onclick="location.href='./LoginMain.do'">메인으로</button>
+	<c:choose>
+		<c:when test="${ldto.role ne 'U'.charAt(0)}">
+			<button onclick="location.href='./LoginMain.do'">메인으로</button>
+		</c:when>
+	</c:choose>
 	<textarea id="alertpr" hidden="hidden" rows="500" cols="400" readonly="readonly"></textarea>
 </body>
 </html>

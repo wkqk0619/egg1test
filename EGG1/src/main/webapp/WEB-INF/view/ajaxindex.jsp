@@ -13,7 +13,6 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/introjs.css">
 <link rel="stylesheet" href="css/introjs-rtl.css">
-</head>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <!-- <script type="text/javascript" src="js/jquery-3.2.1.js"></script> -->
 <script src="js/jquery-ui.js"></script>
@@ -38,6 +37,11 @@ $( function() {
     	});
   });
   
+  function myS() 
+  {
+	 $("#myS").attr("src","./mySupportList.do");
+  }
+  
   function seout(){
 	  location.href="./EggLogout.do";
   }
@@ -46,32 +50,45 @@ $( function() {
 	  //호출시  class=idearS 인것을 클릭하는 효과
 	  $(".idearS").trigger("click");
   }
-  
-
 </script>
+<style type="text/css">
+	  iframe{
+	     width: 70%;
+	     height: 500px;
+	  }
+	  
+	  .egtab{
+	     height: 800px;
+	  }
+</style>
+</head>
 <body>
 <button id="guard">가이드</button>
 <!-- 전체를 감싼 div -->
 <div id="tabs">
 
-	<!-- 페이지 테마 담당 -->
+	<!-- 
+	페이지 테마 담당
 	<select id="theme">
 		<option value="white">색선택</option>
 		<option value="pink">분홍</option>
 		<option value="gray">회색</option>
 		<option value="aqua">아쿠아</option>
 	</select>
-	
+	 -->
 	<ul>
   		<c:choose>
   			<c:when test="${empty ldto}">
   				<li><a href="#tabs-1">소개영상</a></li>
   			</c:when>
   			<c:otherwise>
-  				<li><a href="#tabs-2" class="idearS">아이디어</a></li>
+  				<li><a href="#tabs-2" class="idearS">프로젝트</a></li>
     			<li><a href="#tabs-3">지원사업</a></li>
-    			<li><a href="#tabs-4">로그아웃</a></li>
-    			<li><a href="#tabs-5">공지사항</a></li>
+    			<li><a href="#tabs-4" onclick="myS()">my지원</a></li>
+    			<li><a href="#tabs-5">my페이지</a></li>
+    			<li><a href="#tabs-6">공지사항</a></li>
+    			<li><a href="#tabs-7">문의</a></li>
+    			<li><a href="#tabs-8">로그아웃</a></li>
   			</c:otherwise>
   		</c:choose>
   	</ul>
@@ -114,7 +131,7 @@ $( function() {
 	</div><!-- tabs-1 끝 -->
 
 	<div id="tabs-2" hidden="hidden" class="egtab">
-		<h1>${ldto} 님 환영합니다.</h1>	
+<%-- 		<h1>${ldto.id} 님 환영합니다.</h1>	 --%>
 		<div id="idearMain">
 			<div>Welcome EGG1<br/>
 				<iframe src="./selectProject.do"></iframe>
@@ -122,25 +139,39 @@ $( function() {
 		</div>
 	</div>
 	
-	
 	<div id="tabs-3" hidden="hidden" class="egtab">
 		<div id="supptyBis">
 			지원사업공고들~~<br/>
-			<iframe src="./selectQuestion.do"></iframe>
+			<iframe src="./supportList.do"></iframe>
 		</div>
 	</div>
 	
-	
 	<div id="tabs-4" hidden="hidden" class="egtab">
+		마이지원<br/>
+		<iframe id="myS" src="./mySupportList.do"></iframe>
+	</div>
+	
+	<div id="tabs-5" hidden="hidden" class="egtab">
+		마이페이지<br/>
+		<iframe src="./myPage.do"></iframe>
+	</div>
+	
+	<div id="tabs-6" hidden="hidden" class="egtab">
+		공지사항<br/>
+		<iframe src="./selectNotion.do"></iframe>
+	</div>
+	
+	<div id="tabs-7" hidden="hidden" class="egtab">
+		문의게시판<br/>
+		<iframe src="./qnaList.do"></iframe>
+	</div>
+			
+	<div id="tabs-8" hidden="hidden" class="egtab">
 		로그아웃 하시겠습니까??
 		<button onclick="seout()">로그아웃</button>
 		<button onclick="idearShew()">아니오</button>
 	</div>
 	
-	<div id="tabs-5" hidden="hidden" class="egtab">
-		공지사항<br/>
-		<iframe src="./selectNotion.do"></iframe>
-	</div>
 </div><!-- tabs 끝 -->
 	
 

@@ -83,7 +83,7 @@ public class SupportController
 		}	
 	}
 	
-	@RequestMapping(value="mySupportList.do", method=RequestMethod.GET)
+	@RequestMapping(value="/mySupportList.do", method=RequestMethod.GET)
 	public String mySupportList(Model model,HttpSession session)
 	{
 		AccountDto ldto = (AccountDto)session.getAttribute("ldto");

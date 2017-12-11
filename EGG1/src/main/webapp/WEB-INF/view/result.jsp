@@ -16,5 +16,6 @@
 	<c:forEach begin="0" end="${fn:length(question)-1}" step="1" varStatus="status">
 		<span>${question[status.index]} : </span><input type="text" value="${answer[status.index]}"><br>
 	</c:forEach>
+	<button onclick="location.href='./LoginMain.do'">메인으로</button>
 </body>
 </html>
