@@ -10,6 +10,9 @@
 <title>초기화면Ver.1</title>
 <link rel="stylesheet" type="text/css" href="css/page.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/introjs.css">
+<link rel="stylesheet" href="css/introjs-rtl.css">
 </head>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <!-- <script type="text/javascript" src="js/jquery-3.2.1.js"></script> -->
