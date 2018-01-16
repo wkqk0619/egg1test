@@ -39,7 +39,7 @@
 <input id="serchInfo" type="text" name="serchInfo"/><button onclick="serchInfo()">검색</button>
 <hr/>
 <c:choose>
-	<c:when test="${ empty lists }">
+	<c:when test="${ empty lists }">없다
 	</c:when>
 	<c:otherwise>
 		<c:forEach items="${lists }" var="dto">

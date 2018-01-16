@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	</select>
   
   	<insert id="insertQuestion" parameterType="java.lang.String">
-  		INSERT INTO QUESTION VALUES(QUESTION_SEQ.NEXTVAL, #{qname})
+  		INSERT INTO QUESTION(QUESTION) VALUES(#{qname})
   	</insert>
   
   	<select id="searchInfo" resultType="QuestionDto" parameterType="java.lang.String">
