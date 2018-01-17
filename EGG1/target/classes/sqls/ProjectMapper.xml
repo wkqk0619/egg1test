@@ -34,11 +34,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	</select>
   	
   	<insert id="writeAnswer" parameterType="java.util.List">
-		INSERT ALL
-		<foreach collection="list" item="dto">
-			INTO ANSWER(QSEQ, PSEQ, ANSWER) VALUES(#{dto.qseq}, #{dto.pseq}, #{dto.answer})
+		INSERT INTO ANSWER(QSEQ, PSEQ, ANSWER) VALUES
+		<foreach collection="list" item="dto" separator=",">
+			(#{dto.qseq}, #{dto.pseq}, #{dto.answer})
 		</foreach>
-		SELECT 1 FROM DUAL
 	</insert>
   	
   	<delete id="clearAnswer" parameterType="java.util.List">

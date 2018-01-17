@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	</delete>
    
    	<insert id="insertNot" parameterType="NotionDto">
-   		INSERT INTO NOTION VALUES(#{title}, #{content}, #{id}, NOW())
+   		INSERT INTO NOTION(TITLE, CONTENT, ID, REGDATE) VALUES(#{title}, #{content}, #{id}, NOW())
    	</insert>
    
    	<update id="updateNot" parameterType="NotionDto">

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.login">	<!-- namespace 필수사항 -->
+	<insert id="insertback" parameterType="Map">
+		INSERT INTO SUPPORT(TITLE, TYPE, AREA, BIZTITLE, URL, REGDATE, STARTDATE, ENDDATE, SGROUP, TARGET, TARGETAGE, TARGETCAREER)
+		VALUES(#{title}, #{supporttype}, #{areaname}, #{biztitle}, #{detailurl}, STR_TO_DATE(#{insertdate},'%Y%m%d'), STR_TO_DATE(#{startdate},'%Y%m%d'), STR_TO_DATE(#{enddate},'%Y%m%d'), #{organizationname}, #{posttarget}, #{posttargetage}, #{posttargetcomage})
+	</insert>	
+</mapper>

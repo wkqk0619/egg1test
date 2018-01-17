@@ -19,11 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<insert id="insertSupportQ" parameterType="java.util.Map">
-		INSERT ALL
-		<foreach collection="chk" item="list" index="index">
-		 INTO SUPPORTQ(SSEQ, QSEQ) VALUES ( #{sseq}, #{list,jdbcType=VARCHAR} )
+		INSERT INTO SUPPORTQ(SSEQ, QSEQ) VALUES
+		<foreach collection="chk" item="list" index="index" separator=",">
+		   (#{sseq}, #{list})
 		</foreach>
-		SELECT 1 FROM DUAL
 	</insert>
 	
 	<select id="chkMySupport" resultType="java.lang.Integer" parameterType="java.util.Map">
