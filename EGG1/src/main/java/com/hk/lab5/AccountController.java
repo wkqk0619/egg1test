@@ -25,6 +25,7 @@ public class AccountController
 	@RequestMapping(value="/Main.do", method=RequestMethod.GET)
 	public String usermain()
 	{
+		
 		return "ajaxindex";
 //		return "index";
 	}
@@ -42,7 +43,7 @@ public class AccountController
 		
 		if(ldto == null)
 		{
-			model.addAttribute("msg", "세션이 만료되었습니다.");
+			model.addAttribute("msg", "�꽭�뀡�씠 留뚮즺�릺�뿀�뒿�땲�떎.");
 			return "ajaxindex";
 //			return "index";
 		}		
@@ -58,7 +59,7 @@ public class AccountController
 	}
 	
 	/*
-	 * 위의 메인과 통합
+	 * �쐞�쓽 硫붿씤怨� �넻�빀
 	@RequestMapping(value="/AdminLoginMain.do", method=RequestMethod.GET)
 	public String AdminLoginMain()
 	{
@@ -67,12 +68,12 @@ public class AccountController
 	*/
 	
 	
-	// 가입할때 이메일에 인증메일 보냄
+	// 媛��엯�븷�븣 �씠硫붿씪�뿉 �씤利앸찓�씪 蹂대깂
 	@RequestMapping(value="/EmailCheck.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String regist(String email)
 	{
-		// 아이디 중복검사 true = 이미 존재함 false = 없음
+		// �븘�씠�뵒 以묐났寃��궗 true = �씠誘� 議댁옱�븿 false = �뾾�쓬
 		if(iservice.emailChk(email))
 		{
 			return "O";
@@ -83,11 +84,12 @@ public class AccountController
 		}
 	}
 	
-	// 가입
+	// 媛��엯
 	@RequestMapping(value="/Regist.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String regist(String email,String pw)
 	{
+		System.out.println(email+"  :  "+pw);
 		if(iservice.regist(email,pw))
 		{
 			return "S";
@@ -98,12 +100,12 @@ public class AccountController
 		}
 	}
 	
-	// 비밀번호 찾을때 인증메일 보냄
+	// 鍮꾨�踰덊샇 李얠쓣�븣 �씤利앸찓�씪 蹂대깂
 	@RequestMapping(value="/FindCheck.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String find(String email)
 	{
-		// 아이디 존재확인 true = 이미 존재함 false = 없음
+		// �븘�씠�뵒 議댁옱�솗�씤 true = �씠誘� 議댁옱�븿 false = �뾾�쓬
 		if(iservice.emailChk(email))
 		{
 			return iservice.emailSend(email,"P");
@@ -114,7 +116,7 @@ public class AccountController
 		}
 	}
 	
-	// 메일로 비밀번호 전송
+	// 硫붿씪濡� 鍮꾨�踰덊샇 �쟾�넚
 	@RequestMapping(value="/Sendpw.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String sendpw(String email)
@@ -204,7 +206,7 @@ public class AccountController
 		boolean isS = iservice.upNickName(dto);
 		if(isS) 
 		{
-			// (구)세션데이터
+			// (援�)�꽭�뀡�뜲�씠�꽣
 			AccountDto oldto = (AccountDto)session.getAttribute("ldto");
 			
 			Map<String, String>map = new HashMap<String,String>();
@@ -229,7 +231,7 @@ public class AccountController
 		boolean isS = iservice.upPassword(dto);
 		if(isS) 
 		{
-			// (구)세션데이터
+			// (援�)�꽭�뀡�뜲�씠�꽣
 			AccountDto oldto = (AccountDto)session.getAttribute("ldto");
 			
 			Map<String, String>map = new HashMap<String,String>();

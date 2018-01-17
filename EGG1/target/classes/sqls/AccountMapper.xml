@@ -10,23 +10,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="regist" parameterType="java.util.HashMap">
-		INSERT INTO ACCOUNT(ID,APASSWORD,REGDATE,ROLE,ENABLED) VALUES(#{email}, #{pw}, SYSDATE, 'U', 'Y')
+		INSERT INTO ACCOUNT(ID,PASSWORD,REGDATE,ROLE,ENABLED) VALUES(#{email}, #{pw}, now(), 'U', 'Y')
 	</insert>
 	
 	<select id="findpw" resultType="java.lang.String" parameterType="java.lang.String">
-		SELECT APASSWORD FROM ACCOUNT WHERE ID = #{email}
+		SELECT PASSWORD FROM ACCOUNT WHERE ID = #{email}
 	</select>
 	
 	<select id="login" parameterType="java.util.HashMap" resultType="AccountDto">
-		SELECT ID,APASSWORD,REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ID = #{id} AND APASSWORD = #{pw}
+		SELECT ID,PASSWORD,REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ID = #{id} AND PASSWORD = #{pw}
 	</select>
 	
 	<select id="userList" resultType="AccountDto">
-		SELECT ID,APASSWORD,REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ROLE = 'U'
+		SELECT ID,PASSWORD,REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE ROLE = 'U'
 	</select>
 	
 	<select id="ajaxUserDetail" resultType="AccountDto" parameterType="java.lang.String">
-		SELECT ID,APASSWORD,REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE id = #{id}
+		SELECT ID,PASSWORD,REGDATE,ROLE,ENABLED,NICKNAME,ICON FROM ACCOUNT WHERE id = #{id}
 	</select>
 
 	<update id="updateUser" parameterType="AccountDto">
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="upPassword" parameterType="AccountDto">
-		UPDATE ACCOUNT SET APASSWORD = #{password} WHERE ID = #{id}
+		UPDATE ACCOUNT SET PASSWORD = #{password} WHERE ID = #{id}
 	</update>
 
 </mapper>

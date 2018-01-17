@@ -16,8 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertQna" parameterType="QnaDto">
-		INSERT INTO QNA VALUES(QNA_SEQ.NEXTVAL, #{title}, #{content}, #{id}, SYSDATE, 
-  		(SELECT NVL(MAX(REFER)+1,0) FROM QNA),0,0)
+		INSERT INTO QNA(TITLE, CONTENT, ID, REGDATE, REFER, STEP, DEPTH) VALUES(#{title}, #{content}, #{id}, NOW(), 
+  		(SELECT IFNULL(MAX(REFER)+1,0) FROM QNA test),0,0)
 	</insert>
 	
 	<select id="ajaxQnaDetail" parameterType="java.lang.String" resultType="QnaDto">
@@ -33,8 +33,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<insert id="insertReplyQna" parameterType="QnaDto">
-		INSERT INTO QNA VALUES
-  		(QNA_SEQ.NEXTVAL,#{title},#{content},#{id},SYSDATE,
+		INSERT INTO QNA(TITLE, CONTENT, ID, REGDATE, REFER, STEP, DEPTH) VALUES
+  		(#{title},#{content},#{id},NOW(),
 		(SELECT REFER FROM QNA WHERE ASEQ=#{aseq}),
 		(SELECT STEP FROM QNA WHERE ASEQ=#{aseq})+1,
 		(SELECT DEPTH FROM QNA WHERE ASEQ=#{aseq})+1)

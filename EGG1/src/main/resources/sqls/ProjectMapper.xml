@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	</select>
   	
   	<insert id="insertProject" parameterType="ProjectDto">
-  		INSERT INTO PROJECT VALUES(PROJECT_SEQ.NEXTVAL,#{id},#{name},#{typeclass},#{info},'N')
+  		INSERT INTO PROJECT(ID, NAME, TYPECLASS, INFO, DELFLAG) VALUES(#{id},#{name},#{typeclass},#{info},'N')
   	</insert>
   	
   	<select id="ajaxProjDetail" parameterType="java.lang.String" resultType="ProjectDto">
