@@ -52,13 +52,12 @@ $( function() {
   }
 </script>
 <style type="text/css">
-	  iframe{
-	     width: 70%;
-	     height: 500px;
+	   .ifa{
+	     width: 100%;
+	     height: 1000px;
 	  }
-	  
 	  .egtab{
-	     height: 800px;
+	     height: 1100px;
 	  }
 </style>
 </head>
@@ -134,7 +133,7 @@ $( function() {
 <%-- 		<h1>${ldto.id} 님 환영합니다.</h1>	 --%>
 		<div id="idearMain">
 			<div>Welcome EGG1<br/>
-				<iframe src="./selectProject.do"></iframe>
+				<iframe class="ifa" src="./selectProject.do"></iframe>
 			</div>
 		</div>
 	</div>
@@ -142,28 +141,28 @@ $( function() {
 	<div id="tabs-3" hidden="hidden" class="egtab">
 		<div id="supptyBis">
 			지원사업공고들~~<br/>
-			<iframe src="./supportList.do"></iframe>
+			<iframe class="ifa" src="./supportList.do"></iframe>
 		</div>
 	</div>
 	
 	<div id="tabs-4" hidden="hidden" class="egtab">
 		마이지원<br/>
-		<iframe id="myS" src="./mySupportList.do"></iframe>
+		<iframe class="ifa" id="myS" src="./mySupportList.do"></iframe>
 	</div>
 	
 	<div id="tabs-5" hidden="hidden" class="egtab">
 		마이페이지<br/>
-		<iframe src="./myPage.do"></iframe>
+		<iframe class="ifa" src="./myPage.do"></iframe>
 	</div>
 	
 	<div id="tabs-6" hidden="hidden" class="egtab">
 		공지사항<br/>
-		<iframe src="./selectNotion.do"></iframe>
+		<iframe class="ifa" src="./selectNotion.do"></iframe>
 	</div>
 	
 	<div id="tabs-7" hidden="hidden" class="egtab">
 		문의게시판<br/>
-		<iframe src="./qnaList.do"></iframe>
+		<iframe class="ifa" src="./qnaList.do"></iframe>
 	</div>
 			
 	<div id="tabs-8" hidden="hidden" class="egtab">

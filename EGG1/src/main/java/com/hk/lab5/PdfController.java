@@ -43,7 +43,7 @@ public class PdfController {
 	
 	@RequestMapping(value="pdfTest.do",method=RequestMethod.POST)
 	public void pdfTest(String fName,String pdfarea, HttpServletResponse response) {
-		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정
+		Document document = new Document(PageSize.B4, 50, 50, 50, 50); // 용지 및 여백 설정
 		System.out.println(pdfarea);
 		// PdfWriter 생성
 		//PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("d:/"+fName+".pdf")); // 바로 다운로드.
@@ -121,6 +121,7 @@ public class PdfController {
 		String htmlStr = pdfarea;
 		StringReader strReader = new StringReader(htmlStr);
 		try {
+			System.out.println("출력함 해보자 : " + strReader.toString());
 			xmlParser.parse(strReader);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
