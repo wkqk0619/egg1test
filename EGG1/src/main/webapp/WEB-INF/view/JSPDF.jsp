@@ -129,9 +129,9 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">전년도 매출액</td>
-    <td class="tg-lqy6">백만원</td>
-    <td class="tg-baqh">전년도 수출액</td>
-    <td class="tg-lqy6" colspan="2">백만불</td>
+    <td class="tg-lqy6" style="font-family: MalgunGothic;">백만원</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">전년도 수출액</td>
+    <td class="tg-lqy6" colspan="2" style="font-family: MalgunGothic;">백만불</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">전화번호</td>
@@ -145,7 +145,7 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">소재지</td>
-    <td class="tg-lqy6" colspan="4">(우)[ ITEM28 ]</td>
+    <td class="tg-lqy6" colspan="4" style="font-family: MalgunGothic;">(우)[ ITEM28 ]</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="4">준비사항</td>
@@ -153,7 +153,7 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">□ 유(특허/실용신안/상표/디자인)   □ 무</td>
   </tr>
   <tr>
-    <td class="tg-baqh" colspan="5">창업아이템 관련 수상실적</td>
+    <td class="tg-baqh" colspan="5" style="font-family: MalgunGothic;">창업아이템 관련 수상실적</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">대회명</td>
@@ -169,7 +169,7 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">특기사항</td>
-    <td class="tg-baqh" colspan="5">(창업 후 인.허가, 인증, 홍보 등 관련내용)</td>
+    <td class="tg-baqh" colspan="5" style="font-family: MalgunGothic;">(창업 후 인.허가, 인증, 홍보 등 관련내용)</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2">이전 비스니스 센터</td>
@@ -178,11 +178,11 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">입주기간</td>
-    <td class="tg-baqh" colspan="4">년 월 일 ∼ 년 월 일 (총 개월)</td>
+    <td class="tg-baqh" colspan="4" style="font-family: MalgunGothic;">년 월 일 ∼ 년 월 일 (총 개월)</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">입주희망기간</td>
-    <td class="tg-baqh" colspan="4">년 월 일 ∼ 년 월 일 (총 개월)</td>
+    <td class="tg-baqh" colspan="4" style="font-family: MalgunGothic;">년 월 일 ∼ 년 월 일 (총 개월)</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">
@@ -337,7 +337,42 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="7">
-    <pre>1. 수집.이용에 관한 사항□ 수집·이용 목적○ 1인 창조기업 비즈니스센터 사업과 관련한 선정평가 및 사업 운영·관리를 목적으로 합니다.□ 수집·이용할 항목○ 필수항목- 개인식별정보(성명, 주민등록번호, 연락처, 주소, E-mail)□ 보유.이용기간○ 위 개인(신용)정보는 수집.이용에 관한 동의일로부터 보유목적 달성 시 또는 정보주체가 개인정보 삭제를요청할 경우 지체 없이 파기합니다.○ 단, 협약 종료일 후에는 향후 정부지원사업 신청 시의 이력관리만을 위하여 보유.이용되며 기간은 3년입니다. (공공기록물 관리에 관한 법률 시행령)□ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익○ 위 개인(신용)정보 중 필수항목의 수집.이용에 관한 동의는 본사업의 수행을 위해 필수적이므로 이에 동의하셔야 이후 절차를 진행할 수 있습니다. 단, 동의하지 않으시는 경우 본 지원사업에 신청이 불가합니다.2. 제3자 제공에 관한 사항□ 제공받는 자○ 창업진흥원 : 1인 창조기업 비즈니스센터 사업 운영기관 및 전담기관□ 제공받는 자의 이용 목적○ 1인 창조기업 비즈니스센터 사업 관련 자료 활용, 정책자료 활용□ 제공할 개인(신용)정보의 항목○ 수집·이용에 동의한 정보 중 위탁업무 목적달성을 위해 필요한 정보에 한함□ 제공받은 자의 개인(신용) 정보 보유.이용 기간○ 위 개인(신용)정보는 제공된 날부터 3년간 보유·이용되며 보유목적 달성 시 또는 정보주체가 개인정보 삭제를 요청할 경우 지체 없이 파기합니다.□ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익○ 위 개인(신용)정보의 제공 동의를 거부할 권리가 있으며, 동의를 거부 시 본 지원사업에 신청이 불가합니다.</pre></td>
+    <pre>1. 수집.이용에 관한 사항
+    
+    □ 수집·이용 목적
+    	○ 1인 창조기업 비즈니스센터 사업과 관련한 선정평가 및 사업 운영·관리를 목적으로 합니다.
+    	
+    □ 수집·이용할 항목
+    	○ 필수항목
+    		- 개인식별정보(성명, 주민등록번호, 연락처, 주소, E-mail)
+    	
+    □ 보유.이용기간
+    	○ 위 개인(신용)정보는 수집.이용에 관한 동의일로부터 보유목적 달성 
+    		시 또는 정보주체가 개인정보 삭제를요청할 경우 지체 없이 파기합니다.
+    		
+    	○ 단, 협약 종료일 후에는 향후 정부지원사업 신청 시의 이력관리만을 위하여 보유.
+    		이용되며 기간은 3년입니다. (공공기록물 관리에 관한 법률 시행령)
+    	
+    □ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익
+    	○ 위 개인(신용)정보 중 필수항목의 수집.이용에 관한 동의는 본사업의 수행을 위해 필수적이므로 이에 동의
+    		하셔야 이후 절차를 진행할 수 있습니다. 단, 동의하지 않으시는 경우 본 지원사업에 신청이 불가합니다.
+    		
+    2. 제3자 제공에 관한 사항
+    
+    □ 제공받는 자
+    	○ 창업진흥원 : 1인 창조기업 비즈니스센터 사업 운영기관 및 전담기관
+    	
+    □ 제공받는 자의 이용 목적
+    	○ 1인 창조기업 비즈니스센터 사업 관련 자료 활용, 정책자료 활용
+    	
+    □ 제공할 개인(신용)정보의 항목
+    	○ 수집·이용에 동의한 정보 중 위탁업무 목적달성을 위해 필요한 정보에 한함
+    	
+    □ 제공받은 자의 개인(신용) 정보 보유.이용 기간
+    	○ 위 개인(신용)정보는 제공된 날부터 3년간 보유·이용되며 보유목적 달성 시 또는 정보주체가 개인정보 삭제를 요청할 경우 지체 없이 파기합니다.
+    	
+    □ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익
+    	○ 위 개인(신용)정보의 제공 동의를 거부할 권리가 있으며, 동의를 거부 시 본 지원사업에 신청이 불가합니다.</pre></td>
   </tr>
   <tr>
   </tr>
@@ -356,14 +391,14 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">고유식별정보</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">주민등록번호 ( □동의함 □동의하지 않음 )</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">주민등록번호 ( □동의함  □동의하지 않음 )</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">개인정보</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">필수항목 : 개인식별정보 ( □동의함 □동의하지 않음 )</td>
   </tr>
   <tr>
-    <td class="tg-baqh" colspan="6" rowspan="2">20 년 월 일동의자 성명 :              서명 또는 인</td>
+    <td class="tg-baqh" colspan="6" rowspan="2" style="font-family: MalgunGothic;">20 년 월 일 동의자 성명 :              서명 또는 인</td>
   </tr>
   <tr>
   </tr>
@@ -371,7 +406,7 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">[첨부3] 대표자 이력서</td>
   </tr>
   <tr>
-    <td class="tg-baqh" colspan="6">이 력 서</td>
+    <td class="tg-baqh" colspan="6" style="font-family: MalgunGothic;">이 력 서</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">□ 개인 신상</td>
@@ -379,24 +414,24 @@ $(function(){
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2">성명</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">한글</td>
-    <td class="tg-lqy6">(인)</td>
+    <td class="tg-lqy6">ITEM3(인)</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">생년월일</td>
-    <td class="tg-baqh">.     .   . (만 세)</td>
+    <td class="tg-baqh">ITEM40(만 세)</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="4">사 진6개월 이내에 촬영한탈모 상반신 사진</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">한자</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM41</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">주민번호</td>
-    <td class="tg-baqh">-</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">ITEM4</td>
   </tr>
   <tr>
-    <td class="tg-baqh">주 소</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4"></td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">주 소</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">ITEM8</td>
   </tr>
   <tr>
-    <td class="tg-baqh">현 소 속</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">기관 및 부서 :                         직위 :</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">현 소 속</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">기관 및 부서 : ITEM42 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 직위 :ITEM43</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2">연락처</td>
@@ -405,9 +440,9 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">E-mail</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-baqh">@</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM5</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM6</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">ITEM7</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">□ 학력.경력</td>
@@ -423,26 +458,26 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">비고</td>
   </tr>
   <tr>
-    <td class="tg-baqh">,</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">고등학교(졸업,졸업예정)</td>
-    <td class="tg-baqh">-</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">-</td>
   </tr>
   <tr>
-    <td class="tg-baqh">,</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">전문대학(졸업,졸업예정)</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2"></td>
   </tr>
   <tr>
-    <td class="tg-baqh">,</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">대학교 대학(입학, 편입)</td>
   </tr>
   <tr>
-    <td class="tg-baqh">,</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">대학교 대학(졸업,졸업예정)</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2"></td>
   </tr>
   <tr>
-    <td class="tg-baqh">,</td>
+    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">대학교 대학원(입학)</td>
   </tr>
   <tr>
@@ -491,9 +526,9 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">시행기관</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM44</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM45</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM46</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
@@ -515,10 +550,10 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">수상경위</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM47</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM48</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM49</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM50</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>

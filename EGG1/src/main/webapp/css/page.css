@@ -1,10 +1,20 @@
 body{
 	margin: 0;
 	padding: 0;
+	
+}
+li > a {
+	font-size: 30px;
 }
 #repassword{
 	position: fixed;
 }
 .no-close .ui-dialog-titlebar-close {
   display: none;
+}
+iframe {
+	border: none;
+}
+header, footer{
+	height: 50px;
 }

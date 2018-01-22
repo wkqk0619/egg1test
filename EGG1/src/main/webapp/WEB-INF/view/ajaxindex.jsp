@@ -62,9 +62,12 @@ $( function() {
 </style>
 </head>
 <body>
-<button id="guard">가이드</button>
+<header>
+<span>로고가 보이는 상단</span>
+</header>
 <!-- 전체를 감싼 div -->
 <div id="tabs">
+<button id="guard">가이드</button>
 
 	<!-- 
 	페이지 테마 담당
@@ -107,7 +110,7 @@ $( function() {
 					<br/>
 					<input type="text" id="loginemail" name="email" placeholder="이메일"/>
 					<br/>
-					<input type="text" id="loginpwd" name="pwd" placeholder="비밀번호"/>
+					<input type="password" id="loginpwd" name="pwd" placeholder="비밀번호"/>
 					<button onclick="getlogin()">로그인</button>
 					<button onclick="repassword()">비밀번호 찾기</button>
 				</div>
@@ -174,6 +177,8 @@ $( function() {
 </div><!-- tabs 끝 -->
 	
 
-<footer></footer>
+<footer>
+	<span>회사 위치 뭐 그런게 적히는 하단부</span>
+</footer>
 </body>
 </html>

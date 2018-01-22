@@ -11,6 +11,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>공지사항</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript">
 
 function ajaxNotionDetail(val){
@@ -80,7 +82,7 @@ function hideUpNot(){
 		</c:when>
 		<c:otherwise>
 			<h3>작성된 공지사항들 입니다.</h3>
-			<table border="1">
+			<table class="table table-bordered">
 				<tr>
 					<td>번호</td>
 					<td>제목</td>
@@ -119,11 +121,25 @@ function hideUpNot(){
 </c:choose>
 
 <div id="detailNot" hidden="hidden">
-		<input type="text" class="notseq" name="nseq" readonly="readonly"/>
-		<input class="upinf nottitle" type="text" name="title" readonly="readonly"/>
-<!-- 		<input type="text" class="notid" name="id" readonly="readonly"/> -->
-		<textarea class="upinf notcontent" rows="10" cols="20" readonly="readonly"></textarea>
-		<input type="text" class="notregdate" name="regdate" readonly="readonly"/>
+<!-- 		<input type="text" class="notseq" name="nseq" readonly="readonly"/> -->
+<!-- 		<input class="upinf nottitle" type="text" name="title" readonly="readonly"/> -->
+<!-- xxxx		<input type="text" class="notid" name="id" readonly="readonly"/> -->
+<!-- 		<textarea class="upinf notcontent" rows="10" cols="20" readonly="readonly"></textarea> -->
+<!-- 		<input type="text" class="notregdate" name="regdate" readonly="readonly"/> -->
+		<table  class="table table-bordered">
+			<tr>
+				<th>번호</th><td><input type="text" class="notseq" name="nseq" readonly="readonly"/></td>
+			</tr>
+			<tr>
+				<th>제목</th><td><input class="upinf nottitle" type="text" name="title" readonly="readonly"/></td>
+			</tr>
+			<tr>
+				<th>내용</th><td><textarea class="upinf notcontent" rows="10" cols="20" readonly="readonly"></textarea></td>
+			</tr>
+			<tr>
+				<th>작성일</th><td><input type="text" class="notregdate" name="regdate" readonly="readonly"/></td>
+			</tr>
+		</table>
 		<c:choose>
 			<c:when test="${ldto.role ne 'U'.charAt(0)}">
 				<button onclick="upNotForm()">수정할까??</button>

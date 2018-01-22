@@ -74,7 +74,7 @@
 			<th>분야</th>
 			<th>지역</th>
 			<th>분류</th>
-			<th>URL</th>
+<!-- 			<th>URL</th> -->
 			<th>등록일</th>
 			<th>접수시작일</th>
 			<th>접수종료일</th>
@@ -92,7 +92,7 @@
 				<td>${dto.type}</td>
 				<td>${dto.area}</td>
 				<td>${dto.biztitle}</td>
-				<td>${dto.url}</td>
+<%-- 				<td>${dto.url}</td> --%>
 				<td>${dto.regdate}</td>
 				<td>${dto.startdate}</td>
 				<td>${dto.enddate}</td>
