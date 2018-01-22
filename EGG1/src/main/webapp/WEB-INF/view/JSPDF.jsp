@@ -102,30 +102,30 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM13</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM14</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM15</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM16</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM17</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM18</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM19</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM20</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="7">기업현황</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">기업명</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM21</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">주 생상품</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM22</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">법인등록번호</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM23</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">사업자 등록번호</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM24</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">창업일</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">년                        월                          일</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">ITEM25</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">전년도 매출액</td>
@@ -135,9 +135,9 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">전화번호</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM26</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">팩스</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM27</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">종업원수</td>
@@ -145,7 +145,7 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">소재지</td>
-    <td class="tg-lqy6" colspan="4">(우)[ - ]</td>
+    <td class="tg-lqy6" colspan="4">(우)[ ITEM28 ]</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="4">준비사항</td>
@@ -162,10 +162,10 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">시행기관</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM29</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM30</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM31</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM32</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">특기사항</td>
@@ -174,7 +174,7 @@ $(function(){
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2">이전 비스니스 센터</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">센터명</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">ITEM33</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">입주기간</td>
@@ -185,7 +185,19 @@ $(function(){
     <td class="tg-baqh" colspan="4">년 월 일 ∼ 년 월 일 (총 개월)</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">* 비즈니스센터에 입주한 1인 창조기업은 타 비즈니스센터에 신청하여 입주할 수 있으나,전체 비즈니스센터에 입주한 기간이 연장기간을 포함하여 최대 24개월을 초과할 수 없다.『1인 창조기업 비즈니스센터』에 입주하고자 본 신청서를 제출하며 작성한 신청서 내용에허위 사실이 있을 경우 선정 취소 및 손해배상 등의 불이익 처분에 동의합니다.20 년 월 일(대표) 신청인 : (인)첨부 : 1. 사업계획서 1부.        : 2. 개인정보 수집 동의서 1부.        : 3. 대표자이력서 1부.</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">
+    	<pre>* 비즈니스센터에 입주한 1인 창조기업은 타 비즈니스센터에 신청하여 입주할 수 있으나,
+    	         전체 비즈니스센터에 입주한 기간이 연장기간을 포함하여 최대 24개월을 초과할 수 없다.
+    	         
+    	         『1인 창조기업 비즈니스센터』에 입주하고자 본 신청서를 제출하며 작성한 신청서 내용에
+    	         허위 사실이 있을 경우 선정 취소 및 손해배상 등의 불이익 처분에 동의합니다.
+    	         
+    	         20 년 월 일
+    	         (대표) 신청인 : (인)
+    	         
+    	         첨부 : 1. 사업계획서 1부.
+    	           : 2. 개인정보 수집 동의서 1부.        
+    	           : 3. 대표자이력서 1부.</pre></td>
   </tr>
   <tr>
   </tr>
@@ -196,14 +208,16 @@ $(function(){
   <tr>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">[첨부1] 사업계획서1. 창업 동기 및 추진사항</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">
+    <pre>[첨부1] 사업계획서1. 
+    	창업 동기 및 추진사항</pre></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">창업 동기</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">◈ 창업동기 및 창업목표를 기술</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM34</td>
   </tr>
   <tr>
   </tr>
@@ -218,7 +232,7 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">◈ 입주 중 사업추진 내용</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM35</td>
   </tr>
   <tr>
   </tr>
@@ -233,7 +247,7 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">◈ 졸업 후 향후 계획</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM36</td>
   </tr>
   <tr>
   </tr>
@@ -248,10 +262,12 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">제품의 개요</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">◈ 기술개발의 필요성, 창업과제의 용도, 사양, 주기능, 성능 등 제품에 대한 설명</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">
+    <pre>◈ 기술개발의 필요성, 창업과제의 용도, 사양, 
+    	주기능, 성능 등 제품에 대한 설명</pre></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM37</td>
   </tr>
   <tr>
   </tr>
@@ -263,14 +279,18 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">추진현황 (해당 사항의□난에 √ 표시)</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">□ 기술개발 구상중   □ 기술개발중   □ 기술도입□ 산업재산권(특허, 실용신안) 보유 또는 출원중</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">
+    <pre>□ 기술개발 구상중   □ 기술개발중   □ 기술도입
+    	 □ 산업재산권(특허, 실용신안) 보유 또는 출원중</pre></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">국내외 시장규모·전망</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">◈ 현재 및 향후 3년간의 시장규모, 시장전망, 국내외 시장동향, 시장진입 조건 등 시장구조 및 특성, 주요 수요처 등</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">
+    <pre>◈ 현재 및 향후 3년간의 시장규모, 시장전망, 국내외 시장동향, 
+    	    시장진입 조건 등 시장구조 및 특성, 주요 수요처 등</pre></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM38</td>
   </tr>
   <tr>
   </tr>
@@ -282,10 +302,12 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">파급효과</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">◈ 사업화 성공에 따른 고용인원 창출 등 고용창출을 많이 필요로하는 과제 우대</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">
+    <pre>◈ 사업화 성공에 따른 고용인원 창출 등 
+    	    고용창출을 많이 필요로하는 과제 우대</pre></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM39</td>
   </tr>
   <tr>
   </tr>
@@ -302,7 +324,10 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">개인(신용)정보 수집‧이용‧제공 동의서</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="4">전라남도 1인 창조기업 비즈니스센터는 「1인 창조기업 비즈니스센터」 사업과 관련하여 「개인정보보호법」제15조제1항제1호, 제17조제1항제1호, 제23조제1호, 제24조제1항제1호 및「신용정보의 이용 및 보호에 관한 법률」제32조제1항, 제33조, 제34조에 따라 아래와 같이 개인(신용)정보의 수집·이용 및 제3자 제공에 관하여 귀하의 동의를 얻고자합니다.</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="4">
+    <pre>전라남도 1인 창조기업 비즈니스센터는 「1인 창조기업 비즈니스센터」 사업과 관련하여 「개인정보보호법」
+    제15조제1항제1호, 제17조제1항제1호, 제23조제1호, 제24조제1항제1호 및「신용정보의 이용 및 보호에 관한 법률」
+    제32조제1항, 제33조, 제34조에 따라 아래와 같이 개인(신용)정보의 수집·이용 및 제3자 제공에 관하여 귀하의 동의를 얻고자합니다.</pre></td>
   </tr>
   <tr>
   </tr>
@@ -311,7 +336,8 @@ $(function(){
   <tr>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="7">1. 수집.이용에 관한 사항□ 수집·이용 목적○ 1인 창조기업 비즈니스센터 사업과 관련한 선정평가 및 사업 운영·관리를 목적으로 합니다.□ 수집·이용할 항목○ 필수항목- 개인식별정보(성명, 주민등록번호, 연락처, 주소, E-mail)□ 보유.이용기간○ 위 개인(신용)정보는 수집.이용에 관한 동의일로부터 보유목적 달성 시 또는 정보주체가 개인정보 삭제를요청할 경우 지체 없이 파기합니다.○ 단, 협약 종료일 후에는 향후 정부지원사업 신청 시의 이력관리만을 위하여 보유.이용되며 기간은 3년입니다. (공공기록물 관리에 관한 법률 시행령)□ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익○ 위 개인(신용)정보 중 필수항목의 수집.이용에 관한 동의는 본사업의 수행을 위해 필수적이므로 이에 동의하셔야 이후 절차를 진행할 수 있습니다. 단, 동의하지 않으시는 경우 본 지원사업에 신청이 불가합니다.2. 제3자 제공에 관한 사항□ 제공받는 자○ 창업진흥원 : 1인 창조기업 비즈니스센터 사업 운영기관 및 전담기관□ 제공받는 자의 이용 목적○ 1인 창조기업 비즈니스센터 사업 관련 자료 활용, 정책자료 활용□ 제공할 개인(신용)정보의 항목○ 수집·이용에 동의한 정보 중 위탁업무 목적달성을 위해 필요한 정보에 한함□ 제공받은 자의 개인(신용) 정보 보유.이용 기간○ 위 개인(신용)정보는 제공된 날부터 3년간 보유·이용되며 보유목적 달성 시 또는 정보주체가 개인정보 삭제를 요청할 경우 지체 없이 파기합니다.□ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익○ 위 개인(신용)정보의 제공 동의를 거부할 권리가 있으며, 동의를 거부 시 본 지원사업에 신청이 불가합니다.</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="7">
+    <pre>1. 수집.이용에 관한 사항□ 수집·이용 목적○ 1인 창조기업 비즈니스센터 사업과 관련한 선정평가 및 사업 운영·관리를 목적으로 합니다.□ 수집·이용할 항목○ 필수항목- 개인식별정보(성명, 주민등록번호, 연락처, 주소, E-mail)□ 보유.이용기간○ 위 개인(신용)정보는 수집.이용에 관한 동의일로부터 보유목적 달성 시 또는 정보주체가 개인정보 삭제를요청할 경우 지체 없이 파기합니다.○ 단, 협약 종료일 후에는 향후 정부지원사업 신청 시의 이력관리만을 위하여 보유.이용되며 기간은 3년입니다. (공공기록물 관리에 관한 법률 시행령)□ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익○ 위 개인(신용)정보 중 필수항목의 수집.이용에 관한 동의는 본사업의 수행을 위해 필수적이므로 이에 동의하셔야 이후 절차를 진행할 수 있습니다. 단, 동의하지 않으시는 경우 본 지원사업에 신청이 불가합니다.2. 제3자 제공에 관한 사항□ 제공받는 자○ 창업진흥원 : 1인 창조기업 비즈니스센터 사업 운영기관 및 전담기관□ 제공받는 자의 이용 목적○ 1인 창조기업 비즈니스센터 사업 관련 자료 활용, 정책자료 활용□ 제공할 개인(신용)정보의 항목○ 수집·이용에 동의한 정보 중 위탁업무 목적달성을 위해 필요한 정보에 한함□ 제공받은 자의 개인(신용) 정보 보유.이용 기간○ 위 개인(신용)정보는 제공된 날부터 3년간 보유·이용되며 보유목적 달성 시 또는 정보주체가 개인정보 삭제를 요청할 경우 지체 없이 파기합니다.□ 동의를 거부할 권리 및 동의를 거부할 경우의 불이익○ 위 개인(신용)정보의 제공 동의를 거부할 권리가 있으며, 동의를 거부 시 본 지원사업에 신청이 불가합니다.</pre></td>
   </tr>
   <tr>
   </tr>
