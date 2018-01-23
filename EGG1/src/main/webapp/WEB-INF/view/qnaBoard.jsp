@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript">
 
 	function insertQnaForm() 
@@ -94,7 +96,7 @@
 </script>
 </head>
 <body>
-	<table border="1">
+	<table class="table table-striped table-bordered table-responsive">
 		<tr>
 			<th>제목</th>
 			<c:choose>
@@ -157,19 +159,33 @@
 	<div id="insertQnaForm" hidden="hidden">
 		<form action="./insertQna.do" method="post">
 			<input type="hidden" name="id" value="${ldto.id}">
-			<input type="text" name="title">
-			<textarea rows="10" cols="20" name="content"></textarea>
-			<input type="submit" value="작성">
-			<input type="button" value="취소" onclick="insertCancel()">
+<!-- 			<input type="text" name="title"> -->
+<!-- 			<textarea rows="10" cols="20" name="content"></textarea> -->
+<!-- 			<input type="submit" value="작성"> -->
+<!-- 			<input type="button" value="취소" onclick="insertCancel()"> -->
+			<table class="table table-bordered table-responsive">
+				<tr>
+					<th>제목</th><td><input type="text" name="title"></td>
+				</tr>
+				<tr>
+					<th>내용</th><td><textarea rows="10" cols="20" name="content"></textarea></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="submit" value="작성">
+						<input type="button" value="취소" onclick="insertCancel()">
+					</td>
+				</tr>
+			</table>
 		</form>
 	</div>
 	
 	<div id="qnaDetail" hidden="hidden">
 		<input type="hidden" class="aseq" id="aseq" name="aseq">
-		<input class="qnaid" type="text" name="id" id="id" readonly="readonly"/>
-		<input class="qnatitle" type="text" name="title" readonly="readonly"/>
-		<textarea class="qnacontent" name="content" rows="10" cols="20" readonly="readonly"></textarea>
-		<input type="text" class=qnaregdate name="regdate" readonly="readonly"/>
+<!-- 		<input class="qnaid" type="text" name="id" id="id" readonly="readonly"/> -->
+<!-- 		<input class="qnatitle" type="text" name="title" readonly="readonly"/> -->
+<!-- 		<textarea class="qnacontent" name="content" rows="10" cols="20" readonly="readonly"></textarea> -->
+<!-- 		<input type="text" class=qnaregdate name="regdate" readonly="readonly"/> -->
 		<%-- 
 		<c:choose>
 			<c:when test="${ldto.role ne 'U'.charAt(0)}">
@@ -177,9 +193,30 @@
 			</c:when>
 		</c:choose>
 		 --%>
-		<button class="my" onclick="updateQna()">수정</button>
-		<button class="my" onclick="deleteQna()">삭제</button>
-		<button class="other" onclick="insertReplyQna()">답글</button>
+		 <table class="table table-striped table-bordered table-responsive">
+		 	<tr>
+		 		<th>작성자</th><td><input class="qnaid" type="text" name="id" id="id" readonly="readonly"/></td>
+		 	</tr>
+		 	<tr>
+		 		<th>제목</th><td><input class="qnatitle" type="text" name="title" readonly="readonly"/></td>
+		 	</tr>
+		 	<tr>
+		 		<th>내용</th><td><textarea class="qnacontent" name="content" rows="10" cols="20" readonly="readonly"></textarea></td>
+		 	</tr>
+		 	<tr>
+		 		<th>작성일</th><td><input type="text" class=qnaregdate name="regdate" readonly="readonly"/></td>
+		 	</tr>
+		 	<tr>
+		 		<td colspan="2">
+		 			<button class="my" onclick="updateQna()">수정</button>
+					<button class="my" onclick="deleteQna()">삭제</button>
+					<button class="other" onclick="insertReplyQna()">답글</button>
+				</td>
+		 	</tr>
+		 </table>
+<!-- 		<button class="my" onclick="updateQna()">수정</button> -->
+<!-- 		<button class="my" onclick="deleteQna()">삭제</button> -->
+<!-- 		<button class="other" onclick="insertReplyQna()">답글</button> -->
 	</div>
 	
 	<div id="insertReplyQna" hidden="hidden">

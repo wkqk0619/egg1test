@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript">
 	function searchSupport() 
 	{
@@ -67,7 +69,7 @@
 </head>
 <body>
 	<h1>마이지원목록</h1>
-	<table border="1">
+	<table class="table table-striped table-bordered table-responsive">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -75,7 +77,7 @@
 			<th>지역</th>
 			<th>분류</th>
 <!-- 			<th>URL</th> -->
-			<th>등록일</th>
+<!-- 			<th>등록일</th> -->
 			<th>접수시작일</th>
 			<th>접수종료일</th>
 			<th>소속</th>
@@ -93,7 +95,7 @@
 				<td>${dto.area}</td>
 				<td>${dto.biztitle}</td>
 <%-- 				<td>${dto.url}</td> --%>
-				<td>${dto.regdate}</td>
+<%-- 				<td>${dto.regdate}</td> --%>
 				<td>${dto.startdate}</td>
 				<td>${dto.enddate}</td>
 				<td>${dto.sgroup}</td>
@@ -122,7 +124,7 @@
 	<button onclick="searchSupport()">지원사업탐색</button>
 	<div id="searchSupport" hidden="hidden">
 		<form action="./searchSupport.do" method="post">
-			<select name="type">
+			<select name="type"  class="form-control">
 				<option value="창업교육">창업</option>
 				<option value="정책자금">자금</option>
 				<option value="판로·해외진출">판로</option>
@@ -134,7 +136,7 @@
 				 -->
 				<option value="기타">기타</option>
 			</select>
-			<select name="target">
+			<select name="target"  class="form-control">
 				<option value="일반기업">일반기업</option>
 				<option value="중소기업">중소기업</option>
 				<option value="소상공인">소상공인</option>
@@ -143,7 +145,7 @@
 				<option value="예비창업자">예비창업자</option>
 				<option value="기타">기타</option>
 			</select>
-			<select name="area">
+			<select name="area"  class="form-control">
 				<option value="서울특별시">서울특별시</option>
 				<option value="인천광역시">인천광역시</option>
 				<option value="경기도">경기도</option>

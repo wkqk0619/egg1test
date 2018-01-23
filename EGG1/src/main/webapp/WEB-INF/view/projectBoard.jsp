@@ -8,6 +8,8 @@
 <title>프로젝트 테스트</title>
 </head>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript">
 	function ShowNewProj(){
 		$("#NewProj").toggle();
@@ -84,23 +86,67 @@
 <div id="NewProj" hidden="hidden">
 	<form action="./insertProject.do" method="post">
 		<input type="hidden" name="id" value="${ldto.id}"/><br/>
-		프로젝트 이름 : <input type="text" name="name"/><br/>
-		분류 : <input type="text" name="typeclass"/><br/>
-		프로젝트 설명 : <input type="text" name="info"/><br/>
-		<input type="submit" value="추가"/><br/>
+<!-- 		프로젝트 이름 : <input type="text" name="name"/><br/> -->
+<!-- 		분류 : <input type="text" name="typeclass"/><br/> -->
+<!-- 		프로젝트 설명 : <input type="text" name="info"/><br/> -->
+<!-- 		<input type="submit" value="추가"/><br/> -->
+		<table class="table table-bordered table-responsive">
+			<tbody>
+				<tr>
+					<th>프로젝트 이름</th><td><input type="text" name="name"/></td>
+				</tr>
+				<tr>
+					<th>분류</th><td><input type="text" name="typeclass"/></td>
+				</tr>
+				<tr>
+					<th>프로젝트 설명</th><td><input type="text" name="info"/></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2"><input type="submit" value="추가"/></td>
+				</tr>
+			</tfoot>
+		</table>
 	</form>
 </div>
 <div id="detailProj" hidden="hidden">
 	<form action="./updateProject.do" method="post">
-	번호 : <input type="text" class="prpseq" name="pseq" readonly="readonly"/>
+<!-- 	번호 : <input type="text" class="prpseq" name="pseq" readonly="readonly"/> -->
 <!-- 	계정 : <input type="text" class="prid" name="id" readonly="readonly"/><br/> -->
-	프로젝트 이름 : <input type="text" class="prname" name="name"/><br/>
-	분류 : <input type="text" class="prtypeclass" name="typeclass"/><br/>
-	프로젝트 설명 : <input type="text" class="prinfo" name="info"/><br/>
+<!-- 	프로젝트 이름 : <input type="text" class="prname" name="name"/><br/> -->
+<!-- 	분류 : <input type="text" class="prtypeclass" name="typeclass"/><br/> -->
+<!-- 	프로젝트 설명 : <input type="text" class="prinfo" name="info"/><br/> -->
 <!-- 	삭제여부 : <input type="text" class="prdelflag" name="delflag" readonly="readonly"/> -->
-	<input type="submit" value="수정하기"/>
+<!-- 	<input type="submit" value="수정하기"/> -->
+<!-- 	<input type="button" value="삭제" onclick="delProj()"/> -->
+	<table class="table table-bordered table-responsive">
+		<tbody>
+		
+		<tr>
+			<th>번호</th><td><input type="text" class="prpseq" name="pseq" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<th>프로젝트 이름</th><td><input type="text" class="prname" name="name"/></td>
+		</tr>
+		<tr>
+			<th>분류</th><td><input type="text" class="prtypeclass" name="typeclass"/></td>
+		</tr>
+		<tr>
+			<th>프로젝트 설명</th><td><input type="text" class="prinfo" name="info"/></td>
+		</tr>
+		</tbody>
+		<tfoot>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="수정하기"/>
+				<input type="button" value="삭제" onclick="delProj()"/>
+			</td>
+		</tr>
+		</tfoot>
+	</table>
 	</form>
-	<button onclick="delProj()">삭제</button>
+
 </div>
 <c:choose>
 		<c:when test="${ldto.role ne 'U'.charAt(0)}">
