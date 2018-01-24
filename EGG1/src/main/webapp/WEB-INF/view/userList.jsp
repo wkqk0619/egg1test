@@ -8,6 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript">
 
 function ajaxUserDetail(val){
@@ -70,15 +72,18 @@ function hideUserUpdate(){
 			<h1>회원이.. 없을리가 없잖아? 아 물론 어드민이 아닌 회원은 없을수도 있지만.. 하지만 테스트계정은 있지않을까?</h1>
 		</c:when>
 		<c:otherwise>
-			<table border="1">
-				<tr>
-					<th>아이디</th>
-					<th>패스워드</th>
-					<th>가입날짜</th>
-					<th>등급</th>
-					<th>활성여부</th>
-					<th>닉네임</th>
-				</tr>
+			<table class="table table-striped table-bordered table-responsive">
+				<thead>
+					<tr>
+						<th>아이디</th>
+						<th>패스워드</th>
+						<th>가입날짜</th>
+						<th>등급</th>
+						<th>활성여부</th>
+						<th>닉네임</th>
+					</tr>
+				</thead>
+				<tbody>
 				<c:forEach items="${list}" var="dto">
 					<tr onclick="ajaxUserDetail('${dto.id}')">
 						<td>${dto.id}</td>
@@ -89,6 +94,7 @@ function hideUserUpdate(){
 						<td>${dto.nickname}</td>
 					</tr>
 				</c:forEach>
+				</tbody>
 			</table>
 		</c:otherwise>
 	</c:choose>

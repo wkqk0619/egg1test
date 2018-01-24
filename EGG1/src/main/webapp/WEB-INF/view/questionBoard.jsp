@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript">
 	function togShow(){
 		$("#insertQuestionForm").toggle();
@@ -42,12 +44,17 @@
 	<c:when test="${ empty lists }">없다
 	</c:when>
 	<c:otherwise>
+		<table class="table table-striped table-bordered table-responsive">
 		<c:forEach items="${lists }" var="dto">
-			<div>
-				<span class="delseq">${dto.qseq}</span>
-				<span class="delQu">${dto.question}</span>
-			</div>
+<!-- 			<div> -->
+<%-- 				<span class="delseq">${dto.qseq}</span> --%>
+<%-- 				<span class="delQu">${dto.question}</span> --%>
+<!-- 			</div> -->
+			<tr>
+				<th><span class="delseq">${dto.qseq}</span></th><td><td><span class="delQu">${dto.question}</span></td>
+			</tr>
 		</c:forEach>
+		</table>
 	</c:otherwise>
 </c:choose>
 <c:choose>

@@ -223,10 +223,24 @@
 		<form action="./insertReplyQna.do" method="post">
 			<input type="hidden" class="aseq" name="aseq">
 			<input type="hidden" name="id" value="${ldto.id}">
-			<input type="text" name="title"/>
-			<textarea name="content" rows="10" cols="20"></textarea>
-			<input type="submit" value="답글작성">
-			<input type="button" value="취소" onclick="replyCancel()">
+<!-- 			<input type="text" name="title"/> -->
+<!-- 			<textarea name="content" rows="10" cols="20"></textarea> -->
+<!-- 			<input type="submit" value="답글작성"> -->
+<!-- 			<input type="button" value="취소" onclick="replyCancel()"> -->
+			<table class="table table-bordered table-responsive">
+				<tr>
+					<th>제목</th><td><input type="text" name="title"/></td>
+				</tr>
+				<tr>
+					<th>내용</th><td><textarea name="content" rows="10" cols="20"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="답글작성">
+						<input type="button" value="취소" onclick="replyCancel()">
+					</td>
+				</tr>
+			</table>
 		</form>
 	</div>
 	
