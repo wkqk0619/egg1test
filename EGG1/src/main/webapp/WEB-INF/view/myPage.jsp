@@ -8,6 +8,9 @@
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/introjs.css">
+<link rel="stylesheet" href="css/introjs-rtl.css">
+<script type="text/javascript" src="js/intro.js"></script>
 <script type="text/javascript">
 	function upNickName() 
 	{
@@ -29,6 +32,7 @@
 		$("#upPassword").hide();
 	}
 	
+<<<<<<< HEAD
 	function sec() 
 	{
 		$("#secession").show();
@@ -43,6 +47,23 @@
 	{
 		window.parent.location.href="./secession.do";
 	}
+=======
+	$( function() {
+    	var introi=introJs("#myPageIntro");
+    	$("#guard").click(function() {
+    		//가이드 시작버튼 비활성화
+    		$("#guard").prop("disabled",true);
+    		introi.start();
+		});
+    	
+    	//가이드가 종료됬을 시
+    	introi.onexit(function() {
+    	  //alert("exit of introduction");
+    	  //가이드 시작버튼 활성화
+    		$("#guard").prop("disabled",false);
+    	});
+  });
+>>>>>>> 956dd67ce73240af31c98a5c6e889e90f2befa10
 </script>
 </head>
 <body>
@@ -67,9 +88,11 @@
 <!-- 	</div> -->
 <!-- 	<button onclick="location.href='./LoginMain.do'">메인으로</button> -->
 <%-- 	아이콘 : ${ldto.icon} --%>
-	<table  class="table table-striped table-bordered table-responsive">
+<button id="guard">가이드</button>
+<div id="myPageIntro">
+	<table  class="table table-striped table-bordered table-responsive" data-step="1" data-intro="마이페이지 정보">
 		<tr>
-			<th>아이디 : ${ldto.id} </th><td><button onclick="upPassword()">비밀번호 변경</button></td>
+			<th data-step="2" data-intro="계정">아이디 : ${ldto.id} </th><td data-step="3" data-intro="비밀번호 번경"><button onclick="upPassword()">비밀번호 변경</button></td>
 		</tr>
 		<tr id="upPassword" hidden="hidden">
 			<th>바꿀 패스워드 </th>
@@ -83,10 +106,10 @@
 				</div>
 			</td>
 		</tr>
-		<tr>
+		<tr data-step="4" data-intro="가입일자">
 			<th>가입일자</th><td>${ldto.regdate}</td>
 		</tr>
-		<tr>
+		<tr data-step="5" data-intro="닉네임">
 			<th>닉네임</th><td>${ldto.nickname} <button onclick="upNickName()">닉네임변경</button></td>
 		</tr>
 		<tr hidden="hidden" id="upNickName">
@@ -109,5 +132,6 @@
 			<td><button onclick="hideSec()">취소</button></td>
 		</tr>
 	</table>
+	</div>
 </body>
 </html>

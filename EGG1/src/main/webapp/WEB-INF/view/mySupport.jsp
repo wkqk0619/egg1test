@@ -9,7 +9,27 @@
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/introjs.css">
+<link rel="stylesheet" href="css/introjs-rtl.css">
+<script type="text/javascript" src="js/intro.js"></script>
 <script type="text/javascript">
+$( function() {
+	
+	var introi=introJs("#mySupportIntro");
+	$("#guard").click(function() {
+		//가이드 시작버튼 비활성화
+		$("#guard").prop("disabled",true);
+		introi.start();
+	});
+	
+	//가이드가 종료됬을 시
+	introi.onexit(function() {
+	  //alert("exit of introduction");
+	  //가이드 시작버튼 활성화
+		$("#guard").prop("disabled",false);
+	});
+});
+
 	function searchSupport() 
 	{
 		$("#searchSupport").show();
@@ -69,7 +89,9 @@
 </head>
 <body>
 	<h1>마이지원목록</h1>
-	<table class="table table-striped table-bordered table-responsive">
+	<button id="guard">가이드</button>
+	<div id="mySupportIntro">
+	<table class="table table-striped table-bordered table-responsive" data-step="1" data-intro="관심 지원사업">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -84,7 +106,7 @@
 			<th>대상</th>
 			<th>대상연령</th>
 			<th>대상업력</th>
-			<th>삭제</th>
+			<th data-step="2" data-intro="관심지원사업 삭제">삭제</th>
 		</tr>
 		
 		<c:forEach items="${list}" var="dto">
@@ -121,8 +143,8 @@
 		</div>
 		 --%>
 	</div>
-	<button onclick="searchSupport()">지원사업탐색</button>
-	<div id="searchSupport" hidden="hidden">
+	<button onclick="searchSupport()" data-step="3" data-intro="지원사업 탐색기">지원사업탐색</button>
+	<div id="searchSupport" hidden="hidden" data-step="4" data-intro="지원사업 탐색기">
 		<form action="./searchSupport.do" method="post">
 			<select name="type"  class="form-control">
 				<option value="창업교육">창업</option>
@@ -158,7 +180,8 @@
 			<input type="submit" value="검색">
 		</form>
 		<button onclick="searchCancel()">취소</button>
-	</div>
+	</div><!-- searchSupport 끝 -->
 <!-- 	<button onclick="location.href='./LoginMain.do'">메인으로</button> -->
+</div> <!-- mySupportIntro div 끝 -->
 </body>
 </html>

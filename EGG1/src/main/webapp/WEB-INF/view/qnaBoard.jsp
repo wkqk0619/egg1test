@@ -9,6 +9,9 @@
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/introjs.css">
+<link rel="stylesheet" href="css/introjs-rtl.css">
+<script type="text/javascript" src="js/intro.js"></script>
 <script type="text/javascript">
 
 	function insertQnaForm() 
@@ -93,10 +96,31 @@
 		$("#insertReplyQna").hide();
 	}
 	
+	$( function() {
+    	var introi=introJs("#qnaIntro");
+    	$("#guard").click(function() {
+    		//가이드 시작버튼 비활성화
+    		$("#guard").prop("disabled",true);
+    		introi.start();
+		});
+    	
+    	//가이드가 종료됬을 시
+    	introi.onexit(function() {
+    	  //alert("exit of introduction");
+    	  //가이드 시작버튼 활성화
+    		$("#guard").prop("disabled",false);
+    	});
+  });
 </script>
 </head>
 <body>
-	<table class="table table-striped table-bordered table-responsive">
+	<c:choose>
+		<c:when test="${ldto.role eq 'U'.charAt(0)}">
+			<button id="guard">가이드</button>
+		</c:when>
+	</c:choose>
+	<div id="qnaIntro">
+	<table class="table table-striped table-bordered table-responsive" data-step="1" data-intro="작성한 문의글 및 답변">
 		<tr>
 			<th>제목</th>
 			<c:choose>
@@ -253,5 +277,6 @@
 			<input type="button" value="취소" onclick="updateCancel()">
 		</form>
 	</div>
+	</div><!-- qnaIntro 끝 -->
 </body>
 </html>

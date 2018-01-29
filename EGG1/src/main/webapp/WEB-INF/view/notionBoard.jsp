@@ -13,6 +13,9 @@
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/introjs.css">
+<link rel="stylesheet" href="css/introjs-rtl.css">
+<script type="text/javascript" src="js/intro.js"></script>
 <script type="text/javascript">
 
 function ajaxNotionDetail(val){
@@ -64,6 +67,23 @@ function upNotForm(){
 function hideUpNot(){
 	$("#UpNot").hide();
 }
+
+$( function() {
+	
+	var introi=introJs("#notionIntro");
+	$("#guard").click(function() {
+		//가이드 시작버튼 비활성화
+		$("#guard").prop("disabled",true);
+		introi.start();
+	});
+	
+	//가이드가 종료됬을 시
+	introi.onexit(function() {
+	  //alert("exit of introduction");
+	  //가이드 시작버튼 활성화
+		$("#guard").prop("disabled",false);
+	});
+});
 </script>
 </head>
 <%
@@ -75,14 +95,20 @@ function hideUpNot(){
 	}
 %>
 <body>
+<div id="notionIntro">
 <div>
+	<c:choose>
+		<c:when test="${ldto.role eq 'U'.charAt(0)}">
+			<button id="guard">가이드</button>
+		</c:when>
+	</c:choose>
 	<c:choose>
 		<c:when test="${empty notList}">
 			<h1>작성된 공지사항이 없습니다.</h1>
 		</c:when>
 		<c:otherwise>
 			<h3>작성된 공지사항들 입니다.</h3>
-			<table class="table table-bordered">
+			<table class="table table-bordered" data-step="1" data-intro="작성된 공지사항입니다.">
 				<tr>
 					<td>번호</td>
 					<td>제목</td>
@@ -157,5 +183,6 @@ function hideUpNot(){
 		<input type="submit" value="수정"/>
 	</form><button onclick="hideUpNot()">취소</button>
 </div>
+</div><!-- notionIntro 끝 -->
 </body>
 </html>

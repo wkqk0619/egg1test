@@ -10,6 +10,9 @@
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/introjs.css">
+<link rel="stylesheet" href="css/introjs-rtl.css">
+<script type="text/javascript" src="js/intro.js"></script>
 <script type="text/javascript">
 	function ShowNewProj(){
 		$("#NewProj").toggle();
@@ -53,12 +56,29 @@
 		var val = $(".prpseq").val();
 		location.href="./deleteProject.do?pseq="+val;
 	}
+	
+	$(function(){
+    	var introi=introJs("#projIntro");
+    	$("#guard").click(function() {
+    		//가이드 시작버튼 비활성화
+    		$("#guard").prop("disabled",true);
+    		introi.start();
+		});
+    	
+    	//가이드가 종료됬을 시
+    	introi.onexit(function() {
+    	  //alert("exit of introduction");
+    	  //가이드 시작버튼 활성화
+    		$("#guard").prop("disabled",false);
+    	});
+	});
 </script>
 <body>
 <h1>프로젝트 테스트</h1>
 <c:choose>
 	<c:when test="${empty prlist}">
 		<h1>작성된 프로젝트가 존재하지 않습니다.</h1>
+		<button id="guard">가이드</button>
 	</c:when>
 	<c:otherwise>
 		<c:forEach items="${prlist}" var="dto">
@@ -82,7 +102,8 @@
 		</c:forEach>
 	</c:otherwise>
 </c:choose>
-<button onclick="ShowNewProj()">프로젝트 추가하자</button>
+<div id="projIntro">
+<button onclick="ShowNewProj()" data-step="1" data-intro="프로젝트 추가할 수 있는 양식 보여주기">프로젝트 추가하자</button>
 <div id="NewProj" hidden="hidden">
 	<form action="./insertProject.do" method="post">
 		<input type="hidden" name="id" value="${ldto.id}"/><br/>
@@ -90,16 +111,16 @@
 <!-- 		분류 : <input type="text" name="typeclass"/><br/> -->
 <!-- 		프로젝트 설명 : <input type="text" name="info"/><br/> -->
 <!-- 		<input type="submit" value="추가"/><br/> -->
-		<table class="table table-bordered table-responsive">
+		<table class="table table-bordered table-responsive"  data-step="2" data-intro="프로젝트 추가할 수 있는 양식">
 			<tbody>
 				<tr>
-					<th>프로젝트 이름</th><td><input type="text" name="name"/></td>
+					<th>프로젝트 이름</th><td><input type="text" name="name" placeholder="프로젝트 이름"/></td>
 				</tr>
 				<tr>
-					<th>분류</th><td><input type="text" name="typeclass"/></td>
+					<th>분류</th><td><input type="text" name="typeclass" placeholder="분류"/></td>
 				</tr>
 				<tr>
-					<th>프로젝트 설명</th><td><input type="text" name="info"/></td>
+					<th>프로젝트 설명</th><td><input type="text" name="info" placeholder="간략한 프로젝트 설명"/></td>
 				</tr>
 			</tbody>
 			<tfoot>
@@ -153,5 +174,6 @@
 			<button onclick="location.href='./LoginMain.do'">메인으로</button>
 		</c:when>
 </c:choose>
+</div>
 </body>
 </html>

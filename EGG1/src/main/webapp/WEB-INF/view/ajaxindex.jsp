@@ -67,7 +67,7 @@ $( function() {
 </header>
 <!-- 전체를 감싼 div -->
 <div id="tabs">
-<button id="guard">가이드</button>
+<!-- <button id="guard">가이드</button> -->
 
 	<!-- 
 	페이지 테마 담당
@@ -97,6 +97,7 @@ $( function() {
 	
 	
 	<div id="tabs-1" hidden="hidden" class="egtab">
+	<button id="guard">가이드</button>
 	<!-- 초기화면 -->
 		<div id="indexmain">
 			<div id="continer">
