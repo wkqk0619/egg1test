@@ -32,6 +32,20 @@
 		$("#upPassword").hide();
 	}
 	
+	function sec() 
+	{
+		$("#secession").show();
+	}
+	
+	function hideSec() 
+	{
+		$("#secession").hide();
+	}
+	
+	function secession() 
+	{
+		window.parent.location.href="./secession.do";
+	}
 	$( function() {
     	var introi=introJs("#myPageIntro");
     	$("#guard").click(function() {
@@ -106,6 +120,13 @@
 					</form>
 				</div>
 			</td>
+		</tr>
+		<tr>
+			<td><button onclick="sec()">탈퇴요청</button></td>
+		</tr>
+		<tr hidden="hidden" id="secession">
+			<td><button onclick="secession()">진짜로 탙퇴할끼가?</button></td>
+			<td><button onclick="hideSec()">취소</button></td>
 		</tr>
 	</table>
 	</div>

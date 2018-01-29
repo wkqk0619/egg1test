@@ -315,6 +315,18 @@ public class DaoImpl implements IDao {
 		sqlSession.delete(PROJECTNAMESPACE+"clearAnswer",list);
 	}
 
+	@Override
+	public void secession(AccountDto ldto) 
+	{
+		sqlSession.update(ACCOUNTNAMESPACE+"secession",ldto.getId());
+	}
+
+	@Override
+	public void recovery(String email) 
+	{
+		sqlSession.update(ACCOUNTNAMESPACE+"recovery",email);
+	}
+
 
 
 

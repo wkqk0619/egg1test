@@ -88,6 +88,19 @@ public class ServiceImpl implements IService {
 				return "F";
 			}
 		}
+		else if(command.equals("C"))
+		{
+			Random random = new Random();
+			String content = Long.toHexString(Math.abs(random.nextLong()));	// 이게 바로 난수
+			
+			String title = "계정 복구용 인증문자";
+			
+			MailSend ms = new MailSend();
+			
+			ms.mailSend(email, title, content);
+			
+			return content;
+		}
 		
 		return "";
 	}
@@ -348,6 +361,18 @@ public class ServiceImpl implements IService {
 	{
 		dao.clearAnswer(list);
 		dao.writeAnswer(list);
+	}
+
+	@Override
+	public void secession(AccountDto ldto) 
+	{
+		dao.secession(ldto);
+	}
+
+	@Override
+	public void recovery(String email) 
+	{
+		dao.recovery(email);
 	}
 
 }
