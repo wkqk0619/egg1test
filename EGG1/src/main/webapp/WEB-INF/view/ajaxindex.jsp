@@ -111,7 +111,7 @@ $( function() {
 					<br/>
 					<input type="text" class="form-control" id="loginemail" name="email" placeholder="이메일"/>
 					<br/>
-					<input type="password" class="form-control" id="loginpwd" name="pwd" placeholder="비밀번호"/>
+					<input type="password" class="form-control" id="loginpwd" name="pwd" placeholder="비밀번호" pattern="[A-Za-z0-9]{6,16}"/>
 					<button onclick="getlogin()" class="btn btn-success">로그인</button>
 					<button onclick="repassword()" class="btn btn-warning">비밀번호 찾기</button>
 				</div>

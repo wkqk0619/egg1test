@@ -78,7 +78,13 @@ $(function(){
 	{
 		var email = $("#regemail").val();
 		var pw = $("#pwd").val();
-		
+		var patten = /^[A-Za-z0-9]{6,16}$/;
+		var pattenOkFalse = patten.test(pw);
+		if(pattenOkFalse==false)
+		{
+			alert("6~16자 영문 대 소문자, 숫자를 사용하세요");
+			return false;
+		}
 		$.ajax
 		(
 			{
@@ -102,7 +108,13 @@ $(function(){
 	{
 		var email = $("#loginemail").val();
 		var pw = $("#loginpwd").val();
-		
+		var patten = /^[A-Za-z0-9]{6,16}$/;
+		var pattenOkFalse = patten.test(pw);
+		if(pattenOkFalse == false)
+		{
+			alert("아이디와 비밀번호가 일치하지 않습니다. 비밀번호는 6~16자리 영문대소문자, 숫자를 사용합니다.");
+			return false;
+		}
 		$.ajax
 		(
 			{
@@ -119,6 +131,9 @@ $(function(){
 					}
 					else
 					{
+
+						alert("아이디와 비밀번호가 일치하지 않습니다."+pattenOkFalse);
+
 						if(msg=="O")
 						{
 							alert("탈퇴 신청이 된 회원입니다 복구페이지로 이동합니다.");
@@ -129,6 +144,7 @@ $(function(){
 						{							
 							alert("아이디와 비밀번호가 일치하지 않습니다.");
 						}
+
 					}
 				}
 				
