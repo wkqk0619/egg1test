@@ -83,7 +83,7 @@
 				<div>
 					<form action="./upPassword.do" method="post">
 						<input type="hidden" name="id" value="${ldto.id}">
-						<input type="text" name="password">
+						<input type="text" name="password" pattern="^[A-Za-z0-9]{6,16}$">
 						<input type="submit" value="변경"> <input type="button" onclick="hidePass()" value="취소">
 					</form>
 				</div>

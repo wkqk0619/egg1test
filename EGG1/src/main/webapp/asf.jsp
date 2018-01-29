@@ -166,12 +166,14 @@
   					<input type="text" name="adsf" id="inp">
   				</div>
   			</div>
+  			
   			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>유영건</div>
   			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</div>
   			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</div>
   			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</div>
   			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</div>
  			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</div>
+ 			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><input value="가가가"/></div>
 	</div>
 </div>
 <form action="tes.jsp" method="post" id="as">
