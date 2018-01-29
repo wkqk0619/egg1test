@@ -45,4 +45,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE ACCOUNT SET ENABLED = 'N' WHERE ID = #{id}
 	</update>
 
+	<update id="recovery" parameterType="java.lang.String">
+		UPDATE ACCOUNT SET ENABLED = 'Y' WHERE ID = #{id}
+	</update>
+
 </mapper>

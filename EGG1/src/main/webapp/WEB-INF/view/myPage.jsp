@@ -32,7 +32,6 @@
 		$("#upPassword").hide();
 	}
 	
-<<<<<<< HEAD
 	function sec() 
 	{
 		$("#secession").show();
@@ -47,7 +46,6 @@
 	{
 		window.parent.location.href="./secession.do";
 	}
-=======
 	$( function() {
     	var introi=introJs("#myPageIntro");
     	$("#guard").click(function() {
@@ -63,7 +61,6 @@
     		$("#guard").prop("disabled",false);
     	});
   });
->>>>>>> 956dd67ce73240af31c98a5c6e889e90f2befa10
 </script>
 </head>
 <body>

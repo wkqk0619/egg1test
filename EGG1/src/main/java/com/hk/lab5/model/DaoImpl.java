@@ -321,6 +321,12 @@ public class DaoImpl implements IDao {
 		sqlSession.update(ACCOUNTNAMESPACE+"secession",ldto.getId());
 	}
 
+	@Override
+	public void recovery(String email) 
+	{
+		sqlSession.update(ACCOUNTNAMESPACE+"recovery",email);
+	}
+
 
 
 

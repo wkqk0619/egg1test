@@ -273,4 +273,18 @@ public class AccountController
 		return "recoveryAccount";
 	}
 	
+	@RequestMapping(value="/recoveryCheck.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String recoveryCheck(Model model,String email)
+	{
+		return iservice.emailSend(email,"C");
+	}
+	
+	@RequestMapping(value="/recovery.do", method=RequestMethod.GET)
+	public String recovery(String email)
+	{
+		iservice.recovery(email);
+		return "redirect:/Main.do";
+	}
+	
 }
