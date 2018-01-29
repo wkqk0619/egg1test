@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
@@ -62,5 +63,9 @@ public interface IDao {
 	public void clearAnswer(List<AnswerDto> list);
 	public void secession(AccountDto ldto);
 	public void recovery(String email);
+	public void insertLog(String id, String ip, String type);
+	public List<LogDto> logList();
+	public List<LogDto> myLog(String id);
+	public List<LogDto> searchLog(String type, String search);
 
 }

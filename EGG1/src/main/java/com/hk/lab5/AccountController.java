@@ -1,9 +1,11 @@
 package com.hk.lab5;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.model.IService;
 
 @Controller
@@ -126,7 +129,7 @@ public class AccountController
 	
 	@RequestMapping(value="/Login.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String login(String id,String pw, HttpSession session)
+	public String login(String id,String pw, HttpSession session, HttpServletRequest request)
 	{
 		Map<String, String>map = new HashMap<String,String>();
 		map.put("id", id);
@@ -136,16 +139,19 @@ public class AccountController
 		
 		if(ldto==null)
 		{
+			iservice.insertLog(id,request.getRemoteAddr(),"F");
 			return "F";
 		}
 		else
 		{
 			if(ldto.getEnabled()=='N')
 			{
+				iservice.insertLog(id,request.getRemoteAddr(),"R");
 				return "O";
 			}
 			else
 			{
+				iservice.insertLog(id,request.getRemoteAddr(),"S");
 				session.setAttribute("ldto", ldto);
 				return "S";
 			}
@@ -154,16 +160,23 @@ public class AccountController
 	}
 	
 	@RequestMapping(value="/EggLogout.do", method=RequestMethod.GET)
-	public String login(HttpSession session)
+	public String login(HttpSession session, HttpServletRequest request)
 	{
 		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
-		if(ldto.getRole()=='U')
+		
+		if(ldto==null)
 		{
+			return "redirect:/Main.do";
+		}
+		else if(ldto.getRole()=='U')
+		{
+			iservice.insertLog(ldto.getId(),request.getRemoteAddr(),"O");
 			session.invalidate();
 			return "redirect:/Main.do";
 		}
 		else
 		{
+			iservice.insertLog(ldto.getId(),request.getRemoteAddr(),"O");
 			session.invalidate();
 			return "redirect:/AdminMain.do";
 		}
@@ -248,7 +261,7 @@ public class AccountController
 			AccountDto ldto = iservice.login(map);
 			session.setAttribute("ldto", ldto);
 			
-			return "myPage";
+			return "redirect:/myPage.do";
 		}
 		else 
 		{
@@ -285,6 +298,40 @@ public class AccountController
 	{
 		iservice.recovery(email);
 		return "redirect:/Main.do";
+	}
+	
+	@RequestMapping(value="/logList.do", method=RequestMethod.GET)
+	public String logList(Model model)
+	{
+		List<LogDto> list = new ArrayList<LogDto>();
+		list = iservice.logList();
+		
+		model.addAttribute("list", list);
+		
+		return "logList";
+	}
+	
+	@RequestMapping(value="/myLog.do", method=RequestMethod.GET)
+	public String myLog(HttpSession session, Model model)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");		
+		List<LogDto> list = new ArrayList<LogDto>();
+		list = iservice.myLog(ldto.getId());
+		
+		model.addAttribute("list", list);
+		
+		return "myLog";
+	}
+	
+	@RequestMapping(value="/searchLog.do", method=RequestMethod.POST)
+	public String searchLog(Model model, String type, String search)
+	{
+		List<LogDto> list = new ArrayList<LogDto>();
+				
+		list = iservice.searchLog(type,search);		
+		model.addAttribute("list", list);
+		
+		return "logList";
 	}
 	
 }

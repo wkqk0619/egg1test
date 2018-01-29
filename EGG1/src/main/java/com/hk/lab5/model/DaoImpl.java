@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
@@ -325,6 +326,38 @@ public class DaoImpl implements IDao {
 	public void recovery(String email) 
 	{
 		sqlSession.update(ACCOUNTNAMESPACE+"recovery",email);
+	}
+
+	@Override
+	public void insertLog(String id, String ip, String type) 
+	{
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("id", id);
+		map.put("ip", ip);
+		map.put("type", type);
+		
+		sqlSession.insert(ACCOUNTNAMESPACE+"insertLog",map);
+	}
+
+	@Override
+	public List<LogDto> logList() 
+	{
+		return sqlSession.selectList(ACCOUNTNAMESPACE+"logList");
+	}
+
+	@Override
+	public List<LogDto> myLog(String id) 
+	{
+		return sqlSession.selectList(ACCOUNTNAMESPACE+"myLog",id);
+	}
+
+	@Override
+	public List<LogDto> searchLog(String type, String search) 
+	{
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("type", type);
+		map.put("search", search);
+		return sqlSession.selectList(ACCOUNTNAMESPACE+"searchLog",map);
 	}
 
 

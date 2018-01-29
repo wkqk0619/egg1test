@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
@@ -373,6 +374,30 @@ public class ServiceImpl implements IService {
 	public void recovery(String email) 
 	{
 		dao.recovery(email);
+	}
+
+	@Override
+	public void insertLog(String id, String ip, String type) 
+	{
+		dao.insertLog(id, ip, type);
+	}
+
+	@Override
+	public List<LogDto> logList() 
+	{
+		return dao.logList();
+	}
+
+	@Override
+	public List<LogDto> myLog(String id) 
+	{
+		return dao.myLog(id);
+	}
+
+	@Override
+	public List<LogDto> searchLog(String type, String search) 
+	{
+		return dao.searchLog(type, search);
 	}
 
 }
