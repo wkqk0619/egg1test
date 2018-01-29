@@ -11,7 +11,10 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript">
 	
-
+	function detalClo(){
+		$("#alertpr").hide();
+	    $("#detaliClo").hide();
+	}
 	
 	function detail(val)
 	{		
@@ -29,6 +32,7 @@
 				        $("#alertpr").val("본문이 삭제된 글");
 				    }
 				    $("#alertpr").show();
+				    $("#detaliClo").show();
 				}
 		);
 	}
@@ -69,6 +73,11 @@
 		top : 50px;
 		left: 500px;
 		background-color: #d9dde2;
+		position: fixed;
+	}
+	#detaliClo{
+		top : 40px;
+		left: 950px;
 		position: fixed;
 	}
 
@@ -122,6 +131,7 @@
 	</table>
 </div>	
 		<textarea id="alertpr"  hidden="hidden" rows="500" cols="400" readonly="readonly"></textarea>
+		<button id="detaliClo" hidden="hidden" onclick="detalClo()">닫기</button>
 	<c:choose>
 		<c:when test="${ldto.role ne 'U'.charAt(0)}">
 			<button onclick="location.href='./LoginMain.do'">메인으로</button>
