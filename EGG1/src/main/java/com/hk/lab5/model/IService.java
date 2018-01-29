@@ -55,5 +55,5 @@ public interface IService {
 	public List<SupportDto> searchSupport(Map<String,String> map);
 	public List<AnswerDto> selectAnswer(String pseq);
 	public void writeAnswer(List<AnswerDto> list);
-
+	public void secession(AccountDto ldto);
 }

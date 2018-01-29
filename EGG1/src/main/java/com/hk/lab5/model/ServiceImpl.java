@@ -350,6 +350,12 @@ public class ServiceImpl implements IService {
 		dao.writeAnswer(list);
 	}
 
+	@Override
+	public void secession(AccountDto ldto) 
+	{
+		dao.secession(ldto);
+	}
+
 }
 
 

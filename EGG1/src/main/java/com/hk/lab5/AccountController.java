@@ -140,8 +140,15 @@ public class AccountController
 		}
 		else
 		{
-			session.setAttribute("ldto", ldto);
-			return "S";
+			if(ldto.getEnabled()=='N')
+			{
+				return "O";
+			}
+			else
+			{
+				session.setAttribute("ldto", ldto);
+				return "S";
+			}
 		}
 		
 	}
@@ -249,6 +256,21 @@ public class AccountController
 		}
 		
 	}
+	@RequestMapping(value="/secession.do", method=RequestMethod.GET)
+	public String secession(HttpSession session)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		iservice.secession(ldto);
+		session.invalidate();
+		
+		return "redirect:/Main.do";
+	}
 	
+	@RequestMapping(value="/recoveryAccount.do", method=RequestMethod.GET)
+	public String recoveryAccount(Model model,String email)
+	{
+		model.addAttribute("email", email);
+		return "recoveryAccount";
+	}
 	
 }

@@ -112,13 +112,23 @@ $(function(){
 				async : true,
 				success : function(msg)
 				{
+//					alert(msg);
 					if(msg=="S")
 					{
 						location.href="./LoginMain.do";
 					}
 					else
 					{
-						alert("아이디와 비밀번호가 일치하지 않습니다.");
+						if(msg=="O")
+						{
+							alert("탈퇴 신청이 된 회원입니다 복구페이지로 이동합니다.");
+							//복구페이지로 이동
+							location.href="./recoveryAccount.do?email="+email;
+						}
+						else
+						{							
+							alert("아이디와 비밀번호가 일치하지 않습니다.");
+						}
 					}
 				}
 				
