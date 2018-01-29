@@ -1,5 +1,6 @@
 package com.hk.lab5;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.model.IService;
 
 @Controller
@@ -259,7 +261,7 @@ public class AccountController
 			AccountDto ldto = iservice.login(map);
 			session.setAttribute("ldto", ldto);
 			
-			return "myPage";
+			return "redirect:/myPage.do";
 		}
 		else 
 		{
@@ -296,6 +298,40 @@ public class AccountController
 	{
 		iservice.recovery(email);
 		return "redirect:/Main.do";
+	}
+	
+	@RequestMapping(value="/logList.do", method=RequestMethod.GET)
+	public String logList(Model model)
+	{
+		List<LogDto> list = new ArrayList<LogDto>();
+		list = iservice.logList();
+		
+		model.addAttribute("list", list);
+		
+		return "logList";
+	}
+	
+	@RequestMapping(value="/myLog.do", method=RequestMethod.GET)
+	public String myLog(HttpSession session, Model model)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");		
+		List<LogDto> list = new ArrayList<LogDto>();
+		list = iservice.myLog(ldto.getId());
+		
+		model.addAttribute("list", list);
+		
+		return "myLog";
+	}
+	
+	@RequestMapping(value="/searchLog.do", method=RequestMethod.POST)
+	public String searchLog(Model model, String type, String search)
+	{
+		List<LogDto> list = new ArrayList<LogDto>();
+				
+		list = iservice.searchLog(type,search);		
+		model.addAttribute("list", list);
+		
+		return "logList";
 	}
 	
 }

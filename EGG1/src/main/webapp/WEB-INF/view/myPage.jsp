@@ -122,6 +122,9 @@
 			</td>
 		</tr>
 		<tr>
+			<td><button onclick="location.href='./myLog.do'">접속기록 조회</button></td>
+		</tr>
+		<tr>
 			<td><button onclick="sec()">탈퇴요청</button></td>
 		</tr>
 		<tr hidden="hidden" id="secession">

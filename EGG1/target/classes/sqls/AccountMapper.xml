@@ -52,5 +52,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertLog" parameterType="java.util.Map">
 		INSERT INTO LOG(ID,IP,LOGTIME,LOGTYPE) VALUES(#{id},#{ip},NOW(),#{type})
 	</insert>
+	
+	<select id="logList" resultType="LogDto">
+		SELECT ID,IP,DATE_FORMAT(LOGTIME, '%Y-%m-%d %H:%i:%s') LOGTIME,LOGTYPE FROM LOG 
+	</select>
 
+	<select id="myLog" resultType="LogDto" parameterType="java.lang.String">
+		SELECT ID,IP,DATE_FORMAT(LOGTIME, '%Y-%m-%d %H:%i:%s') LOGTIME,LOGTYPE FROM LOG WHERE ID=#{id}
+	</select>
+	
+	<select id="searchLog" resultType="LogDto" parameterType="java.util.Map">
+		SELECT ID,IP,DATE_FORMAT(LOGTIME, '%Y-%m-%d %H:%i:%s') LOGTIME,LOGTYPE FROM LOG WHERE ${type}=#{search}
+	</select>
+	
 </mapper>
