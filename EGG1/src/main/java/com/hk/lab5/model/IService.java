@@ -57,4 +57,5 @@ public interface IService {
 	public void writeAnswer(List<AnswerDto> list);
 	public void secession(AccountDto ldto);
 	public void recovery(String email);
+	public void insertLog(String id, String ip, String type);
 }

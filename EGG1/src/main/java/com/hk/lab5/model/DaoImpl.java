@@ -327,6 +327,17 @@ public class DaoImpl implements IDao {
 		sqlSession.update(ACCOUNTNAMESPACE+"recovery",email);
 	}
 
+	@Override
+	public void insertLog(String id, String ip, String type) 
+	{
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("id", id);
+		map.put("ip", ip);
+		map.put("type", type);
+		
+		sqlSession.insert(ACCOUNTNAMESPACE+"insertLog",map);
+	}
+
 
 
 

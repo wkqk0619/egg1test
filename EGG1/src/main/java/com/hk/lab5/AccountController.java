@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,7 +127,7 @@ public class AccountController
 	
 	@RequestMapping(value="/Login.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String login(String id,String pw, HttpSession session)
+	public String login(String id,String pw, HttpSession session, HttpServletRequest request)
 	{
 		Map<String, String>map = new HashMap<String,String>();
 		map.put("id", id);
@@ -136,16 +137,19 @@ public class AccountController
 		
 		if(ldto==null)
 		{
+			iservice.insertLog(id,request.getRemoteAddr(),"F");
 			return "F";
 		}
 		else
 		{
 			if(ldto.getEnabled()=='N')
 			{
+				iservice.insertLog(id,request.getRemoteAddr(),"R");
 				return "O";
 			}
 			else
 			{
+				iservice.insertLog(id,request.getRemoteAddr(),"S");
 				session.setAttribute("ldto", ldto);
 				return "S";
 			}
@@ -154,16 +158,23 @@ public class AccountController
 	}
 	
 	@RequestMapping(value="/EggLogout.do", method=RequestMethod.GET)
-	public String login(HttpSession session)
+	public String login(HttpSession session, HttpServletRequest request)
 	{
 		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
-		if(ldto.getRole()=='U')
+		
+		if(ldto==null)
 		{
+			return "redirect:/Main.do";
+		}
+		else if(ldto.getRole()=='U')
+		{
+			iservice.insertLog(ldto.getId(),request.getRemoteAddr(),"O");
 			session.invalidate();
 			return "redirect:/Main.do";
 		}
 		else
 		{
+			iservice.insertLog(ldto.getId(),request.getRemoteAddr(),"O");
 			session.invalidate();
 			return "redirect:/AdminMain.do";
 		}

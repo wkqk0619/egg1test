@@ -48,5 +48,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="recovery" parameterType="java.lang.String">
 		UPDATE ACCOUNT SET ENABLED = 'Y' WHERE ID = #{id}
 	</update>
+	
+	<insert id="insertLog" parameterType="java.util.Map">
+		INSERT INTO LOG(ID,IP,LOGTIME,LOGTYPE) VALUES(#{id},#{ip},NOW(),#{type})
+	</insert>
 
 </mapper>

@@ -375,6 +375,12 @@ public class ServiceImpl implements IService {
 		dao.recovery(email);
 	}
 
+	@Override
+	public void insertLog(String id, String ip, String type) 
+	{
+		dao.insertLog(id, ip, type);
+	}
+
 }
 
 
