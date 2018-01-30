@@ -11,6 +11,7 @@ import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestionDto;
+import com.hk.lab5.dtos.RestoreProjDto;
 import com.hk.lab5.dtos.SupportDto;
 
 public interface IDao {
@@ -67,5 +68,7 @@ public interface IDao {
 	public List<LogDto> logList();
 	public List<LogDto> myLog(String id);
 	public List<LogDto> searchLog(Map<String, String> map);
+	public List<RestoreProjDto> selectrestoreproj();
+	public int insertRestoreProj(RestoreProjDto dto);
 
 }

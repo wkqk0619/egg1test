@@ -16,6 +16,7 @@ import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestionDto;
+import com.hk.lab5.dtos.RestoreProjDto;
 import com.hk.lab5.dtos.SupportDto;
 import com.hk.lab5.mail.MailSend;
 
@@ -398,6 +399,18 @@ public class ServiceImpl implements IService {
 	public List<LogDto> searchLog(Map<String, String> map) 
 	{
 		return dao.searchLog(map);
+	}
+
+	@Override
+	public List<RestoreProjDto> selectrestoreproj() {
+		// TODO Auto-generated method stub
+		return dao.selectrestoreproj();
+	}
+
+	@Override
+	public int insertRestoreProj(RestoreProjDto dto) {
+		// TODO Auto-generated method stub
+		return dao.insertRestoreProj(dto);
 	}
 
 }

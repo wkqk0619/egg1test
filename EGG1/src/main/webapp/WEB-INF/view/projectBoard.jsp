@@ -72,6 +72,11 @@
     		$("#guard").prop("disabled",false);
     	});
 	});
+	
+	function restoreProj()
+	{
+		$("#restoreProj").toggle();
+	}
 </script>
 <body>
 <h1>프로젝트 테스트</h1>
@@ -104,6 +109,14 @@
 </c:choose>
 <div id="projIntro">
 <button onclick="ShowNewProj()" data-step="1" data-intro="프로젝트 추가할 수 있는 양식 보여주기">프로젝트 추가하자</button>
+<button onclick="restoreProj()">프로젝트 복구 신청</button>
+<div id="restoreProj" hidden="hidden">
+	<form action=".insertrestoreProj.do" method="post">
+		<input type="hidden" name="id" value="${ldto.id}"/>
+		복구할 프로젝트 번호를 적어주세요 : <input type="text" name="ProjNum"/>
+		<input type="submit" value="복구신청하기">
+	</form>
+</div>
 <div id="NewProj" hidden="hidden">
 	<form action="./insertProject.do" method="post">
 		<input type="hidden" name="id" value="${ldto.id}"/><br/>
