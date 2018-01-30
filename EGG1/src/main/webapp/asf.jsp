@@ -145,7 +145,19 @@
     //$("#sortable").disableSelection();
     $("#ssortable").sortable();
     $("#ssortable").disableSelection();
-  } );
+    $(".ui-icon-arrowthick-2-n-s").click(function(){
+    	//alert("클릭");
+    	var doc = $(this).parent();
+    	var ahtext = doc.text();
+    	doc.text("");
+    	var spanTag = $("<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>");
+    	var inputTag = $("<input type='text'/>");
+    	doc.append(spanTag);
+    	doc.append(inputTag);
+    	doc.children().last().val(ahtext);
+    	
+    });
+  });
   
   function insQ(){
 	  var div=$("<div class='ui-state-default'>");
@@ -160,8 +172,7 @@
 <div class="continer ert">
  	<div id="sortable" class="connected list1">
   			<div class="ui-state-default">
-  				<span class="ui-icon ui-icon-arrowthick-2-n-s">
-  				</span>Item 1
+  				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1
   				<div class="chr">
   					<input type="text" name="adsf" id="inp">
   				</div>
@@ -173,7 +184,8 @@
   			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</div>
   			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</div>
  			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</div>
- 			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><input value="가가가"/></div>
+ 			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 8</div>
+ 			<div contenteditable="true">아아</div>
 	</div>
 </div>
 <form action="tes.jsp" method="post" id="as">
@@ -648,5 +660,6 @@
 <div id="scv">
 	<input type="text" id="qwe"/>
 </div>
+<input >
 </body>
 </html>

@@ -35,6 +35,13 @@ $( function() {
     	  //가이드 시작버튼 활성화
     		$("#guard").prop("disabled",false);
     	});
+    	$("#loginpwd").keypress(function(key) {
+    		  //alert(key.keyCode);
+    		  if(key.keyCode == 13)
+    		  {
+    			  getlogin();
+    		  }
+    	});
   });
   
   function myS() 
@@ -50,6 +57,20 @@ $( function() {
 	  //호출시  class=idearS 인것을 클릭하는 효과
 	  $(".idearS").trigger("click");
   }
+  
+	function onEnterLogin(){
+
+		var keyCode = window.event.keyCode;
+
+		
+
+		if (keyCode == 13) { //엔테키 이면
+
+			getlogin();
+
+		}
+
+	} //onEnterLogin()
 </script>
 <style type="text/css">
 	   .ifa{
