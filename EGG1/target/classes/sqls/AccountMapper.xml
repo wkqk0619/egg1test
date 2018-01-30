@@ -62,7 +62,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="searchLog" resultType="LogDto" parameterType="java.util.Map">
-		SELECT ID,IP,DATE_FORMAT(LOGTIME, '%Y-%m-%d %H:%i:%s') LOGTIME,LOGTYPE FROM LOG WHERE ${type}=#{search}
+		SELECT ID,IP,DATE_FORMAT(LOGTIME, '%Y-%m-%d %H:%i:%s') LOGTIME,LOGTYPE FROM LOG
+		WHERE 1=1 <if test='logtype!="A"'>AND LOGTYPE=#{logtype}</if> <if test="search!=''">AND ${type}=#{search}</if><if test='date!=""'>AND DATE(LOGTIME)=STR_TO_DATE(#{date},'%Y-%m-%d')</if>
 	</select>
 	
 </mapper>

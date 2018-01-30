@@ -19,7 +19,7 @@
 				<td>${dto.id}</td>
 				<td>${dto.ip}</td>
 				<td>${dto.logTime}</td>
-				<td>${dto.logType}</td>
+				<td><c:choose><c:when test="${dto.logType=='S'}">로그인</c:when><c:when test="${dto.logType=='F'}">로그인실패</c:when><c:when test="${dto.logType=='R'}">복구시도</c:when><c:otherwise>로그아웃</c:otherwise></c:choose></td>
 			</tr>
 		</c:forEach>
 	</table>

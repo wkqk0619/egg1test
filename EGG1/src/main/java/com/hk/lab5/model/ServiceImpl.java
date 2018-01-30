@@ -395,9 +395,9 @@ public class ServiceImpl implements IService {
 	}
 
 	@Override
-	public List<LogDto> searchLog(String type, String search) 
+	public List<LogDto> searchLog(Map<String, String> map) 
 	{
-		return dao.searchLog(type, search);
+		return dao.searchLog(map);
 	}
 
 }

@@ -324,11 +324,16 @@ public class AccountController
 	}
 	
 	@RequestMapping(value="/searchLog.do", method=RequestMethod.POST)
-	public String searchLog(Model model, String type, String search)
+	public String searchLog(Model model, String type, String search, String date, String logtype)
 	{
 		List<LogDto> list = new ArrayList<LogDto>();
-				
-		list = iservice.searchLog(type,search);		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("type", type);
+		map.put("search", search);
+		map.put("date", date);
+		map.put("logtype", logtype);
+		
+		list = iservice.searchLog(map);		
 		model.addAttribute("list", list);
 		
 		return "logList";
