@@ -136,7 +136,6 @@ public class AccountController
 		map.put("pw", pw);
 		
 		AccountDto ldto = iservice.login(map);
-		
 		if(ldto==null)
 		{
 			iservice.insertLog(id,request.getRemoteAddr(),"F");
@@ -163,6 +162,7 @@ public class AccountController
 	public String login(HttpSession session, HttpServletRequest request)
 	{
 		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		
 		
 		if(ldto==null)
 		{

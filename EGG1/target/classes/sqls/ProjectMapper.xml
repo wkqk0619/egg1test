@@ -21,12 +21,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		WHERE PSEQ = #{pseq}
   	</select>
   	
+  	 <select id="ajaxProjSelect" parameterType="ProjectDto" resultType="ProjectDto">
+  		SELECT PSEQ, ID, NAME, TYPECLASS, INFO, DELFLAG 
+  		FROM PROJECT
+  		WHERE PSEQ = #{pseq} AND ID = #{id}
+  	</select>
+  	
   	<update id="updateProject" parameterType="ProjectDto">
   		UPDATE PROJECT SET NAME=#{name}, TYPECLASS=#{typeclass}, INFO=#{info} WHERE PSEQ=#{pseq}
   	</update>
   	
   	<update id="deleteProject" parameterType="java.lang.String">
   		UPDATE PROJECT SET DELFLAG='Y' WHERE PSEQ=#{pseq}
+  	</update>
+  	
+  	<update id="UpResProject" parameterType="ProjectDto">
+  		UPDATE PROJECT SET DELFLAG='N' WHERE PSEQ=#{pseq} AND ID=#{id}
   	</update>
   	
   	<select id="selectAnswer" parameterType="java.lang.String" resultType="AnswerDto">

@@ -111,9 +111,9 @@
 <button onclick="ShowNewProj()" data-step="1" data-intro="프로젝트 추가할 수 있는 양식 보여주기">프로젝트 추가하자</button>
 <button onclick="restoreProj()">프로젝트 복구 신청</button>
 <div id="restoreProj" hidden="hidden">
-	<form action=".insertrestoreProj.do" method="post">
+	<form action="./insertrestoreProj.do" method="post">
 		<input type="hidden" name="id" value="${ldto.id}"/>
-		복구할 프로젝트 번호를 적어주세요 : <input type="text" name="ProjNum"/>
+		복구할 프로젝트 번호를 적어주세요 : <input type="text" name="projnum"/>
 		<input type="submit" value="복구신청하기">
 	</form>
 </div>

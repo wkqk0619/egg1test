@@ -413,6 +413,18 @@ public class ServiceImpl implements IService {
 		return dao.insertRestoreProj(dto);
 	}
 
+	@Override
+	public ProjectDto ajaxProjSelect(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return dao.ajaxProjSelect(dto);
+	}
+
+	@Override
+	public int UpResProject(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return dao.UpResProject(dto);
+	}
+
 }
 
 

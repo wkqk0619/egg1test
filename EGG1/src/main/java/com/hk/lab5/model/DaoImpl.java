@@ -368,7 +368,19 @@ public class DaoImpl implements IDao {
 	@Override
 	public int insertRestoreProj(RestoreProjDto dto) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert(RESTORENAMESPACE+"RESTORENAMESPACE",dto);
+		return sqlSession.insert(RESTORENAMESPACE+"insertRestoreProj",dto);
+	}
+
+	@Override
+	public ProjectDto ajaxProjSelect(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(PROJECTNAMESPACE+"ajaxProjSelect",dto);
+	}
+
+	@Override
+	public int UpResProject(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(PROJECTNAMESPACE+"UpResProject",dto);
 	}
 
 

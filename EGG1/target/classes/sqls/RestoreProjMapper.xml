@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		SELECT RESTORENUM, ID, PROJNUM  FROM RESTOREPROJ ORDER BY 1
   	</select>
   
-  	<insert id="insertRestoreProj" parameterType="java.util.HashMap">
-  		INSERT INTO RESTOREPROJ(ID, PROJNUM) VALUES(#{id},#{ProjNum})
+  	<insert id="insertRestoreProj" parameterType="RestoreProjDto">
+  		INSERT INTO RESTOREPROJ(ID, PROJNUM) VALUES(#{id},#{projnum})
   	</insert>
 </mapper>

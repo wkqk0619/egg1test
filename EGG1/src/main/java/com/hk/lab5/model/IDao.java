@@ -70,5 +70,7 @@ public interface IDao {
 	public List<LogDto> searchLog(Map<String, String> map);
 	public List<RestoreProjDto> selectrestoreproj();
 	public int insertRestoreProj(RestoreProjDto dto);
+	public ProjectDto ajaxProjSelect(ProjectDto dto);
+	public int UpResProject(ProjectDto dto);
 
 }
