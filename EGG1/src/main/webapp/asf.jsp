@@ -90,7 +90,7 @@
    });
    */
    
-   var clone, before, parent
+   var clone, before, parent;
    /*
    $('.sortable').each(function () {
        $(this).sortable({
@@ -130,6 +130,7 @@
       
        $(".ui-state-default").click(function() {
     	   $("#scv").show();
+    	   /*
     	   $("#qwe").keypress(function(key) {
     		   if(key.keyCode==13)
     		   {
@@ -137,6 +138,7 @@
     			  $("#qwe").val("");
     		   }
     	   });
+    	   */
        });
    });
    
@@ -145,47 +147,66 @@
     //$("#sortable").disableSelection();
     $("#ssortable").sortable();
     $("#ssortable").disableSelection();
-    $(".ui-icon-arrowthick-2-n-s").click(function(){
+    
+    $(".ui-icon-arrowthick-2-n-s").on('click',function(){
     	//alert("클릭");
+    	$(this).prop("disabled",true);
     	var doc = $(this).parent();
-    	var ahtext = doc.text();
-    	doc.text("");
-    	var spanTag = $("<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>");
-    	var inputTag = $("<input type='text'/>");
-    	doc.append(spanTag);
-    	doc.append(inputTag);
-    	doc.children().last().val(ahtext);
+    	//alert(doc.children().last().text());
     	
+    	//var ahtext = doc;​
+    	//doc.children("span").siblings().remove();
+    	//var spanTag = $("<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>");
+    	var inputTag = $("<input class='reInfo' type='text'/>");
+    	var rebutton = $("<button class='repBtn'>수정</button>");
+    	//doc.append(spanTag);
+    	doc.append(inputTag);
+    	doc.append(rebutton);
+    	//doc.children().last().prev().val(ahtext);
+    	doc.children().last().prev().val(doc.children(".InfoSpan").text());
+    	doc.children(".InfoSpan").text("");
+    	   $(".repBtn").click(function(){
+    			//alert(doc.children().last().prev().val());
+    			var newVal = doc.children(".reInfo").val();
+    			doc.find("input, .repBtn").remove();
+    			//doc.append(newVal);
+    			doc.children(".InfoSpan").text(newVal);
+    			doc.children(".ui-icon-arrowthick-2-n-s").prop("disabled",false);
+    		});
     });
+    
   });
   
+
   function insQ(){
 	  var div=$("<div class='ui-state-default'>");
-	  var span=$("<span class='ui-icon ui-icon-arrowthick-2-n-s'>");
-	  div.append(span);
-	  div.text("item 추가");
+	  var button=$("<button class='ui-icon ui-icon-arrowthick-2-n-s'>");
+	  var infoSpan = $("<span class='InfoSpan'></span>");
+	  infoSpan.append("item 추가");
+	  div.append(button);
+	  div.append(infoSpan);
 	  $("#sortable").append(div);
   }
+  
   </script>
 </head>
 <body>
 <div class="continer ert">
  	<div id="sortable" class="connected list1">
   			<div class="ui-state-default">
-  				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1
+  				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+  				Item 1
   				<div class="chr">
   					<input type="text" name="adsf" id="inp">
   				</div>
   			</div>
-  			
-  			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>유영건</div>
-  			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</div>
-  			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</div>
-  			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</div>
-  			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</div>
- 			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</div>
- 			<div class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 8</div>
- 			<div contenteditable="true">아아</div>
+  			<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s"></button><span class="InfoSpan">유영건</span></div>
+  			<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s"></button><span class="InfoSpan">Item2</span></div>
+  			<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s"></button><span class="InfoSpan">Item3</span></div>
+  			<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s"></button><span class="InfoSpan">Item4</span></div>
+  			<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s"></button><span class="InfoSpan">Item5</span></div>
+ 			<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s"></button><span class="InfoSpan">Item6</span></div>
+ 			<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s"></button><span class="InfoSpan">Item7</span></div>
 	</div>
 </div>
 <form action="tes.jsp" method="post" id="as">

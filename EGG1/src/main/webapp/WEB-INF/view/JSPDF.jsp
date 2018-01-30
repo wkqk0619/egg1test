@@ -9,13 +9,65 @@
 <title>화면을 pdf 로 배포하기</title>
 <!-- <script type="text/javascript" src="js/jspdf.js"></script> -->
 <link rel="stylesheet" type="text/css" href="css/pdftest.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <!-- <script type="text/javascript" src="js/jquery-3.2.1.js"></script> -->
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+ <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript">
 
 $(function(){
-	
+	 var clone, before, parent;
+	  $('.connected').each(function () {
+	       $(this).sortable({
+	           connectWith: '.sortable',
+	           helper: "clone",
+	           start: function (event, ui) {
+	               $(ui.item).show();
+	               clone=$(ui.item).clone();
+	               before = $(ui.item).prev();
+	               parent = $(ui.item).parent();
+
+	           },
+	           receive: function (event, ui) {//only when dropped from one to another!
+	               if (before.length) before.after(clone);
+	               else parent.prepend(clone);
+	           }
+	       }).disableSelection();
+	  });
+	 
+	    $("#ssortable").sortable();
+	    $("#ssortable").disableSelection();	 
+	    $(".ui-icon-arrowthick-2-n-s").on('click',function(){
+	    	//alert("클릭");
+	    	$(this).prop("disabled",true);
+	    	var doc = $(this).parent();
+	    	//alert(doc.children().last().text());
+	    	
+	    	//var ahtext = doc;​
+	    	//doc.children("span").siblings().remove();
+	    	//var spanTag = $("<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>");
+	    	var inputTag = $("<input class='reInfo' type='text'/>");
+	    	var rebutton = $("<button class='repBtn'>수정</button>");
+	    	//doc.append(spanTag);
+	    	doc.append(inputTag);
+	    	doc.append(rebutton);
+	    	//doc.children().last().prev().val(ahtext);
+	    	doc.children().last().prev().val(doc.children(".InfoSpan").text());
+	    	doc.children(".InfoSpan").text("");
+	    	   $(".repBtn").click(function(){
+	    			//alert(doc.children().last().prev().val());
+	    			var newVal = doc.children(".reInfo").val();
+	    			doc.find("input, .repBtn").remove();
+	    			//doc.append(newVal);
+	    			doc.children(".InfoSpan").text(newVal);
+	    			doc.children(".ui-icon-arrowthick-2-n-s").prop("disabled",false);
+	    		});
+	    });
+	       
+	       
 	$("#pdte").submit(function() {
 		
 		var s="<div style='font-family: MalgunGothic;'>";
@@ -37,16 +89,50 @@ $(function(){
 });
 
 </script>
+<style type="text/css">
+  #sortable, #ssortable
+  { list-style-type: none; margin: 0; padding: 0; width: 100%; float: left; }
+  #sortable li
+  { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  #sortable li span
+  { position: absolute; margin-left: -1.3em; }
+  #ssortable li
+  { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  #ssortable li span
+  { position: absolute; margin-left: -1.3em; }
+  .continer{
+  	width : 20%;
+  	
+  }  
+  .ee{
+  	margin-left: 20px;
+  	width: 70%;
+  	height: 400px;
+  	float: left;
+  }
+  #ssortable{height: 200px;}
+  .ui-state-default div{
+  	display: none;
+  }
+  #scv{
+  display: none;
+  }
+</style>
 </head>
 <body>
 <form action="./pdfTest.do" method="post" id="pdte">
 <input id="pdfName" type="text" name="fName"> : PDF파일명 작성 <input type="submit" value="pdf다운로드"/>
 
-		<div style="font-family: MalgunGothic;">
-		<div id="testPDF">
+<div style="font-family: MalgunGothic;">
+	<div id="testPDF">
+		<div class="continer ert">
+			<div id="sortable" class="connected list1">
 			<c:forEach begin="0" end="${fn:length(question)-1}" step="1" varStatus="status" >
-				<span class="question">${question[status.index]} : </span><input class="answer" type="text" value="${answer[status.index]}"/>
+<%-- 				<span class="question">${question[status.index]} : </span><input class="answer" type="text" value="${answer[status.index]}"/><br/> --%>
+				<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s" type="button"></button>${question[status.index]}:<span class="InfoSpan">${answer[status.index]}</span></div>
 			</c:forEach>
+			</div><!-- sortable 끝 -->
+		</div><!-- continer ert 끝 -->
 <div id="tabletest">			
 <table class="tg" id="tage">
  <tbody>
@@ -57,33 +143,33 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">사업구분</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">1인창조기업(   ITEM1     업종)</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">1인창조기업(<div class="connected sortable list2"></div> 업종)</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">사업명</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">ITEM2 </td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="4"> </td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="4">대표자</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">성명 </td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM3</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">성 명 </td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">주민등록번호</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM4 </td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"> </td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="3">연락처</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">자택전화</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM5</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">휴대폰</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM6</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">email</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">ITEM7</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="3"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">자택주소</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">ITEM8</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="3"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="4">공동사업자</td>
@@ -93,51 +179,51 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">담당분야</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM9</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM10</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM11</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM12</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM13</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM14</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM15</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM16</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM17</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM18</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM19</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM20</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="7">기업현황</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">기업명</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM21</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">주 생상품</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM22</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">법인등록번호</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM23</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">사업자 등록번호</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM24</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">창업일</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">ITEM25</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="4"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">전년도 매출액</td>
-    <td class="tg-lqy6" style="font-family: MalgunGothic;">백만원</td>
+    <td class="tg-lqy6" style="font-family: MalgunGothic;"><div class="connected sortable list2"></div> 백만원</td>
     <td class="tg-baqh" style="font-family: MalgunGothic;">전년도 수출액</td>
-    <td class="tg-lqy6" colspan="2" style="font-family: MalgunGothic;">백만불</td>
+    <td class="tg-lqy6" colspan="2" style="font-family: MalgunGothic;"><div class="connected sortable list2"></div> 백만불</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">전화번호</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM26</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">팩스</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM27</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">종업원수</td>
@@ -145,7 +231,7 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">소재지</td>
-    <td class="tg-lqy6" colspan="4" style="font-family: MalgunGothic;">(우)[ ITEM28 ]</td>
+    <td class="tg-lqy6" colspan="4" style="font-family: MalgunGothic;">(우)[ <div class="connected sortable list2"></div> ]</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="4">준비사항</td>
@@ -162,10 +248,10 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">시행기관</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM29</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM30</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM31</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM32</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">특기사항</td>
@@ -174,15 +260,15 @@ $(function(){
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2">이전 비스니스 센터</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">센터명</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">ITEM33</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="4"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">입주기간</td>
-    <td class="tg-baqh" colspan="4" style="font-family: MalgunGothic;">년 월 일 ∼ 년 월 일 (총 개월)</td>
+    <td class="tg-baqh connected sortable list2" colspan="4" style="font-family: MalgunGothic;">년 월 일 ∼ 년 월 일 (총 개월)</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">입주희망기간</td>
-    <td class="tg-baqh" colspan="4" style="font-family: MalgunGothic;">년 월 일 ∼ 년 월 일 (총 개월)</td>
+    <td class="tg-baqh connected sortable list2" colspan="4" style="font-family: MalgunGothic;">년 월 일 ∼ 년 월 일 (총 개월)</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">
@@ -217,7 +303,7 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">◈ 창업동기 및 창업목표를 기술</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM34</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
   </tr>
   <tr>
   </tr>
@@ -232,7 +318,7 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">◈ 입주 중 사업추진 내용</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM35</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
   </tr>
   <tr>
   </tr>
@@ -247,7 +333,7 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">◈ 졸업 후 향후 계획</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM36</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
   </tr>
   <tr>
   </tr>
@@ -267,7 +353,7 @@ $(function(){
     	주기능, 성능 등 제품에 대한 설명</pre></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM37</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
   </tr>
   <tr>
   </tr>
@@ -290,7 +376,7 @@ $(function(){
     	    시장진입 조건 등 시장구조 및 특성, 주요 수요처 등</pre></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM38</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
   </tr>
   <tr>
   </tr>
@@ -307,7 +393,7 @@ $(function(){
     	    고용창출을 많이 필요로하는 과제 우대</pre></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6" rowspan="5">ITEM39</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="6" rowspan="5"></td>
   </tr>
   <tr>
   </tr>
@@ -414,24 +500,24 @@ $(function(){
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2">성명</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">한글</td>
-    <td class="tg-lqy6">ITEM3(인)</td>
+    <td class="tg-lqy6 connected sortable list2">(인)</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">생년월일</td>
-    <td class="tg-baqh">ITEM40(만 세)</td>
+    <td class="tg-baqh"><div class="connected sortable list2"></div> (만 세)</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="4">사 진6개월 이내에 촬영한탈모 상반신 사진</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">한자</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM41</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">주민번호</td>
-    <td class="tg-baqh" style="font-family: MalgunGothic;">ITEM4</td>
+    <td class="tg-baqh connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
     <td class="tg-baqh" style="font-family: MalgunGothic;">주 소</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">ITEM8</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="4"></td>
   </tr>
   <tr>
     <td class="tg-baqh" style="font-family: MalgunGothic;">현 소 속</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">기관 및 부서 : ITEM42 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 직위 :ITEM43</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">기관 및 부서 : <div class=" connected sortable list2"></div>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 직위 : <div class="connected sortable list2"></div> </td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2">연락처</td>
@@ -440,9 +526,9 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">E-mail</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM5</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM6</td>
-    <td class="tg-baqh" style="font-family: MalgunGothic;">ITEM7</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-baqh connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">□ 학력.경력</td>
@@ -458,27 +544,27 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">비고</td>
   </tr>
   <tr>
-    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">고등학교(졸업,졸업예정)</td>
-    <td class="tg-baqh" style="font-family: MalgunGothic;">-</td>
+    <td class="tg-baqh connected sortable list2" style="font-family: MalgunGothic;">,</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="3">고등학교(졸업,졸업예정)</td>
+    <td class="tg-baqh connected sortable list2" style="font-family: MalgunGothic;">-</td>
   </tr>
   <tr>
-    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">전문대학(졸업,졸업예정)</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2"></td>
+    <td class="tg-baqh connected sortable list2" style="font-family: MalgunGothic;">,</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="3">전문대학(졸업,졸업예정)</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" rowspan="2"></td>
   </tr>
   <tr>
-    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">대학교 대학(입학, 편입)</td>
+    <td class="tg-baqh connected sortable list2" style="font-family: MalgunGothic;">,</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="3">대학교 대학(입학, 편입)</td>
   </tr>
   <tr>
-    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">대학교 대학(졸업,졸업예정)</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="2"></td>
+    <td class="tg-baqh connected sortable list2" style="font-family: MalgunGothic;">,</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="3">대학교 대학(졸업,졸업예정)</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" rowspan="2"></td>
   </tr>
   <tr>
-    <td class="tg-baqh" style="font-family: MalgunGothic;">,</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="3">대학교 대학원(입학)</td>
+    <td class="tg-baqh connected sortable list2" style="font-family: MalgunGothic;">,</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="3">대학교 대학원(입학)</td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="5">주요경력</td>
@@ -526,19 +612,19 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">시행기관</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM44</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM45</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM46</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">□ 수상경력</td>
@@ -550,22 +636,22 @@ $(function(){
     <td class="tg-yw4l" style="font-family: MalgunGothic;">수상경위</td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM47</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM48</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">ITEM49</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">ITEM50</td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2"></td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;" colspan="2"></td>
+    <td class="tg-yw4l connected sortable list2" style="font-family: MalgunGothic;"></td>
   </tr>
   </tbody>
 </table>
 </div>
 </div>
-</div>
+</div> <!-- table test 끝 -->
 
 
 
