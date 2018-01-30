@@ -352,11 +352,8 @@ public class DaoImpl implements IDao {
 	}
 
 	@Override
-	public List<LogDto> searchLog(String type, String search) 
+	public List<LogDto> searchLog(Map<String, String> map) 
 	{
-		Map<String, String> map = new HashMap<String,String>();
-		map.put("type", type);
-		map.put("search", search);
 		return sqlSession.selectList(ACCOUNTNAMESPACE+"searchLog",map);
 	}
 

@@ -61,5 +61,5 @@ public interface IService {
 	public void insertLog(String id, String ip, String type);
 	public List<LogDto> logList();
 	public List<LogDto> myLog(String id);
-	public List<LogDto> searchLog(String type, String search);
+	public List<LogDto> searchLog(Map<String, String> map);
 }
