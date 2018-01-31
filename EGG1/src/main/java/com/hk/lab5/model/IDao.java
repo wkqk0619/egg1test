@@ -68,15 +68,12 @@ public interface IDao {
 	public List<LogDto> logList();
 	public List<LogDto> myLog(String id);
 	public List<LogDto> searchLog(Map<String, String> map);
-<<<<<<< HEAD
 	public List<AnswerDto> statisticsQus(String qseq);
-=======
 	public List<RestoreProjDto> selectrestoreproj();
 	public int insertRestoreProj(RestoreProjDto dto);
 	public ProjectDto ajaxProjSelect(ProjectDto dto);
 	public int UpResProject(ProjectDto dto);
 	public int deleteRestoreList(RestoreProjDto dto);
 	public List<RestoreProjDto> ajaxselectRestoreProj();
->>>>>>> 11e34fd10727bbbc07c5c1c23c92f8e0d2d38e45
 
 }

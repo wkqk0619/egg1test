@@ -360,11 +360,10 @@ public class DaoImpl implements IDao {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public List<AnswerDto> statisticsQus(String qseq) 
 	{
 		return sqlSession.selectList(QUESTIONNAMESPACE+"statisticsQus",qseq);
-=======
+	}
 	public List<RestoreProjDto> selectrestoreproj() {
 		// TODO Auto-generated method stub
 		 return sqlSession.selectList(RESTORENAMESPACE+"selectRestoreProj");
@@ -398,24 +397,6 @@ public class DaoImpl implements IDao {
 	public List<RestoreProjDto> ajaxselectRestoreProj() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(RESTORENAMESPACE+"ajaxselectRestoreProj");
->>>>>>> 11e34fd10727bbbc07c5c1c23c92f8e0d2d38e45
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	
 }
