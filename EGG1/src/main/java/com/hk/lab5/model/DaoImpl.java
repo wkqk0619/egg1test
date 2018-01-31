@@ -17,6 +17,7 @@ import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestionDto;
+import com.hk.lab5.dtos.RestoreProjDto;
 import com.hk.lab5.dtos.SupportDto;
 
 @Repository
@@ -28,6 +29,7 @@ public class DaoImpl implements IDao {
 	private final String PROJECTNAMESPACE = "com.hk.lab5.project.";
 	private final String QNANAMESPACE = "com.hk.lab5.qna.";
 	private final String SUPPORTNAMESPACE = "com.hk.lab5.support.";
+	private final String RESTORENAMESPACE = "com.hk.lab5.RestoreProj.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -358,9 +360,45 @@ public class DaoImpl implements IDao {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<AnswerDto> statisticsQus(String qseq) 
 	{
 		return sqlSession.selectList(QUESTIONNAMESPACE+"statisticsQus",qseq);
+=======
+	public List<RestoreProjDto> selectrestoreproj() {
+		// TODO Auto-generated method stub
+		 return sqlSession.selectList(RESTORENAMESPACE+"selectRestoreProj");
+	}
+
+	@Override
+	public int insertRestoreProj(RestoreProjDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(RESTORENAMESPACE+"insertRestoreProj",dto);
+	}
+
+	@Override
+	public ProjectDto ajaxProjSelect(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(PROJECTNAMESPACE+"ajaxProjSelect",dto);
+	}
+
+	@Override
+	public int UpResProject(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(PROJECTNAMESPACE+"UpResProject",dto);
+	}
+
+	@Override
+	public int deleteRestoreList(RestoreProjDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(RESTORENAMESPACE+"deleteRestoreList",dto);
+	}
+
+	@Override
+	public List<RestoreProjDto> ajaxselectRestoreProj() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(RESTORENAMESPACE+"ajaxselectRestoreProj");
+>>>>>>> 11e34fd10727bbbc07c5c1c23c92f8e0d2d38e45
 	}
 
 

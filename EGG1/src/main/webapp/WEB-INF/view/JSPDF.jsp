@@ -41,7 +41,7 @@ $(function(){
 	    $("#ssortable").sortable();
 	    $("#ssortable").disableSelection();	 
 	    $(".ui-icon-arrowthick-2-n-s").on('click',function(){
-	    	//alert("클릭");
+	    	alert("클릭");
 	    	$(this).prop("disabled",true);
 	    	var doc = $(this).parent();
 	    	//alert(doc.children().last().text());
@@ -66,7 +66,6 @@ $(function(){
 	    			doc.children(".ui-icon-arrowthick-2-n-s").prop("disabled",false);
 	    		});
 	    });
-	       
 	       
 	$("#pdte").submit(function() {
 		
@@ -102,8 +101,13 @@ $(function(){
   { position: absolute; margin-left: -1.3em; }
   .continer{
   	width : 20%;
-  	
+  	position: fixed;
   }  
+  #tabletest
+  {
+  	position: absolute;
+  	left: 21%;
+  }
   .ee{
   	margin-left: 20px;
   	width: 70%;
@@ -117,9 +121,15 @@ $(function(){
   #scv{
   display: none;
   }
+  #masterDiv
+  {
+  	position: relative;
+  }
+  
 </style>
 </head>
 <body>
+<div id="masterDiv">
 <form action="./pdfTest.do" method="post" id="pdte">
 <input id="pdfName" type="text" name="fName"> : PDF파일명 작성 <input type="submit" value="pdf다운로드"/>
 
@@ -657,6 +667,6 @@ $(function(){
 
 <textarea rows="100" cols="100" id="pdarea" name="pdfarea" hidden="hidden"></textarea>
 </form>
-
+</div><!-- masterDiv 끝 -->
 </body>
 </html>

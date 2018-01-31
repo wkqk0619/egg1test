@@ -25,6 +25,7 @@
 	<button onclick="location.href='./selectNotion.do'">공지 관리</button>
 	<button onclick="location.href='./supportList.do'">공고 관리</button>
 	<button onclick="location.href='./qnaList.do'">문의내용 관리</button>
+	<button onclick="location.href='./restoreProj.do'">프로젝트 복구 관리</button>
 	<button onclick="location.href='./EggLogout.do'">로그아웃</button>
 </body>
 </html>

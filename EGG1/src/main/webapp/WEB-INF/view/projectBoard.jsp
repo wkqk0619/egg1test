@@ -12,7 +12,9 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/introjs.css">
 <link rel="stylesheet" href="css/introjs-rtl.css">
+<link rel="stylesheet" href="css/theme.default.css">
 <script type="text/javascript" src="js/intro.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <script type="text/javascript">
 	function ShowNewProj(){
 		$("#NewProj").toggle();
@@ -58,6 +60,7 @@
 	}
 	
 	$(function(){
+		 $("#projtable").tablesorter();
     	var introi=introJs("#projIntro");
     	$("#guard").click(function() {
     		//가이드 시작버튼 비활성화
@@ -72,6 +75,11 @@
     		$("#guard").prop("disabled",false);
     	});
 	});
+	
+	function restoreProj()
+	{
+		$("#restoreProj").toggle();
+	}
 </script>
 <body>
 <h1>프로젝트 테스트</h1>
@@ -81,12 +89,19 @@
 		<button id="guard">가이드</button>
 	</c:when>
 	<c:otherwise>
-		<c:forEach items="${prlist}" var="dto">
-			<div onclick="ajaxProjDetail('${dto.pseq}')">
-				번호 : <span>${dto.pseq}</span><br/>
-				프로젝트 이름 : <span>${dto.name}</span><br/>
-			</div>
-			<hr/>
+		<table class="table table-striped table-bordered table-responsive tablesorter" id="projtable">
+			<thead>
+				<tr>
+					<th>번호</th><th>프로젝트 이름</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${prlist}" var="dto">
+<%-- 					<div onclick="ajaxProjDetail('${dto.pseq}')"> --%>
+<%-- 						번호 : <span>${dto.pseq}</span><br/> --%>
+<%-- 						프로젝트 이름 : <span>${dto.name}</span><br/> --%>
+<!-- 					</div> -->
+<!-- 					<hr/> -->
 			<%-- <c:choose>
 				<c:when test="${dto.delflag eq 'Y'}">
 				삭제된 프로젝트입니다.
@@ -99,11 +114,25 @@
 				<hr/>
 				</c:otherwise>
 			</c:choose> --%>
-		</c:forEach>
+			
+				<tr onclick="ajaxProjDetail('${dto.pseq}')">
+					<td>${dto.pseq}</td><td>${dto.name}</td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</c:otherwise>
 </c:choose>
 <div id="projIntro">
 <button onclick="ShowNewProj()" data-step="1" data-intro="프로젝트 추가할 수 있는 양식 보여주기">프로젝트 추가하자</button>
+<button onclick="restoreProj()">프로젝트 복구 신청</button>
+<div id="restoreProj" hidden="hidden">
+	<form action="./insertrestoreProj.do" method="post">
+		<input type="hidden" name="id" value="${ldto.id}"/>
+		복구할 프로젝트 번호를 적어주세요 : <input type="text" name="projnum"/>
+		<input type="submit" value="복구신청하기">
+	</form>
+</div>
 <div id="NewProj" hidden="hidden">
 	<form action="./insertProject.do" method="post">
 		<input type="hidden" name="id" value="${ldto.id}"/><br/>

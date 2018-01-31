@@ -16,6 +16,7 @@ import com.hk.lab5.dtos.NotionDto;
 import com.hk.lab5.dtos.ProjectDto;
 import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestionDto;
+import com.hk.lab5.dtos.RestoreProjDto;
 import com.hk.lab5.dtos.SupportDto;
 import com.hk.lab5.mail.MailSend;
 
@@ -401,9 +402,45 @@ public class ServiceImpl implements IService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<AnswerDto> statisticsQus(String qseq) 
 	{
 		return dao.statisticsQus(qseq);
+=======
+	public List<RestoreProjDto> selectrestoreproj() {
+		// TODO Auto-generated method stub
+		return dao.selectrestoreproj();
+	}
+
+	@Override
+	public int insertRestoreProj(RestoreProjDto dto) {
+		// TODO Auto-generated method stub
+		return dao.insertRestoreProj(dto);
+	}
+
+	@Override
+	public ProjectDto ajaxProjSelect(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return dao.ajaxProjSelect(dto);
+	}
+
+	@Override
+	public int UpResProject(ProjectDto dto) {
+		// TODO Auto-generated method stub
+		return dao.UpResProject(dto);
+	}
+
+	@Override
+	public int deleteRestoreList(RestoreProjDto dto) {
+		// TODO Auto-generated method stub
+		return dao.deleteRestoreList(dto);
+	}
+
+	@Override
+	public List<RestoreProjDto> ajaxselectRestoreProj() {
+		// TODO Auto-generated method stub
+		return dao.ajaxselectRestoreProj();
+>>>>>>> 11e34fd10727bbbc07c5c1c23c92f8e0d2d38e45
 	}
 
 }
