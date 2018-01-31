@@ -67,5 +67,6 @@ public interface IDao {
 	public List<LogDto> logList();
 	public List<LogDto> myLog(String id);
 	public List<LogDto> searchLog(Map<String, String> map);
+	public List<AnswerDto> statisticsQus(String qseq);
 
 }

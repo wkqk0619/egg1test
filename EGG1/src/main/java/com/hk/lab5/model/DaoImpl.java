@@ -357,6 +357,12 @@ public class DaoImpl implements IDao {
 		return sqlSession.selectList(ACCOUNTNAMESPACE+"searchLog",map);
 	}
 
+	@Override
+	public List<AnswerDto> statisticsQus(String qseq) 
+	{
+		return sqlSession.selectList(QUESTIONNAMESPACE+"statisticsQus",qseq);
+	}
+
 
 
 

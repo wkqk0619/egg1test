@@ -400,6 +400,12 @@ public class ServiceImpl implements IService {
 		return dao.searchLog(map);
 	}
 
+	@Override
+	public List<AnswerDto> statisticsQus(String qseq) 
+	{
+		return dao.statisticsQus(qseq);
+	}
+
 }
 
 

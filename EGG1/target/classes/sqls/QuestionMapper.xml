@@ -22,4 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<delete id="deleteQuestion" parameterType="int">
   		DELETE FROM QUESTION WHERE QSEQ=#{qseq}
   	</delete>
+  	
+  	<select id="statisticsQus" parameterType="java.lang.String" resultType="AnswerDto">
+  		SELECT ANSWER FROM ANSWER WHERE QSEQ=#{qseq}
+  	</select>
 </mapper>

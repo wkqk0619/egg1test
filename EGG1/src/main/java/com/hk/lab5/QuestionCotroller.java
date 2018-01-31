@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hk.lab5.dtos.AnswerDto;
 import com.hk.lab5.dtos.QuestionDto;
 import com.hk.lab5.model.IService;
 
@@ -29,7 +30,7 @@ public class QuestionCotroller {
 		return "redirect:/selectQuestion.do";
 	}
 	@RequestMapping(value="/selectQuestion.do",method=RequestMethod.GET)
-	public String selectQuestion(Model model,String name) {
+	public String selectQuestion(Model model) {
 		List<QuestionDto> lists = iservice.selectQuestion();
 		model.addAttribute("lists",lists);
 		return "questionBoard";
@@ -45,6 +46,16 @@ public class QuestionCotroller {
 		}
 		return "redirect:/selectQuestion.do";
 	}
+	
+	@RequestMapping(value="/statisticsQus.do",method=RequestMethod.GET)
+	public String statisticsQus(Model model,String qseq)
+	{
+		List<AnswerDto> lists = iservice.statisticsQus(qseq);
+		model.addAttribute("lists",lists);
+		
+		return "statisticsQus";
+	}
+	
 }
 
 

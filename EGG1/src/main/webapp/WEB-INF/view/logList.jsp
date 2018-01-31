@@ -40,5 +40,6 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<button onclick="location.href='./LoginMain.do'">메인으로</button>
 </body>
 </html>

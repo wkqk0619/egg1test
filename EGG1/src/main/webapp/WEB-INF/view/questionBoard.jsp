@@ -28,11 +28,13 @@
 				serchInfo();
 			}
 		});
+		/* 
 		$(".delQu").click(function() {
 			$("input[name=qseq]").val($(this).siblings(".delseq").text());
 			$("#proWind").toggle();
 // 			alert($("input[name=qseq]").val());
 		});
+		 */
 	});
 </script>
 </head>
@@ -41,7 +43,7 @@
 <input id="serchInfo" type="text" name="serchInfo"/><button onclick="serchInfo()">검색</button>
 <hr/>
 <c:choose>
-	<c:when test="${ empty lists }">없다
+	<c:when test="${ empty lists }">작성된 질문이 없습니다.
 	</c:when>
 	<c:otherwise>
 		<table class="table table-striped table-bordered table-responsive">
@@ -51,7 +53,7 @@
 <%-- 				<span class="delQu">${dto.question}</span> --%>
 <!-- 			</div> -->
 			<tr>
-				<th><span class="delseq">${dto.qseq}</span></th><td><td><span class="delQu">${dto.question}</span></td>
+				<th><span class="delseq">${dto.qseq}</span></th><td><td><span class="delQu">${dto.question}</span></td><td><button onclick="location.href='./statisticsQus.do?qseq=${dto.qseq}'">통계</button></td>
 			</tr>
 		</c:forEach>
 		</table>
@@ -76,16 +78,18 @@
 		<input type="submit" value="확인"/>
 	</form>
 </div>
+<!-- 
 <div id="proWind" hidden="hidden">
 	삭제하시겠습니까??<br/>
 	<form action="./deleteQuestion.do" method="post">
 		<input name="qseq" type="text"/>
-		<!-- 생각해보니 삭제는 질문이 여러군데 FK로 물려있는녀석이라 삭제하면 곤란한일이 한가득이다.
+		생각해보니 삭제는 질문이 여러군데 FK로 물려있는녀석이라 삭제하면 곤란한일이 한가득이다.
 		<input type="submit" value="삭제"/>
-		 -->
+		
 	</form>
 	<button onclick="hid()">취소</button>
 </div>
+ -->
 <button onclick="togShow()">질문추가</button>
 <button onclick="location.href='./LoginMain.do'">메인으로</button>
 </body>
