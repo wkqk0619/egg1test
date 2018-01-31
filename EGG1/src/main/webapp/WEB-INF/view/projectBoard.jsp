@@ -12,7 +12,9 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/introjs.css">
 <link rel="stylesheet" href="css/introjs-rtl.css">
+<link rel="stylesheet" href="css/theme.default.css">
 <script type="text/javascript" src="js/intro.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <script type="text/javascript">
 	function ShowNewProj(){
 		$("#NewProj").toggle();
@@ -58,6 +60,7 @@
 	}
 	
 	$(function(){
+		 $("#projtable").tablesorter();
     	var introi=introJs("#projIntro");
     	$("#guard").click(function() {
     		//가이드 시작버튼 비활성화
@@ -86,12 +89,19 @@
 		<button id="guard">가이드</button>
 	</c:when>
 	<c:otherwise>
-		<c:forEach items="${prlist}" var="dto">
-			<div onclick="ajaxProjDetail('${dto.pseq}')">
-				번호 : <span>${dto.pseq}</span><br/>
-				프로젝트 이름 : <span>${dto.name}</span><br/>
-			</div>
-			<hr/>
+		<table class="table table-striped table-bordered table-responsive tablesorter" id="projtable">
+			<thead>
+				<tr>
+					<th>번호</th><th>프로젝트 이름</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${prlist}" var="dto">
+<%-- 					<div onclick="ajaxProjDetail('${dto.pseq}')"> --%>
+<%-- 						번호 : <span>${dto.pseq}</span><br/> --%>
+<%-- 						프로젝트 이름 : <span>${dto.name}</span><br/> --%>
+<!-- 					</div> -->
+<!-- 					<hr/> -->
 			<%-- <c:choose>
 				<c:when test="${dto.delflag eq 'Y'}">
 				삭제된 프로젝트입니다.
@@ -104,7 +114,13 @@
 				<hr/>
 				</c:otherwise>
 			</c:choose> --%>
-		</c:forEach>
+			
+				<tr onclick="ajaxProjDetail('${dto.pseq}')">
+					<td>${dto.pseq}</td><td>${dto.name}</td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</c:otherwise>
 </c:choose>
 <div id="projIntro">

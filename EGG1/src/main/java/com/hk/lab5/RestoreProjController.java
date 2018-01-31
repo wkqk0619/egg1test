@@ -66,5 +66,43 @@ public class RestoreProjController {
 		return bool;
 	}
 	
+	@RequestMapping(value="/deleteRestoreList.do", method=RequestMethod.GET)
+	//@ResponseBody
+	public String deleteRestoreList(RestoreProjDto dto) 
+	{
+		int bool = iservice.deleteRestoreList(dto);
+		if(bool==0) {
+			System.out.println("false");
+		}else {
+			System.out.println("Good");
+		}
+		//return bool;
+		return "redirect:/restoreProj.do";
+	}
+	
+	@RequestMapping(value="/ajaxselectRestoreProj.do", method=RequestMethod.POST)
+	@ResponseBody
+	public List<RestoreProjDto> ajaxselectRestoreProj()
+	{
+		List<RestoreProjDto> list = iservice.ajaxselectRestoreProj();
+		System.out.println("List 결과 : !!"+list);
+		
+		if(list == null) 
+		{
+			
+			System.out.println("널로 취급");
+		}
+		else {
+			System.out.println("널이 아닌거");
+		}
+		System.out.println("리스트가 비었나??"+list.isEmpty());
+		if(list.isEmpty() == true) 
+		{
+			list = null;
+		}
+		System.out.println("리스트 최종 값!!"+list);
+		return list;
+	}
+	
 
 }

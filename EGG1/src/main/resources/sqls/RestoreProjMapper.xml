@@ -8,8 +8,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectRestoreProj" resultType="RestoreProjDto">
   		SELECT RESTORENUM, ID, PROJNUM  FROM RESTOREPROJ ORDER BY 1
   	</select>
+  	
+  	<select id="ajaxselectRestoreProj" resultType="RestoreProjDto">
+  		SELECT RESTORENUM, ID, PROJNUM  FROM RESTOREPROJ ORDER BY 1
+  	</select>
   
   	<insert id="insertRestoreProj" parameterType="RestoreProjDto">
   		INSERT INTO RESTOREPROJ(ID, PROJNUM) VALUES(#{id},#{projnum})
   	</insert>
+  	
+  	<delete id="deleteRestoreList" parameterType="RestoreProjDto">
+  		DELETE FROM RESTOREPROJ WHERE RESTORENUM=#{restorenum}
+  	</delete>
 </mapper>

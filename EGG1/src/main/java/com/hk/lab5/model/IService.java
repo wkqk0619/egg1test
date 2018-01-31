@@ -67,4 +67,6 @@ public interface IService {
 	public int insertRestoreProj(RestoreProjDto dto);
 	public ProjectDto ajaxProjSelect(ProjectDto dto);
 	public int UpResProject(ProjectDto dto);
+	public int deleteRestoreList(RestoreProjDto dto);
+	public List<RestoreProjDto> ajaxselectRestoreProj();
 }

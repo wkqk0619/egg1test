@@ -383,6 +383,18 @@ public class DaoImpl implements IDao {
 		return sqlSession.update(PROJECTNAMESPACE+"UpResProject",dto);
 	}
 
+	@Override
+	public int deleteRestoreList(RestoreProjDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(RESTORENAMESPACE+"deleteRestoreList",dto);
+	}
+
+	@Override
+	public List<RestoreProjDto> ajaxselectRestoreProj() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(RESTORENAMESPACE+"ajaxselectRestoreProj");
+	}
+
 
 
 
