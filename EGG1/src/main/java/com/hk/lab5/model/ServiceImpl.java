@@ -464,15 +464,12 @@ public class ServiceImpl implements IService {
 	public List<AnswerDto> userAllAnswer(String id) 
 	{
 		return dao.userAllAnswer(id);
-<<<<<<< HEAD
 	}
 
 	@Override
 	public List<DdayDto> ddayAlarm(String id) 
 	{
 		return dao.ddayAlarm(id);
-=======
->>>>>>> 6209e4b892b7c913fb85a803c23d0223efa3dbf1
 	}
 
 }
