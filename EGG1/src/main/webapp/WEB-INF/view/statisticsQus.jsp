@@ -9,20 +9,31 @@
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
+<link rel="stylesheet" href="css/theme.default.css">
+<script type="text/javascript">
+	$(function(){
+		$("#statisList").tablesorter();
+	});
+</script>
 </head>
 <body>
 	<c:choose>
 		<c:when test="${empty lists}">작성된 답변이 없습니다.</c:when>
 		<c:otherwise>
-			<table class="table table-striped table-bordered table-responsive">
-				<tr>
-					<th>ID</th><th>답변</th>
-				</tr>
-				<c:forEach items="${lists}" var="dto">
+			<table class="table table-striped table-bordered table-responsive tablesorter" id="statisList">
+				<thead>
 					<tr>
-						<td><a href="./userAllAnswer.do?id=${dto.id}&qseq=${qseq}">${dto.id}</a></td><td>${dto.answer}</td>
+						<th>ID</th><th>답변</th>
 					</tr>
-				</c:forEach>
+				</thead>
+				<tbody>
+					<c:forEach items="${lists}" var="dto">
+						<tr>
+							<td><a href="./userAllAnswer.do?id=${dto.id}&qseq=${qseq}">${dto.id}</a></td><td>${dto.answer}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 		</c:otherwise>
 	</c:choose>
