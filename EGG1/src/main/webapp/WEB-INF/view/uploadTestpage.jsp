@@ -8,13 +8,10 @@
 </head>
 <body>
 <h1>파일업로드 테스트 페이지</h1>
-<form action="fileUpload" enctype="multipart/form-data">
-	<input type="text" name="name"/>
-	<input type="text" name="fileurl"/>
-	<input type="text" name="filesize"/>
-	<input type="text" name="id"/>
-	<input type="text" name="pseq">
+<form action="./fileUpload.do" method="post" enctype="multipart/form-data">
+	<input name="id" value="${ldto.id}"/>
+	<input type="file" name="file"/>
+	<input type="submit" value="저장"/>
 </form>
-<button onclick="location.href='./LoginMain.do'">메인으로</button>
 </body>
 </html>

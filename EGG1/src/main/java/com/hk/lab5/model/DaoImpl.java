@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.FileUploadDto;
 import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
@@ -30,6 +31,7 @@ public class DaoImpl implements IDao {
 	private final String QNANAMESPACE = "com.hk.lab5.qna.";
 	private final String SUPPORTNAMESPACE = "com.hk.lab5.support.";
 	private final String RESTORENAMESPACE = "com.hk.lab5.RestoreProj.";
+	private final String FILEUPLOADNAMESPACE = "com.hk.lab5.fileload.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -393,6 +395,25 @@ public class DaoImpl implements IDao {
 	public List<RestoreProjDto> ajaxselectRestoreProj() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(RESTORENAMESPACE+"ajaxselectRestoreProj");
+	}
+
+	@Override
+	public FileUploadDto selectUserFile(FileUploadDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(FILEUPLOADNAMESPACE+"selectUserFile",dto);
+	}
+
+	@Override
+	public int insertFileUpload(FileUploadDto dto) {
+		// TODO Auto-generated method stub
+		//System.out.println("dto 상태"+dto);
+		return sqlSession.insert(FILEUPLOADNAMESPACE+"insertFileUpload",dto);
+	}
+
+	@Override
+	public int updateFile(AccountDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(ACCOUNTNAMESPACE+"updateFile",dto);
 	}
 
 

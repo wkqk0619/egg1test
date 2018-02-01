@@ -14,6 +14,7 @@
 	<typeAlias type="com.hk.lab5.dtos.AnswerDto" alias="AnswerDto"/>
 	<typeAlias type="com.hk.lab5.dtos.LogDto" alias="LogDto"/>
 	<typeAlias type="com.hk.lab5.dtos.RestoreProjDto" alias="RestoreProjDto"/>
+	<typeAlias type="com.hk.lab5.dtos.FileUploadDto" alias="FileUploadDto"/>
   </typeAliases>
   
   <mappers>
@@ -24,6 +25,7 @@
   	<mapper resource="/sqls/QnaMapper.xml"/>
   	<mapper resource="/sqls/SupportMapper.xml"/>
   	<mapper resource="/sqls/RestoreProjMapper.xml"/>
+  	<mapper resource="/sqls/FileUploadMapper.xml"/>
   </mappers>
   
   </configuration>

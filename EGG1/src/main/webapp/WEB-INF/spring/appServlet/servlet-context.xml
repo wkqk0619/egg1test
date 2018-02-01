@@ -19,8 +19,12 @@
 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
  <property name="maxUploadSize" value="5242880"/>
 </bean>
+<bean id = "uploadPath" class="java.lang.String">
+	<constructor-arg value="D:\egg1test\EGG1\src\main\webapp\profileImage"></constructor-arg>
+</bean>
 
 </beans>
+
 
 
 

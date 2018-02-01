@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +46,10 @@
 	function secession() 
 	{
 		window.parent.location.href="./secession.do";
+	}
+	function iconFormOpen()
+	{
+		$(".iconForm").toggle();
 	}
 	$( function() {
     	var introi=introJs("#myPageIntro");
@@ -121,6 +126,29 @@
 				</div>
 			</td>
 		</tr>
+			<c:choose>
+				<c:when test="${empty ldto.icon}">
+					<tr>
+						<td>프로필이미지를 설정하지 않으셨습니다.</td><td><button onclick="iconFormOpen()">프로필 사진 추가</button></td>
+					</tr>
+					<tr class="iconForm" hidden="hidden">
+						<td>
+							<form action="./fileUpload.do" method="post" enctype="multipart/form-data">
+								<input name="id" value="${ldto.id}"/>
+								<input type="file" name="file"/>
+								<input type="submit" value="저장"/>
+							</form>
+						</td>
+					</tr>
+				</c:when>
+					<c:otherwise>
+						<tr>
+							<td>
+								<img alt="프로필" src="${ldto.icon}"/>
+							</td>
+						</tr>
+					</c:otherwise>
+			</c:choose>
 		<tr>
 			<td><button onclick="location.href='./myLog.do'">접속기록 조회</button></td>
 		</tr>

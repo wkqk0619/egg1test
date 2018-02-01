@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.FileUploadDto;
 import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.NotionDto;
@@ -435,6 +436,24 @@ public class ServiceImpl implements IService {
 	public List<RestoreProjDto> ajaxselectRestoreProj() {
 		// TODO Auto-generated method stub
 		return dao.ajaxselectRestoreProj();
+	}
+
+	@Override
+	public FileUploadDto selectUserFile(FileUploadDto dto) {
+		// TODO Auto-generated method stub
+		return dao.selectUserFile(dto);
+	}
+
+	@Override
+	public int insertFileUpload(FileUploadDto dto) {
+		// TODO Auto-generated method stub
+		return dao.insertFileUpload(dto);
+	}
+
+	@Override
+	public int updateFile(AccountDto dto) {
+		// TODO Auto-generated method stub
+		return dao.updateFile(dto);
 	}
 
 }

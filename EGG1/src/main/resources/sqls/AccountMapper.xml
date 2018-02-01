@@ -66,4 +66,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE 1=1 <if test='logtype!="A"'>AND LOGTYPE=#{logtype}</if> <if test="search!=''">AND ${type}=#{search}</if><if test='date!=""'>AND DATE(LOGTIME)=STR_TO_DATE(#{date},'%Y-%m-%d')</if>
 	</select>
 	
+	<update id="updateFile" parameterType="AccountDto">
+		UPDATE ACCOUNT SET ICON=#{icon} WHERE ID=#{id}
+	</update>
+	
 </mapper>
