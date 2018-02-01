@@ -76,5 +76,8 @@ public interface IService {
 	public int insertFileUpload(FileUploadDto dto);
 	public int updateFile(AccountDto dto);
 	public List<AnswerDto> userAllAnswer(String id);
+<<<<<<< HEAD
 	public List<DdayDto> ddayAlarm(String id);
+=======
+>>>>>>> 6209e4b892b7c913fb85a803c23d0223efa3dbf1
 }

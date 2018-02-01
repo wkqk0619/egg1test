@@ -51,6 +51,10 @@
 	{
 		$(".iconForm").toggle();
 	}
+	function UpdateiconFormOpen()
+	{
+		$(".UpdateiconForm").toggle();
+	}
 	$( function() {
     	var introi=introJs("#myPageIntro");
     	$("#guard").click(function() {
@@ -134,7 +138,7 @@
 					<tr class="iconForm" hidden="hidden">
 						<td>
 							<form action="./fileUpload.do" method="post" enctype="multipart/form-data">
-								<input name="id" value="${ldto.id}"/>
+								<input hidden="hidden" name="id" value="${ldto.id}"/>
 								<input type="file" name="file"/>
 								<input type="submit" value="저장"/>
 							</form>
@@ -145,6 +149,16 @@
 						<tr>
 							<td>
 								<img alt="프로필" src="${ldto.icon}"/>
+							</td>
+							<td><button onclick="UpdateiconFormOpen()">프로필 사진 변경</button></td>
+						</tr>
+						<tr class="UpdateiconForm" hidden="hidden">
+							<td>
+								<form action="./fileUpload.do" method="post" enctype="multipart/form-data">
+									<input hidden="hidden" name="id" value="${ldto.id}"/>
+									<input type="file" name="file"/>
+									<input type="submit" value="저장"/>
+								</form>
 							</td>
 						</tr>
 					</c:otherwise>

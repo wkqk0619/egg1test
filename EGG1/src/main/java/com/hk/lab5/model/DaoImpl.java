@@ -403,6 +403,10 @@ public class DaoImpl implements IDao {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6209e4b892b7c913fb85a803c23d0223efa3dbf1
 	public FileUploadDto selectUserFile(FileUploadDto dto) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(FILEUPLOADNAMESPACE+"selectUserFile",dto);
@@ -437,15 +441,22 @@ public class DaoImpl implements IDao {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6209e4b892b7c913fb85a803c23d0223efa3dbf1
 	public List<AnswerDto> userAllAnswer(String id) 
 	{
 		return sqlSession.selectList(QUESTIONNAMESPACE+"userAllAnswer",id);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public List<DdayDto> ddayAlarm(String id) 
 	{
 		return sqlSession.selectList(PROJECTNAMESPACE+"ddayAlarm",id);
 	}
+=======
+>>>>>>> 6209e4b892b7c913fb85a803c23d0223efa3dbf1
 	
 }

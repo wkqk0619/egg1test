@@ -77,10 +77,20 @@ public interface IDao {
 	public int UpResProject(ProjectDto dto);
 	public int deleteRestoreList(RestoreProjDto dto);
 	public List<RestoreProjDto> ajaxselectRestoreProj();
+<<<<<<< HEAD
 	public FileUploadDto selectUserFile(FileUploadDto dto);
 	public int insertFileUpload(FileUploadDto dto);
 	public int updateFile(AccountDto dto);
 	public List<AnswerDto> userAllAnswer(String id);
 	public List<DdayDto> ddayAlarm(String id);
+=======
+
+	public FileUploadDto selectUserFile(FileUploadDto dto);
+	public int insertFileUpload(FileUploadDto dto);
+	public int updateFile(AccountDto dto);
+
+	public List<AnswerDto> userAllAnswer(String id);
+
+>>>>>>> 6209e4b892b7c913fb85a803c23d0223efa3dbf1
 
 }
