@@ -362,6 +362,10 @@ public class DaoImpl implements IDao {
 	}
 
 	@Override
+	public List<AnswerDto> statisticsQus(String qseq) 
+	{
+		return sqlSession.selectList(QUESTIONNAMESPACE+"statisticsQus",qseq);
+	}
 	public List<RestoreProjDto> selectrestoreproj() {
 		// TODO Auto-generated method stub
 		 return sqlSession.selectList(RESTORENAMESPACE+"selectRestoreProj");
@@ -398,6 +402,7 @@ public class DaoImpl implements IDao {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public FileUploadDto selectUserFile(FileUploadDto dto) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(FILEUPLOADNAMESPACE+"selectUserFile",dto);
@@ -432,5 +437,11 @@ public class DaoImpl implements IDao {
 
 
 
+=======
+	public List<AnswerDto> userAllAnswer(String id) 
+	{
+		return sqlSession.selectList(QUESTIONNAMESPACE+"userAllAnswer",id);
+	}
+>>>>>>> b8299a062ff60799cb85244641221b8497ce0c8a
 	
 }

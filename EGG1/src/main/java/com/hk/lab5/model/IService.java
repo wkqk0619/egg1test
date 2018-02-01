@@ -64,13 +64,18 @@ public interface IService {
 	public List<LogDto> logList();
 	public List<LogDto> myLog(String id);
 	public List<LogDto> searchLog(Map<String, String> map);
+	public List<AnswerDto> statisticsQus(String qseq);
 	public List<RestoreProjDto> selectrestoreproj();
 	public int insertRestoreProj(RestoreProjDto dto);
 	public ProjectDto ajaxProjSelect(ProjectDto dto);
 	public int UpResProject(ProjectDto dto);
 	public int deleteRestoreList(RestoreProjDto dto);
 	public List<RestoreProjDto> ajaxselectRestoreProj();
+<<<<<<< HEAD
 	public FileUploadDto selectUserFile(FileUploadDto dto);
 	public int insertFileUpload(FileUploadDto dto);
 	public int updateFile(AccountDto dto);
+=======
+	public List<AnswerDto> userAllAnswer(String id);
+>>>>>>> b8299a062ff60799cb85244641221b8497ce0c8a
 }

@@ -403,6 +403,11 @@ public class ServiceImpl implements IService {
 	}
 
 	@Override
+	public List<AnswerDto> statisticsQus(String qseq) 
+	{
+		return dao.statisticsQus(qseq);
+	}
+	
 	public List<RestoreProjDto> selectrestoreproj() {
 		// TODO Auto-generated method stub
 		return dao.selectrestoreproj();
@@ -439,6 +444,7 @@ public class ServiceImpl implements IService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public FileUploadDto selectUserFile(FileUploadDto dto) {
 		// TODO Auto-generated method stub
 		return dao.selectUserFile(dto);
@@ -454,6 +460,11 @@ public class ServiceImpl implements IService {
 	public int updateFile(AccountDto dto) {
 		// TODO Auto-generated method stub
 		return dao.updateFile(dto);
+=======
+	public List<AnswerDto> userAllAnswer(String id) 
+	{
+		return dao.userAllAnswer(id);
+>>>>>>> b8299a062ff60799cb85244641221b8497ce0c8a
 	}
 
 }
