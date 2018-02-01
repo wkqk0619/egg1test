@@ -71,11 +71,8 @@ public interface IService {
 	public int UpResProject(ProjectDto dto);
 	public int deleteRestoreList(RestoreProjDto dto);
 	public List<RestoreProjDto> ajaxselectRestoreProj();
-<<<<<<< HEAD
 	public FileUploadDto selectUserFile(FileUploadDto dto);
 	public int insertFileUpload(FileUploadDto dto);
 	public int updateFile(AccountDto dto);
-=======
 	public List<AnswerDto> userAllAnswer(String id);
->>>>>>> b8299a062ff60799cb85244641221b8497ce0c8a
 }
