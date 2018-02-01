@@ -42,6 +42,34 @@ $( function() {
     			  getlogin();
     		  }
     	});
+    	
+    	$.ajax
+		(
+			{
+				type : "POST",
+				url : "./alarm.do",
+				async : true,
+				success : function(msg)
+				{
+					if(msg.length==0)
+					{
+						$("#alarm").empty();
+						$("#alarm").text("알림이 읎어요");
+					}
+					for(var i=0; i<msg.length; i++)
+					{
+						var $tr = $("<tr>");
+// 						msg[i].sseq
+						$tr.append("<td>"+msg[i].title+"</td>");
+						$tr.append("<td>"+msg[i].dday+"</td>");
+						
+						$("#alarmtable").append($tr);
+					}
+				}
+				
+			}
+		);
+    	
   });
   
   function myS() 
@@ -112,6 +140,7 @@ $( function() {
     			<li><a href="#tabs-6">공지사항</a></li>
     			<li><a href="#tabs-7">문의</a></li>
     			<li><a href="#tabs-8">로그아웃</a></li>
+    			<li><a href="#tabs-9">알림</a></li>
   			</c:otherwise>
   		</c:choose>
   	</ul>
@@ -194,6 +223,17 @@ $( function() {
 		로그아웃 하시겠습니까??
 		<button onclick="seout()">로그아웃</button>
 		<button onclick="idearShew()">아니오</button>
+	</div>
+	
+	<div id="tabs-9" hidden="hidden" class="egtab">
+		알림
+		<div id="alarm">
+			<table id="alarmtable">
+				<tr>
+					<th>제목</th><th>D-Day</th>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
 </div><!-- tabs 끝 -->

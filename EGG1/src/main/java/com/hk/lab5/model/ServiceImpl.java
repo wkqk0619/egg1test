@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.DdayDto;
 import com.hk.lab5.dtos.FileUploadDto;
 import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.dtos.MySupportDto;
@@ -444,7 +445,6 @@ public class ServiceImpl implements IService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public FileUploadDto selectUserFile(FileUploadDto dto) {
 		// TODO Auto-generated method stub
 		return dao.selectUserFile(dto);
@@ -460,11 +460,16 @@ public class ServiceImpl implements IService {
 	public int updateFile(AccountDto dto) {
 		// TODO Auto-generated method stub
 		return dao.updateFile(dto);
-=======
+	}
 	public List<AnswerDto> userAllAnswer(String id) 
 	{
 		return dao.userAllAnswer(id);
->>>>>>> b8299a062ff60799cb85244641221b8497ce0c8a
+	}
+
+	@Override
+	public List<DdayDto> ddayAlarm(String id) 
+	{
+		return dao.ddayAlarm(id);
 	}
 
 }

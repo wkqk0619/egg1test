@@ -1,5 +1,6 @@
 package com.hk.lab5;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.DdayDto;
 import com.hk.lab5.dtos.MySupportDto;
 import com.hk.lab5.dtos.QuestionDto;
 import com.hk.lab5.dtos.SupportDto;
@@ -125,6 +127,18 @@ public class SupportController
 		model.addAttribute("list", list);
 		
 		return "supportBoard";
+	}
+	
+	@RequestMapping(value="/alarm.do", method=RequestMethod.POST)
+	@ResponseBody
+	public List<DdayDto> alarm(HttpSession session)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		List<DdayDto> dList = new ArrayList<DdayDto>();
+		
+		dList = iservice.ddayAlarm(ldto.getId());
+				
+		return dList;
 	}
 	
 	

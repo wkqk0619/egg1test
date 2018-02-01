@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.DdayDto;
 import com.hk.lab5.dtos.FileUploadDto;
 import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.dtos.MySupportDto;
@@ -76,12 +77,10 @@ public interface IDao {
 	public int UpResProject(ProjectDto dto);
 	public int deleteRestoreList(RestoreProjDto dto);
 	public List<RestoreProjDto> ajaxselectRestoreProj();
-<<<<<<< HEAD
 	public FileUploadDto selectUserFile(FileUploadDto dto);
 	public int insertFileUpload(FileUploadDto dto);
 	public int updateFile(AccountDto dto);
-=======
 	public List<AnswerDto> userAllAnswer(String id);
->>>>>>> b8299a062ff60799cb85244641221b8497ce0c8a
+	public List<DdayDto> ddayAlarm(String id);
 
 }

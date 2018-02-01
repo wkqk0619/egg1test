@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.AnswerDto;
+import com.hk.lab5.dtos.DdayDto;
 import com.hk.lab5.dtos.FileUploadDto;
 import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.dtos.MySupportDto;
@@ -402,7 +403,6 @@ public class DaoImpl implements IDao {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public FileUploadDto selectUserFile(FileUploadDto dto) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(FILEUPLOADNAMESPACE+"selectUserFile",dto);
@@ -437,11 +437,15 @@ public class DaoImpl implements IDao {
 
 
 
-=======
 	public List<AnswerDto> userAllAnswer(String id) 
 	{
 		return sqlSession.selectList(QUESTIONNAMESPACE+"userAllAnswer",id);
 	}
->>>>>>> b8299a062ff60799cb85244641221b8497ce0c8a
+
+	@Override
+	public List<DdayDto> ddayAlarm(String id) 
+	{
+		return sqlSession.selectList(PROJECTNAMESPACE+"ddayAlarm",id);
+	}
 	
 }

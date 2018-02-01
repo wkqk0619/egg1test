@@ -54,4 +54,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		DELETE FROM ANSWER WHERE PSEQ = #{list[0].pseq} AND QSEQ IN <foreach collection="list" item="dto" open="(" separator="," close=")">#{dto.qseq}</foreach>
   	</delete>
   	
+  	<select id="ddayAlarm" parameterType="java.lang.String" resultType="DdayDto">
+  		SELECT SSEQ, TITLE ,DATEDIFF(ENDDATE,NOW()) DDAY FROM SUPPORT WHERE SSEQ IN (SELECT SSEQ FROM MYSUPPORT WHERE ID=#{id}) AND DATEDIFF(ENDDATE,NOW())>=0
+  	</select>
+  	
 </mapper>
