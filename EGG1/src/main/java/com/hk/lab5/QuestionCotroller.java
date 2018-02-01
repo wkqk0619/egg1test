@@ -52,8 +52,19 @@ public class QuestionCotroller {
 	{
 		List<AnswerDto> lists = iservice.statisticsQus(qseq);
 		model.addAttribute("lists",lists);
+		model.addAttribute("qseq", qseq);
 		
 		return "statisticsQus";
+	}
+	
+	@RequestMapping(value="/userAllAnswer.do",method=RequestMethod.GET)
+	public String userAllAnswer(Model model, String id, String qseq)
+	{
+		List<AnswerDto> lists = iservice.userAllAnswer(id);
+		model.addAttribute("lists",lists);
+		model.addAttribute("qseq", qseq);
+		
+		return "userAllAnswer";
 	}
 	
 }

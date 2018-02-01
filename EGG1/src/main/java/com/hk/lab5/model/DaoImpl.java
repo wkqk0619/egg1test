@@ -398,5 +398,11 @@ public class DaoImpl implements IDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(RESTORENAMESPACE+"ajaxselectRestoreProj");
 	}
+
+	@Override
+	public List<AnswerDto> userAllAnswer(String id) 
+	{
+		return sqlSession.selectList(QUESTIONNAMESPACE+"userAllAnswer",id);
+	}
 	
 }

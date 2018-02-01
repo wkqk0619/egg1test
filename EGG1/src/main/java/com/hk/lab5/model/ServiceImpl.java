@@ -442,6 +442,12 @@ public class ServiceImpl implements IService {
 		return dao.ajaxselectRestoreProj();
 	}
 
+	@Override
+	public List<AnswerDto> userAllAnswer(String id) 
+	{
+		return dao.userAllAnswer(id);
+	}
+
 }
 
 

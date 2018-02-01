@@ -47,15 +47,18 @@
 	</c:when>
 	<c:otherwise>
 		<table class="table table-striped table-bordered table-responsive">
-		<c:forEach items="${lists }" var="dto">
-<!-- 			<div> -->
-<%-- 				<span class="delseq">${dto.qseq}</span> --%>
-<%-- 				<span class="delQu">${dto.question}</span> --%>
-<!-- 			</div> -->
 			<tr>
-				<th><span class="delseq">${dto.qseq}</span></th><td><td><span class="delQu">${dto.question}</span></td><td><button onclick="location.href='./statisticsQus.do?qseq=${dto.qseq}'">통계</button></td>
+				<th>질문번호</th><th>질문</th><th>통계</th>
 			</tr>
-		</c:forEach>
+			<c:forEach items="${lists }" var="dto">
+<!-- 				<div> -->
+<%-- 					<span class="delseq">${dto.qseq}</span> --%>
+<%-- 					<span class="delQu">${dto.question}</span> --%>
+<!-- 				</div> -->
+				<tr>
+					<td><span class="delseq">${dto.qseq}</span></td><td><span class="delQu">${dto.question}</span></td><td><button onclick="location.href='./statisticsQus.do?qseq=${dto.qseq}'">통계</button></td>
+				</tr>
+			</c:forEach>
 		</table>
 	</c:otherwise>
 </c:choose>

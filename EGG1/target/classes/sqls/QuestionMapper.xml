@@ -24,6 +24,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	</delete>
   	
   	<select id="statisticsQus" parameterType="java.lang.String" resultType="AnswerDto">
-  		SELECT ANSWER FROM ANSWER WHERE QSEQ=#{qseq}
+  		SELECT (SELECT ID FROM PROJECT WHERE PSEQ=A.PSEQ) ID, ANSWER FROM ANSWER A WHERE QSEQ=#{qseq} ORDER BY ID
   	</select>
+  	
+  	<select id="userAllAnswer" parameterType="java.lang.String" resultType="AnswerDto">
+  		SELECT NAME, (SELECT QUESTION FROM QUESTION WHERE QSEQ = A.QSEQ) QUESTION, ANSWER
+		FROM ANSWER A JOIN (SELECT PSEQ,NAME FROM PROJECT WHERE ID=#{id}) B	ON A.PSEQ = B.PSEQ
+  	</select>
+  	
 </mapper>

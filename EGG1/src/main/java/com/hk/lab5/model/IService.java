@@ -70,4 +70,5 @@ public interface IService {
 	public int UpResProject(ProjectDto dto);
 	public int deleteRestoreList(RestoreProjDto dto);
 	public List<RestoreProjDto> ajaxselectRestoreProj();
+	public List<AnswerDto> userAllAnswer(String id);
 }

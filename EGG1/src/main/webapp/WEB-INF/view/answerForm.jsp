@@ -24,20 +24,42 @@
 				{
 					s += "$('#Q"+ dto.getQseq() +"').val('"+ dto.getAnswer() +"');";
 				}
+				
+				int i = aList.size();
 			%>
 			
 			<%=s%>
+			
+			var qLength=<%=i%>;
+			var emp=0; // 빈칸 갯수 
+			
+			$(".answer").each
+			(
+				function() 
+				{
+					if($(this).val() == "")
+					{
+						emp++;
+					}
+				}	
+			);
+			
+			var per = (qLength-emp)/qLength*100;
+			var comp = per.toFixed(1);
+			
+			$("#comp").text(comp+"%");
 		}	
 	);
 </script>
 </head>
 <body>
+	<p><span>몇퍼센트나 작성했을까나? : </span><span id="comp"></span></p>
 	<form action="./writeAnswer.do" method="post">
 		<input type="hidden" name="pseq" value="${pseq}">
 		<c:forEach items="${qList}" var="dto">
 			<input type="hidden" name="question" value="${dto.question}">
 			<input type="hidden" name="qseq" value="${dto.qseq}">
-			<span>${dto.question} : </span><input type="text" name="answer" id="Q${dto.qseq}"><br>
+			<span>${dto.question} : </span><input class="answer" type="text" name="answer" id="Q${dto.qseq}"><br>
 		</c:forEach>
 		<input type="submit" value="확인">
 	</form>
