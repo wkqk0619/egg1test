@@ -9,8 +9,12 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/theme.default.css">
+<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <script type="text/javascript">
-	
+	$(function(){
+		$("#suportList").tablesorter();
+	});
 	function detalClo(){
 		$("#alertpr").hide();
 	    $("#detaliClo").hide();
@@ -85,24 +89,26 @@
 </head>
 <body>
 <div>
-	<table class="table table-striped table-bordered table-responsive">
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>지원분야</th>
+	<table class="table table-striped table-bordered table-responsive tablesorter" id="suportList">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>지원분야</th>
 <!-- 			<th>지역</th> -->
 <!-- 			<th>분류</th> -->
 <!-- 			<th>URL</th> -->
 <!-- 			<th>등록일</th> -->
 <!-- 			<th>접수시작일</th> -->
-			<th>접수종료일</th>
-			<th>소속</th>
+				<th>접수종료일</th>
+				<th>소속</th>
 <!-- 			<th>대상</th> -->
 <!-- 			<th>대상연령</th> -->
 <!-- 			<th>대상업력</th> -->
-			<th>마이지원등록</th>
-		</tr>
-		
+				<th>마이지원등록</th>
+			</tr>
+		</thead>
+		<tbody>
 		<c:forEach items="${list}" var="dto">
 			<tr>
 				<td>${dto.sseq}</td>
@@ -128,6 +134,7 @@
 				<td><button onclick="addMySupport('${dto.sseq}')">추가</button></td>
 			</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 </div>	
 		<textarea id="alertpr"  hidden="hidden" rows="500" cols="400" readonly="readonly"></textarea>

@@ -132,7 +132,7 @@ $(function(){
 					else
 					{
 
-						alert("아이디와 비밀번호가 일치하지 않습니다."+pattenOkFalse);
+						//alert("아이디와 비밀번호가 일치하지 않습니다."+pattenOkFalse);
 
 						if(msg=="O")
 						{

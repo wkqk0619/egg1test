@@ -12,9 +12,11 @@
 <link rel="stylesheet" href="css/introjs.css">
 <link rel="stylesheet" href="css/introjs-rtl.css">
 <script type="text/javascript" src="js/intro.js"></script>
+<link rel="stylesheet" href="css/theme.default.css">
+<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
 <script type="text/javascript">
 $( function() {
-	
+	$("#mysuportList").tablesorter();
 	var introi=introJs("#mySupportIntro");
 	$("#guard").click(function() {
 		//가이드 시작버튼 비활성화
@@ -91,24 +93,26 @@ $( function() {
 	<h1>마이지원목록</h1>
 	<button id="guard">가이드</button>
 	<div id="mySupportIntro">
-	<table class="table table-striped table-bordered table-responsive" data-step="1" data-intro="관심 지원사업">
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>분야</th>
-			<th>지역</th>
-			<th>분류</th>
+	<table class="table table-striped table-bordered table-responsive tablesorter" id="mysuportList" data-step="1" data-intro="관심 지원사업">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>분야</th>
+				<th>지역</th>
+				<th>분류</th>
 <!-- 			<th>URL</th> -->
 <!-- 			<th>등록일</th> -->
-			<th>접수시작일</th>
-			<th>접수종료일</th>
-			<th>소속</th>
-			<th>대상</th>
-			<th>대상연령</th>
-			<th>대상업력</th>
-			<th data-step="2" data-intro="관심지원사업 삭제">삭제</th>
-		</tr>
-		
+				<th>접수시작일</th>
+				<th>접수종료일</th>
+				<th>소속</th>
+				<th>대상</th>
+				<th>대상연령</th>
+				<th>대상업력</th>
+				<th data-step="2" data-intro="관심지원사업 삭제">삭제</th>
+			</tr>
+		</thead>
+		<tbody>
 		<c:forEach items="${list}" var="dto">
 			<tr id="S${dto.sseq}" onclick="menu('${dto.sseq}')">
 				<td>${dto.sseq}</td>
@@ -127,6 +131,7 @@ $( function() {
 				<td><button onclick="delMySupport('${dto.sseq}')">삭제</button></td>
 			</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 	<div id="project" hidden="hidden">
 		<table id="projectTable"></table>
