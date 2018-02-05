@@ -57,15 +57,19 @@ $( function() {
 						$("#alarm").empty();
 						$("#alarm").text("알림이 읎어요");
 					}
-					for(var i=0; i<msg.length; i++)
+					else
 					{
-						var $tr = $("<tr>");
-// 						msg[i].sseq
-						$tr.append("<td>"+msg[i].title+"</td>");
-						$tr.append("<td>"+msg[i].dday+"</td>");
-						
-						$("#alarmtable").append($tr);
+						for(var i=0; i<msg.length; i++)
+						{
+							var $tr = $("<tr>");
+//	 						msg[i].sseq
+							$tr.append("<td>"+msg[i].title+"</td>");
+							$tr.append("<td>"+msg[i].dday+"</td>");
+							
+							$("#alarmtable").append($tr);
+						}
 					}
+					
 				}
 				
 			}
@@ -100,6 +104,63 @@ $( function() {
 		}
 
 	} //onEnterLogin()
+	
+	function searching() 
+	{
+		var keyword = $("#searchWord").val();
+		
+		$.ajax
+		(
+			{
+				type : "POST",
+				url : "./combineSearch.do",
+				data : "search="+keyword, 
+				async : true,
+				success : function(msg)
+				{
+// 					msg.pList[].name	msg.pList[].typeclass	msg.pList[].info
+// 					msg.sList[].title
+// 					alert(msg.pList.length); //5
+// 					alert(msg.sList.length); //4이긴한데 의미가 있긴해?
+					$("#searchResult").empty();
+					
+					if(msg.pList.length!=0)
+					{
+						$("#searchResult").append($("<tr><th colspan='3'>프로젝트</th></tr>"));
+						$("#searchResult").append($("<tr><th>프로젝트명</th><th>분류</th><th>설명</th></tr>"));
+						for(var i=0; i<msg.pList.length; i++)
+						{
+							var $tr = $("<tr>");
+							$tr.append("<td>"+msg.pList[i].name+"</td>");
+							$tr.append("<td>"+msg.pList[i].typeclass+"</td>");
+							$tr.append("<td>"+msg.pList[i].info+"</td>");
+							
+							$("#searchResult").append($tr);
+						}
+					}
+					
+					if(msg.sList.length!=0)
+					{
+						$("#searchResult").append($("<tr><th>지원사업</th></tr>"));
+						for(var i=0; i<msg.sList.length; i++)
+						{
+							var $tr = $("<tr>");
+							$tr.append("<td>"+msg.sList[i].title+"</td>");
+							
+							$("#searchResult").append($tr);
+						}
+					}
+					
+					if(msg.pList.length==0 && msg.sList.length==0)
+					{
+						$("#searchResult").append($("<tr><th>검색결과가 없습니다.</th></tr>"));
+					}
+					
+				}				
+			}
+		);
+	}
+	
 </script>
 <style type="text/css">
 	   .ifa{
@@ -142,6 +203,7 @@ $( function() {
     			<li><a href="#tabs-7">문의</a></li>
     			<li><a href="#tabs-8">로그아웃</a></li>
     			<li><a href="#tabs-9">알림</a></li>
+    			<li><a href="#tabs-10">검색</a></li>
   			</c:otherwise>
   		</c:choose>
   	</ul>
@@ -235,6 +297,12 @@ $( function() {
 				</tr>
 			</table>
 		</div>
+	</div>
+	
+	<div id="tabs-10" hidden="hidden" class="egtab">
+		검색
+		<input type="text" id="searchWord"><button onclick="searching()">검색</button>
+		<table id="searchResult"></table>
 	</div>
 	
 </div><!-- tabs 끝 -->

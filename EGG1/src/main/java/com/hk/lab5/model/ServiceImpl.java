@@ -1,5 +1,6 @@
 ﻿package com.hk.lab5.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -470,6 +471,18 @@ public class ServiceImpl implements IService {
 	public List<DdayDto> ddayAlarm(String id) 
 	{
 		return dao.ddayAlarm(id);
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public Map<String, List> combineSearch(Map<String, String> map) 
+	{
+		Map<String, List> rMap = new HashMap<String, List>();
+		
+		rMap.put("pList",dao.projectSearch(map));
+		rMap.put("sList",dao.supportSearch(map));
+		
+		return rMap;
 	}
 
 }

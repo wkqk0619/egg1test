@@ -47,4 +47,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE TYPE = #{type} AND ( TARGET LIKE '%${target}%' OR TARGET = '전체' ) AND ( AREA = #{area} OR AREA = '전국' )
 	</select>
 
+	<select id="supportSearch" parameterType="java.util.Map" resultType="SupportDto">
+		SELECT TITLE FROM SUPPORT WHERE TITLE LIKE '%${search}%'
+	</select>
+
 </mapper>

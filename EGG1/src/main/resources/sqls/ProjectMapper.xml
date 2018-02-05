@@ -58,4 +58,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		SELECT SSEQ, TITLE ,DATEDIFF(ENDDATE,NOW()) DDAY FROM SUPPORT WHERE SSEQ IN (SELECT SSEQ FROM MYSUPPORT WHERE ID=#{id}) AND DATEDIFF(ENDDATE,NOW())>=0
   	</select>
   	
+  	<select id="projectSearch" resultType="ProjectDto" parameterType="java.util.Map">
+  		SELECT NAME,TYPECLASS,INFO FROM PROJECT WHERE ID=#{id} AND NAME LIKE '%${search}%'
+  	</select>
+  	
 </mapper>

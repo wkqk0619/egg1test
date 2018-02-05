@@ -77,4 +77,5 @@ public interface IService {
 	public int updateFile(AccountDto dto);
 	public List<AnswerDto> userAllAnswer(String id);
 	public List<DdayDto> ddayAlarm(String id);
+	public Map<String, List> combineSearch(Map<String, String> map);
 }

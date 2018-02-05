@@ -430,5 +430,18 @@ public class DaoImpl implements IDao {
 	public List<DdayDto> ddayAlarm(String id) 
 	{
 		return sqlSession.selectList(PROJECTNAMESPACE+"ddayAlarm",id);
+	}
+
+	@Override
+	public List<ProjectDto> projectSearch(Map<String, String> map) 
+	{
+		
+		return sqlSession.selectList(PROJECTNAMESPACE+"projectSearch",map);
+	}
+
+	@Override
+	public List<SupportDto> supportSearch(Map<String, String> map) 
+	{
+		return sqlSession.selectList(SUPPORTNAMESPACE+"supportSearch",map);
 	}	
 }
