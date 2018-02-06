@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="supportSearch" parameterType="java.util.Map" resultType="SupportDto">
-		SELECT TITLE FROM SUPPORT WHERE TITLE LIKE '%${search}%'
+		SELECT TITLE,URL FROM SUPPORT WHERE TITLE LIKE '%${search}%'
 	</select>
 
 </mapper>
