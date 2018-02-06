@@ -12,7 +12,13 @@
 			//alert(key.keyCode);
 			if(key.keyCode==95)
 			{
+				document.execCommand('delete');
 				document.execCommand('Underline');
+			}
+			
+			if(key.keyCode==96)
+			{
+				document.execCommand('formatBlock',false,'<h1>'); //제목 글씨 가능 기능
 			}
 		});
 	});
@@ -36,6 +42,8 @@
 <title>에디터 테스트</title>
 </head>
 <body>
+일반 폰트 사이트
+<small>asfd</small>
 <h1>execCommand() 메서드 테스트</h1>
 <div class="buttons">
 	<input type="button" class="BOLD" value="B" onclick="document.execCommand('bold')"/>
