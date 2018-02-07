@@ -130,7 +130,7 @@ $( function() {
 						$("#searchResult").append($("<tr><th>프로젝트명</th><th>분류</th><th>설명</th></tr>"));
 						for(var i=0; i<msg.pList.length; i++)
 						{
-							var $tr = $("<tr>");
+							var $tr = $("<tr onclick='projectSelect("+msg.pList[i].pseq+")'></tr>");
 							$tr.append("<td>"+msg.pList[i].name+"</td>");
 							$tr.append("<td>"+msg.pList[i].typeclass+"</td>");
 							$tr.append("<td>"+msg.pList[i].info+"</td>");
@@ -144,7 +144,7 @@ $( function() {
 						$("#searchResult").append($("<tr><th>지원사업</th></tr>"));
 						for(var i=0; i<msg.sList.length; i++)
 						{
-							var $tr = $("<tr>");
+							var $tr = $("<tr onclick='supportSelect("+'"'+msg.sList[i].url+'"'+")'></tr>");
 							$tr.append("<td>"+msg.sList[i].title+"</td>");
 							
 							$("#searchResult").append($tr);
@@ -159,6 +159,28 @@ $( function() {
 				}				
 			}
 		);
+	}
+	
+	function projectSelect(pseq) 
+	{
+		$('#tabs').tabs("option","active", 0); // 탭 전환
+		var iframe = document.getElementById("ptab");
+		if (iframe) 
+		{
+		   var iframeContent = (iframe.contentWindow || iframe.contentDocument);
+		   iframeContent.ajaxProjDetail(pseq);
+		}
+	}
+	
+	function supportSelect(url) 
+	{
+		$('#tabs').tabs("option","active", 1); // 탭 전환
+		var iframe = document.getElementById("stab");
+		if (iframe) 
+		{
+		   var iframeContent = (iframe.contentWindow || iframe.contentDocument);
+		   iframeContent.detail(url);
+		}
 	}
 	
 </script>
@@ -250,7 +272,7 @@ $( function() {
 <%-- 		<h1>${ldto.id} 님 환영합니다.</h1>	 --%>
 		<div id="idearMain">
 			<div>Welcome EGG1<br/>
-				<iframe class="ifa" src="./selectProject.do"></iframe>
+				<iframe id="ptab" class="ifa" src="./selectProject.do"></iframe>
 			</div>
 		</div>
 	</div>
@@ -258,7 +280,7 @@ $( function() {
 	<div id="tabs-3" hidden="hidden" class="egtab">
 		<div id="supptyBis">
 			지원사업공고들~~<br/>
-			<iframe class="ifa" src="./supportList.do"></iframe>
+			<iframe id="stab" class="ifa" src="./supportList.do"></iframe>
 		</div>
 	</div>
 	

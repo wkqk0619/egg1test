@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	</select>
   	
   	<select id="projectSearch" resultType="ProjectDto" parameterType="java.util.Map">
-  		SELECT NAME,TYPECLASS,INFO FROM PROJECT WHERE ID=#{id} AND NAME LIKE '%${search}%'
+  		SELECT PSEQ,NAME,TYPECLASS,INFO FROM PROJECT WHERE ID=#{id} AND NAME LIKE '%${search}%'
   	</select>
   	
 </mapper>
