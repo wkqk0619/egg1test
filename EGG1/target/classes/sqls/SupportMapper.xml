@@ -50,5 +50,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="supportSearch" parameterType="java.util.Map" resultType="SupportDto">
 		SELECT TITLE,URL FROM SUPPORT WHERE TITLE LIKE '%${search}%'
 	</select>
+	
+	<select id="mSupportSearch" parameterType="java.util.Map" resultType="MySupportDto">
+		SELECT SSEQ,TITLE FROM SUPPORT WHERE SSEQ IN (SELECT SSEQ FROM MYSUPPORT WHERE ID = #{id}) AND TITLE LIKE '%${search}%'
+	</select>
 
 </mapper>

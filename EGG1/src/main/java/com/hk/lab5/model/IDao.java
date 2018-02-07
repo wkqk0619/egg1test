@@ -84,5 +84,6 @@ public interface IDao {
 	public List<DdayDto> ddayAlarm(String id);
 	public List<ProjectDto> projectSearch(Map<String, String> map);
 	public List<SupportDto> supportSearch(Map<String, String> map);
+	public List mSupportSearch(Map<String, String> map);
 
 }

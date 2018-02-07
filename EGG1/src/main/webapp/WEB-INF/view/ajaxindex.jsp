@@ -79,7 +79,7 @@ $( function() {
   
   function myS() 
   {
-	 $("#myS").attr("src","./mySupportList.do");
+	 $("#mtab").attr("src","./mySupportList.do");
   }
   
   function seout(){
@@ -151,7 +151,19 @@ $( function() {
 						}
 					}
 					
-					if(msg.pList.length==0 && msg.sList.length==0)
+					if(msg.mList.length!=0)
+					{
+						$("#searchResult").append($("<tr><th>마이지원</th></tr>"));
+						for(var i=0; i<msg.mList.length; i++)
+						{
+							var $tr = $("<tr onclick='mSupportSelect("+'"'+msg.mList[i].sseq+'"'+")'></tr>");
+							$tr.append("<td>"+msg.mList[i].title+"</td>");
+							
+							$("#searchResult").append($tr);
+						}
+					}
+					
+					if(msg.pList.length==0 && msg.sList.length==0 && msg.mList.length==0)
 					{
 						$("#searchResult").append($("<tr><th>검색결과가 없습니다.</th></tr>"));
 					}
@@ -180,6 +192,18 @@ $( function() {
 		{
 		   var iframeContent = (iframe.contentWindow || iframe.contentDocument);
 		   iframeContent.detail(url);
+		}
+	}
+	
+	function mSupportSelect(sseq) 
+	{
+		$('#tabs').tabs("option","active", 2); // 탭 전환
+		var iframe = document.getElementById("mtab");
+		
+		if (iframe) 
+		{
+		   var iframeContent = (iframe.contentWindow || iframe.contentDocument);
+		   iframeContent.ajaxProject(sseq);
 		}
 	}
 	
@@ -225,7 +249,7 @@ $( function() {
     			<li><a href="#tabs-7">문의</a></li>
     			<li><a href="#tabs-8">로그아웃</a></li>
     			<li><a href="#tabs-9">알림</a></li>
-    			<li><a href="#tabs-10">검색</a></li>
+    			<li><a href="#tabs-10" onclick="myS()">검색</a></li>
   			</c:otherwise>
   		</c:choose>
   	</ul>
@@ -286,7 +310,7 @@ $( function() {
 	
 	<div id="tabs-4" hidden="hidden" class="egtab">
 		마이지원<br/>
-		<iframe class="ifa" id="myS" src="./mySupportList.do"></iframe>
+		<iframe id="mtab" class="ifa" src="./mySupportList.do"></iframe>
 	</div>
 	
 	<div id="tabs-5" hidden="hidden" class="egtab">
