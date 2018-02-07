@@ -19,6 +19,11 @@
 			if(key.keyCode==96)
 			{
 				document.execCommand('formatBlock',false,'<h1>'); //제목 글씨 가능 기능
+				
+			}
+			if(key.keyCode==33)
+			{
+				document.execCommand('enableInlineTableEditing');
 			}
 		});
 	});
