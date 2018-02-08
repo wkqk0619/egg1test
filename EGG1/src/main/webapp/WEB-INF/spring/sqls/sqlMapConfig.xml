@@ -16,6 +16,7 @@
 	<typeAlias type="com.hk.lab5.dtos.RestoreProjDto" alias="RestoreProjDto"/>
 	<typeAlias type="com.hk.lab5.dtos.FileUploadDto" alias="FileUploadDto"/>
 	<typeAlias type="com.hk.lab5.dtos.DdayDto" alias="DdayDto"/>
+	<typeAlias type="com.hk.lab5.dtos.MySupportDto" alias="MySupportDto"/>
   </typeAliases>
   
   <mappers>

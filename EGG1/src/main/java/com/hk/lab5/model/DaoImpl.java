@@ -443,5 +443,11 @@ public class DaoImpl implements IDao {
 	public List<SupportDto> supportSearch(Map<String, String> map) 
 	{
 		return sqlSession.selectList(SUPPORTNAMESPACE+"supportSearch",map);
+	}
+
+	@Override
+	public List mSupportSearch(Map<String, String> map) 
+	{
+		return sqlSession.selectList(SUPPORTNAMESPACE+"mSupportSearch",map);
 	}	
 }

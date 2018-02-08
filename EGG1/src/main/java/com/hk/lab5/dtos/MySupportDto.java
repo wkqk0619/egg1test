@@ -4,7 +4,12 @@ public class MySupportDto
 {
 	private String id;
 	private int sseq;
-	
+	private String title; // MYSUPPORT테이블엔 title이 없다
+
+	@Override
+	public String toString() {
+		return "MySupportDto [id=" + id + ", sseq=" + sseq + ", title=" + title + "]";
+	}
 	public String getId() {
 		return id;
 	}
@@ -17,9 +22,11 @@ public class MySupportDto
 	public void setSseq(int sseq) {
 		this.sseq = sseq;
 	}
-	@Override
-	public String toString() {
-		return "MySupportDto [id=" + id + ", sseq=" + sseq + "]";
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public MySupportDto(String id, int sseq) {
 		super();
