@@ -46,6 +46,10 @@ public class PdfController {
 		Document document = new Document(PageSize.B4, 50, 50, 50, 50); // 용지 및 여백 설정
 		//System.out.println(pdfarea);
 		pdfarea= pdfarea.replaceAll("<br>", "<p></p>"); //에디터에서 엔터를 치면 br 태그가 되니때문에
+		pdfarea= pdfarea.replaceAll("class=\"img\">", "class=\"img\"></img>");
+//		pdfarea= pdfarea.replaceAll("png\">", "png\"></img>");
+//		pdfarea= pdfarea.replaceAll("gif\">", "gif\"></img>");
+		
 		// br 태그를 p 태그로 바꿔줬다 이걸 안하면 pdf 출력이 안된다.
 		System.out.println("<br 태그 p 태그로 변환>" + pdfarea);
 		// PdfWriter 생성

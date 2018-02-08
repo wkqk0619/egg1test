@@ -69,7 +69,7 @@ $(function(){
 	    });
 	       
 	$("#pdte").submit(function() {
-		
+		$("img").addClass("img");
 		var s="<div style='font-family: MalgunGothic;'>";
 		
 		for (var i = 0; i < $(".question").length; i++) 
@@ -133,7 +133,7 @@ $(function(){
   .editorDIV, .editorHTMLDIV
 {
 	border: 1px solid black;
-	height: 300px;
+	height: 1000px;
 	overflow: scroll;
 	
 } 
@@ -161,6 +161,7 @@ $(function(){
 		</div><!-- continer ert 끝 -->
 <div id="tabletest">	
 <div class="editorDIV" contenteditable="true">
+&nbsp;
 <table class="tg" id="tage" contenteditable="false">
  <tbody>
   <tr>
@@ -683,8 +684,6 @@ $(function(){
 </div>
 </div>
 </div> <!-- table test 끝 -->
-
-
 
 <textarea rows="100" cols="100" id="pdarea" name="pdfarea" hidden="hidden"></textarea>
 </form>
