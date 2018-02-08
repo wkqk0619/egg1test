@@ -16,6 +16,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
  <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/eg1Edtior.js"></script>
 <script type="text/javascript">
 
 $(function(){
@@ -115,7 +116,10 @@ $(function(){
   	float: left;
   }
   #ssortable{height: 200px;}
+  
   .ui-state-default div{
+  
+  
   	display: none;
   }
   #scv{
@@ -126,25 +130,38 @@ $(function(){
   	position: relative;
   }
   
+  .editorDIV, .editorHTMLDIV
+{
+	border: 1px solid black;
+	height: 300px;
+	overflow: scroll;
+	
+} 
+  
 </style>
 </head>
 <body>
 <div id="masterDiv">
 <form action="./pdfTest.do" method="post" id="pdte">
 <input id="pdfName" type="text" name="fName"> : PDF파일명 작성 <input type="submit" value="pdf다운로드"/>
-
+<div class="buttons">
+	<input type="button" value="에디터로 보기" onclick="convertToEditor()"/>
+	<input type="button" value="HTML로 보기" onclick="convertToHTML()"/>
+	<input type="button" value="사용법 보기" onclick="guideShow()">
+</div>
 <div style="font-family: MalgunGothic;">
 	<div id="testPDF">
 		<div class="continer ert">
 			<div id="sortable" class="connected list1">
-			<c:forEach begin="0" end="${fn:length(question)-1}" step="1" varStatus="status" >
+				<c:forEach begin="0" end="${fn:length(question)-1}" step="1" varStatus="status" >
 <%-- 				<span class="question">${question[status.index]} : </span><input class="answer" type="text" value="${answer[status.index]}"/><br/> --%>
-				<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s" type="button"></button>${question[status.index]}:<span class="InfoSpan">${answer[status.index]}</span></div>
-			</c:forEach>
+					<div class="ui-state-default"><button class="ui-icon ui-icon-arrowthick-2-n-s" type="button"></button>${question[status.index]}:<span class="InfoSpan">${answer[status.index]}</span></div>
+				</c:forEach>
 			</div><!-- sortable 끝 -->
 		</div><!-- continer ert 끝 -->
-<div id="tabletest">			
-<table class="tg" id="tage">
+<div id="tabletest">	
+<div class="editorDIV" contenteditable="true">
+<table class="tg" id="tage" contenteditable="false">
  <tbody>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">
@@ -152,7 +169,7 @@ $(function(){
     1인 창조기업 모집</pre></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">사업구분</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">사업 \n 구분</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">1인창조기업(<div class="connected sortable list2"></div> 업종)</td>
   </tr>
   <tr>
@@ -183,7 +200,7 @@ $(function(){
   </tr>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" rowspan="4">공동사업자</td>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;">성명</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;">성 명</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">주   민   번   호  </td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">연락처</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;">담당분야</td>
@@ -659,6 +676,10 @@ $(function(){
   </tr>
   </tbody>
 </table>
+&nbsp;
+</div><!-- editorDIV 끝 -->
+<div class="editorHTMLDIV" hidden="hidden"></div>
+	
 </div>
 </div>
 </div> <!-- table test 끝 -->
@@ -668,5 +689,47 @@ $(function(){
 <textarea rows="100" cols="100" id="pdarea" name="pdfarea" hidden="hidden"></textarea>
 </form>
 </div><!-- masterDiv 끝 -->
+
+<div hidden="hidden" id="Editorguide">
+	<table border="1">
+		<thead>
+			<tr>
+				<th>기능명</th><th>조작키</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>알트 + -</td><td>밑줄</td>
+			</tr>
+			<tr>
+				<td>알트 + !</td><td>제목태그</td>
+			</tr>
+			<tr>
+				<td>알트 + @</td><td>구분선</td>
+			</tr>
+			<tr>
+				<td>알트 + #</td><td>1 2 3 리스트</td>
+			</tr>
+			<tr>
+				<td>알트 + $</td><td> . 점 리스트</td>
+			</tr>
+			<tr>
+				<td>알트 + i</td><td>이탤릭체</td>
+			</tr>
+			<tr>
+				<td>알트 + 〈  </td><td>왼쪽정렬</td>
+			</tr>
+			<tr>
+				<td>알트 + ^</td><td>가운데 정렬</td>
+			</tr>
+			<tr>
+				<td>알트 + > </td><td>오른쪽 정렬</td>
+			</tr>
+			<tr>
+				<td>알트 + x </td><td>취소글씨?? 삭제글씨??</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 </body>
 </html>

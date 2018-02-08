@@ -5,10 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/eg1Edtior.js"></script>
 <script type="text/javascript">
+/*
 	$(function(){
 		//$(".editorHTMLDIV").hide();
-		
 		$(".editorDIV").keydown(function(key){
 			//alert(key.keyCode);
 			if(key.altKey&&key.keyCode==189) //알트 + -
@@ -55,13 +56,6 @@
 			{
 					document.execCommand('strikeThrough'); //삭제글??(--dfsdfsdf가로줄 하고 같이있는 글씨)	
 			}
-			
-			/*
-			if(key.keyCode==9)//들여쓰기
-			{
-				document.execCommand('indent');
-			}
-			*/
 		});
 	});
 	
@@ -84,7 +78,7 @@
 	{
 		$("#Editorguide").toggle();
 	}
-
+*/
 </script>
 <style type="text/css">
 .editorDIV, .editorHTMLDIV
