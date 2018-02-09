@@ -243,6 +243,7 @@ $( function() {
 		$("#tabs8").hide();
 		$("#tabs9").hide();
 		$("#tabs10").hide();
+		$("#tabs11").hide();
 		
 		$("#tabs").tabs("disable","#tabs-4");
 		$("#tabs").tabs("disable","#tabs-5");
@@ -251,6 +252,7 @@ $( function() {
 		$("#tabs").tabs("disable","#tabs-8");
 		$("#tabs").tabs("disable","#tabs-9");
 		$("#tabs").tabs("disable","#tabs-10");
+		$("#tabs").tabs("disable","#tabs-11");
 	}
 	
 	function mypage() 
@@ -332,6 +334,22 @@ $( function() {
 		$("#tabs").tabs("option","active",8);
 	}
 	
+	function insertAnswer(pseq,sseq)
+	{
+		$("#itab").attr("src","./insertAnswerForm.do?pseq="+pseq+"&sseq="+sseq);
+		disableTab();
+		
+		// 검색쪽 탭 활성화 및 보이게함
+		$("#tabs11").show();
+		$("#tabs").tabs("enable","#tabs-11");
+		
+		// 검색탭으로 전환
+		// 주) 인덱스는 0부터 시작한다
+		$("#tabs").tabs("option","active",9);
+		
+// 		$tr.append($("<td><button onclick='location.href="+'"./insertAnswerForm.do?pseq='+pseq+'&sseq='+sseq+'"'+"'>선택</button></td>"))
+	}
+	
 </script>
 <style type="text/css">
 	   .ifa{
@@ -386,6 +404,7 @@ $( function() {
     			<li id="tabs8" hidden="hidden"><a href="#tabs-8">로그아웃</a></li>
     			<li id="tabs9" hidden="hidden"><a href="#tabs-9">알림</a></li>
     			<li id="tabs10" hidden="hidden"><a href="#tabs-10">검색</a></li>
+    			<li id="tabs11" hidden="hidden"><a href="#tabs-11">지원하기</a></li>
   			</c:otherwise>
   		</c:choose>
   	</ul>
@@ -485,6 +504,10 @@ $( function() {
 		검색
 		<input type="text" id="searchWord"><button onclick="searching()">검색</button>
 		<table id="searchResult"></table>
+	</div>
+	
+	<div id="tabs-11" hidden="hidden" class="egtab">
+		<iframe id="itab" class="ifa"></iframe>
 	</div>
 	
 </div><!-- tabs 끝 -->

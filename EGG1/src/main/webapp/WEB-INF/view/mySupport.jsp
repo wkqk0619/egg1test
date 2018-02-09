@@ -84,7 +84,7 @@ $( function() {
 						$tr.append($("<td>"+msg[i].pseq+"</td>"));
 						$tr.append($("<td>"+msg[i].name+"</td>"));
 						$tr.append($("<td>"+msg[i].info+"</td>"));
-						$tr.append($("<td><button onclick='location.href="+'"./insertAnswerForm.do?pseq='+msg[i].pseq+'&sseq='+sseq+'"'+"'>선택</button></td>"))
+						$tr.append($("<td><button onclick='parent.insertAnswer("+msg[i].pseq+","+sseq+")'>선택</button></td>"));
 					}
 					
 					$("#projectTable").append($("<tr class='ptr'><th>프로젝트번호</th><th>이름</th><th>정보</th><th>선택</th></tr"));
