@@ -1,5 +1,6 @@
 package com.hk.lab5;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -34,6 +35,7 @@ import com.itextpdf.tool.xml.parser.XMLParser;
 import com.itextpdf.tool.xml.pipeline.css.CSSResolver;
 import com.itextpdf.tool.xml.pipeline.css.CssResolverPipeline;
 import com.itextpdf.tool.xml.pipeline.end.PdfWriterPipeline;
+import com.itextpdf.tool.xml.pipeline.html.AbstractImageProvider;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 
@@ -44,8 +46,34 @@ import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 @Controller
 public class PdfController {
 	
+	class Base64ImageProvider extends AbstractImageProvider {
+		 
+        @Override
+        public Image retrieve(String src) {
+            int pos = src.indexOf("base64,");
+            try {
+                if (src.startsWith("data") && pos > 0) {
+                    byte[] img = Base64.decode(src.substring(pos + 7));
+                    return Image.getInstance(img);
+                }
+                else {
+                    return Image.getInstance(src);
+                }
+            } catch (BadElementException ex) {
+                return null;
+            } catch (IOException ex) {
+                return null;
+            }
+        }
+ 
+        @Override
+        public String getImageRootPath() {
+            return null;
+        }
+    }
+	
 	@RequestMapping(value="pdfTest.do",method=RequestMethod.POST)
-	public void pdfTest(String fName,String pdfarea, HttpServletResponse response,String imgDataURL) {
+	public void pdfTest(String fName,String pdfarea, HttpServletResponse response/*,String imgDataURL*/) throws IOException, DocumentException {
 		Document document = new Document(PageSize.B4, 50, 50, 50, 50); // 용지 및 여백 설정
 		//System.out.println(pdfarea);
 		pdfarea= pdfarea.replaceAll("<br>", "<p></p>"); //에디터에서 엔터를 치면 br 태그가 되니때문에
@@ -95,14 +123,19 @@ public class PdfController {
 		 
 		// Document 오픈
 		document.open();
+		/*
 		Image image= retrieve(imgDataURL);
-		System.out.println("image 결과는??" + image.getUrl());
+		//System.out.println("image 결과는??" + image.getUrl());
 		try {
-			document.add(image);
+			if(image != null){
+				document.add(image);
+			}
+			
 		} catch (DocumentException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		*/
 		XMLWorkerHelper helper = XMLWorkerHelper.getInstance();
 		     
 		// CSS
@@ -123,6 +156,7 @@ public class PdfController {
 		 
 		HtmlPipelineContext htmlContext = new HtmlPipelineContext(cssAppliers);
 		htmlContext.setTagFactory(Tags.getHtmlTagProcessorFactory());
+		htmlContext.setImageProvider(new Base64ImageProvider());
 		 
 		// Pipelines
 		PdfWriterPipeline pdf = new PdfWriterPipeline(document, writer);
@@ -145,32 +179,21 @@ public class PdfController {
 		StringReader strReader = new StringReader(htmlStr);
 		try {
 			System.out.println("출력함 해보자 : " + strReader.toString());
-			xmlParser.parse(strReader);
+			//xmlParser.parse(strReader);
+			//xmlParser.parse(new ByteArrayInputStream(strReader.toString().getBytes()));
+			xmlParser.parse(new ByteArrayInputStream(htmlStr.getBytes()));
+			document.close();
+			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		/*
 		document.close();
 		writer.close();
+		*/
 	}
 	
-      public Image retrieve(String imgDataURL) {
-          int pos = imgDataURL.indexOf("base64,");
-          try {
-              if (imgDataURL.startsWith("data:image/") && pos > 0) {
-            	  System.out.println("여기 왔나??");
-                  byte[] img = Base64.decode(imgDataURL.substring(pos + 7));
-                  return Image.getInstance(img);
-              }
-              else {
-                  //return Image.getInstance(imgDataURL);
-            	  return null;
-              }
-          } catch (BadElementException ex) {
-              return null;
-          } catch (IOException ex) {
-              return null;
-          }
-      }
+
 }
 
