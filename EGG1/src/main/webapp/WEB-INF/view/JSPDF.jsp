@@ -69,7 +69,13 @@ $(function(){
 	    });
 	       
 	$("#pdte").submit(function() {
+		var intag = $("<input type='text' hidden='hidden' value='' name='imgDataURL'/>");
 		$("img").addClass("img");
+		$("img").attr('name','imgTag');
+		$("img").each(function(i){
+			$("img").eq(i).after($(intag));
+			$("img").eq(i).next().val($("img").eq(i).attr('src'));
+		});
 		var s="<div style='font-family: MalgunGothic;'>";
 		
 		for (var i = 0; i < $(".question").length; i++) 
@@ -162,7 +168,7 @@ $(function(){
 <div id="tabletest">	
 <div class="editorDIV" contenteditable="true">
 &nbsp;
-<table class="tg" id="tage" contenteditable="false">
+<table class="tg" id="tage">
  <tbody>
   <tr>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="6">

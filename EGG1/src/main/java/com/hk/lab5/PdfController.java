@@ -15,10 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.codec.Base64;
 import com.itextpdf.tool.xml.XMLWorker;
 import com.itextpdf.tool.xml.XMLWorkerFontProvider;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
@@ -42,21 +45,26 @@ import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 public class PdfController {
 	
 	@RequestMapping(value="pdfTest.do",method=RequestMethod.POST)
-	public void pdfTest(String fName,String pdfarea, HttpServletResponse response) {
+	public void pdfTest(String fName,String pdfarea, HttpServletResponse response,String imgDataURL) {
 		Document document = new Document(PageSize.B4, 50, 50, 50, 50); // 용지 및 여백 설정
 		//System.out.println(pdfarea);
 		pdfarea= pdfarea.replaceAll("<br>", "<p></p>"); //에디터에서 엔터를 치면 br 태그가 되니때문에
 		pdfarea= pdfarea.replaceAll("class=\"img\">", "class=\"img\"></img>");
+		pdfarea= pdfarea.replaceAll("name=\"imgTag\">", "name=\"imgTag\"></img>");
+		pdfarea= pdfarea.replaceAll("name=\"imgDataURL\">", "name=\"imgDataURL\"></input>");
+
 //		pdfarea= pdfarea.replaceAll("png\">", "png\"></img>");
 //		pdfarea= pdfarea.replaceAll("gif\">", "gif\"></img>");
 		
 		// br 태그를 p 태그로 바꿔줬다 이걸 안하면 pdf 출력이 안된다.
-		System.out.println("<br 태그 p 태그로 변환>" + pdfarea);
+		System.out.println("replaceAll 을 거친 최종 태그들" + pdfarea);
+		
 		// PdfWriter 생성
 		//PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("d:/"+fName+".pdf")); // 바로 다운로드.
 		PdfWriter writer = null;
 		try {
 			writer = PdfWriter.getInstance(document, response.getOutputStream());
+			
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +84,7 @@ public class PdfController {
 		response.setContentType("/pdf"); 
 		String fileName = null;
 		try {
-			System.out.println(fName);
+			System.out.println("fName 상태"+fName);
 			fileName = URLEncoder.encode(fName, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
@@ -87,6 +95,13 @@ public class PdfController {
 		 
 		// Document 오픈
 		document.open();
+		Image image= retrieve(imgDataURL);
+		try {
+			document.add(image);
+		} catch (DocumentException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		XMLWorkerHelper helper = XMLWorkerHelper.getInstance();
 		     
 		// CSS
@@ -137,5 +152,24 @@ public class PdfController {
 		document.close();
 		writer.close();
 	}
+	
+      public Image retrieve(String imgDataURL) {
+          int pos = imgDataURL.indexOf("base64,");
+          try {
+              if (imgDataURL.startsWith("data:image/") && pos > 0) {
+            	  System.out.println("여기 왔나??");
+                  byte[] img = Base64.decode(imgDataURL.substring(pos + 7));
+                  return Image.getInstance(img);
+              }
+              else {
+                  //return Image.getInstance(imgDataURL);
+            	  return null;
+              }
+          } catch (BadElementException ex) {
+              return null;
+          } catch (IOException ex) {
+              return null;
+          }
+      }
 }
 
