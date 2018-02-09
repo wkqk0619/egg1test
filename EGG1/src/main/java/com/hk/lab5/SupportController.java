@@ -141,5 +141,10 @@ public class SupportController
 		return dList;
 	}
 	
+	@RequestMapping(value="/searchSupportPage.do", method=RequestMethod.GET)
+	public String searchSupportPage()
+	{
+		return "searchSupport";
+	}
 	
 }

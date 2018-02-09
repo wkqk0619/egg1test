@@ -77,10 +77,10 @@ $( function() {
     	
   });
   
-  function myS() 
-  {
-	 $("#mtab").attr("src","./mySupportList.do");
-  }
+//   function myS() 
+//   {
+// 	 $("#mtab").attr("src","./mySupportList.do");
+//   }
   
   function seout(){
 	  location.href="./EggLogout.do";
@@ -139,18 +139,6 @@ $( function() {
 						}
 					}
 					
-					if(msg.sList.length!=0)
-					{
-						$("#searchResult").append($("<tr><th>지원사업</th></tr>"));
-						for(var i=0; i<msg.sList.length; i++)
-						{
-							var $tr = $("<tr onclick='supportSelect("+'"'+msg.sList[i].url+'"'+")'></tr>");
-							$tr.append("<td>"+msg.sList[i].title+"</td>");
-							
-							$("#searchResult").append($tr);
-						}
-					}
-					
 					if(msg.mList.length!=0)
 					{
 						$("#searchResult").append($("<tr><th>마이지원</th></tr>"));
@@ -158,6 +146,18 @@ $( function() {
 						{
 							var $tr = $("<tr onclick='mSupportSelect("+'"'+msg.mList[i].sseq+'"'+")'></tr>");
 							$tr.append("<td>"+msg.mList[i].title+"</td>");
+							
+							$("#searchResult").append($tr);
+						}
+					}
+					
+					if(msg.sList.length!=0)
+					{
+						$("#searchResult").append($("<tr><th>지원사업</th></tr>"));
+						for(var i=0; i<msg.sList.length; i++)
+						{
+							var $tr = $("<tr onclick='supportSelect("+'"'+msg.sList[i].url+'"'+")'></tr>");
+							$tr.append("<td>"+msg.sList[i].title+"</td>");
 							
 							$("#searchResult").append($tr);
 						}
@@ -184,9 +184,31 @@ $( function() {
 		}
 	}
 	
-	function supportSelect(url) 
+	function mSupportSelect(sseq) 
 	{
 		$('#tabs').tabs("option","active", 1); // 탭 전환
+		var iframe = document.getElementById("mtab");
+		
+		if (iframe) 
+		{
+		   var iframeContent = (iframe.contentWindow || iframe.contentDocument);
+		   iframeContent.ajaxProject(sseq);
+		}
+	}
+	
+	function supportSelect(url) 
+	{
+// 		$("#stab").attr("src","./supportList.do");
+		disableTab();
+		
+		// 지원사업쪽 탭 활성화 및 보이게함
+		$("#tabs4").show();
+		$("#tabs").tabs("enable","#tabs-4");
+		
+		// 지원사업탭으로 전환
+		// 주) 인덱스는 0부터 시작한다
+		$("#tabs").tabs("option","active",2);
+		
 		var iframe = document.getElementById("stab");
 		if (iframe) 
 		{
@@ -195,16 +217,119 @@ $( function() {
 		}
 	}
 	
-	function mSupportSelect(sseq) 
+	// 탭전환이 페이지 전환보다 일찍일어나기 때문에 데이터가 바뀌면서 살짝 깜빡하는 현상이 있다. 보완해야함
+	function searchSupport() 
 	{
-		$('#tabs').tabs("option","active", 2); // 탭 전환
-		var iframe = document.getElementById("mtab");
+		$("#stab").attr("src", "./searchSupportPage.do");
 		
-		if (iframe) 
-		{
-		   var iframeContent = (iframe.contentWindow || iframe.contentDocument);
-		   iframeContent.ajaxProject(sseq);
-		}
+		disableTab();
+		
+		// 지원사업 탭 활성화 및 보이게함
+		$("#tabs4").show();
+		$("#tabs").tabs("enable","#tabs-4");
+		
+		// 지원사업탭으로 전환
+		// 주) 인덱스는 0부터 시작한다
+		$("#tabs").tabs("option","active",2);
+		
+	}
+	
+	function disableTab() 
+	{
+		$("#tabs4").hide();
+		$("#tabs5").hide();
+		$("#tabs6").hide();
+		$("#tabs7").hide();
+		$("#tabs8").hide();
+		$("#tabs9").hide();
+		$("#tabs10").hide();
+		
+		$("#tabs").tabs("disable","#tabs-4");
+		$("#tabs").tabs("disable","#tabs-5");
+		$("#tabs").tabs("disable","#tabs-6");
+		$("#tabs").tabs("disable","#tabs-7");
+		$("#tabs").tabs("disable","#tabs-8");
+		$("#tabs").tabs("disable","#tabs-9");
+		$("#tabs").tabs("disable","#tabs-10");
+	}
+	
+	function mypage() 
+	{
+		disableTab();
+		
+		// 마이페이지 탭 활성화 및 보이게함
+		$("#tabs5").show();
+		$("#tabs").tabs("enable","#tabs-5");
+		
+		// 마이페이지탭으로 전환
+		// 주) 인덱스는 0부터 시작한다
+		$("#tabs").tabs("option","active",3);
+	}
+	
+	function notion()
+	{
+		disableTab();
+		
+		// 공지사항 탭 활성화 및 보이게함
+		$("#tabs6").show();
+		$("#tabs").tabs("enable","#tabs-6");
+		
+		// 공지사항탭으로 전환
+		// 주) 인덱스는 0부터 시작한다
+		$("#tabs").tabs("option","active",4);
+	}
+	
+	function qna()
+	{
+		disableTab();
+		
+		// 문의 탭 활성화 및 보이게함
+		$("#tabs7").show();
+		$("#tabs").tabs("enable","#tabs-7");
+		
+		// 문의탭으로 전환
+		// 주) 인덱스는 0부터 시작한다
+		$("#tabs").tabs("option","active",5);
+	}
+	
+	function logout()
+	{
+		disableTab();
+		
+		// 로그아웃 탭 활성화 및 보이게함
+		$("#tabs8").show();
+		$("#tabs").tabs("enable","#tabs-8");
+		
+		// 로그아웃탭으로 전환
+		// 주) 인덱스는 0부터 시작한다
+		$("#tabs").tabs("option","active",6);
+	}
+	
+	function alarm()
+	{
+		disableTab();
+		
+		// 알림쪽 탭 활성화 및 보이게함
+		$("#tabs9").show();
+		$("#tabs").tabs("enable","#tabs-9");
+		
+		// 알림탭으로 전환
+		// 주) 인덱스는 0부터 시작한다
+		$("#tabs").tabs("option","active",7);
+	}
+	
+	function search()
+	{
+		$("#stab").attr("src","./supportList.do");
+		disableTab();
+		
+		// 검색쪽 탭 활성화 및 보이게함
+		$("#tabs10").show();
+		$("#tabs").tabs("enable","#tabs-10");
+		
+		// 검색탭으로 전환
+		// 주) 인덱스는 0부터 시작한다
+		$("#tabs").tabs("option","active",8);
 	}
 	
 </script>
@@ -221,6 +346,17 @@ $( function() {
 <body>
 <header>
 <span>로고가 보이는 상단</span>
+<c:choose>
+	<c:when test="${not empty ldto}">
+		일단 임시로 버튼배치함
+		<button onclick="mypage()">마이페이지</button>
+		<button onclick="notion()">공지사항</button>
+		<button onclick="qna()">문의</button>
+		<button onclick="logout()">로그아웃</button>
+		<button onclick="alarm()">알림</button>
+		<button onclick="search()">검색</button>
+	</c:when>
+</c:choose>
 </header>
 <!-- 전체를 감싼 div -->
 <div id="tabs">
@@ -241,15 +377,15 @@ $( function() {
   				<li><a href="#tabs-1">소개영상</a></li>
   			</c:when>
   			<c:otherwise>
-  				<li><a href="#tabs-2" class="idearS">프로젝트</a></li>
-    			<li><a href="#tabs-3">지원사업</a></li>
-    			<li><a href="#tabs-4" onclick="myS()">my지원</a></li>
-    			<li><a href="#tabs-5">my페이지</a></li>
-    			<li><a href="#tabs-6">공지사항</a></li>
-    			<li><a href="#tabs-7">문의</a></li>
-    			<li><a href="#tabs-8">로그아웃</a></li>
-    			<li><a href="#tabs-9">알림</a></li>
-    			<li><a href="#tabs-10" onclick="myS()">검색</a></li>
+  				<li id="tabs2"><a href="#tabs-2" class="idearS">프로젝트</a></li>
+    			<li id="tabs3"><a href="#tabs-3">my지원</a></li>
+    			<li id="tabs4" hidden="hidden"><a href="#tabs-4">지원사업</a></li>
+    			<li id="tabs5" hidden="hidden"><a href="#tabs-5">my페이지</a></li>
+    			<li id="tabs6" hidden="hidden"><a href="#tabs-6">공지사항</a></li>
+    			<li id="tabs7" hidden="hidden"><a href="#tabs-7">문의</a></li>
+    			<li id="tabs8" hidden="hidden"><a href="#tabs-8">로그아웃</a></li>
+    			<li id="tabs9" hidden="hidden"><a href="#tabs-9">알림</a></li>
+    			<li id="tabs10" hidden="hidden"><a href="#tabs-10">검색</a></li>
   			</c:otherwise>
   		</c:choose>
   	</ul>
@@ -302,15 +438,15 @@ $( function() {
 	</div>
 	
 	<div id="tabs-3" hidden="hidden" class="egtab">
+		마이지원<br/>
+		<iframe id="mtab" class="ifa" src="./mySupportList.do"></iframe>
+	</div>
+	
+	<div id="tabs-4" hidden="hidden" class="egtab">
 		<div id="supptyBis">
 			지원사업공고들~~<br/>
 			<iframe id="stab" class="ifa" src="./supportList.do"></iframe>
 		</div>
-	</div>
-	
-	<div id="tabs-4" hidden="hidden" class="egtab">
-		마이지원<br/>
-		<iframe id="mtab" class="ifa" src="./mySupportList.do"></iframe>
 	</div>
 	
 	<div id="tabs-5" hidden="hidden" class="egtab">

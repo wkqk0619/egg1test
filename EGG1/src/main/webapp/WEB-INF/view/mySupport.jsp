@@ -32,6 +32,8 @@ $( function() {
 	});
 });
 
+	/* 
+	이주당한 함수
 	function searchSupport() 
 	{
 		$("#searchSupport").show();
@@ -41,6 +43,7 @@ $( function() {
 	{
 		$("#searchSupport").hide();
 	}
+	 */
 	
 	function delMySupport(sseq)
 	{
@@ -57,6 +60,9 @@ $( function() {
 		$("#S"+sseq).after($tr);
 	}
 	
+	// 이것도 프로젝트를 뭘 쓸지 선택하면 아예 지원작성 탭을 빠지게 하여야 할것같다.
+	// 현재에선 이 마이지원페이지가 전환되는 방식이다
+	// 즉 탭을 하나더 만들고 거기에 지원을 분리해야겠다.
 	function ajaxProject(sseq) 
 	{
 		$.ajax
@@ -148,44 +154,11 @@ $( function() {
 		</div>
 		 --%>
 	</div>
-	<button onclick="searchSupport()" data-step="3" data-intro="지원사업 탐색기">지원사업탐색</button>
-	<div id="searchSupport" hidden="hidden" data-step="4" data-intro="지원사업 탐색기">
-		<form action="./searchSupport.do" method="post">
-			<select name="type"  class="form-control">
-				<option value="창업교육">창업</option>
-				<option value="정책자금">자금</option>
-				<option value="판로·해외진출">판로</option>
-				<!-- 
-				<option value="인력">인력</option>
-				<option value="연구">연구</option>
-				<option value="인증">인증</option>
-				<option value="회계">회계</option>
-				 -->
-				<option value="기타">기타</option>
-			</select>
-			<select name="target"  class="form-control">
-				<option value="일반기업">일반기업</option>
-				<option value="중소기업">중소기업</option>
-				<option value="소상공인">소상공인</option>
-				<option value="1인기업">1인기업</option>
-				<option value="창업기업">창업기업</option>
-				<option value="예비창업자">예비창업자</option>
-				<option value="기타">기타</option>
-			</select>
-			<select name="area"  class="form-control">
-				<option value="서울특별시">서울특별시</option>
-				<option value="인천광역시">인천광역시</option>
-				<option value="경기도">경기도</option>
-				<option value="전라남도">전라남도</option>
-				<option value="전라북도">전라북도</option>
-				<option value="광주광역시">광주광역시</option>
-				<option value="대전광역시">대전광역시</option>
-				<option value="대구광역시">대구광역시</option>
-			</select>
-			<input type="submit" value="검색">
-		</form>
-		<button onclick="searchCancel()">취소</button>
-	</div><!-- searchSupport 끝 -->
+
+	<!-- 요놈은 남기고 부모창의 함수호출해서 지원사업탭으로 전환시키고 지원사업 iframe을 검색하는 jsp로 보내야할것같다 -->	
+	<button onclick="parent.searchSupport()">지원사업탐색</button>
+	
+	
 <!-- 	<button onclick="location.href='./LoginMain.do'">메인으로</button> -->
 </div> <!-- mySupportIntro div 끝 -->
 </body>
