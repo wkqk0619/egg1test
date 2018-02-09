@@ -74,7 +74,8 @@ $(function(){
 		$("img").attr('name','imgTag');
 		$("img").each(function(i){
 			$("img").eq(i).after($(intag));
-			$("img").eq(i).next().val($("img").eq(i).attr('src'));
+			//$("img").eq(i).next().val($("img").eq(i).attr('src'));
+			$("input[name='imgDataURL']").eq(i).val($("img").eq(i).attr('src'));
 		});
 		var s="<div style='font-family: MalgunGothic;'>";
 		
@@ -176,7 +177,7 @@ $(function(){
     1인 창조기업 모집</pre></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">사업 \n 구분</td>
+    <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="2">사업구분</td>
     <td class="tg-yw4l" style="font-family: MalgunGothic;" colspan="4">1인창조기업(<div class="connected sortable list2"></div> 업종)</td>
   </tr>
   <tr>

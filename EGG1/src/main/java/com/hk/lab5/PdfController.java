@@ -96,6 +96,7 @@ public class PdfController {
 		// Document 오픈
 		document.open();
 		Image image= retrieve(imgDataURL);
+		System.out.println("image 결과는??" + image.getUrl());
 		try {
 			document.add(image);
 		} catch (DocumentException e1) {
