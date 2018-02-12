@@ -654,7 +654,7 @@ $( function() {
 			<div id="tabs-4" hidden="hidden" class="egtab">
 				<div id="supptyBis">
 					지원사업공고들~~<br/>
-					<iframe id="stab" class="ifa embed-responsive-item" src="./supportList.do"></iframe>
+					<iframe id="stab" class="ifa" src="./supportList.do"></iframe>
 				</div>
 			</div>
 			

@@ -6,6 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/jquery-ui.js"></script>
 <script type="text/javascript">
 
 
@@ -15,70 +19,89 @@ var areaArr = ["서울특별시","인천광역시","경기도",
 				"전라남도","전라북도","광주광역시",
 				"대전광역시","대구광역시","부산광역시",
 				"충청남도","충청북도"];
-				
-	$(function(){
-		
-		$('.searInput2').keydown(function(e){
-			if (e.keyCode == 13) {
-				e.preventDefault();
-				
-			}
-		});
-		
-		$('#typeInput').keyup(function(){
-			for(var i=0; typeArr.length>i;i++ ){
-				if($('#typeInput').val().length==0)
-				{
-					return false;
-				}
-				if($('#typeInput').val()==i)
-				{
-					$('#typeInput').val(typeArr[i]);
-				}
-			}
-		});
-		
-		$('#targetInput').keyup(function(){
-			for(var i=0; targetArr.length>i;i++ ){
-				if($('#targetInput').val().length==0)
-				{
-					return false;
-				}
-				if($('#targetInput').val()==i)
-				{
-					$('#targetInput').val(targetArr[i]);
-				}
-			}
-		});
-		
-		$('#areaInput').keyup(function(){
-			for(var i=0; areaArr.length>i;i++ ){
-				if($('#areaInput').val().length==0)
-				{
-					return false;
-				}
-				if($('#areaInput').val()==i)
-				{
-					$('#areaInput').val(areaArr[i]);
-				}
-			}
-		});
-			
-		
-		
-	});
-	function autoListShow(){
-		$('#autoList').toggle();
-	}
 
+$(function(){
+    $( "#typeInput" ).autocomplete({
+        source: typeArr
+      });
+    $( "#targetInput" ).autocomplete({
+        source: targetArr
+      });
+    $( "#areaInput" ).autocomplete({
+        source: areaArr
+      });
+    
+    $( "#typeInput" ).autocomplete({
+        open: function( event, ui ) 
+        {
+              //$("#test").val($("#typeDiv>.ui-menu-item").length);
+              if($("#ui-id-1>li>div").length==1)
+              {
+//              alert($(".ui-menu-item>div").text());
+				$("#typeInput").blur();
+              	$("#typeInput").autocomplete("close");
+              	
+              	$("#typeInput").val($("#ui-id-1>li>div").text());
+              	$("#typeInput").focus();
+              }
+        }
+      });
+    
+    $( "#targetInput" ).autocomplete({
+        open: function( event, ui ) 
+        {
+              //$("#test").val($("#typeDiv>.ui-menu-item").length);
+              if($("#ui-id-2>li>div").length==1)
+              {
+//              alert($(".ui-menu-item>div").text());
+              	$("#targetInput").autocomplete("close");
+              	$("#targetInput").blur();
+              	$("#targetInput").focus();
+              	$("#targetInput").val($("#ui-id-2>li>div").text());
+              }
+        }
+      });
+    
+    $( "#areaInput" ).autocomplete({
+        open: function( event, ui ) 
+        {
+              //$("#test").val($("#typeDiv>.ui-menu-item").length);
+              if($("#ui-id-3>li>div").length==1)
+              {
+//              alert($(".ui-menu-item>div").text());
+              	$("#areaInput").autocomplete("close");
+              	$("#areaInput").blur();
+              	$("#areaInput").focus();
+              	$("#areaInput").val($("#ui-id-3>li>div").text());
+              }
+        }
+      });
+
+});
 </script>
 </head>
 <body>
 	<div id="searchSupport">
 		<form action="./searchSupport.do" method="post" id="searchFrom">
-			<input type="text" class="searInput2" id="typeInput" name="type" placeholder="분야"/>
-			<input type="text" class="searInput2" id="targetInput" name="target" placeholder="대상"/>
-			<input type="text" class="searInput2" id="areaInput" name="area" placeholder="지역"/>
+		<div class="ui-widget" id="typeDiv">
+<!--   			<label for="tags">Tags:</label> -->
+  			<input type="text" class="searInput2" id="typeInput" name="type" placeholder="분야"/>
+<!--   			 <input type="text" readonly="readonly" id="test"> -->
+		</div>
+		<div class="ui-widget" id="targetDiv">
+<!--   			<label for="tags">Tags:</label> -->
+  			<input type="text" class="searInput2" id="targetInput" name="target" placeholder="대상"/>
+<!--   			 <input type="text" readonly="readonly" id="test"> -->
+		</div>
+		<div class="ui-widget" id="areaDiv">
+<!--   			<label for="tags">Tags:</label> -->
+  			<input type="text" class="searInput2" id="areaInput" name="area" placeholder="지역"/>
+<!--   			 <input type="text" readonly="readonly" id="test"> -->
+		</div>
+		
+			
+			
+			
 <!-- 			<select name="type" id="type" hidden="hidden"> -->
 <!-- 				<option value="창업교육">창업교육</option> -->
 <!-- 				<option value="정책자금">정책자금</option> -->
