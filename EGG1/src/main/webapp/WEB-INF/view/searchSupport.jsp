@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html onclick="parent.closeSearch()">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -13,14 +13,20 @@
 <script type="text/javascript">
 
 
-var typeArr = ["창업교육","정책자금","판로·해외진출","멘토링·컨설팅","사업화","시설·공간","R&D","행사·네트워크"];
-var targetArr = ["일반기업","1인 창조기업","대학생","일반인","대학","연구기관","청소년"];
-var areaArr = ["서울특별시","인천광역시","경기도",
-				"전라남도","전라북도","광주광역시",
-				"대전광역시","대구광역시","부산광역시",
-				"충청남도","충청북도"];
+
 
 $(function(){
+	var typeArr = ["창업교육","정책자금","판로·해외진출","멘토링·컨설팅","사업화","시설·공간","R&D","행사·네트워크"];
+	var targetArr = ["일반기업","1인 창조기업","대학생","일반인","대학","연구기관","청소년"];
+	var areaArr = ["서울특별시","인천광역시","경기도",
+					"전라남도","전라북도","광주광역시",
+					"대전광역시","대구광역시","부산광역시",
+					"충청남도","충청북도"];
+	$('.searInput2').keydown(function(e){
+		 if (e.keyCode == 13) {
+			 e.preventDefault();
+		 }
+	});
     $( "#typeInput" ).autocomplete({
         source: typeArr
       });
@@ -42,7 +48,11 @@ $(function(){
               	$("#typeInput").autocomplete("close");
               	
               	$("#typeInput").val($("#ui-id-1>li>div").text());
-              	$("#typeInput").focus();
+              	setTimeout(function() {
+              		      // Do something after 2 seconds
+              		$("#typeInput").focus();
+              	}, 100);
+              	
               }
         }
       });
@@ -54,10 +64,15 @@ $(function(){
               if($("#ui-id-2>li>div").length==1)
               {
 //              alert($(".ui-menu-item>div").text());
+				$("#targetInput").blur();
               	$("#targetInput").autocomplete("close");
-              	$("#targetInput").blur();
-              	$("#targetInput").focus();
+              	
+              	
               	$("#targetInput").val($("#ui-id-2>li>div").text());
+            	setTimeout(function() {
+        		      // Do something after 2 seconds
+        			$("#targetInput").focus();
+        		}, 100);
               }
         }
       });
@@ -69,15 +84,24 @@ $(function(){
               if($("#ui-id-3>li>div").length==1)
               {
 //              alert($(".ui-menu-item>div").text());
+				$("#areaInput").blur();
               	$("#areaInput").autocomplete("close");
-              	$("#areaInput").blur();
-              	$("#areaInput").focus();
+              	
+              	
               	$("#areaInput").val($("#ui-id-3>li>div").text());
+              	setTimeout(function() {
+      		      // Do something after 2 seconds
+              		$("#areaInput").focus();
+      			}, 100);
               }
         }
       });
 
 });
+function autoListShow()
+{
+	$('#autoList').toggle();
+}
 </script>
 </head>
 <body>
@@ -153,45 +177,45 @@ $(function(){
 	<button onclick="autoListShow()">자동완성 항목 보기</button>
 	<div id="autoList" hidden="hidden">
 		자동완성 항목들
-		<table>
+		<table border="1">
 			<thead>
 				<tr>
-					<th>번호</th><th>분야</th><th>대상</th><th>지역</th>
+					<th>분야</th><th>대상</th><th>지역</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>0</td><td>창업교육</td><td>일반기업</td><td>서울특별시</td>
+					<td>창업교육</td><td>일반기업</td><td>서울특별시</td>
 				</tr>
 				<tr>
-					<td>1</td><td>정책자금</td><td>1인 창조기업</td><td>인천광역시</td>
+					<td>정책자금</td><td>1인 창조기업</td><td>인천광역시</td>
 				</tr>
 				<tr>
-					<td>2</td><td>판로·해외진출</td><td>대학생</td><td>경기도</td>
+					<td>판로·해외진출</td><td>대학생</td><td>경기도</td>
 				</tr>
 				<tr>
-					<td>3</td><td>멘토링·컨설팅</td><td>일반인</td><td>전라남도</td>
+					<td>멘토링·컨설팅</td><td>일반인</td><td>전라남도</td>
 				</tr>
 				<tr>
-					<td>4</td><td>사업화</td><td>대학</td><td>전라북도</td>
+					<td>사업화</td><td>대학</td><td>전라북도</td>
 				</tr>
 				<tr>
-					<td>5</td><td>시설·공간</td><td>연구기관</td><td>광주광역시</td>
+					<td>시설·공간</td><td>연구기관</td><td>광주광역시</td>
 				</tr>
 				<tr>
-					<td>6</td><td>R&D</td><td>청소년</td><td>대전광역시</td>
+					<td>R&D</td><td>청소년</td><td>대전광역시</td>
 				</tr>
 				<tr>
-					<td>7</td><td>행사·네트워크</td><td>없음</td><td>대구광역시</td>
+					<td>행사·네트워크</td><td>없음</td><td>대구광역시</td>
 				</tr>
 				<tr>
-					<td>8</td><td>없음</td><td>없음</td><td>부산광역시</td>
+					<td>없음</td><td>없음</td><td>부산광역시</td>
 				</tr>
 				<tr>
-					<td>9</td><td>없음</td><td>없음</td><td>충청남도</td>
+					<td>없음</td><td>없음</td><td>충청남도</td>
 				</tr>
 				<tr>
-					<td>10</td><td>없음</td><td>없음</td><td>충청북도</td>
+					<td>없음</td><td>없음</td><td>충청북도</td>
 				</tr>
 			</tbody>
 		</table>
