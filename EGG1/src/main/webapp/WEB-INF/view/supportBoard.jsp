@@ -22,6 +22,7 @@
 	
 	function detail(val)
 	{		
+		$("#alertpr").val("");
 		$.get("https://cors-anywhere.herokuapp.com/"+val
 				, 
 				function(data)
@@ -43,6 +44,7 @@
 	
 	function addMySupport(sseq) 
 	{
+		parent.myS();
 		$.ajax
 		(
 			{
@@ -62,7 +64,7 @@
 					}
 					else
 					{
-						alert("오류처리까진 생각안했는데 말이야 떠버렸네");
+// 						alert("오류");
 					}
 				}
 			}

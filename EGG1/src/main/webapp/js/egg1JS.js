@@ -8,33 +8,40 @@ $(function(){
 	function showintro(){
 //		$("#intro").siblings().hide();
 		$("#intro").show();
-		$("#repassword").hide();
+//		$("#repassword").hide();
 	}
 	
-	function showloginForm(){
+	/*
+	function showloginForm()
+	{
 		$("#loginForm").siblings().hide();
 		$("#loginForm").show();
 	}
+	*/
 	
 	function showregForm(){
 		$("#regForm").siblings().hide();
 		$("#regForm").show();
 	}
 	
+	/*
 	function repassword()
 	{
 		$("#repassword").show();
-		/*
+		
 		$("#repassword").dialog({
 		dialogClass: "no-close",
 		modal: true
 		});
-		*/
+		
 	}
+	*/
 	
 	function check() 
 	{
 		var email = $("#regemail").val()
+		$("#regemail").attr("readonly",true);
+		$("#keyBtn").attr("disabled",true);
 		
 		$.ajax
 		(
@@ -48,12 +55,13 @@ $(function(){
 					if(msg=="O")
 					{
 						alert("이미 가입된 이메일입니다.");
+						$("#regemail").attr("readonly",false);
+						$("#keyBtn").attr("disabled",false);
 					}
 					else
 					{
 						$("#rNum").val(msg);
-						$("#regemail").attr("readonly","true");
-						$("#keyBtn").attr("disabled","true");
+						$("#keyChk").attr("disabled",false);
 					}
 				}
 				
@@ -96,7 +104,16 @@ $(function(){
 				{
 					if(msg=="S")
 					{
-						showloginForm();
+						tabActive();
+						$("#regemail").attr("readonly",false);
+						$("#rNum").val("");
+						$("#regemail").val("");
+						$("#keyBtn").attr("disabled",false);
+						$("#accKey").val("");
+						$("#accKey").attr("readonly",true)
+						$("#keyChk").attr("disabled",true);
+						$("#pwd").val("");
+						$("#registBtn").attr("disabled",true);
 					}
 				}
 				
@@ -136,9 +153,9 @@ $(function(){
 
 						if(msg=="O")
 						{
-							alert("탈퇴 신청이 된 회원입니다 복구페이지로 이동합니다.");
-							//복구페이지로 이동
-							location.href="./recoveryAccount.do?email="+email;
+							$("#recoveryEmail").val(email);
+							$("#recoveryAccount").show();
+							alert("탈퇴 신청이 된 회원입니다.");
 						}
 						else
 						{							
@@ -155,7 +172,8 @@ $(function(){
 	function findCheck() 
 	{
 		var email = $("#findemail").val()
-		
+		$("#findemail").attr("readonly",true);
+		$("#findKeyBtn").attr("disabled",true);
 		$.ajax
 		(
 			{
@@ -168,12 +186,13 @@ $(function(){
 					if(msg=="O")
 					{
 						alert("존재하지 않는 계정입니다.");
+						$("#findemail").attr("readonly",false);
+						$("#findKeyBtn").attr("disabled",false);
 					}
 					else
 					{
 						$("#findrNum").val(msg);
-						$("#findemail").attr("readonly","true");
-						$("#findKeyBtn").attr("disabled","true");
+						$("#findkeyChkBtn").attr("disabled",false);
 					}
 				}
 				
@@ -198,7 +217,9 @@ $(function(){
 					{
 						if(msg=="S")
 						{
-							$("#repassword").hide();
+							tabActive();
+							$("#findKeyBtn").attr("disabled",false);
+							$("#findkeyChkBtn").attr("disabled",true);
 							$("#findrNum").val("");
 							$("#findemail").val("");
 							$("#findKey").val("");
