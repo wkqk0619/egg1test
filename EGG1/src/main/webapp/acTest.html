@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var availableTags = [
+      "가나다라",
+      "마바사",
+      "가바",
+      "바가르사",
+      "가르바사",
+      "가가가가가가가오가이거",
+      "가법주",
+      "하성추성",
+      "가필드",
+      "가디언즈오브갤럭시",
+      "블랙팬서",
+      "엑스맨",
+      "데드풀",
+      "인피티니스톤",
+      "마블",
+      "깊고",
+      "어두운",
+      "환상",
+      "가수분해",
+      "베르가",
+      "어디까지가",
+      "순 가밖에 없네"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+    
+    $( "#tags" ).autocomplete({
+    	  open: function( event, ui ) 
+    	  {
+    	  		$("#test").val($(".ui-widget>.ui-menu-item").length);
+    	  		if($(".ui-widget>.ui-menu-item").length==1)
+    	  		{
+//     	  			alert($(".ui-menu-item>div").text());
+					$( "#tags" ).autocomplete( "close" );
+					$("#tags").blur();
+					$("#tags").focus();
+    	  			$("#tags").val($(".ui-widget>.ui-menu-item>div").text());
+    	  		}
+    	  }
+    	});
+    
+  } );
+  </script>
+</head>
+<body>
+
+	<div class="ui-widget">
+	  <label for="tags">Tags:</label>
+	  <input id="tags">
+	  <input type="text" readonly="readonly" id="test">
+	</div>
+</body>
+</html>

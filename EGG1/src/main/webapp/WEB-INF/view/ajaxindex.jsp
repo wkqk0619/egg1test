@@ -5,7 +5,7 @@
 <%response.setContentType("text/html; charset=utf-8");%> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
-<html>
+<html onclick="closeSearch()">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -221,8 +221,49 @@ $( function() {
 	
 	function supportSelect(url) 
 	{
+		$("#ping").val("");
+		
 		$("#stab").attr("src","./supportList.do");
 		
+		if($("#pong").val()=="pong")
+		{
+			$("#pong").val("");
+			pingpong = setInterval
+			(
+				function() 
+				{
+					
+					if($("#ping").val()=="ping")
+					{
+						disableTab();
+						
+						// 지원사업쪽 탭 활성화 및 보이게함
+						$("#tabs4").show();
+						$("#tabs").tabs("enable","#tabs-4");
+						
+						// 지원사업탭으로 전환
+						// 주) 인덱스는 0부터 시작한다
+						$("#tabs").tabs("option","active",2);
+						
+						var iframe = document.getElementById("stab");
+						if (iframe) 
+						{
+						   var iframeContent = (iframe.contentWindow || iframe.contentDocument);
+						   iframeContent.detail(url);
+						}
+						clearInterval(pingpong);
+						$("#pong").val("pong");
+					}
+				}
+				,
+				1000
+			);
+		}
+		
+		
+		
+		
+		/* 
 		$("#stab").on
 		(
 			'load'
@@ -247,7 +288,7 @@ $( function() {
 				}
 			}
 		);
-		
+		 */
 		var event = window.event;
 		if(event.stopPropagation())
 		{
@@ -425,9 +466,14 @@ $( function() {
 		$("#menu").toggle();
 	}
 	
-	function test() 
+	function closeSearch() 
 	{
 		$("#searchResult").hide();	
+	}
+	
+	function ping() 
+	{
+		$("#ping").val("ping");
 	}
 	
 </script>
@@ -515,12 +561,13 @@ $( function() {
 	  
 </style>
 </head>
-<body onclick="test()">
+<body>
+<input type="hidden" id="ping">
+<input type="hidden" id="pong" value="pong">
 <header>
 <span>로고가 보이는 상단</span>
 <c:choose>
 	<c:when test="${not empty ldto}">
-		<button onclick="test()">테스트</button>
 		<div id="searchDiv" class="searchDiv">
 			<input type="text" id="searchWord" onkeypress="if(event.keyCode==13) {searching(); return false;}"><button onclick="searching()">검색</button>
 			<table id="searchResult" hidden="hidden"></table>
@@ -566,7 +613,7 @@ $( function() {
   			</c:when>
   			<c:otherwise>
   				<li id="tabs2"><a href="#tabs-2" class="idearS">프로젝트</a></li>
-    			<li id="tabs3"><a href="#tabs-3">my지원</a></li>
+    			<li id="tabs3"><a href="#tabs-3" onclick="myS()">my지원</a></li>
     			<li id="tabs4" hidden="hidden"><a href="#tabs-4">지원사업</a></li>
     			<li id="tabs5" hidden="hidden"><a href="#tabs-5">my페이지</a></li>
     			<li id="tabs6" hidden="hidden"><a href="#tabs-6">공지사항</a></li>
@@ -642,14 +689,14 @@ $( function() {
 <%-- 				<h1>${ldto.id} 님 환영합니다.</h1>	 --%>
 				<div id="idearMain">
 					<div>Welcome EGG1<br/>
-						<iframe id="ptab" class="ifa" src="./selectProject.do"></iframe>
+						<iframe id="ptab" class="ifa" src="./selectProject.do" onclick="closeSearch()"></iframe>
 					</div>
 				</div>
 			</div>
 		
 			<div id="tabs-3" hidden="hidden" class="egtab">
 				마이지원<br/>
-				<iframe id="mtab" class="ifa" src="./mySupportList.do"></iframe>
+				<iframe id="mtab" class="ifa" src="./mySupportList.do" onclick="closeSearch()"></iframe>
 			</div>
 		
 			<div id="tabs-4" hidden="hidden" class="egtab">

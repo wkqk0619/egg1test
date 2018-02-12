@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
-<html>
+<html onclick="parent.closeSearch()">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -72,7 +72,7 @@
   });
 </script>
 </head>
-<body>
+<body onclick="parent.closeSearch()">
 	<h1>가입정보</h1>
 <%-- 	아이디 : ${ldto.id}<br> --%>
 <!-- 	<button onclick="upPassword()">비밀번호 변경</button><br> 현재 비밀번호를 묻는 절차가 있어야 하겠지만 일단 생략 -->

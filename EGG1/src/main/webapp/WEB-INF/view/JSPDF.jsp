@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>     
 <!DOCTYPE html>
-<html>
+<html onclick="parent.closeSearch()">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>화면을 pdf 로 배포하기</title>
