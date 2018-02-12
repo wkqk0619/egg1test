@@ -11,7 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>초기화면Ver.1</title>
 <link rel="stylesheet" type="text/css" href="css/page.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+<link rel="stylesheet" href="css/jquery-ui.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/introjs.css">
 <link rel="stylesheet" href="css/introjs-rtl.css">

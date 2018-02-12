@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+<link rel="stylesheet" href="css/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script src="js/jquery-ui.js"></script>
 <script type="text/javascript">

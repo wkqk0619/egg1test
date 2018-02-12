@@ -9,7 +9,8 @@
 <title>화면을 pdf 로 배포하기</title>
 <!-- <script type="text/javascript" src="js/jspdf.js"></script> -->
 <link rel="stylesheet" type="text/css" href="css/pdftest.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+<link rel="stylesheet" href="css/jquery-ui.min.css">
 <!-- <script type="text/javascript" src="js/jquery-3.2.1.js"></script> -->
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
