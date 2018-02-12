@@ -22,7 +22,8 @@
 	
 	function detail(val)
 	{		
-		$("#alertpr").val("");
+		//$("#alertpr").val("");
+		$("#alertpr").empty();
 		$.get("https://cors-anywhere.herokuapp.com/"+val
 				, 
 				function(data)
