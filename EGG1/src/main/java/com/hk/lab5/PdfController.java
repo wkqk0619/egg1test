@@ -76,7 +76,7 @@ public class PdfController {
 	public void pdfTest(String fName,String pdfarea, HttpServletResponse response/*,String imgDataURL*/) throws IOException, DocumentException {
 		Document document = new Document(PageSize.B4, 50, 50, 50, 50); // 용지 및 여백 설정
 		//System.out.println(pdfarea);
-		pdfarea= pdfarea.replaceAll("<br>", "<p></p>"); //에디터에서 엔터를 치면 br 태그가 되니때문에
+		pdfarea= pdfarea.replaceAll("<br>", "<br></br>"); //에디터에서 엔터를 치면 br 태그가 되니때문에
 		pdfarea= pdfarea.replaceAll("class=\"img\">", "class=\"img\"></img>");
 		pdfarea= pdfarea.replaceAll("name=\"imgTag\">", "name=\"imgTag\"></img>");
 		pdfarea= pdfarea.replaceAll("name=\"imgDataURL\">", "name=\"imgDataURL\"></input>");

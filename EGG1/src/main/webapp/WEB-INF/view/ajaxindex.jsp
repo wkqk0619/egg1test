@@ -25,6 +25,7 @@
 <script type="text/javascript">
 $( function() {
     	$( "#tabs" ).tabs();
+    	/*
     	var introi=introJs("#tabs-1");
     	$("#guard").click(function() {
     		//가이드 시작버튼 비활성화
@@ -38,6 +39,7 @@ $( function() {
     	  //가이드 시작버튼 활성화
     		$("#guard").prop("disabled",false);
     	});
+    	*/
     	$("#loginpwd").keypress(function(key) {
     		  //alert(key.keyCode);
     		  if(key.keyCode == 13)
@@ -631,12 +633,13 @@ $( function() {
 		<c:when test="${empty ldto}">
 		
 			<div id="tabs-1" hidden="hidden" class="egtab">
-			<button id="guard">가이드</button>
+<!-- 			<button id="guard">가이드</button> -->
 			<!-- 초기화면 -->
 				<div id="indexmain">
 					<div id="continer">
 						<div id="intro">
-							<iframe class="embed-responsive-item" width="850px" height="500px" id="player" src="//www.youtube.com/embed/kaMWDfbPjp0" data-step="1" data-intro="소개영상"></iframe>
+<!-- 							<iframe class="embed-responsive-item" width="850px" height="500px" id="player" src="//www.youtube.com/embed/kaMWDfbPjp0" data-step="1" data-intro="소개영상"></iframe> -->
+								<iframe class="embed-responsive-item" width="850px" height="500px" id="player" src="//www.youtube.com/embed/wZTFsgheewk" data-step="1" data-intro="소개영상"></iframe>
 							<!-- 유튜브 영상 사용할때 소스 -->
 						</div>
 					</div><!-- continer 의 끝 -->

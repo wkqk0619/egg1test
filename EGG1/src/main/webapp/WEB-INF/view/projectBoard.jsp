@@ -204,6 +204,6 @@
 		</c:when>
 </c:choose>
 </div>
-<button onclick="location.href='./fileTest.do'">파일저장테스트</button>
+<!-- <button onclick="location.href='./fileTest.do'">파일저장테스트</button> -->
 </body>
 </html>
