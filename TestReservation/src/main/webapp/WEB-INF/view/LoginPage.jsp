@@ -8,9 +8,10 @@
 </head>
 <body>
 <h1>로그인페이지 입니다.</h1>
-<form action="" method="post">
+<form action="./userLogin.do" method="post">
 	<input type="text" name="email" id="emailInput" placeholder="이메일을 입력해주세요"/>
 	<input type="password" name="password" id="passwordInput" placeholder="비밀번호를 입력해주세요."/>
+	<input type="submit" value="로그인"/>
 </form>
 </body>
 </html>
