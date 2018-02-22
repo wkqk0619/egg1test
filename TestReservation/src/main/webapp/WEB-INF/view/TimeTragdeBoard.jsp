@@ -297,6 +297,7 @@ function addMark(lat, lng){
 	마음에 드는 것에 시간을 판매 할 수 있다 
 </pre>
 <button type="button" onclick="NewQuestFormShow()">퀘스트 생성</button>
+<button type="button" onclick="location='./reportBoard.do'">신고하러 가기</button>
 <div id="NewQuestForm" hidden="hidden">
 	<form action="" method="post">
 		<table border="1">
@@ -311,6 +312,14 @@ function addMark(lat, lng){
 			</tr>
 			<tr>
 				<th>모집 인원 : </th><td><input type="text" placeholder="모집인원을 적어주세요"/></td>
+			</tr>
+			<tr>
+				<th>지급방식 : </th>
+				<td>
+					<input type="radio" name="payType" value="money"/> 현금
+					<input type="radio" name="payType" value="creditcard"/>카드결제
+					<input type="radio" name="payType" value="bank"/>계좌이체
+				</td>
 			</tr>
 			<tr>
 				<th>시간당 지급 금액 : </th><td><input type="text" name="pay" placeholder="시간당 지급 금액을 적어주세요 최저는 1만원"/></td>

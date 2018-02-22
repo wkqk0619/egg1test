@@ -22,16 +22,28 @@
 			</td>
 		</tr>
 		<tr>
+			<th>보유 포인트 : @@@</th>
+		</tr>
+		<tr>
 			<td>이름 : @@@</td>
 		</tr>
 		<tr>
-			<td>생년 월일</td>
+			<td>생년 월일 </td>
 		</tr>
 		<tr>
 			<td>거주 지역 : @@@@</td>
 		</tr>
 		<tr>
 			<td>연락처 : @@@-@@@@-@@@@</td>
+		</tr>
+		<tr>
+			<td>
+				쿠폰 등록 : 
+				<form action="" method="post">
+					<input type="text" name="code"/>
+					<input type="submit" value="쿠폰등록"/>
+				</form>
+			</td>
 		</tr>
 	</table>
 </div>
