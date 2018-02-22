@@ -13,5 +13,6 @@
 	<input type="password" name="password" id="passwordInput" placeholder="비밀번호를 입력해주세요."/>
 	<input type="submit" value="로그인"/>
 </form>
+<button type="button" onclick="location='./ReguserPage.do'">회원가입</button>
 </body>
 </html>

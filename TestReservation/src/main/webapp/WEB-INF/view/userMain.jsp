@@ -14,5 +14,7 @@ ${ldto.email} 님 환영합니다.
 <br/>
 <button type="button" onclick="location='./NotionBoard.do'">공지사항보기</button>
 <button type="button" onclick="location='./QnaBoard.do'">문의사항</button>
+<button type="button" onclick="location='./TimeTragdeBoard.do'">시간 거래소</button>
+<button type="button" onclick="location='./Mypage.do'">마이페이지</button>
 </body>
 </html>
