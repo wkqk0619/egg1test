@@ -23,14 +23,14 @@
 	<property name="defaultAutoCommit" value="true"/>
 </bean>
 
-<!-- <bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
-<!-- 	<property name="dataSource"  ref="dataSource"/> -->
-<!-- 	<property name="configLocation" value="/WEB-INF/spring/sqls/sqlMapConfig.xml" /> -->
-<!-- </bean> -->
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource"  ref="dataSource"/>
+	<property name="configLocation" value="/WEB-INF/spring/sqls/sqlMapConfig.xml" />
+</bean>
 
-<!-- <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> -->
-<!-- 	<constructor-arg index="0" ref="sqlSession"/> -->
-<!-- </bean> -->
+<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg index="0" ref="sqlSession"/>
+</bean>
 
 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	<property name="dataSource" ref="dataSource"></property>

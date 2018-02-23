@@ -13,9 +13,9 @@
 <div id="MypageDiv">
 	<table border="1">
 		<tr>
-			<td>프로필 이미지 영역
+			<td>프로필 이미지 영역 ${ldto.image}
 				<form action="./fileUpload.do" method="post" enctype="multipart/form-data">
-					<input hidden="hidden" name="id" value="${ldto.email}"/>
+					<input hidden="hidden" name="id" value="${ldto.id}"/>
 					<input type="file" name="file"/>
 					<input type="submit" value="저장"/>
 				</form>
@@ -25,24 +25,24 @@
 			<td>내 이력 확인하기 : <button type="button"  onclick="location='./MyList.do'">이력 확인</button></td>
 		</tr>
 		<tr>
-			<td>보유 포인트 : @@@</td>
+			<td>보유 포인트 : ${ldto.wallet}</td>
 		</tr>
 		<tr>
-			<td>이름 : @@@</td>
+			<td>이름 : ${ldto.name}</td>
 		</tr>
 		<tr>
-			<td>생년 월일 </td>
+			<td>나이 : ${ldto.age}</td>
 		</tr>
 		<tr>
-			<td>거주 지역 : @@@@</td>
+			<td>거주 지역 : ${ldto.region}</td>
 		</tr>
 		<tr>
-			<td>연락처 : @@@-@@@@-@@@@</td>
+			<td>연락처 : ${ldto.contact}</td>
 		</tr>
 		<tr>
 			<td>
 				쿠폰 등록 : 
-				<form action="" method="post">
+				<form action="./coupon.do" method="post">
 					<input type="text" name="code" required="required"/>
 					<input type="submit" value="쿠폰등록"/>
 				</form>

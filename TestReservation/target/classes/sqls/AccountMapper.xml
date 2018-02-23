@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hk.lab5.account">
+	
+	<select id="login" resultType="AccountDto" parameterType="java.util.Map">
+		SELECT * FROM ACCOUNT WHERE ID=#{id} AND PASSWORD=#{password}
+	</select>
+		
+	<select id="idchk" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT COUNT(*) FROM  ACCOUNT WHERE ID = #{email}
+	</select>
+	
+	<insert id="regist" parameterType="java.util.Map">
+		INSERT INTO ACCOUNT(ID,PASSWORD) VALUES(#{id},#{password})
+	</insert>
+	
+	<update id="updateFile" parameterType="AccountDto">
+		UPDATE ACCOUNT SET IMAGE=#{image} WHERE ID=#{id}
+	</update>
+	
+	<select id="couponChk" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM COUPON WHERE CODE=#{code} AND USED='N';
+	</select>
+	
+	<update id="coupon" parameterType="java.util.Map">
+		UPDATE ACCOUNT SET WALLET=WALLET+(SELECT AMOUNT FROM COUPON WHERE CODE=#{code}) WHERE ID=#{id}
+	</update>
+	
+	<update id="couponUse" parameterType="java.util.Map">
+		UPDATE COUPON SET USED = 'Y' WHERE CODE=#{code} 
+	</update>
+	
+</mapper>
