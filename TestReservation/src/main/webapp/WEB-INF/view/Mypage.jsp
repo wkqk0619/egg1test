@@ -22,7 +22,10 @@
 			</td>
 		</tr>
 		<tr>
-			<th>보유 포인트 : @@@</th>
+			<td>내 이력 확인하기 : <button type="button"  onclick="location='./MyList.do'">이력 확인</button></td>
+		</tr>
+		<tr>
+			<td>보유 포인트 : @@@</td>
 		</tr>
 		<tr>
 			<td>이름 : @@@</td>
@@ -40,7 +43,7 @@
 			<td>
 				쿠폰 등록 : 
 				<form action="" method="post">
-					<input type="text" name="code"/>
+					<input type="text" name="code" required="required"/>
 					<input type="submit" value="쿠폰등록"/>
 				</form>
 			</td>

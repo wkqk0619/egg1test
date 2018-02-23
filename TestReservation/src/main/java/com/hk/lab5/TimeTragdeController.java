@@ -14,5 +14,13 @@ public class TimeTragdeController {
 	{
 		return "TimeTragdeBoard";
 	}
+	
+	
+	//구매자 본인이 작성한 퀘스트 리스트
+	@RequestMapping(value="/TimeQuestList.do", method=RequestMethod.GET)
+	public String TimeQuestList() 
+	{
+		return "TimeQuestList";
+	}
 
 }

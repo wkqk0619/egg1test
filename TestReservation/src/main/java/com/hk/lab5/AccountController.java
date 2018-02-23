@@ -33,6 +33,24 @@ public class AccountController {
 		return "userMain";
 	}
 	
+	//판매자메인화면으로 이동
+	@RequestMapping(value="/sellerMain.do", method=RequestMethod.GET)
+	public String sellerMain() {
+		return "sellerMain";
+	}
+	
+	//구매자메인화면으로 이동
+	@RequestMapping(value="/buyerMain.do", method=RequestMethod.GET)
+	public String buyerMain() {
+		return "buyerMain";
+	}
+	
+	//유저 이력 확인 페이지로 이동
+	@RequestMapping(value="/MyList.do", method=RequestMethod.GET)
+	public String MyList() {
+		return "MyList";
+	}
+	
 	
 	//로그인 후 유저메인으로 이동
 	@RequestMapping(value="/userLogin.do", method=RequestMethod.POST)
@@ -49,6 +67,8 @@ public class AccountController {
 	public String Mypage() {
 		return "Mypage";
 	}
+	
+	
 	
 	
 	//유저 로그아웃 -> 세션 삭제

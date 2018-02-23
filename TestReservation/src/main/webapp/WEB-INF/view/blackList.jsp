@@ -32,7 +32,6 @@
 	<tr>
 		<td>블랙리스트 1</td>
 	</tr>
-	
 </table>
 </body>
 </html>

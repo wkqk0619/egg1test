@@ -14,7 +14,9 @@
 	<br/>
 	<button type="button" onclick="location='./NotionBoard.do'">공지사항보기</button>
 	<button type="button" onclick="location='./QnaBoard.do'">문의사항</button>
-	<button type="button" onclick="location='./TimeTragdeBoard.do'">시간 거래소</button>
+<!-- 	<button type="button" onclick="location='./TimeTragdeBoard.do'">시간 거래소</button> -->
 	<button type="button" onclick="location='./Mypage.do'">마이페이지</button>
+	<button type="button" onclick="location='./buyerMain.do'">구매자 로그인</button>
+	<button type="button" onclick="location='./sellerMain.do'">판매자 로그인</button>
 </body>
 </html>
