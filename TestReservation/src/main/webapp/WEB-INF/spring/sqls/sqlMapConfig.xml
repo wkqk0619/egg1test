@@ -6,28 +6,10 @@
   	
   <typeAliases>
   	<typeAlias type="com.hk.lab5.dtos.AccountDto" alias="AccountDto"/>
-	<typeAlias type="com.hk.lab5.dtos.QuestionDto" alias="QuestionDto"/>
-  	<typeAlias type="com.hk.lab5.dtos.NotionDto" alias="NotionDto"/>
-	<typeAlias type="com.hk.lab5.dtos.ProjectDto" alias="ProjectDto"/>
-	<typeAlias type="com.hk.lab5.dtos.QnaDto" alias="QnaDto"/>	
-	<typeAlias type="com.hk.lab5.dtos.SupportDto" alias="SupportDto"/>
-	<typeAlias type="com.hk.lab5.dtos.AnswerDto" alias="AnswerDto"/>
-	<typeAlias type="com.hk.lab5.dtos.LogDto" alias="LogDto"/>
-	<typeAlias type="com.hk.lab5.dtos.RestoreProjDto" alias="RestoreProjDto"/>
-	<typeAlias type="com.hk.lab5.dtos.FileUploadDto" alias="FileUploadDto"/>
-	<typeAlias type="com.hk.lab5.dtos.DdayDto" alias="DdayDto"/>
-	<typeAlias type="com.hk.lab5.dtos.MySupportDto" alias="MySupportDto"/>
   </typeAliases>
   
   <mappers>
   	<mapper resource="/sqls/AccountMapper.xml"/>
-  	<mapper resource="/sqls/QuestionMapper.xml"/>
-  	<mapper resource="/sqls/NotionMapper.xml"/>
-  	<mapper resource="/sqls/ProjectMapper.xml"/>
-  	<mapper resource="/sqls/QnaMapper.xml"/>
-  	<mapper resource="/sqls/SupportMapper.xml"/>
-  	<mapper resource="/sqls/RestoreProjMapper.xml"/>
-  	<mapper resource="/sqls/FileUploadMapper.xml"/>
   </mappers>
   
   </configuration>
