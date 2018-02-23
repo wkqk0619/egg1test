@@ -256,6 +256,13 @@ function showInfoWindow() {
       .iw_table_icon {
         text-align: right;
       }
+      
+      #map_canvas
+      {
+      	width: 600px;
+      	height: 600px;
+      }
+      
 </style>
 </head>   
 <body onload="initialize()">   
@@ -264,7 +271,8 @@ function showInfoWindow() {
     <input type="button" value="Geocode" onclick="codeAddress()">   
 </div>   
 <div id="r"></div>    
-<div id="map_canvas" style="height:90%;top:30px"></div>  
+<!-- <div id="map_canvas" style="height:90%;top:30px"></div>   -->
+<div id="map_canvas"></div>
 
 <div style="display: none">
       <div id="info-content">

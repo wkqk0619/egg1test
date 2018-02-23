@@ -32,7 +32,9 @@ function initialize(){
     var myOptions = {  
         zoom: 7,  
         center: latlng,
-        zoomControl: false,
+//         zoomControl: false,
+ 		zoomControl: true,
+        scrollwheel : true,
         mapTypeId: google.maps.MapTypeId.ROADMAP  
     }  
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);  
@@ -193,6 +195,12 @@ function addMark(lat, lng){
   {
 	  alert(map.getCenter());
   }
+  $(function(){
+	  $('#createNewQuest').submit(function(){
+		  $('#idlatlng').val(map.getCenter());
+		  alert($('#idlatlng').val());
+	  });
+  });
 </script>
 <style type="text/css">
 	      #map {
@@ -280,7 +288,6 @@ function addMark(lat, lng){
       	width: 600px;
       	height: 600px;
       }
-
 </style>
 </head>
 <body  onload="initialize()">
@@ -299,30 +306,30 @@ function addMark(lat, lng){
 <button type="button" onclick="NewQuestFormShow()">퀘스트 생성</button>
 <button type="button" onclick="location='./reportBoard.do'">신고하러 가기</button>
 <div id="NewQuestForm" hidden="hidden">
-	<form action="" method="post">
+	<form action="" method="post" id="createNewQuest">
 		<table border="1">
 			<tr>
-				<th>퀘스트 명 : </th><td><input type="text" name="title" placeholder="퀘스트 명을 적어주세요"/></td>
+				<th>퀘스트 명 : </th><td><input type="text" name="title" placeholder="퀘스트 명을 적어주세요" required="required"/></td>
 			</tr>
 			<tr>
 				<th>수행 시각 : </th><td> 몇 월 몇일 시간</td>
 			</tr>
 			<tr>
-				<th>퀘스트 내용 : </th><td><textarea rows="10" cols="30" name="content" placeholder="퀘스트 내용을 적어주세요"></textarea></td>
+				<th>퀘스트 내용 : </th><td><textarea rows="10" cols="30" name="content" placeholder="퀘스트 내용을 적어주세요"  required="required"></textarea></td>
 			</tr>
 			<tr>
-				<th>모집 인원 : </th><td><input type="text" placeholder="모집인원을 적어주세요"/></td>
+				<th>모집 인원 : </th><td><input type="text" placeholder="모집인원을 적어주세요"  required="required"/></td>
 			</tr>
 			<tr>
 				<th>지급방식 : </th>
 				<td>
-					<input type="radio" name="payType" value="money"/> 현금
-					<input type="radio" name="payType" value="creditcard"/>카드결제
-					<input type="radio" name="payType" value="bank"/>계좌이체
+					<input type="radio" name="payType" value="money" required="required"/> 현금
+					<input type="radio" name="payType" value="creditcard" required="required"/>카드결제
+					<input type="radio" name="payType" value="bank" required="required"/>계좌이체
 				</td>
 			</tr>
 			<tr>
-				<th>시간당 지급 금액 : </th><td><input type="text" name="pay" placeholder="시간당 지급 금액을 적어주세요 최저는 1만원"/></td>
+				<th>시간당 지급 금액 : </th><td><input type="text" name="pay" placeholder="시간당 지급 금액을 적어주세요 최저는 1만원"  required="required"/></td>
 			</tr>
 			<tr>
 				<th>모집 제한 : </th>
@@ -335,14 +342,14 @@ function addMark(lat, lng){
 								<option value="50">50대</option>
 								<option value="60">60대 이상</option>
 						  </select>, 
-				성별 : <input type="radio" name="gender" value="All"/> 상관없음 <input type="radio" name="gender" value="Man"/> 남성 <input type="radio" name="gender" value="Won"/> 여성
+				성별 : <input type="radio" name="gender" value="All" checked="checked"/> 상관없음 <input type="radio" name="gender" value="Man"/> 남성 <input type="radio" name="gender" value="Won"/> 여성
 				</td>
 			</tr>
 			<tr>
 				<th>구글 지도</th>
 				<td>
 					<div>   
-    					<input id="address" type="text"  placeholder="주소를 입력해주세요">   
+    					<input id="address" type="text"  placeholder="주소를 입력해주세요"  required="required">   
     					<input type="button" value="Geocode" onclick="codeAddress()" hidden="hidden">   
 					</div>   
 					<div id="r"></div>    
@@ -376,11 +383,11 @@ function addMark(lat, lng){
     				</div> 
 				</td>
 			</tr>
-			<tr>
-          		<th>좌표 출력 : </th><td><button type="button" onclick="positShow()">좌표출력</button></td>
-          	</tr>
+<!-- 			<tr> -->
+<!--           		<th>좌표 출력 : </th><td><button type="button" onclick="positShow()">좌표출력</button></td> -->
+<!--           	</tr> -->
           	<tr>
-          		<th>퀘스트 작성 : </th><td><input type="submit" value="퀘스트 작성"/></td>
+          		<th>퀘스트 작성 : </th><td><input type="text" id="idlatlng" name="latlng" hidden="hidden"/><input type="submit" value="퀘스트 작성"/></td>
           	</tr>
 		</table>
 	</form>
