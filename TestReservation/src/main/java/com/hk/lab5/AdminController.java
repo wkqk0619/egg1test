@@ -24,4 +24,10 @@ public class AdminController {
 	public String sellInfo() {
 		return "sellInfo";
 	}
+	
+	//블랙리스트 관리 페이지로 이동
+	@RequestMapping(value="/blackList.do", method=RequestMethod.GET)
+	public String blackList() {
+		return "blackList";
+	}
 }

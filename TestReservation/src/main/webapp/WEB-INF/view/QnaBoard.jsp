@@ -15,7 +15,12 @@
 </script>
 </head>
 <body>
-<button type="button" onclick="location='./userLogout.do'">로그아웃</button>
+<c:choose>
+	<c:when test="${empty ldto}"></c:when>
+	<c:otherwise>
+		<button type="button" onclick="location='./userLogout.do'">로그아웃</button>
+	</c:otherwise>
+</c:choose>
 <button type="button" onclick="location='./userMain.do'">유저메인화면으로</button>
 <h1>문의 게시판입니다.</h1>
 <pre>

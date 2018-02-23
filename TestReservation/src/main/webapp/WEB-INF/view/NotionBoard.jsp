@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +15,22 @@
 </script>
 </head>
 <body>
-<button type="button" onclick="location='./userLogout.do'">로그아웃</button>
+<c:choose>
+	<c:when test="${empty ldto}"></c:when>
+	<c:otherwise>
+		<button type="button" onclick="location='./userLogout.do'">로그아웃</button>
+	</c:otherwise>
+</c:choose>
 <button type="button" onclick="location='./userMain.do'">유저메인화면으로</button>
 <h1>이곳은 공지사항 게시판입니다.</h1>
 <pre>
 일반유저는 공지사항 목록만 보고
 관리자는 공지사항 작성가능하게</pre>
 
-<button type="button" onclick="NotionInputFormShow()">공지사항 입력폼</button>
+<c:if test="${ldto.enabled eq 'A'}">
+	<button type="button" onclick="NotionInputFormShow()">공지사항 작성하기</button>
+</c:if>
+
 	<div id="NotionInputForm" hidden="hidden">
 		<form action="" method="post">
 			<table border="1">
