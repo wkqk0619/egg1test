@@ -22,5 +22,12 @@ public class TimeTragdeController {
 	{
 		return "TimeQuestList";
 	}
+	
+	//판매자 본인이 받게될 퀘스트 결과 금액
+	@RequestMapping(value="/questResult.do", method=RequestMethod.GET)
+	public String questResult() 
+	{
+		return "questResult";
+	}
 
 }
