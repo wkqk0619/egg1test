@@ -6,9 +6,12 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +31,9 @@ public class AccountController {
 	
 	@Resource(name="uploadPath")
 	   String uploadPath;
+	
+	@Resource(name="uploadrealPath")
+	   String uploadrealPath;
 	
 	//로그인 페이지로 이동
 	@RequestMapping(value="/LoginPage.do", method=RequestMethod.GET)
@@ -109,6 +115,7 @@ public class AccountController {
 		System.out.println("파일크기 : "+file.getSize());
 		System.out.println("컨텐트 타입 : "+file.getContentType());
 		System.out.println("기본저장위치"+uploadPath);
+		
 		AccountDto dto = new AccountDto();
 		UUID uuid = UUID.randomUUID();
 		String savedName = uuid.toString()+"_"+file.getOriginalFilename();
@@ -167,6 +174,7 @@ public class AccountController {
 	@RequestMapping(value="/coupon.do", method=RequestMethod.POST)
 	public String coupon(HttpSession session, String code)
 	{
+		
 		boolean isS=false;
 		AccountDto oldto = (AccountDto)session.getAttribute("ldto");
 		
