@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="couponChk" parameterType="java.lang.String" resultType="java.lang.Integer">
-		SELECT COUNT(*) FROM COUPON WHERE CODE=#{code} AND USED='N';
+		SELECT COUNT(*) FROM COUPON WHERE CODE=#{code} AND USED='N' AND EXPIRATIONDATE > now();
 	</select>
 	
 	<update id="coupon" parameterType="java.util.Map">
@@ -32,5 +32,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="couponUse" parameterType="java.util.Map">
 		UPDATE COUPON SET USED = 'Y' WHERE CODE=#{code} 
 	</update>
+	
+	<insert id="insertCouponLog" parameterType="java.util.Map">
+		INSERT INTO WALLETLOG(ID,IP,LOGTYPE,AMOUNT,LOGTIME)
+		VALUES(#{id},#{ip},'C',(SELECT WALLET FROM ACCOUNT WHERE ID=#{id}),now())
+	</insert>
+	
+	<update id="changeInfo" parameterType="java.util.Map">
+		UPDATE ACCOUNT SET ${change}=#{value} WHERE ID=#{id}
+	</update>
+	
+	<select id="selectWlog" parameterType="java.lang.String" resultType="WalletlogDto">
+		SELECT * FROM WALLETLOG WHERE ID=#{id}
+	</select>
+	
+	<select id="makeQCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM QUEST WHERE ID=#{id}
+	</select>
+	
+	<select id="tryQCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM MATCHING WHERE ID=#{id} 
+	</select>
+	
+	<select id="matchingQCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM MATCHING WHERE ID=#{id} AND SELECTED='Y'
+	</select>
+	
+	<select id="reportCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM REPORT WHERE TARGETID=#{id}
+	</select>
 	
 </mapper>

@@ -7,6 +7,9 @@
 <title>회원가입을 위한 페이지</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
+
+	var rNum;
+	
 	function check() 
 	{
 		var email = $("#regemail").val()
@@ -30,7 +33,7 @@
 					}
 					else
 					{
-						$("#rNum").val(msg);
+						rNum=msg;
 						$("#keyChk").show();
 						$("#keyChkBtn").show();
 					}
@@ -42,7 +45,7 @@
 	
 	function keyCheck() 
 	{
-		if($("#keyChk").val()==$("#rNum").val())
+		if($("#keyChk").val()==rNum)
 		{
 			$("#submit").attr("disabled",false);
 		}
@@ -57,7 +60,6 @@
 <h1>이곳은 회원 가입을 위한 페이지 입니다.</h1>
 <form action="./regist.do" method="post">
 	<input name="id" id="regemail" type="text" placeholder="이메일을 적어주세요"/><input type="button" id="keyBtn" onclick="check()" value="이메일인증">
-	<input type="hidden" id="rNum">
 	<input type="text" id="keyChk" hidden="hidden">
 	<input id="keyChkBtn" type="button" onclick="keyCheck()" hidden="hidden" value="인증">
 	<br>
