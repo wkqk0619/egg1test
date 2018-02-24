@@ -22,6 +22,9 @@
 <bean id = "uploadPath" class="java.lang.String">
 	<constructor-arg value="D:\egg1test\TestReservation\src\main\webapp\profileImage"></constructor-arg>
 </bean>
+<bean id = "uploadrealPath" class="java.lang.String">
+	<constructor-arg value="/profileImage"></constructor-arg>
+</bean>
 
 </beans>
 
