@@ -47,6 +47,11 @@
 	{
 		$("#changeContact").hide();
 	}
+	
+	function UpdateiconFormOpen()
+	{
+		$(".UpdateiconForm").toggle();
+	}
 </script>
 </head>
 <body>
