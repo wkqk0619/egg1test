@@ -6,16 +6,10 @@
   	
   <typeAliases>
   	<typeAlias type="com.hk.lab5.dtos.AccountDto" alias="AccountDto"/>
-  	<typeAlias type="com.hk.lab5.dtos.WalletlogDto" alias="WalletlogDto"/>
-  	<typeAlias type="com.hk.lab5.dtos.QuestDto" alias="QuestDto"/>
-  	<typeAlias type="com.hk.lab5.dtos.MatchingDto" alias="MatchingDto"/>
-  	<typeAlias type="com.hk.lab5.dtos.ReportDto" alias="ReportDto"/>
   </typeAliases>
   
   <mappers>
   	<mapper resource="/sqls/AccountMapper.xml"/>
-  	<mapper resource="/sqls/QuestMapper.xml"/>
-  	<mapper resource="/sqls/ReportMapper.xml"/>
   </mappers>
   
   </configuration>
