@@ -2,14 +2,17 @@ package com.hk.lab5;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.MatchingDto;
+import com.hk.lab5.dtos.QuestDto;
+import com.hk.lab5.dtos.ReportDto;
+import com.hk.lab5.dtos.WalletlogDto;
 import com.hk.lab5.model.IService;
 
 @Controller
@@ -55,7 +62,13 @@ public class AccountController {
 	
 	//유저 이력 확인 페이지로 이동
 	@RequestMapping(value="/MyList.do", method=RequestMethod.GET)
-	public String MyList() {
+	public String MyList(HttpSession session,Model model) 
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		
+		Map<String, Integer> map = iservice.countMyList(ldto.getId());
+		model.addAttribute("map", map);
+		
 		return "MyList";
 	}
 	
@@ -165,7 +178,7 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value="/coupon.do", method=RequestMethod.POST)
-	public String coupon(HttpSession session, String code)
+	public String coupon(HttpSession session, HttpServletRequest request, String code)
 	{
 		boolean isS=false;
 		AccountDto oldto = (AccountDto)session.getAttribute("ldto");
@@ -173,6 +186,7 @@ public class AccountController {
 		Map<String, String> map = new HashMap<String,String>();
 		map.put("id", oldto.getId());
 		map.put("code", code);
+		map.put("ip", request.getRemoteAddr());
 		if(iservice.couponChk(code))
 		{
 			isS = iservice.coupon(map);
@@ -180,6 +194,8 @@ public class AccountController {
 		
 		if(isS)
 		{
+			iservice.insertCouponLog(map);
+			
 			Map<String, String>map2 = new HashMap<String,String>();
 			map2.put("id", oldto.getId());
 			map2.put("password", oldto.getPassword());
@@ -188,8 +204,78 @@ public class AccountController {
 			session.setAttribute("ldto", ldto);
 		}
 		
+		return "redirect:/Mypage.do";
+	}
+	
+	@RequestMapping(value="/changeInfo.do", method=RequestMethod.POST)
+	public String changeInfo(HttpSession session, String change, String value)
+	{
+		AccountDto oldto = (AccountDto)session.getAttribute("ldto");
+		
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("id", oldto.getId());
+		map.put("change", change);
+		map.put("value", value);
+		iservice.changeInfo(map);
+		
+		Map<String, String>map2 = new HashMap<String,String>();
+		map2.put("id", oldto.getId());
+		map2.put("password", oldto.getPassword());
+				
+		AccountDto ldto = iservice.login(map2);
+		session.setAttribute("ldto", ldto);
 		
 		return "redirect:/Mypage.do";
 	}
 	
+	@RequestMapping(value="/myWallet.do", method=RequestMethod.GET)
+	public String myWallet(HttpSession session, Model model)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		
+		List<WalletlogDto> list = iservice.selectWlog(ldto.getId());
+		model.addAttribute("list", list);
+		
+		return "myWallet";
+	}
+	
+	@RequestMapping(value="/makeQList.do", method=RequestMethod.GET)
+	public String makeQList(HttpSession session, Model model)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		List<QuestDto> list = iservice.makeQList(ldto.getId());
+		model.addAttribute("list", list);
+		
+		return "makeQList";
+	}
+	
+	@RequestMapping(value="/tryQList.do", method=RequestMethod.GET)
+	public String tryQList(HttpSession session, Model model)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		List<QuestDto> list = iservice.tryQList(ldto.getId());
+		model.addAttribute("list", list);
+		
+		return "tryQList";
+	}
+	
+	@RequestMapping(value="/matchingQList.do", method=RequestMethod.GET)
+	public String matchingQList(HttpSession session, Model model)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		List<MatchingDto> list = iservice.matchingQList(ldto.getId());
+		model.addAttribute("list", list);
+		
+		return "matchingQList";
+	}
+	
+	@RequestMapping(value="/reportList.do", method=RequestMethod.GET)
+	public String reportList(HttpSession session, Model model)
+	{
+		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
+		List<ReportDto> list = iservice.reportList(ldto.getId());
+		model.addAttribute("list", list);
+		
+		return "reportList";
+	}
 }
