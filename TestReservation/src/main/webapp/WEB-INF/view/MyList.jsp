@@ -18,16 +18,16 @@
 
 <table border="1">
 	<tr>
-		<td>퀘스트 작성 횟수 : @@</td>
+		<td>퀘스트 작성 횟수 : ${map.makeQ}</td><td><button onclick="location='./makeQList.do'">조회</button></td>
 	</tr>
 	<tr>
-		<td>퀘스트 지원 횟수 : @@</td>
+		<td>퀘스트 지원 횟수 : ${map.tryQ}</td><td><button onclick="location='./tryQList.do'">조회</button></td>
 	</tr>
 	<tr>
-		<td>최종 선정 퀘스트 횟수 : @@</td>
+		<td>최종 선정 퀘스트 횟수 : ${map.matchingQ}</td><td><button onclick="location='./matchingQList.do'">조회</button></td>
 	</tr>
 	<tr>
-		<td>신고당한 이력 : @@</td>
+		<td>신고당한 이력 : ${map.report}</td><td><button onclick="location='./reportList.do'">조회</button></td>
 	</tr>
 </table>
 </body>
