@@ -1,5 +1,7 @@
 ﻿package com.hk.lab5.model;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -8,6 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.MatchingDto;
+import com.hk.lab5.dtos.QuestDto;
+import com.hk.lab5.dtos.ReportDto;
+import com.hk.lab5.dtos.WalletlogDto;
 import com.hk.lab5.mail.MailSend;
 
 @Service
@@ -77,13 +83,67 @@ public class ServiceImpl implements IService {
 	{
 		dao.couponUse(map);
 		return dao.coupon(map);
-		// 쿠폰사용 로그도 추가예정
 	}
 
 	@Override
 	public boolean couponChk(String code) 
 	{
 		return dao.couponChk(code);
+	}
+
+	@Override
+	public void insertCouponLog(Map<String,String> map) 
+	{
+		dao.insertCouponLog(map);
+	}
+
+	@Override
+	public boolean changeInfo(Map<String, String> map) 
+	{
+		return dao.changeInfo(map);
+	}
+
+	@Override
+	public List<WalletlogDto> selectWlog(String id) 
+	{
+		return dao.selectWlog(id);
+	}
+
+	@Override
+	public Map<String, Integer> countMyList(String id) 
+	{
+		Map<String, Integer> map = new HashMap<String,Integer>();
+		
+		map.put("makeQ", dao.makeQCount(id));
+		map.put("tryQ", dao.tryQCount(id));
+		map.put("matchingQ", dao.matchingQCount(id));
+		map.put("report", dao.reportCount(id));
+		
+		return map;
+	}
+
+	@Override
+	public List<QuestDto> makeQList(String id) 
+	{
+		return dao.makeQList(id);
+	}
+
+	@Override
+	public List<QuestDto> tryQList(String id) 
+	{
+		return dao.tryQList(id);
+	}
+
+	@Override
+	public List<MatchingDto> matchingQList(String id) 
+	{
+		return dao.matchingQList(id);
+	}
+
+	@Override
+	public List<ReportDto> reportList(String id) 
+	{
+		return dao.reportList(id);
 	}
 
 }

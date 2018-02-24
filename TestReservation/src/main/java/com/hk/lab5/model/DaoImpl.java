@@ -1,6 +1,7 @@
 ﻿package com.hk.lab5.model;
 
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
+import com.hk.lab5.dtos.MatchingDto;
+import com.hk.lab5.dtos.QuestDto;
+import com.hk.lab5.dtos.ReportDto;
+import com.hk.lab5.dtos.WalletlogDto;
 
 @Repository
 public class DaoImpl implements IDao {
@@ -16,6 +21,8 @@ public class DaoImpl implements IDao {
 	private SqlSessionTemplate sqlSession;
 	
 	private final String ACCOUNTNAMESPACE = "com.hk.lab5.account.";
+	private final String QUESTNAMESPACE = "com.hk.lab5.quest.";
+	private final String REPORTNAMESPACE = "com.hk.lab5.report.";
 
 	@Override
 	public AccountDto login(Map<String, String> map) 
@@ -59,4 +66,72 @@ public class DaoImpl implements IDao {
 	{
 		sqlSession.update(ACCOUNTNAMESPACE+"couponUse",map);
 	}
+
+	@Override
+	public void insertCouponLog(Map<String, String> map) 
+	{
+		sqlSession.insert(ACCOUNTNAMESPACE+"insertCouponLog",map);
+	}
+
+	@Override
+	public boolean changeInfo(Map<String, String> map) 
+	{
+		return sqlSession.update(ACCOUNTNAMESPACE+"changeInfo",map)>0?true:false;
+	}
+
+	@Override
+	public List<WalletlogDto> selectWlog(String id) 
+	{
+		return sqlSession.selectList(ACCOUNTNAMESPACE+"selectWlog", id);
+	}
+
+	@Override
+	public Integer makeQCount(String id) 
+	{
+		return sqlSession.selectOne(ACCOUNTNAMESPACE+"makeQCount", id);
+	}
+
+	@Override
+	public Integer tryQCount(String id) 
+	{
+		return sqlSession.selectOne(ACCOUNTNAMESPACE+"tryQCount", id);
+	}
+
+	@Override
+	public Integer matchingQCount(String id) 
+	{
+		return sqlSession.selectOne(ACCOUNTNAMESPACE+"matchingQCount", id);
+	}
+
+	@Override
+	public Integer reportCount(String id) 
+	{
+		return sqlSession.selectOne(ACCOUNTNAMESPACE+"reportCount", id);
+	}
+
+	@Override
+	public List<QuestDto> makeQList(String id) 
+	{
+		return sqlSession.selectList(QUESTNAMESPACE+"makeQList",id);
+	}
+
+	@Override
+	public List<QuestDto> tryQList(String id) 
+	{
+		return sqlSession.selectList(QUESTNAMESPACE+"tryQList",id);
+	}
+
+	@Override
+	public List<MatchingDto> matchingQList(String id) 
+	{
+		return sqlSession.selectList(QUESTNAMESPACE+"matchingQList",id);
+	}
+
+	@Override
+	public List<ReportDto> reportList(String id) 
+	{
+		return sqlSession.selectList(REPORTNAMESPACE+"reportList",id);
+	}
+	
+	
 }
