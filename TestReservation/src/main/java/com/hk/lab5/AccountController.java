@@ -88,6 +88,7 @@ public class AccountController {
 		{
 			if(ldto.getEnabled()=='A')
 			{
+				session.setAttribute("ldto", ldto);
 				return "AdminPage";
 			}
 			else

@@ -28,7 +28,8 @@ public interface IService
 	List<QuestDto> tryQList(String id);
 	List<MatchingDto> matchingQList(String id);
 	List<ReportDto> reportList(String id);
-	List<NotionDto> notionBoard(String id);
+	List<NotionDto> notionBoard();
 	List<QnaDto> qnaBoard(String id);
+	NotionDto notionDetail(String nseq);
 
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hk.lab5.notion">
+	
+	<select id="notionBoard" resultType="NotionDto">
+		SELECT NSEQ, TITLE, CONTENT, REGDATE
+  		FROM NOTION
+	</select>
+	
+	<select id="notionDetail" resultType="NotionDto" parameterType="java.lang.String">
+		SELECT NSEQ, TITLE, CONTENT, REGDATE
+  		FROM NOTION WHERE NSEQ = #{nseq}
+	</select>
+	
+</mapper>
