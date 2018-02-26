@@ -86,9 +86,15 @@ public class AccountController {
 		}
 		else
 		{
-//			System.out.println(ldto);
-			session.setAttribute("ldto", ldto);
-			return "userMain";
+			if(ldto.getEnabled()=='A')
+			{
+				return "AdminPage";
+			}
+			else
+			{
+				session.setAttribute("ldto", ldto);
+				return "userMain";
+			}
 		}
 	}
 	

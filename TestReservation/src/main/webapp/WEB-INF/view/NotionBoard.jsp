@@ -27,7 +27,7 @@
 일반유저는 공지사항 목록만 보고
 관리자는 공지사항 작성가능하게</pre>
 
-<c:if test="${ldto.enabled eq 'A'}">
+<c:if test="${ldto.enabled == 'A'.charAt(0)}">
 	<button type="button" onclick="NotionInputFormShow()">공지사항 작성하기</button>
 </c:if>
 

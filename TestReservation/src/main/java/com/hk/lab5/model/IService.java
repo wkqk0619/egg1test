@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.MatchingDto;
+import com.hk.lab5.dtos.NotionDto;
+import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestDto;
 import com.hk.lab5.dtos.ReportDto;
 import com.hk.lab5.dtos.WalletlogDto;
@@ -26,5 +28,7 @@ public interface IService
 	List<QuestDto> tryQList(String id);
 	List<MatchingDto> matchingQList(String id);
 	List<ReportDto> reportList(String id);
+	List<NotionDto> notionBoard(String id);
+	List<QnaDto> qnaBoard(String id);
 
 }

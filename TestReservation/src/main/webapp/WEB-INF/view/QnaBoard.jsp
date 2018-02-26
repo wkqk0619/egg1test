@@ -37,7 +37,7 @@
 				<th>제목</th><td><input type="text" name="title"/></td>
 			</tr>
 			<tr>
-				<th>작성자</th><td><input type="text" name="id" readonly="readonly" value="${ldto.email}"/></td>
+				<th>작성자</th><td><input type="text" name="id" readonly="readonly" value="${ldto.id}"/></td>
 			</tr>
 			<tr>
 				<th>내용</th><td><textarea rows="15" cols="50" name="content"></textarea></td>
