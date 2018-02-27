@@ -22,14 +22,22 @@ public class NotionController {
 	
 	//공지사항 게시글로 이동
 	@RequestMapping(value="/NotionBoard.do", method=RequestMethod.GET)
-	public String NotionBoard(HttpSession session, Model model)
+	public String NotionBoard(Model model)
 	{
-		AccountDto ldto = (AccountDto)session.getAttribute("ldto");
-		
-		List<NotionDto> list = iservice.notionBoard(ldto.getId());
+		List<NotionDto> list = iservice.notionBoard();
 		model.addAttribute("list", list);
 		
 		return "NotionBoard";
 	}
+	
+	@RequestMapping(value="/notionDetail.do", method=RequestMethod.GET)
+	public String NotionDetail(Model model, String nseq)
+	{
+		NotionDto dto = iservice.notionDetail(nseq);
+		model.addAttribute("dto",dto);
+		
+		return "NotionDetail";
+	}
+	
 	
 }

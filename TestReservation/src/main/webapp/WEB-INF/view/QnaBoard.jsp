@@ -28,16 +28,72 @@
 	답변 
 </pre>
 
+	<table border="1">
+		<tr>
+			<th>제목</th>
+			<c:choose>
+				<c:when test="${ldto.enabled eq 'A'.charAt(0)}">
+					<th>작성자</th>
+				</c:when>
+			</c:choose>
+			<th>작성일</th>
+		</tr>
+
+		<c:choose>
+			<c:when test="${empty list}">
+				<tr>
+					
+					<c:choose>
+						<c:when test="${ldto.enabled eq 'A'.charAt(0)}">
+							<td colspan="3">
+								작성된 문의가 없다네
+							</td>
+						</c:when>
+						<c:otherwise>
+							<td colspan="2">
+								작성된 문의가 없다네
+							</td>
+						</c:otherwise>
+					</c:choose>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="dto" items="${list}">
+						<tr>
+							<td>
+								<c:forEach var="i" begin="0" end="${dto.depth}" step="1">
+									<c:if test="${i>0}">
+										&nbsp;&nbsp;
+									</c:if>
+								</c:forEach>
+								${dto.title}
+							</td>
+							<c:choose>
+								<c:when test="${ldto.enabled eq 'A'.charAt(0)}">
+									<td>${dto.id}</td>
+								</c:when>
+							</c:choose>
+							<td>${dto.regdate}</td>
+						</tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+		</table>
+
 <button type="button" onclick="QnaInputFromShow()">문의게시글 입력 폼</button>
 
 <div id="QnaInputFrom" hidden="hidden">
+	<table border="1">
+		<tr>
+			<th>제목</th>
+			<th>내용</th>
+		</tr>
+	</table>
+	<input type="hidden" name="id" readonly="readonly" value="${ldto.id}"/>
 	<form action="" method="post">
 		<table border="1">
 			<tr>
 				<th>제목</th><td><input type="text" name="title"/></td>
-			</tr>
-			<tr>
-				<th>작성자</th><td><input type="text" name="id" readonly="readonly" value="${ldto.id}"/></td>
 			</tr>
 			<tr>
 				<th>내용</th><td><textarea rows="15" cols="50" name="content"></textarea></td>

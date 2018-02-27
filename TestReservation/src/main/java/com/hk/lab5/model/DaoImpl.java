@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.MatchingDto;
+import com.hk.lab5.dtos.NotionDto;
+import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestDto;
 import com.hk.lab5.dtos.ReportDto;
 import com.hk.lab5.dtos.WalletlogDto;
@@ -23,6 +25,8 @@ public class DaoImpl implements IDao {
 	private final String ACCOUNTNAMESPACE = "com.hk.lab5.account.";
 	private final String QUESTNAMESPACE = "com.hk.lab5.quest.";
 	private final String REPORTNAMESPACE = "com.hk.lab5.report.";
+	private final String NOTIONNAMESPACE = "com.hk.lab5.notion.";
+	private final String QNANAMESPACE = "com.hk.lab5.qna.";
 
 	@Override
 	public AccountDto login(Map<String, String> map) 
@@ -131,6 +135,24 @@ public class DaoImpl implements IDao {
 	public List<ReportDto> reportList(String id) 
 	{
 		return sqlSession.selectList(REPORTNAMESPACE+"reportList",id);
+	}
+
+	@Override
+	public List<NotionDto> notionBoard() 
+	{
+		return sqlSession.selectList(NOTIONNAMESPACE+"notionBoard");
+	}
+
+	@Override
+	public List<QnaDto> qnaBoard(String id) 
+	{
+		return sqlSession.selectList(QNANAMESPACE+"qnaBoard",id);
+	}
+
+	@Override
+	public NotionDto notionDetail(String nseq) 
+	{
+		return sqlSession.selectOne(NOTIONNAMESPACE+"notionDetail",nseq);
 	}
 	
 	

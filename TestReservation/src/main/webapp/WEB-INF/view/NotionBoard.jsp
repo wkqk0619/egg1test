@@ -27,10 +27,33 @@
 일반유저는 공지사항 목록만 보고
 관리자는 공지사항 작성가능하게</pre>
 
-<c:if test="${ldto.enabled == 'A'.charAt(0)}">
-	<button type="button" onclick="NotionInputFormShow()">공지사항 작성하기</button>
-</c:if>
-
+	<table border="1">
+		<tr>
+			<th>제목</th>
+			<th>작성일</th>
+		</tr>
+		
+		<c:choose>
+			<c:when test="${empty list}">
+				<tr>
+					<td colspan="3">작성된 공지사항이 없습니다</td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${list}" var="dto">
+					<tr>
+						<td><a href="./notionDetail.do?nseq=${dto.nseq}">${dto.title}</a></td>
+						<td>${dto.regdate}</td>
+					</tr>	
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</table>
+	
+	<c:if test="${ldto.enabled eq 'A'.charAt(0)}">
+		<button type="button" onclick="NotionInputFormShow()">공지사항 작성하기</button>
+	</c:if>
+	
 	<div id="NotionInputForm" hidden="hidden">
 		<form action="" method="post">
 			<table border="1">

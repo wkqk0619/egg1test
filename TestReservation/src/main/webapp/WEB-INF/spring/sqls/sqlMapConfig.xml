@@ -10,12 +10,16 @@
   	<typeAlias type="com.hk.lab5.dtos.QuestDto" alias="QuestDto"/>
   	<typeAlias type="com.hk.lab5.dtos.MatchingDto" alias="MatchingDto"/>
   	<typeAlias type="com.hk.lab5.dtos.ReportDto" alias="ReportDto"/>
+  	<typeAlias type="com.hk.lab5.dtos.NotionDto" alias="NotionDto"/>
+  	<typeAlias type="com.hk.lab5.dtos.QnaDto" alias="QnaDto"/>
   </typeAliases>
   
   <mappers>
   	<mapper resource="/sqls/AccountMapper.xml"/>
   	<mapper resource="/sqls/QuestMapper.xml"/>
   	<mapper resource="/sqls/ReportMapper.xml"/>
+  	<mapper resource="/sqls/NotionMapper.xml"/>
+  	<mapper resource="/sqls/QnaMapper.xml"/>
   </mappers>
   
   </configuration>

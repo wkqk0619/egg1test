@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.MatchingDto;
+import com.hk.lab5.dtos.NotionDto;
+import com.hk.lab5.dtos.QnaDto;
 import com.hk.lab5.dtos.QuestDto;
 import com.hk.lab5.dtos.ReportDto;
 import com.hk.lab5.dtos.WalletlogDto;
@@ -144,6 +146,24 @@ public class ServiceImpl implements IService {
 	public List<ReportDto> reportList(String id) 
 	{
 		return dao.reportList(id);
+	}
+
+	@Override
+	public List<NotionDto> notionBoard() 
+	{
+		return dao.notionBoard();
+	}
+
+	@Override
+	public List<QnaDto> qnaBoard(String id)
+	{
+		return dao.qnaBoard(id);
+	}
+
+	@Override
+	public NotionDto notionDetail(String nseq) 
+	{
+		return dao.notionDetail(nseq);
 	}
 
 }
