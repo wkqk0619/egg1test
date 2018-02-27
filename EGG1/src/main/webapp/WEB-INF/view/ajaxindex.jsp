@@ -129,7 +129,7 @@ $( function() {
 				success : function(msg)
 				{
 					$("#searchResult").empty();
-					
+					$('#searchResultDIV').show();
 					if(msg.pList.length!=0)
 					{
 						$("#searchResult").append($("<tr><th colspan='3'>프로젝트</th></tr>"));
@@ -142,6 +142,7 @@ $( function() {
 							$tr.append("<td>"+msg.pList[i].info+"</td>");
 							
 							$("#searchResult").append($tr);
+							
 						}
 					}
 					
@@ -543,7 +544,7 @@ $( function() {
 
 	  #searchDiv
 	  {
-	  	height: 500px;
+/* 	  	height: 500px; */
 	  	overflow: auto;
 	    position: absolute;
 	    left: 35%;
@@ -573,7 +574,9 @@ $( function() {
 	<c:when test="${not empty ldto}">
 		<div id="searchDiv" class="searchDiv">
 			<input type="text" id="searchWord" onkeypress="if(event.keyCode==13) {searching(); return false;}"><button onclick="searching()">검색</button>
-			<table id="searchResult" hidden="hidden"></table>
+			<div hidden="hidden" id="searchResultDIV">
+				<table id="searchResult"></table>
+			</div>
 		</div>
 
 		<div id="menudiv">
@@ -623,7 +626,7 @@ $( function() {
     			<li id="tabs7" hidden="hidden"><a href="#tabs-7">문의</a></li>
     			<li id="tabs8" hidden="hidden"><a href="#tabs-8">로그아웃</a></li>
     			<li id="tabs9" hidden="hidden"><a href="#tabs-9">알림</a></li>
-<!--     			<li id="tabs10" hidden="hidden"><a href="#tabs-10">검색</a></li> -->
+ <!--     			<li id="tabs10" hidden="hidden"><a href="#tabs-10">검색</a></li> -->
     			<li id="tabs10" hidden="hidden"><a href="#tabs-10">지원하기</a></li>
   			</c:otherwise>
   		</c:choose>
