@@ -121,7 +121,8 @@
 			<tr>
 				<td>${dto.sseq}</td>
 				<c:choose>
-					<c:when test="${ldto.role ne 'U'.charAt(0)}">
+<%-- 					<c:when test="${ldto.role ne 'U'.charAt(0)}"> --%>
+					<c:when test="${ldto.role ne 85}">
 						<td><a href="./supportQus.do?sseq=${dto.sseq}">${dto.title}</a></td>
 					</c:when>
 					<c:otherwise>

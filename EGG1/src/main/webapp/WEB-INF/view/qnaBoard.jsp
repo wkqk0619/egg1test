@@ -115,7 +115,8 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${ldto.role eq 'U'.charAt(0)}">
+<%-- 		<c:when test="${ldto.role eq 'U'.charAt(0)}"> --%>
+		<c:when test="${ldto.role eq 85}">
 			<button id="guard">가이드</button>
 		</c:when>
 	</c:choose>
@@ -124,7 +125,8 @@
 		<tr>
 			<th>제목</th>
 			<c:choose>
-				<c:when test="${ldto.role ne 'U'.charAt(0)}">
+<%-- 				<c:when test="${ldto.role ne 'U'.charAt(0)}"> --%>
+			<c:when test="${ldto.role ne 85}">
 					<th>작성자</th>
 				</c:when>
 			</c:choose>
@@ -136,7 +138,8 @@
 				<tr>
 					
 					<c:choose>
-						<c:when test="${ldto.role ne 'U'.charAt(0)}">
+<%-- 						<c:when test="${ldto.role ne 'U'.charAt(0)}"> --%>
+			<c:when test="${ldto.role ne 85}">
 							<td colspan="3">
 								작성된 문의가 없다네
 							</td>

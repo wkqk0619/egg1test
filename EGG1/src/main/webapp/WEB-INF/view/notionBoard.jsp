@@ -98,7 +98,8 @@ $( function() {
 <div id="notionIntro">
 <div>
 	<c:choose>
-		<c:when test="${ldto.role eq 'U'.charAt(0)}">
+<%-- 		<c:when test="${ldto.role eq 'U'.charAt(0)}"> --%>
+		<c:when test="${ldto.role ne 85}">
 			<button id="guard">가이드</button>
 		</c:when>
 	</c:choose>
@@ -124,7 +125,8 @@ $( function() {
 	</c:choose>
 	
 	<c:choose>
-		<c:when test="${ldto.role ne 'U'.charAt(0)}">
+<%-- 		<c:when test="${ldto.role ne 'U'.charAt(0)}"> --%>
+		<c:when test="${ldto.role ne 85}">
 			<button onclick="shownewNot()">공지 추가하기</button>
 			<div id="newNot" hidden="hidden">
 				<form action="./insertNot.do" method="post">

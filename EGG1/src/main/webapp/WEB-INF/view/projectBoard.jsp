@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>  
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>     
 <!DOCTYPE html>
 <html onclick="parent.closeSearch()">
@@ -199,7 +199,8 @@
 
 </div>
 <c:choose>
-		<c:when test="${ldto.role ne 'U'.charAt(0)}">
+<%-- 		<c:when test="${ldto.role ne 'U'.charAt(0)}"> --%>
+<c:when test="${ldto.role ne 85}">
 			<button onclick="location.href='./LoginMain.do'">메인으로</button>
 		</c:when>
 </c:choose>
