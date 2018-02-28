@@ -11,16 +11,16 @@
 	<table>
 		<thead>
 			<tr>
-<!-- 				<th>제목</th> -->
-<!-- 				<th>작성자</th> -->
+				<th>제목</th>
+				<th>작성자</th>
 			</tr>
 		</thead>
 		
 		<tbody>
 			<c:forEach items="" var="">
 				<tr>
-<!-- 					<td>${dto.title}</td> -->
-<!-- 					<td>${dto.id}</td> -->
+					<td></td>
+					<td></td>
 				</tr>
 			</c:forEach>
 		</tbody>
