@@ -4,6 +4,7 @@
 <html>
   <head></head>
   <body>
+  	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
       function handleClientLoad() {
         // Loads the client library and the auth2 library together for efficiency.
@@ -16,8 +17,9 @@
         // Initialize the client with API key and People API, and initialize OAuth with an
         // OAuth 2.0 client ID and scopes (space delimited string) to request access.
         gapi.client.init({
-            apiKey: '	AIzaSyBbXYWqeGgY5z4PMH2ri12HQIagfYDFkQY',
-            discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
+            apiKey: 'AIzaSyBTeFf4p7OR9j0a-19FPIT9B2WUkgXHK1Q',
+           // discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
+           discoveryDocs : ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'],
             clientId: '61361841866-vo4t7lvuvivtcd2emeeda8v2qnrk9358.apps.googleusercontent.com',
             scope: 'profile'
         }).then(function () {
@@ -44,7 +46,13 @@
       }
 
       function handleSignOutClick(event) {
-        gapi.auth2.getAuthInstance().signOut();
+
+//     	    var auth2 = gapi.auth2.getAuthInstance();
+//     	    auth2.signOut().then(function () {
+//     	      console.log('User signed out.');
+//     	    });
+        //gapi.auth2.getAuthInstance().signOut();
+    	  document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/module/googleLoginTest.jsp";
       }
 
       function makeApiCall() {
