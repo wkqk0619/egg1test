@@ -11,9 +11,29 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/theme.default.css">
 <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="js/paginathing.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#suportList").tablesorter();
+		$('table tbody').paginathing({
+			  // Limites your pagination number
+			  // false or number
+			  perPage: 5,
+			  limitPagination: false,
+			  // Pagination controls
+			  prevNext: true,
+			  firstLast: true,
+			  prevText: '&laquo;',
+			  nextText: '&raquo;',
+			  firstText: 'First',
+			  lastText: 'Last',
+			  containerClass: 'pagination-container',
+			  ulClass: 'pagination',
+			  liClass: 'page',
+			  activeClass: 'active',
+			  disabledClass: 'disabled',
+			});
+
 	});
 	function detalClo(){
 		$("#alertpr").hide();

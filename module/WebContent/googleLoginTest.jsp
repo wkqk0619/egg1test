@@ -66,12 +66,45 @@
           console.log('Error: ' + reason.result.error.message);
         });
       }
+      
+      function logout() {
+    	  // 로그아웃 아이프레임
+    	  $("body").append("<iframe id='logoutIframe' style='display: none;'></iframe>");
+    	  $("#logoutIframe").attr("src", "http://nid.naver.com/nidlogin.logout");
+    	  // 로그아웃 처리
+    	  $("#naver_id_login").show();
+    	  $("#naver_id_logout").hide();
+    	 }
     </script>
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <button id="signin-button" onclick="handleSignInClick()">Sign In</button>
-    <button id="signout-button" onclick="handleSignOutClick()">Sign Out</button>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <div>
+    	<span>구글 계정 로그인</span>
+        <button id="signin-button" onclick="handleSignInClick()">Sign In</button>
+    	<button id="signout-button" onclick="handleSignOutClick()">Sign Out</button>
+    </div>
+    <div>
+    	<span>네이버 아이디로 로그인</span>
+    	 <div id="naver_id_login"></div>
+    	   <script type="text/javascript">
+  				var naver_id_login = new naver_id_login("mOABlqJZLjbiXsTKoCig", "http://localhost:8080/module/loginafter.jsp");
+  				var state = naver_id_login.getUniqState();
+  				naver_id_login.setButton("white", 2,40);
+  				naver_id_login.setDomain("http://localhost:8080/module/googleLoginTest.jsp");
+  				naver_id_login.setState(state);
+  				naver_id_login.setPopup();
+  				naver_id_login.init_naver_id_login();
+  			</script>
+  			<div id="naver_id_logout">
+   				<a href="#" onclick="logout();">로그아웃</a>
+    			<!-- 로그인 사용자 정보출력 -->
+    			<div id="dvLogin"></div>
+    			<!-- 로그인 사용자 정보출력 끝 -->
+   			</div>
+    </div>
+
   </body>
 </html>
