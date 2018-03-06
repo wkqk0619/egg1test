@@ -25,6 +25,7 @@ import com.hk.lab5.dtos.AccountDto;
 import com.hk.lab5.dtos.FileUploadDto;
 import com.hk.lab5.dtos.LogDto;
 import com.hk.lab5.model.IService;
+import com.hk.lab5.util.FileUploadMoudle;
 
 @Controller
 public class AccountController 
@@ -32,8 +33,10 @@ public class AccountController
 	@Autowired
 	private IService iservice;
 	
+	
 	 @Resource(name="uploadPath")
 	   String uploadPath;
+	   
 	
 	@RequestMapping(value="/Main.do", method=RequestMethod.GET)
 	public String usermain()
@@ -352,7 +355,7 @@ public class AccountController
 	@RequestMapping(value="/fileUpload.do",method=RequestMethod.POST)
 	public String insertFile(HttpSession session,MultipartHttpServletRequest req,MultipartFile file) throws Exception 
 	{
-		 
+		 /*
 		System.out.println("파일이름 :"+file.getOriginalFilename());
 		System.out.println("파일크기 : "+file.getSize());
 		System.out.println("컨텐트 타입 : "+file.getContentType());
@@ -369,20 +372,21 @@ public class AccountController
 		{
 			System.out.println("false");
 		}else 
-		{
-			File target = new File(uploadPath+"\\"+savedName);
-		     System.out.println("타겟 저장경로 : "+target.getPath());
-		     FileCopyUtils.copy(file.getBytes(), target);
-		     
+		{	
 				AccountDto oldto = (AccountDto)session.getAttribute("ldto");
-				
+				File target = new File(uploadPath+"\\"+savedName);
+		     	System.out.println("타겟 저장경로 : "+target.getPath());
+		     	FileCopyUtils.copy(file.getBytes(), target);
 				Map<String, String>map = new HashMap<String,String>();
 				map.put("id", oldto.getId());
 				map.put("pw", oldto.getPassword());
-				
 				AccountDto ldto = iservice.login(map);
 				session.setAttribute("ldto", ldto);
 		}
+		*/
+		FileUploadMoudle filemd = new FileUploadMoudle();
+		filemd.FileUpload(session, req, file,uploadPath,iservice);
+		
 		return "redirect:/myPage.do";
 	}
 	
