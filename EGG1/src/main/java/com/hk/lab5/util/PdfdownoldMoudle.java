@@ -1,9 +1,8 @@
-package com.hk.lab5;
+package com.hk.lab5.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
@@ -12,11 +11,7 @@ import java.nio.charset.Charset;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.hk.lab5.util.PdfdownoldMoudle;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -40,13 +35,7 @@ import com.itextpdf.tool.xml.pipeline.html.AbstractImageProvider;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 
-
-
-
-
-@Controller
-public class PdfController {
-	/*
+public class PdfdownoldMoudle {
 	class Base64ImageProvider extends AbstractImageProvider {
 		 
         @Override
@@ -72,11 +61,9 @@ public class PdfController {
             return null;
         }
     }
-	*/
 	
-	@RequestMapping(value="pdfTest.do",method=RequestMethod.POST)
-	public void pdfTest(String fName,String pdfarea, HttpServletResponse response/*,String imgDataURL*/) throws IOException, DocumentException {
-		/*
+	public void itextPdfDownold(String fName,String pdfarea, HttpServletResponse response) 
+	{
 		Document document = new Document(PageSize.B4, 50, 50, 50, 50); // 용지 및 여백 설정
 		//System.out.println(pdfarea);
 		pdfarea= pdfarea.replaceAll("<br>", "<br></br>"); //에디터에서 엔터를 치면 br 태그가 되니때문에
@@ -126,7 +113,6 @@ public class PdfController {
 		 
 		// Document 오픈
 		document.open();
-		*/
 		/*
 		Image image= retrieve(imgDataURL);
 		//System.out.println("image 결과는??" + image.getUrl());
@@ -140,7 +126,6 @@ public class PdfController {
 			e1.printStackTrace();
 		}
 		*/
-		/*
 		XMLWorkerHelper helper = XMLWorkerHelper.getInstance();
 		     
 		// CSS
@@ -172,7 +157,6 @@ public class PdfController {
 		XMLParser xmlParser = new XMLParser(worker, Charset.forName("UTF-8"));
 		 
 		// 폰트 설정에서 별칭으로 줬던 "MalgunGothic"을 html 안에 폰트로 지정한다.
-		*/
 		
 		/*
 		String htmlStr = "<html><head><body style='font-family: MalgunGothic;'>"
@@ -181,7 +165,6 @@ public class PdfController {
 		        + "</body></head></html>";
 		        */
 		//String htmlStr = "<html><head></head><body style='font-family: MalgunGothic;'>"+pdfarea+"</body></html>";
-		/*
 		String htmlStr = pdfarea;
 		StringReader strReader = new StringReader(htmlStr);
 		try {
@@ -195,17 +178,9 @@ public class PdfController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
-		
 		/*
 		document.close();
 		writer.close();
 		*/
-		
-		PdfdownoldMoudle pdfdw = new PdfdownoldMoudle();
-		pdfdw.itextPdfDownold(fName, pdfarea, response);
 	}
-	
-
 }
-

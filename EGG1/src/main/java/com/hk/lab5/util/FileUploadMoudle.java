@@ -58,6 +58,5 @@ public class FileUploadMoudle {
 				AccountDto ldto = iservice.login(map);
 				session.setAttribute("ldto", ldto);
 		}
-		
 	}
 }
