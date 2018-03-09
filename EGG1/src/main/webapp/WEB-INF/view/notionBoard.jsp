@@ -99,7 +99,7 @@ $( function() {
 <div>
 	<c:choose>
 <%-- 		<c:when test="${ldto.role eq 'U'.charAt(0)}"> --%>
-		<c:when test="${ldto.role ne 85}">
+		<c:when test="${ldto.role eq 85}">
 			<button id="guard">가이드</button>
 		</c:when>
 	</c:choose>
@@ -143,7 +143,8 @@ $( function() {
 </div>
 
 <c:choose>
-		<c:when test="${ldto.role ne 'U'.charAt(0)}">
+<%-- 		<c:when test="${ldto.role ne 'U'.charAt(0)}"> --%>
+		<c:when test="${ldto.role ne 85}">
 			<button onclick="location.href='./LoginMain.do'">메인으로</button>
 		</c:when>
 </c:choose>
@@ -169,7 +170,8 @@ $( function() {
 			</tr>
 		</table>
 		<c:choose>
-			<c:when test="${ldto.role ne 'U'.charAt(0)}">
+<%-- 			<c:when test="${ldto.role ne 'U'.charAt(0)}"> --%>
+			<c:when test="${ldto.role ne 85}">
 				<button onclick="upNotForm()">수정할까??</button>
 				<button onclick="delNot()">삭제</button>
 			</c:when>

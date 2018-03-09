@@ -164,7 +164,8 @@
 								${dto.title}
 							</td>
 							<c:choose>
-								<c:when test="${ldto.role ne 'U'.charAt(0)}">
+<%-- 								<c:when test="${ldto.role ne 'U'.charAt(0)}"> --%>
+								<c:when test="${ldto.role ne 85}">
 									<td>${dto.id}</td>
 								</c:when>
 							</c:choose>
@@ -175,7 +176,8 @@
 		</c:choose>
 		</table>
 	<c:choose>
-		<c:when test="${ldto.role eq 'U'.charAt(0)}">
+<%-- 		<c:when test="${ldto.role eq 'U'.charAt(0)}"> --%>
+		<c:when test="${ldto.role eq 85}">
 			<button onclick="insertQnaForm()">문의작성</button>
 		</c:when>
 		<c:otherwise>
