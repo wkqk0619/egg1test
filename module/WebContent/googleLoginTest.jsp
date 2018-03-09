@@ -99,7 +99,7 @@
   				naver_id_login.init_naver_id_login();
   			</script>
   			<div id="naver_id_logout">
-   				<a href="#" onclick="logout();">로그아웃</a>
+   				<a href="#" onclick="logout();">네이버  로그아웃</a>
     			<!-- 로그인 사용자 정보출력 -->
     			<div id="dvLogin"></div>
     			<!-- 로그인 사용자 정보출력 끝 -->
